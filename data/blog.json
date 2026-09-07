@@ -26,6 +26,15 @@
       "desc_en": "Skuska",
       "content_sk": "Skuska",
       "content_en": "Skuska"
+    },
+    {
+      "title_sk": "Skuska cislo 2",
+      "title_en": "Test n. 2",
+      "date": "9.Oktober 2026",
+      "desc_sk": "Skuska N2",
+      "desc_en": "Sksuskaa n 2",
+      "content_sk": "Skuska n 2",
+      "content_en": "Skuska n 2"
     }
   ]
 }
