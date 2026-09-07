@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main # alebo master podľa tvojho GitHubu
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blogové články"
+    files:
+      - label: "Zoznam článkov"
+        name: "posts"
+        file: "data/blog.json"
+        fields:
+          - label: "Články"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Dátum", name: "date", widget: "string", hint: "Napr. 4. SEPTEMBER 2026" }
+              - { label: "Názov (SK)", name: "title_sk", widget: "string" }
+              - { label: "Názov (EN)", name: "title_en", widget: "string" }
+              - { label: "Krátky popis (SK)", name: "desc_sk", widget: "text" }
+              - { label: "Krátky popis (EN)", name: "desc_en", widget: "text" }
+              - { label: "Celý text článku (SK)", name: "content_sk", widget: "markdown" }
+              - { label: "Celý text článku (EN)", name: "content_en", widget: "markdown" }
