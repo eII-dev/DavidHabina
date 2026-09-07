@@ -1,6 +1,7 @@
 backend:
-  name: git-gateway
-  branch: main # alebo master podľa tvojho GitHubu
+  name: github
+  repo: eII-dev/DavidHabina
+  branch: main
 
 media_folder: "uploads"
 public_folder: "/uploads"
