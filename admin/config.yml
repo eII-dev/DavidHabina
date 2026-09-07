@@ -1,7 +1,7 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: eII-dev/DavidHabina
   branch: main
-  identity_url: https://davidkooo.netlify.app/.netlify/identity
 
 media_folder: "uploads"
 public_folder: "/uploads"
