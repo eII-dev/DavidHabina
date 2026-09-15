@@ -8,11 +8,16 @@ public_folder: "/images"
 collections:
   - name: "blog"
     label: "Blog"
-    folder: "content/blog"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Názov článku", name: "title", widget: "string"}
-      - {label: "Dátum", name: "date", widget: "datetime"}
-      - {label: "Krátky popis", name: "description", widget: "text"}
-      - {label: "Obsah článku", name: "body", widget: "markdown"}
+    files:
+      - file: "data/blog.json"
+        label: "Blogové články"
+        name: "blog"
+        fields:
+          - label: "Zoznam článkov"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Názov článku", name: "title_sk", widget: "string"}
+              - {label: "Dátum", name: "date", widget: "string"}
+              - {label: "Krátky popis", name: "desc_sk", widget: "text"}
+              - {label: "Obsah článku", name: "content_sk", widget: "markdown"}
