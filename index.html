@@ -378,6 +378,16 @@
                         <div class="form-group">
                             <textarea name="sprava" rows="5" placeholder="S čím vám môžem pomôcť? / How can I help you?" required></textarea>
                         </div>
+                        
+                        <!-- GDPR Checkbox -->
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="gdpr-consent" name="gdpr_suhlas" required>
+                            <label for="gdpr-consent">
+                                <span class="lang-sk">Súhlasím so <a href="gdpr.html" target="_blank">spracovaním osobných údajov</a>.</span>
+                                <span class="lang-en">I agree to the <a href="gdpr.html" target="_blank">processing of personal data</a>.</span>
+                            </label>
+                        </div>
+
                         <button type="submit" class="btn-submit">
                             <span class="lang-sk">ODOSLAŤ SPRÁVU</span>
                             <span class="lang-en">SEND MESSAGE</span>
@@ -390,15 +400,41 @@
         </section>
     </main>
 
-    <!-- Pätička -->
+    <!-- Pätička s odkazom na GDPR -->
     <footer>
         <div class="container footer-content">
             <p>
                 <span class="lang-sk">Copyright &copy; 2026 David Habina. Všetky práva vyhradené.</span>
                 <span class="lang-en">Copyright &copy; 2026 David Habina. All rights reserved.</span>
             </p>
+            <div class="footer-links">
+                <a href="gdpr.html">
+                    <span class="lang-sk">Ochrana osobných údajov (GDPR)</span>
+                    <span class="lang-en">Privacy Policy (GDPR)</span>
+                </a>
+            </div>
         </div>
     </footer>
+
+    <!-- COOKIE BANNER -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>
+                <span class="lang-sk">Pre najlepší zážitok z nášho webu používame súbory cookies. Kliknutím na "Prijať všetky" súhlasíte s ich používaním. Viac v <a href="gdpr.html">Zásadách ochrany osobných údajov</a>.</span>
+                <span class="lang-en">We use cookies to ensure you get the best experience on our website. By clicking "Accept All", you consent to our use of cookies. See our <a href="gdpr.html">Privacy Policy</a>.</span>
+            </p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn-cookie-accept">
+                    <span class="lang-sk">Prijať všetky</span>
+                    <span class="lang-en">Accept All</span>
+                </button>
+                <button id="decline-cookies" class="btn-cookie-decline">
+                    <span class="lang-sk">Iba nevyhnutné</span>
+                    <span class="lang-en">Essential Only</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

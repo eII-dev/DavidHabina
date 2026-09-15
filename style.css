@@ -625,6 +625,123 @@ footer {
     align-items: center;
 }
 
+/* --- GDPR CHECKBOX & FOOTER LINKS --- */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.checkbox-group input {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    accent-color: var(--accent-gold);
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.checkbox-group label a {
+    color: var(--accent-gold);
+    text-decoration: underline;
+}
+
+.footer-links a {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--accent-gold);
+}
+
+/* --- COOKIE BANNER --- */
+.cookie-banner {
+    position: fixed;
+    bottom: -150%;
+    left: 0;
+    width: 100%;
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--accent-gold);
+    z-index: 9999;
+    transition: bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+}
+
+.cookie-banner.show {
+    bottom: 0;
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.cookie-content p {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.cookie-content a {
+    color: var(--accent-gold);
+    text-decoration: underline;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.btn-cookie-accept, .btn-cookie-decline {
+    padding: 10px 20px;
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-cookie-accept {
+    background-color: var(--accent-gold);
+    color: #000;
+    border: none;
+}
+
+.btn-cookie-accept:hover {
+    background-color: var(--accent-gold-hover);
+    transform: translateY(-2px);
+}
+
+.btn-cookie-decline {
+    background-color: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--text-gray);
+}
+
+.btn-cookie-decline:hover {
+    border-color: var(--text-white);
+}
+
 /* --- RESPONZIVITA (MOBIL & TABLET) --- */
 @media (max-width: 900px) {
     /* PREMIUM MOBILE LOCK */
@@ -740,6 +857,22 @@ footer {
         flex-direction: column;
         gap: 12px;
         text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .cookie-buttons {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .btn-cookie-accept, .btn-cookie-decline {
+        width: 100%;
     }
 }
 

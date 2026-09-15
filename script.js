@@ -5,7 +5,7 @@ const scrollWrapper = isMobile ? document.body : window;
 // --- LENIS SMOOTH SCROLL ---
 const lenis = new Lenis({
     wrapper: scrollWrapper,
-    smoothTouch: false, // Na mobile fičíme cez natívny CSS fix
+    smoothTouch: false, 
     duration: 0.9,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
 });
@@ -17,7 +17,6 @@ ScrollTrigger.defaults({
     scroller: scrollWrapper
 });
 
-// Vynútené počúvanie natívneho scrollu na mobile pre GSAP
 if (isMobile) {
     document.body.addEventListener('scroll', ScrollTrigger.update);
 }
@@ -57,7 +56,7 @@ if (hamburgerToggle) {
     hamburgerToggle.addEventListener('click', () => toggleMenu());
 }
 
-// --- OPRAVENÉ PREKLIKY (Rozdelené pre PC a MOBIL) ---
+// --- OPRAVENÉ PREKLIKY ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault(); 
@@ -67,12 +66,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetElement = document.querySelector(targetId);
 
         if (targetElement) {
-            // Zavrieme menu na mobile, ak je otvorené, a odomkneme scrollovanie
             toggleMenu(true);
             
             setTimeout(() => {
                 if (isMobile) {
-                    // EXKLUZÍVNY MOBILNÝ FIX: Presný výpočet a GSAP scroll po uzamknutom body
                     const offsetTop = targetElement.getBoundingClientRect().top + document.body.scrollTop - 80;
                     
                     gsap.to(document.body, {
@@ -81,13 +78,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                         ease: "power2.inOut"
                     });
                 } else {
-                    // PC LOGIKA (Zostáva nezmenená)
                     lenis.scrollTo(targetElement, { 
                         offset: -80, 
                         duration: 1.2  
                     });
                 }
-            }, 50); // Krátke oneskorenie na uistenie, že CSS overflow je odomknutý
+            }, 50); 
         }
     });
 });
@@ -178,7 +174,6 @@ function renderBlogPosts() {
         container.appendChild(article);
     });
     
-    // Aktivácia animácií po načítaní a vynútený refresh GSAPu
     initGSAPAnimations(document.querySelectorAll('.blog-card'));
     ScrollTrigger.refresh();
 }
@@ -221,7 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(savedLang);
     loadBlogPosts();
     
-    // Spustenie animácií s malým oneskorením pre istotu, že sa DOM úplne vykreslil
     setTimeout(() => {
         initGSAPAnimations(document.querySelectorAll('[data-aos]'));
         ScrollTrigger.refresh();
@@ -269,3 +263,30 @@ if (window.netlifyIdentity) {
         }
     });
 }
+
+// --- COOKIE BANNER LOGIKA ---
+document.addEventListener('DOMContentLoaded', () => {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const btnAccept = document.getElementById('accept-cookies');
+    const btnDecline = document.getElementById('decline-cookies');
+
+    if (!localStorage.getItem('cookieConsent')) {
+        setTimeout(() => {
+            if (cookieBanner) cookieBanner.classList.add('show');
+        }, 1500);
+    }
+
+    if (btnAccept) {
+        btnAccept.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieBanner.classList.remove('show');
+        });
+    }
+
+    if (btnDecline) {
+        btnDecline.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieBanner.classList.remove('show');
+        });
+    }
+});

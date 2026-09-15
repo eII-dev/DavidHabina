@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ochrana osobných údajov | David Habina</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .gdpr-section {
+            padding: 150px 0 100px 0;
+            background-color: var(--bg-black);
+            min-height: 100vh;
+        }
+        .gdpr-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-gray);
+        }
+        .gdpr-content h1 {
+            color: var(--text-white);
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .gdpr-content h3 {
+            color: var(--accent-gold);
+            margin: 30px 0 15px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .gdpr-content p, .gdpr-content ul {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        .gdpr-content ul {
+            padding-left: 20px;
+        }
+        .btn-back {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid var(--accent-gold);
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all var(--transition-fast);
+        }
+        .btn-back:hover {
+            background-color: var(--accent-gold);
+            color: #000;
+        }
+    </style>
+</head>
+<body class="lang-sk">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="signature-logo">David Habina</a>
+            <ul class="nav-links" style="justify-content: flex-end;">
+                <li class="lang-switch" style="display: flex;">
+                    <button type="button" onclick="setLanguage('sk')" class="active-lang" id="lang-sk-btn">SK</button> / 
+                    <button type="button" onclick="setLanguage('en')" id="lang-en-btn">EN</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="gdpr-section">
+        <div class="container gdpr-content">
+            <h1>
+                <span class="lang-sk">Ochrana osobných údajov (GDPR)</span>
+                <span class="lang-en">Privacy Policy (GDPR)</span>
+            </h1>
+
+            <div class="lang-sk">
+                <p>Ochrana vašich osobných údajov je pre mňa dôležitá. Tento dokument vysvetľuje, ako zhromažďujem, používam a chránim vaše dáta pri používaní tohto webu.</p>
+                
+                <h3>1. Prevádzkovateľ osobných údajov</h3>
+                <p>Prevádzkovateľom vašich osobných údajov je David Habina, pôsobiaci ako nezávislý finančný poradca. V prípade otázok ma môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong>.</p>
+                
+                <h3>2. Aké údaje zhromažďujem a prečo?</h3>
+                <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie mojich služieb:</p>
+                <ul>
+                    <li><strong>Meno a priezvisko</strong> (na identifikáciu)</li>
+                    <li><strong>E-mailová adresa a telefónne číslo</strong> (na komunikáciu)</li>
+                    <li><strong>Obsah správy</strong> (pre lepšie porozumenie vašej požiadavky)</li>
+                </ul>
+                <p>Vaše údaje sú spracúvané na základe vášho súhlasu (čl. 6 ods. 1 písm. a) GDPR), ktorý vyjadrujete odoslaním formulára.</p>
+
+                <h3>3. Komu údaje poskytujem?</h3>
+                <p>Vaše osobné údaje nepredávam ani nezdieľam s tretími stranami na marketingové účely. Dáta môžu byť zdieľané výlučne s finančnými inštitúciami (banky, poisťovne) až po našej osobnej dohode a podpísaní sprostredkovateľskej zmluvy pri riešení vašej finančnej situácie.</p>
+
+                <h3>4. Súbory Cookies</h3>
+                <p>Tento web používa iba základné technické súbory cookies, ktoré sú nevyhnutné pre správne fungovanie stránky. Nepoužívame invazívne sledovacie nástroje bez vášho výslovného súhlasu v cookie lište.</p>
+
+                <h3>5. Vaše práva</h3>
+                <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu, vymazanie ("právo na zabudnutie"), obmedzenie spracovania a taktiež máte právo kedykoľvek odvolať svoj súhlas kontaktovaním na môj e-mail.</p>
+            </div>
+
+            <div class="lang-en">
+                <p>Protecting your personal data is important to me. This document explains how I collect, use, and protect your data when you use this website.</p>
+                
+                <h3>1. Data Controller</h3>
+                <p>The controller of your personal data is David Habina, acting as an independent financial advisor. If you have any questions, you can contact me via email at: <strong>davidhabina@prosight.sk</strong>.</p>
+                
+                <h3>2. What data do I collect and why?</h3>
+                <p>Through the contact form on the website, I collect only the data necessary to contact you back and provide my services:</p>
+                <ul>
+                    <li><strong>Full Name</strong> (for identification)</li>
+                    <li><strong>Email Address and Phone Number</strong> (for communication)</li>
+                    <li><strong>Message Content</strong> (to better understand your request)</li>
+                </ul>
+                <p>Your data is processed based on your consent (Art. 6(1)(a) GDPR), which you express by submitting the form.</p>
+
+                <h3>3. Who do I share the data with?</h3>
+                <p>I do not sell or share your personal data with third parties for marketing purposes. Data may be shared exclusively with financial institutions (banks, insurance companies) only after our mutual agreement and the signing of a mediation contract to resolve your financial situation.</p>
+
+                <h3>4. Cookies</h3>
+                <p>This website uses only basic technical cookies necessary for the proper functioning of the site. We do not use invasive tracking tools without your explicit consent in the cookie banner.</p>
+
+                <h3>5. Your Rights</h3>
+                <p>Under the GDPR, you have the right to request access to your data, its correction, deletion ("right to be forgotten"), restriction of processing, and you also have the right to withdraw your consent at any time by contacting my email.</p>
+            </div>
+
+            <a href="index.html" class="btn-back">
+                <span class="lang-sk">&larr; Späť na hlavnú stránku</span>
+                <span class="lang-en">&larr; Back to homepage</span>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        function setLanguage(lang) {
+            const body = document.body;
+            const btnSk = document.getElementById('lang-sk-btn');
+            const btnEn = document.getElementById('lang-en-btn');
+
+            if (lang === 'en') {
+                body.classList.remove('lang-sk');
+                body.classList.add('lang-en');
+                btnSk?.classList.remove('active-lang');
+                btnEn?.classList.add('active-lang');
+                localStorage.setItem('selectedLang', 'en');
+            } else {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-sk');
+                btnEn?.classList.remove('active-lang');
+                btnSk?.classList.add('active-lang');
+                localStorage.setItem('selectedLang', 'sk');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selectedLang') || 'sk';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
