@@ -46,7 +46,7 @@ function initCounters() {
 
 // --- CENTRÁLNA LOGIKA PRE MENU A PREKLIKY ---
 const hamburgerToggle = document.getElementById('hamburger-toggle');
-const navLinks = document.getElementById('nav-links');
+const navLinks = document.getElementById('nav-links-right'); // Na mobile sa spravuje pravé menu, ktoré obsahuje všetky položky
 const hamburgerIcon = document.getElementById('hamburger-icon');
 
 function toggleMenu(forceClose = false) {
@@ -123,7 +123,7 @@ function initGSAPAnimations(elements) {
     });
 }
 
-// --- BLOG LOGIKA (LEN SLOVENSKY) ---
+// --- BLOG LOGIKA ---
 let globalBlogItems = [];
 
 async function loadBlogPosts() {

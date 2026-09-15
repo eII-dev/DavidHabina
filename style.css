@@ -28,7 +28,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- CONTAINER & NOVÝ SPLIT NAVBAR (LOGO V STREDE) --- */
+/* --- CONTAINER & SPLIT NAVBAR --- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -54,6 +54,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    position: relative;
 }
 
 .center-logo {
@@ -117,25 +118,6 @@ body {
 .btn-kontakt:hover {
     background-color: var(--accent-gold-hover);
     transform: translateY(-2px);
-}
-
-.nav-socials {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-left: 20px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    padding-left: 20px;
-}
-
-.nav-socials a {
-    color: var(--text-white);
-    font-size: 0.9rem;
-    transition: color var(--transition-fast);
-}
-
-.nav-socials a:hover {
-    color: var(--accent-gold);
 }
 
 .mobile-socials {
@@ -232,7 +214,6 @@ body {
 .stats-section {
     background-color: var(--bg-dark-2);
     padding: 60px 0;
-    border-top: 1px solid rgba(200, 162, 97, 0.15);
     border-bottom: 1px solid rgba(200, 162, 97, 0.15);
 }
 
@@ -274,6 +255,7 @@ body {
 
 .darker-section {
     background-color: var(--bg-dark-2);
+    border-top: none; /* Odstránené zbytočné orámovanie */
 }
 
 .section-header {
@@ -757,9 +739,7 @@ footer {
 
     .navbar { padding: 15px 20px; }
     .hamburger-toggle { display: block; }
-    .nav-socials { display: none; }
     
-    /* Na mobile vrátime logo späť doľava, aby nezavadzalo hamburgeru */
     .center-logo {
         position: static;
         transform: none;
@@ -772,7 +752,7 @@ footer {
     }
 
     .nav-left {
-        display: none; /* Schováme desktopové menu vľavo */
+        display: none; 
     }
 
     .nav-links {
@@ -796,14 +776,6 @@ footer {
     .nav-links.active { right: 0; }
     .nav-links a { font-size: 1.1rem; letter-spacing: 2px; }
 
-    .mobile-socials {
-        display: flex;
-        gap: 25px;
-        margin-top: 15px;
-        align-items: center;
-    }
-    .mobile-socials a { color: var(--accent-gold); font-size: 1.4rem; padding: 8px; }
-
     .section { padding: 60px 0; }
     .section-header { margin-bottom: 40px; }
     .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
@@ -819,7 +791,7 @@ footer {
 
 @media (max-width: 480px) {
     .mobile-break { display: block; }
-    .desktop-space { display: inline; }
+    .desktop-space { display: none; }
 
     .hero-section {
         background-position: 35% 80px; 

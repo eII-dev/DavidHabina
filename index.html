@@ -31,27 +31,22 @@
 </head>
 <body>
 
-    <!-- Nová Split-Navigácia (Logo v strede, odkazy rozdelené vľavo a vpravo) -->
     <nav class="navbar">
         <div class="nav-container split-nav">
             
-            <!-- Ľavá strana menu -->
             <ul class="nav-links nav-left" id="nav-links-left">
-                <li><a href="#sluzby">SLUŽBY</a></li>
                 <li><a href="#omne">O MNE</a></li>
+                <li><a href="#sluzby">SLUŽBY</a></li>
                 <li><a href="#referencie">REFERENCIE</a></li>
             </ul>
 
-            <!-- Stredové logo (David Habina) -->
             <a href="#domov" class="signature-logo center-logo">DAVID HABINA</a>
 
-            <!-- Pravá strana menu -->
             <ul class="nav-links nav-right" id="nav-links-right">
                 <li><a href="#blog">BLOG</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#kontakt" class="btn-kontakt">KONTAKT</a></li>
                 
-                <!-- Sociálne siete v mobilnom menu -->
                 <li class="mobile-socials">
                     <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -59,7 +54,6 @@
                 </li>
             </ul>
 
-            <!-- Hamburger tlačidlo pre mobil -->
             <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
                 <i class="fa-solid fa-bars" id="hamburger-icon"></i>
             </button>
@@ -67,7 +61,6 @@
     </nav>
 
     <main>
-        <!-- Hero sekcia -->
         <header id="domov" class="hero-section">
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -85,7 +78,6 @@
             </div>
         </header>
 
-        <!-- Štatistiky -->
         <section class="stats-section">
             <div class="container stats-grid">
                 <div class="stat-item">
@@ -115,7 +107,6 @@
             </div>
         </section>
 
-        <!-- Sekcia: O MNE -->
         <section id="omne" class="section dark-section">
             <div class="container">
                 <div class="section-header">
@@ -149,7 +140,6 @@
             </div>
         </section>
 
-        <!-- Sekcia: SLUŽBY -->
         <section id="sluzby" class="section darker-section">
             <div class="container">
                 <div class="section-header">
@@ -181,7 +171,6 @@
             </div>
         </section>
 
-        <!-- Sekcia: REFERENCIE -->
         <section id="referencie" class="section dark-section">
             <div class="container">
                 <div class="section-header">
@@ -195,7 +184,6 @@
             </div>
         </section>
 
-        <!-- Sekcia: BLOG -->
         <section id="blog" class="section darker-section">
             <div class="container">
                 <div class="section-header">
@@ -207,7 +195,6 @@
             </div>
         </section>
 
-        <!-- Blog Modal -->
         <div id="blog-modal" class="modal-overlay" onclick="closeBlogModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeBlogModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
@@ -219,7 +206,6 @@
             </div>
         </div>
 
-        <!-- GDPR Modal -->
         <div id="gdpr-modal" class="modal-overlay" onclick="closeGdprModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeGdprModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
@@ -240,7 +226,6 @@
             </div>
         </div>
 
-        <!-- Sekcia: FAQ -->
         <section id="faq" class="section dark-section">
             <div class="container">
                 <div class="section-header">
@@ -264,7 +249,6 @@
             </div>
         </section>
 
-        <!-- Sekcia: KONTAKT -->
         <section id="kontakt" class="section darker-section">
             <div class="container">
                 <div class="section-header">
@@ -332,7 +316,6 @@
         </div>
     </footer>
 
-    <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>Pre najlepší zážitok z nášho webu používame súbory cookies. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</p>
