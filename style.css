@@ -18,11 +18,10 @@
     box-sizing: border-box;
 }
 
-/* Príprava pre GSAP animácie */
+/* Príprava pre GSAP animácie - Iba priehľadnosť a posun! */
 [data-aos] {
     opacity: 0;
     transform: translateY(30px);
-    visibility: hidden; /* Zamedzuje prebliknutiu */
     transition: none !important; 
 }
 
@@ -644,7 +643,6 @@ footer {
         overflow-x: hidden !important;
         -webkit-overflow-scrolling: touch;
     }
-    /* Koniec Mobile Lock-u */
 
     .navbar {
         padding: 15px 20px;

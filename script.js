@@ -2,12 +2,12 @@
 const isMobile = window.innerWidth <= 900;
 const scrollWrapper = isMobile ? document.body : window;
 
-// --- LENIS SMOOTH SCROLL (Optimalizovaný pre maslovú plynulosť) ---
+// --- LENIS SMOOTH SCROLL ---
 const lenis = new Lenis({
     wrapper: scrollWrapper,
-    smoothTouch: false, // Nechávame natívny touch fix cez CSS na mobile
-    duration: 0.9, // Ideálna hodnota pre luxusný dojazd na PC
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Jemná GSAP krivka
+    smoothTouch: false, // Na mobile fičíme cez natívny CSS fix
+    duration: 0.9,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
 });
 
 // --- GSAP & SCROLLTRIGGER SYNC ---
@@ -39,65 +39,62 @@ function toggleMenu(forceClose = false) {
     const isOpening = !navLinks.classList.contains('active') && !forceClose;
 
     if (isOpening) {
-        // Otvorenie menu
         navLinks.classList.add('active');
         hamburgerIcon.classList.remove('fa-bars');
         hamburgerIcon.classList.add('fa-xmark');
-        lenis.stop(); // Zastaví Lenis na PC
-        document.body.style.setProperty('overflow-y', 'hidden', 'important'); // Tvrdý zámok na pozadie pre mobil
+        lenis.stop(); 
+        document.body.style.setProperty('overflow-y', 'hidden', 'important'); 
     } else {
-        // Zatvorenie menu
         navLinks.classList.remove('active');
         hamburgerIcon.classList.remove('fa-xmark');
         hamburgerIcon.classList.add('fa-bars');
-        lenis.start(); // Spustí Lenis
-        document.body.style.setProperty('overflow-y', 'auto', 'important'); // Odomkne pozadie na mobile
+        lenis.start(); 
+        document.body.style.setProperty('overflow-y', 'auto', 'important'); 
     }
 }
 
-// Kliknutie na hamburger ikonku
 if (hamburgerToggle) {
     hamburgerToggle.addEventListener('click', () => toggleMenu());
 }
 
-// Kliknutie na AKÝKOĽVEK odkaz (na PC aj mobile)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault(); // Zabráni tvrdému skoku
+        e.preventDefault(); 
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
         
         const targetElement = document.querySelector(targetId);
 
         if (targetElement) {
-            // Zavrieme menu a odomkneme scrollovanie
             toggleMenu(true);
-            
-            // Malý delay zabezpečí, že sa odomknutie aplikuje pred štartom scrollovania
             setTimeout(() => {
                 lenis.scrollTo(targetElement, { 
-                    offset: -80, // Odsadí 80px zhora, aby nadpis neskončil pod fixným menu!
-                    duration: 1.2  // Elegantná a plynulá rýchlosť presunu na sekciu
+                    offset: -80, 
+                    duration: 1.2  
                 });
             }, 50);
         }
     });
 });
 
-// --- RÝCHLE A ELEGANTNÉ GSAP ANIMÁCIE ---
+// --- ELEGANTNÉ GSAP ANIMÁCIE ---
 function initGSAPAnimations(elements) {
     elements.forEach(el => {
-        gsap.to(el, {
-            opacity: 1, 
-            y: 0, 
-            duration: 0.45, // Rýchly ale elegantný nábeh prvkov
-            ease: "power2.out", 
-            scrollTrigger: {
-                trigger: el,
-                scroller: scrollWrapper,
-                start: "top 95%", 
+        // Použijeme fromTo pre absolútnu istotu, že sa CSS štýly správne prepláchnu
+        gsap.fromTo(el, 
+            { opacity: 0, y: 30 },
+            {
+                opacity: 1, 
+                y: 0, 
+                duration: 0.5, 
+                ease: "power2.out", 
+                scrollTrigger: {
+                    trigger: el,
+                    scroller: scrollWrapper,
+                    start: "top 95%", 
+                }
             }
-        });
+        );
     });
 }
 
@@ -167,7 +164,7 @@ function renderBlogPosts() {
         container.appendChild(article);
     });
     
-    // Aktivácia animácií po načítaní
+    // Aktivácia animácií po načítaní a vynútený refresh GSAPu
     initGSAPAnimations(document.querySelectorAll('.blog-card'));
     ScrollTrigger.refresh();
 }
@@ -190,14 +187,14 @@ function openBlogModal(index) {
     
     document.getElementById('blog-modal').classList.add('active');
     lenis.stop(); 
-    document.body.style.setProperty('overflow-y', 'hidden', 'important'); // Zámok na mobile
+    document.body.style.setProperty('overflow-y', 'hidden', 'important'); 
 }
 
 function closeBlogModal() {
     const modal = document.getElementById('blog-modal');
     if (modal) modal.classList.remove('active');
     lenis.start(); 
-    document.body.style.setProperty('overflow-y', 'auto', 'important'); // Odomknutie na mobile
+    document.body.style.setProperty('overflow-y', 'auto', 'important'); 
 }
 
 document.addEventListener('keydown', (e) => {
@@ -210,8 +207,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(savedLang);
     loadBlogPosts();
     
-    // Spustenie animácií
-    initGSAPAnimations(document.querySelectorAll('[data-aos]'));
+    // Spustenie animácií s malým oneskorením pre istotu, že sa DOM úplne vykreslil
+    setTimeout(() => {
+        initGSAPAnimations(document.querySelectorAll('[data-aos]'));
+        ScrollTrigger.refresh();
+    }, 100);
 
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
