@@ -279,8 +279,17 @@ body {
 
 .darker-section {
     background-color: var(--bg-dark-2);
-    border-top: none; 
-    border-bottom: none;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+/* Úplné odstránenie orámovania/čiar nad kontaktom */
+#kontakt {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
 }
 
 .section-header {
@@ -574,6 +583,34 @@ body {
 
 .contact-line a:hover {
     color: var(--accent-gold);
+}
+
+/* Sociálne siete v sekcii kontakt */
+.contact-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.contact-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: var(--bg-dark-1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    border-radius: 50%;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.contact-socials a:hover {
+    background-color: var(--accent-gold);
+    color: #000;
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
 }
 
 .contact-form {
