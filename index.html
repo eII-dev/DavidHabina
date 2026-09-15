@@ -31,17 +31,21 @@
 </head>
 <body>
 
+    <!-- Split-Navigácia -->
     <nav class="navbar">
         <div class="nav-container split-nav">
             
+            <!-- Ľavá strana menu (Desktop) -->
             <ul class="nav-links nav-left">
                 <li><a href="#omne">O MNE</a></li>
                 <li><a href="#sluzby">SLUŽBY</a></li>
                 <li><a href="#referencie">REFERENCIE</a></li>
             </ul>
 
+            <!-- Stredové logo -->
             <a href="#domov" class="signature-logo center-logo">DAVID HABINA</a>
 
+            <!-- Pravá strana menu (Desktop + Všetky položky pre mobil) -->
             <ul class="nav-links nav-right" id="nav-links-mobile">
                 <li class="mobile-only-link"><a href="#omne">O MNE</a></li>
                 <li class="mobile-only-link"><a href="#sluzby">SLUŽBY</a></li>
@@ -50,6 +54,7 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#kontakt">KONTAKT</a></li>
                 
+                <!-- Sociálne siete v mobilnom menu -->
                 <li class="mobile-socials">
                     <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -57,6 +62,7 @@
                 </li>
             </ul>
 
+            <!-- Hamburger tlačidlo pre mobil -->
             <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
                 <i class="fa-solid fa-bars" id="hamburger-icon"></i>
             </button>
@@ -64,6 +70,7 @@
     </nav>
 
     <main>
+        <!-- Hero sekcia -->
         <header id="domov" class="hero-section">
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -81,6 +88,7 @@
             </div>
         </header>
 
+        <!-- Štatistiky -->
         <section class="stats-section">
             <div class="container stats-grid">
                 <div class="stat-item">
@@ -110,6 +118,7 @@
             </div>
         </section>
 
+        <!-- Sekcia: O MNE -->
         <section id="omne" class="section dark-section">
             <div class="container">
                 <div class="section-header">
@@ -143,6 +152,7 @@
             </div>
         </section>
 
+        <!-- Sekcia: SLUŽBY -->
         <section id="sluzby" class="section darker-section">
             <div class="container">
                 <div class="section-header">
@@ -174,6 +184,7 @@
             </div>
         </section>
 
+        <!-- Sekcia: REFERENCIE -->
         <section id="referencie" class="section dark-section">
             <div class="container">
                 <div class="section-header">
@@ -187,17 +198,25 @@
             </div>
         </section>
 
+        <!-- Sekcia: BLOG (S vodorovným posuvom a šípkami) -->
         <section id="blog" class="section darker-section">
             <div class="container">
-                <div class="section-header">
-                    <span class="sub-heading">RADY & TIPY</span>
-                    <h2>BLOG A ČLÁNKY</h2>
+                <div class="section-header blog-header-row">
+                    <div>
+                        <span class="sub-heading">RADY & TIPY</span>
+                        <h2>BLOG A ČLÁNKY</h2>
+                    </div>
+                    <div class="blog-scroll-arrows">
+                        <button type="button" id="scroll-left-btn" aria-label="Posunúť doľava"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button type="button" id="scroll-right-btn" aria-label="Posunúť doprava"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
                 </div>
                 
                 <div class="blog-grid" id="blog-grid"></div>
             </div>
         </section>
 
+        <!-- Blog Modal -->
         <div id="blog-modal" class="modal-overlay" onclick="closeBlogModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeBlogModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
@@ -209,6 +228,7 @@
             </div>
         </div>
 
+        <!-- GDPR Modal -->
         <div id="gdpr-modal" class="modal-overlay" onclick="closeGdprModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeGdprModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
@@ -229,6 +249,7 @@
             </div>
         </div>
 
+        <!-- Sekcia: FAQ -->
         <section id="faq" class="section dark-section">
             <div class="container">
                 <div class="section-header">
@@ -252,6 +273,7 @@
             </div>
         </section>
 
+        <!-- Sekcia: KONTAKT -->
         <section id="kontakt" class="section darker-section">
             <div class="container">
                 <div class="section-header">
@@ -276,9 +298,10 @@
                             <a href="tel:+421917332362">+421 917 332 362</a>
                         </div>
 
+                        <!-- Sociálne siete v sekcii kontakt -->
                         <div class="contact-socials">
                             <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.instagram.1instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                             <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                         </div>
                     </div>
@@ -325,6 +348,7 @@
         </div>
     </footer>
 
+    <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>Pre najlepší zážitok z nášho webu používame súbory cookies. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</p>

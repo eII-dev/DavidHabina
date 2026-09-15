@@ -123,7 +123,7 @@ function initGSAPAnimations(elements) {
     });
 }
 
-// --- BLOG LOGIKA ---
+// --- BLOG LOGIKA (S najnovšími vpravo) ---
 let globalBlogItems = [];
 
 async function loadBlogPosts() {
@@ -137,13 +137,17 @@ async function loadBlogPosts() {
     }
 }
 
-
 function renderBlogPosts() {
     const container = document.getElementById('blog-grid');
     if (!container) return;
     container.innerHTML = '';
 
-    globalBlogItems.forEach((item, index) => {
+    // Otočíme pole, aby najnovšie články boli na konci (vpravo)
+    const sortedItems = [...globalBlogItems].reverse();
+
+    sortedItems.forEach((item, index) => {
+        const originalIndex = globalBlogItems.length - 1 - index;
+        
         const article = document.createElement('article');
         article.className = 'blog-card';
         article.setAttribute('data-aos', 'true'); 
@@ -157,7 +161,7 @@ function renderBlogPosts() {
                 <span class="blog-date">${date}</span>
                 <h3>${title}</h3>
                 <p>${desc}</p>
-                <button onclick="openBlogModal(${index})" class="read-more-btn">
+                <button onclick="openBlogModal(${originalIndex})" class="read-more-btn">
                     <span>Čítať viac</span> 
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -225,6 +229,23 @@ document.addEventListener('DOMContentLoaded', () => {
     loadBlogPosts();
     initCounters(); 
     
+    // Ovládanie šípkami pre vodorovný posuv blogu
+    const scrollLeftBtn = document.getElementById('scroll-left-btn');
+    const scrollRightBtn = document.getElementById('scroll-right-btn');
+    const blogGrid = document.getElementById('blog-grid');
+
+    if (scrollLeftBtn && blogGrid) {
+        scrollLeftBtn.addEventListener('click', () => {
+            blogGrid.scrollBy({ left: -390, behavior: 'smooth' });
+        });
+    }
+
+    if (scrollRightBtn && blogGrid) {
+        scrollRightBtn.addEventListener('click', () => {
+            blogGrid.scrollBy({ left: 390, behavior: 'smooth' });
+        });
+    }
+
     setTimeout(() => {
         initGSAPAnimations(document.querySelectorAll('[data-aos]'));
         ScrollTrigger.refresh();

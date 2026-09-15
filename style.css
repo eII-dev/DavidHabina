@@ -249,7 +249,6 @@ body {
     border-bottom: none !important;
 }
 
-/* Úplné odstránenie orámovania/čiar nad kontaktom */
 #kontakt {
     border: none !important;
     border-top: none !important;
@@ -361,20 +360,70 @@ body {
     justify-content: center;
 }
 
-/* --- BLOG --- */
+/* --- BLOG (VODOROVNÝ SLIDER S ŠÍPKAMI) --- */
+.blog-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.blog-scroll-arrows {
+    display: flex;
+    gap: 12px;
+}
+
+.blog-scroll-arrows button {
+    background-color: var(--bg-dark-1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.blog-scroll-arrows button:hover {
+    background-color: var(--accent-gold);
+    color: #000;
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
 .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
     gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.blog-grid::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
 }
 
 .blog-card {
+    flex: 0 0 360px;
+    scroll-snap-align: start;
     background-color: var(--bg-dark-1);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.blog-card:hover {
+    border-color: var(--accent-gold);
 }
 
 .blog-date {
@@ -550,7 +599,6 @@ body {
     color: var(--accent-gold);
 }
 
-/* Sociálne siete v sekcii kontakt */
 .contact-socials {
     display: flex;
     gap: 15px;
@@ -766,7 +814,6 @@ footer {
 
     .navbar { padding: 15px 20px; }
     .hamburger-toggle { display: block; }
-    .desktop-socials { display: none; }
     
     .center-logo {
         position: static;
@@ -818,6 +865,7 @@ footer {
 
     .section { padding: 60px 0; }
     .section-header { margin-bottom: 40px; }
+    .blog-header-row { flex-direction: column; align-items: flex-start; gap: 20px; }
     .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
     .modal-content { padding: 25px; }
     .footer-content { flex-direction: column; gap: 12px; text-align: center; }
