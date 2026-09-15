@@ -175,7 +175,8 @@ body.lang-en .lang-sk {
     font-size: 1.6rem;
     cursor: pointer;
     z-index: 1001;
-    padding: 5px;
+    padding: 12px; /* Zväčšená dotyková plocha */
+    margin-right: -12px;
     transition: color var(--transition-fast);
 }
 
@@ -186,10 +187,13 @@ body.lang-en .lang-sk {
 /* --- HERO SEKCIA --- */
 .hero-section {
     position: relative;
+    /* Používame 100dvh pre moderné mobilné prehliadače, inak 100vh */
     height: 100vh;
+    height: 100dvh;
     min-height: 600px;
     width: 100%;
-    background: url('davidko.webp') no-repeat center top / cover;
+    /* Na desktope chceme vidieť viac z obleku, takže center top */
+    background: url('davidko.webp') no-repeat center 20% / cover;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -199,7 +203,8 @@ body.lang-en .lang-sk {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(8,8,8,0.2) 0%, rgba(8,8,8,0.7) 70%, rgba(8,8,8,1) 100%);
+    /* Upravený gradient, aby bol text čitateľnejší aj na obleku */
+    background: linear-gradient(to bottom, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.9) 100%);
 }
 
 .hero-content {
@@ -207,6 +212,7 @@ body.lang-en .lang-sk {
     z-index: 2;
     text-align: center;
     padding: 0 20px;
+    width: 100%;
 }
 
 .hero-title {
@@ -606,11 +612,6 @@ footer {
     align-items: center;
 }
 
-.erik-credit {
-    color: var(--accent-gold);
-    text-decoration: none;
-    font-weight: 700;
-}
 
 /* --- RESPONZIVITA (MOBIL & TABLET) --- */
 @media (max-width: 900px) {
@@ -643,6 +644,8 @@ footer {
         z-index: 1000;
         padding: 40px 20px;
         will-change: right;
+        /* Scroll pre menu, ak by bolo príliš veľa položiek */
+        overflow-y: auto;
     }
 
     .nav-links.active {
@@ -684,6 +687,13 @@ footer {
         transform: translateY(-3px);
     }
 
+    /* --- ÚPRAVA HERO SEKACIE PRE MOBIL (FOTKA) --- */
+    .hero-section {
+        /* Centrujeme fotku viac na tvár a hrudník (ako u trénera) */
+        background-position: center 10%; 
+        padding-bottom: 80px; /* trochu viac miesta dole pre text */
+    }
+
     .section {
         padding: 60px 0;
     }
@@ -709,5 +719,20 @@ footer {
         flex-direction: column;
         gap: 12px;
         text-align: center;
+    }
+}
+
+/* Pre veľmi malé obrazovky (iPhone SE a pod.) */
+@media (max-width: 480px) {
+    .service-box, .blog-card {
+        padding: 25px 20px;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem; 
+    }
+    
+    .contact-wrapper {
+        gap: 30px; 
     }
 }

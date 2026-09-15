@@ -35,6 +35,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
+    <!-- AOS Kniznica pre animacie (CSS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <!-- Netlify Identity widget načítavaný odložene -->
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     
@@ -44,7 +47,7 @@
 <body class="lang-sk">
 
     <!-- Navigácia -->
-    <nav class="navbar">
+    <nav class="navbar" data-aos="fade-down" data-aos-duration="800">
         <div class="nav-container">
             <a href="#domov" class="signature-logo">David Habina</a>
 
@@ -90,7 +93,7 @@
         <!-- Úvodná sekcia (Hero) -->
         <header id="domov" class="hero-section">
             <div class="hero-overlay"></div>
-            <div class="hero-content">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
                 <h1 class="hero-title">DAVID HABINA</h1>
                 <p class="hero-subtitle">
                     <span class="lang-sk">PROFESIONÁLNY FINANČNÝ PORADCA</span>
@@ -106,7 +109,7 @@
         <!-- Sekcia: O MNE -->
         <section id="omne" class="section dark-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" data-aos="fade-up">
                     <span class="sub-heading">
                         <span class="lang-sk">SPOĽAHLIVOSŤ & FLEXIBILITA</span>
                         <span class="lang-en">RELIABILITY & FLEXIBILITY</span>
@@ -117,7 +120,7 @@
                     </h2>
                 </div>
                 <div class="about-grid">
-                    <div class="about-text">
+                    <div class="about-text" data-aos="fade-up" data-aos-delay="100">
                         <p class="highlight-p">
                             <span class="lang-sk">Svet financií býva komplikovaný. Mojou úlohou je priniesť vám doň absolútny prehľad, kľud a maximálny úžitok.</span>
                             <span class="lang-en">The world of finance can be complex. My goal is to bring you absolute clarity, peace of mind, and maximum value.</span>
@@ -127,21 +130,21 @@
                             <span class="lang-en">As an independent financial advisor I specialize in resolving even the most complex financial situations. I handle all bureaucracy, bank negotiations, and insurance paperwork down to the finest detail for you.</span>
                         </p>
                         <div class="about-features">
-                            <div class="feature-item">
+                            <div class="feature-item" data-aos="fade-right" data-aos-delay="200">
                                 <i class="fa-solid fa-check"></i>
                                 <span>
                                     <span class="lang-sk">100% Flexibilný prístup (stretnutie osobne v Košiciach alebo online)</span>
                                     <span class="lang-en">100% Flexible approach (in-person meeting in Kosice or online)</span>
                                 </span>
                             </div>
-                            <div class="feature-item">
+                            <div class="feature-item" data-aos="fade-right" data-aos-delay="300">
                                 <i class="fa-solid fa-check"></i>
                                 <span>
                                     <span class="lang-sk">Kompletné vybavenie agendy bez vášho stresu</span>
                                     <span class="lang-en">Complete agenda management with zero stress for you</span>
                                 </span>
                             </div>
-                            <div class="feature-item">
+                            <div class="feature-item" data-aos="fade-right" data-aos-delay="400">
                                 <i class="fa-solid fa-check"></i>
                                 <span>
                                     <span class="lang-sk">Riešenia na mieru s dlhodobým servisom</span>
@@ -157,7 +160,7 @@
         <!-- Sekcia: SLUŽBY -->
         <section id="sluzby" class="section darker-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" data-aos="fade-up">
                     <span class="sub-heading">
                         <span class="lang-sk">ČO PRE VÁS VYBAVÍM</span>
                         <span class="lang-en">WHAT I DO FOR YOU</span>
@@ -168,7 +171,7 @@
                     </h2>
                 </div>
                 <div class="services-grid">
-                    <div class="service-box">
+                    <div class="service-box" data-aos="zoom-in" data-aos-delay="100">
                         <div class="service-icon"><i class="fa-solid fa-house"></i></div>
                         <h3>
                             <span class="lang-sk">HYPOTÉKY A ÚVERY</span>
@@ -179,7 +182,7 @@
                             <span class="lang-en">Securing the best mortgage rates, refinancing existing loans, and saving thousands of euros in interest.</span>
                         </p>
                     </div>
-                    <div class="service-box">
+                    <div class="service-box" data-aos="zoom-in" data-aos-delay="200">
                         <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
                         <h3>
                             <span class="lang-sk">INVESTÍCIE A SPORENIE</span>
@@ -190,7 +193,7 @@
                             <span class="lang-en">Building wealth, protection against inflation, and setting up passive income streams through proven investment funds.</span>
                         </p>
                     </div>
-                    <div class="service-box">
+                    <div class="service-box" data-aos="zoom-in" data-aos-delay="300">
                         <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
                         <h3>
                             <span class="lang-sk">POISTENIE</span>
@@ -201,7 +204,7 @@
                             <span class="lang-en">High-quality life, property, and asset insurance coverage designed to protect you when it truly matters.</span>
                         </p>
                     </div>
-                    <div class="service-box">
+                    <div class="service-box" data-aos="zoom-in" data-aos-delay="400">
                         <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
                         <h3>
                             <span class="lang-sk">FINANČNÉ PLÁNOVANIE</span>
@@ -219,7 +222,7 @@
         <!-- Sekcia: REFERENCIE (GOOGLE RECENZIE) -->
         <section id="referencie" class="section dark-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" data-aos="fade-up">
                     <span class="sub-heading">
                         <span class="lang-sk">HODNOTENIA KLIENTOV</span>
                         <span class="lang-en">CLIENT REVIEWS</span>
@@ -231,7 +234,7 @@
                 </div>
                 
                 <!-- Trustindex Google Reviews Widget -->
-                <div class="reviews-widget-wrapper">
+                <div class="reviews-widget-wrapper" data-aos="fade-up" data-aos-delay="200">
                     <script defer src='https://cdn.trustindex.io/loader.js?77e04b480bf8788da416e3293f0'></script>
                 </div>
             </div>
@@ -240,7 +243,7 @@
         <!-- Sekcia: BLOG -->
         <section id="blog" class="section darker-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" data-aos="fade-up">
                     <span class="sub-heading">
                         <span class="lang-sk">RADY & TIPY</span>
                         <span class="lang-en">TIPS & INSIGHTS</span>
@@ -251,7 +254,7 @@
                     </h2>
                 </div>
                 
-                <div class="blog-grid" id="blog-grid"></div>
+                <div class="blog-grid" id="blog-grid" data-aos="fade-up" data-aos-delay="200"></div>
             </div>
         </section>
 
@@ -274,7 +277,7 @@
         <!-- Sekcia: FAQ -->
         <section id="faq" class="section dark-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" data-aos="fade-up">
                     <span class="sub-heading">
                         <span class="lang-sk">ČASTO KLADENÉ OTÁZKY</span>
                         <span class="lang-en">FREQUENTLY ASKED QUESTIONS</span>
@@ -282,7 +285,7 @@
                     <h2>FAQ</h2>
                 </div>
                 <div class="faq-list">
-                    <div class="faq-item">
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
                         <h4>
                             <span class="lang-sk">Koľko ma stoja vaše služby?</span>
                             <span class="lang-en">How much do your services cost?</span>
@@ -292,7 +295,7 @@
                             <span class="lang-en">Consultations and complete financial service are free of charge for you. My compensation is provided directly by financial institutions.</span>
                         </p>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
                         <h4>
                             <span class="lang-sk">Pôsobíte iba v Košiciach?</span>
                             <span class="lang-en">Do you operate only in Kosice?</span>
@@ -302,7 +305,7 @@
                             <span class="lang-en">In person, I primarily operate in Kosice and surrounding areas, but thanks to modern technology, we can handle everything entirely online anywhere in Slovakia.</span>
                         </p>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
                         <h4>
                             <span class="lang-sk">V čom je výhoda spolupracovať so mnou?</span>
                             <span class="lang-en">What is the advantage of working with me?</span>
@@ -319,7 +322,7 @@
         <!-- Sekcia: KONTAKT -->
         <section id="kontakt" class="section darker-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" data-aos="fade-up">
                     <span class="sub-heading">
                         <span class="lang-sk">PORADÍM VÁM</span>
                         <span class="lang-en">GET IN TOUCH</span>
@@ -330,7 +333,7 @@
                     </h2>
                 </div>
                 <div class="contact-wrapper">
-                    <div class="contact-details">
+                    <div class="contact-details" data-aos="fade-right">
                         <h3>DAVID HABINA</h3>
                         <p class="contact-role">
                             <span class="lang-sk">Finančný Poradca</span>
@@ -355,7 +358,7 @@
                     </div>
 
                     <!-- Formulár pre Netlify -->
-                    <form class="contact-form" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <form class="contact-form" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-aos="fade-left">
                         <input type="hidden" name="form-name" value="kontakt" />
                         <p style="display:none;">
                             <label>Spam protection: <input name="bot-field" /></label>
@@ -395,179 +398,16 @@
         </div>
     </footer>
 
-
-    <!-- SKRIPTY -->
+    <!-- AOS Script pre inicializáciu animácií -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        let globalBlogItems = [];
-
-        function setLanguage(lang) {
-            const body = document.body;
-            const btnSk = document.getElementById('lang-sk-btn');
-            const btnEn = document.getElementById('lang-en-btn');
-
-            if (lang === 'en') {
-                body.classList.remove('lang-sk');
-                body.classList.add('lang-en');
-                btnSk?.classList.remove('active-lang');
-                btnEn?.classList.add('active-lang');
-                localStorage.setItem('selectedLang', 'en');
-            } else {
-                body.classList.remove('lang-en');
-                body.classList.add('lang-sk');
-                btnEn?.classList.remove('active-lang');
-                btnSk?.classList.add('active-lang');
-                localStorage.setItem('selectedLang', 'sk');
-            }
-        }
-
-        async function loadBlogPosts() {
-            try {
-                const response = await fetch('data/blog.json');
-                const data = await response.json();
-                globalBlogItems = data.items || data.articles || [];
-                renderBlogPosts();
-            } catch (error) {
-                console.error('Chyba pri načítavaní blogu:', error);
-            }
-        }
-
-        function renderBlogPosts() {
-            const container = document.getElementById('blog-grid');
-            if (!container) return;
-            container.innerHTML = '';
-
-            globalBlogItems.forEach((item, index) => {
-                const article = document.createElement('article');
-                article.className = 'blog-card';
-                article.innerHTML = `
-                    <div class="blog-info">
-                        <span class="blog-date">${item.date || ''}</span>
-                        <h3>
-                            <span class="lang-sk">${item.title_sk || item.title || ''}</span>
-                            <span class="lang-en">${item.title_en || item.title || ''}</span>
-                        </h3>
-                        <p>
-                            <span class="lang-sk">${item.desc_sk || item.description || ''}</span>
-                            <span class="lang-en">${item.desc_en || item.description || ''}</span>
-                        </p>
-                        <button onclick="openBlogModal(${index})" class="read-more-btn">
-                            <span class="lang-sk">Čítať viac</span>
-                            <span class="lang-en">Read more</span> 
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
-                `;
-                container.appendChild(article);
-            });
-        }
-
-        function openBlogModal(index) {
-            const item = globalBlogItems[index];
-            if (!item) return;
-            
-            document.getElementById('modal-title-sk').innerText = item.title_sk || item.title || '';
-            document.getElementById('modal-title-en').innerText = item.title_en || item.title || '';
-            document.getElementById('modal-date').innerText = item.date || '';
-            
-            // Konverzia Markdown na HTML ak je knižnica načítaná
-            const parseContent = (text) => {
-                if (!text) return '';
-                return typeof marked !== 'undefined' ? marked.parse(text) : text.replace(/\n/g, '<br>');
-            };
-
-            document.getElementById('modal-content-sk').innerHTML = parseContent(item.content_sk || item.body || item.desc_sk);
-            document.getElementById('modal-content-en').innerHTML = parseContent(item.content_en || item.body || item.desc_en);
-            
-            document.getElementById('blog-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeBlogModal() {
-            const modal = document.getElementById('blog-modal');
-            if (modal) modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Zatvorenie modálneho okna stlačením klávesy ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeBlogModal();
+        AOS.init({
+            once: true, // Animácia sa prehrá len raz pri scrollovaní dole
+            offset: 100, // Spustí animáciu o 100px skôr ako element prekročí spodok obrazovky
         });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('selectedLang') || 'sk';
-            setLanguage(savedLang);
-            loadBlogPosts();
-
-            const hamburgerToggle = document.getElementById('hamburger-toggle');
-            const navLinks = document.getElementById('nav-links');
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-
-            if (hamburgerToggle && navLinks) {
-                hamburgerToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                    if (navLinks.classList.contains('active')) {
-                        hamburgerIcon.classList.remove('fa-bars');
-                        hamburgerIcon.classList.add('fa-xmark');
-                    } else {
-                        hamburgerIcon.classList.remove('fa-xmark');
-                        hamburgerIcon.classList.add('fa-bars');
-                    }
-                });
-
-                document.querySelectorAll('#nav-links a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navLinks.classList.remove('active');
-                        hamburgerIcon.classList.remove('fa-xmark');
-                        hamburgerIcon.classList.add('fa-bars');
-                    });
-                });
-            }
-
-            const contactForm = document.getElementById('contact-form');
-            const formStatus = document.getElementById('form-status');
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    const formData = new FormData(contactForm);
-
-                    fetch('/', {
-                        method: 'POST',
-                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                        body: new URLSearchParams(formData).toString()
-                    })
-                    .then(() => {
-                        const isEn = document.body.classList.contains('lang-en');
-                        
-                        if (isEn) {
-                            formStatus.style.color = '#28a745';
-                            formStatus.innerText = 'Thank you! Your message has been sent successfully. I will get back to you soon.';
-                        } else {
-                            formStatus.style.color = '#28a745';
-                            formStatus.innerText = 'Ďakujem! Vaša správa bola úspešne odoslaná. Čoskoro sa vám ozvem.';
-                        }
-
-                        contactForm.reset();
-                    })
-                    .catch(() => {
-                        formStatus.style.color = '#dc3545';
-                        formStatus.innerText = 'Chyba pri odosielaní. Skúste to prosím znova.';
-                    });
-                });
-            }
-        });
-
-        // Netlify Identity presmerovanie po prihlásení
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
     </script>
+    
+    <!-- NÁŠ EXTERNÝ JAVASCRIPT -->
+    <script src="script.js"></script>
 </body>
 </html>
