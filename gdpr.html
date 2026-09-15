@@ -9,15 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Úplný reset a vynútenie viditeľnosti, aby nikdy nebola čierna obrazovka */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: none !important;
-        }
         :root {
             --bg-black: #080808;
             --text-white: #ffffff;
@@ -26,32 +17,56 @@
             --accent-gold-hover: #b08c4b;
             --font-main: 'Montserrat', sans-serif;
             --font-logo: 'Cinzel', serif;
+            --transition-fast: 0.3s ease;
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background-color: var(--bg-black);
             color: var(--text-white);
             font-family: var(--font-main);
             line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
+
+        body.lang-sk .lang-en,
+        body.lang-en .lang-sk {
+            display: none !important;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
+
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             padding: 20px 40px;
-            background: rgba(8, 8, 8, 0.95);
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .signature-logo {
+            font-family: var(--font-main);
             font-size: 1.05rem;
             font-weight: 300;
             color: var(--text-white);
@@ -59,6 +74,19 @@
             letter-spacing: 5px;
             text-transform: uppercase;
         }
+
+        .signature-logo:hover {
+            color: var(--accent-gold);
+        }
+
+        .lang-switch {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+        }
+
         .lang-switch button {
             background: none;
             border: none;
@@ -68,21 +96,30 @@
             cursor: pointer;
             padding: 4px;
             font-family: var(--font-main);
+            transition: color var(--transition-fast);
         }
+
         .lang-switch button.active-lang {
             color: var(--accent-gold);
             font-weight: 800;
         }
+
+        .lang-switch button:hover {
+            color: var(--text-white);
+        }
+
         .gdpr-section {
             padding: 150px 0 100px 0;
             background-color: var(--bg-black);
             min-height: 100vh;
         }
+
         .gdpr-content {
             max-width: 800px;
             margin: 0 auto;
             color: var(--text-gray);
         }
+
         .gdpr-content h1 {
             color: var(--text-white);
             margin-bottom: 40px;
@@ -90,20 +127,24 @@
             font-weight: 300;
             letter-spacing: 2px;
         }
+
         .gdpr-content h3 {
             color: var(--accent-gold);
             margin: 30px 0 15px 0;
             font-size: 1.2rem;
             font-weight: 600;
         }
+
         .gdpr-content p, .gdpr-content ul {
             margin-bottom: 20px;
             font-size: 0.95rem;
             line-height: 1.8;
         }
+
         .gdpr-content ul {
             padding-left: 20px;
         }
+
         .btn-back {
             display: inline-block;
             margin-top: 40px;
@@ -113,22 +154,31 @@
             border: 1px solid var(--accent-gold);
             padding: 10px 20px;
             border-radius: 5px;
+            transition: all var(--transition-fast);
         }
+
         .btn-back:hover {
             background-color: var(--accent-gold);
             color: #000;
         }
-        /* Jazykové prepínanie */
-        body.lang-sk .lang-en,
-        body.lang-en .lang-sk {
-            display: none !important;
+
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            .gdpr-section {
+                padding: 120px 0 60px 0;
+            }
+            .gdpr-content h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body class="lang-sk">
 
     <nav class="navbar">
-        <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+        <div class="container nav-container">
             <a href="index.html" class="signature-logo">David Habina</a>
             <div class="lang-switch">
                 <button type="button" onclick="setLanguage('sk')" class="active-lang" id="lang-sk-btn">SK</button> / 
