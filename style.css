@@ -18,9 +18,11 @@
     box-sizing: border-box;
 }
 
-/* Kvôli GSAP musíme elementy pred animáciou skryť */
+/* Kvôli GSAP musíme elementy pred animáciou skryť a jemne posunúť (rýchlejšia odozva) */
 [data-aos] {
     opacity: 0;
+    transform: translateY(20px);
+    transition: none !important; /* Zamedzuje konfliktu s GSAPom */
 }
 
 body {
@@ -192,13 +194,11 @@ body.lang-en .lang-sk {
     height: 100dvh;
     min-height: 600px;
     width: 100%;
-    /* Čierne pozadie vyplní medzeru hore */
     background-color: #000;
     
     background-image: url('davidko.webp');
     background-repeat: no-repeat;
     
-    /* OPRAVA PRE PC: Posunuté o 80px nižšie od vrchu, aby menu neprekrývalo vlasy */
     background-position: center 80px; 
     background-size: cover;
     
@@ -211,7 +211,6 @@ body.lang-en .lang-sk {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    /* Luxusnejší a tmavší gradient ako u trénera */
     background: linear-gradient(to bottom, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.5) 45%, rgba(8,8,8,0.95) 100%);
 }
 
@@ -223,30 +222,26 @@ body.lang-en .lang-sk {
     width: 100%;
 }
 
-/* Pomocné triedy pre zalomenie textu */
 .mobile-break { display: none; }
 .desktop-space { display: inline; }
 
-/* Názov na PC (High-end vzhľad) */
 .hero-title {
     font-size: clamp(3rem, 6vw, 4.5rem);
-    font-weight: 200; /* Extrémne tenký font! */
-    letter-spacing: 10px; /* Široké medzery */
+    font-weight: 200; 
+    letter-spacing: 10px; 
     margin-bottom: 15px;
     text-transform: uppercase;
     line-height: 1.1;
-    /* Optická korekcia vycentrovania kvôli letter-spacingu */
     margin-right: -10px; 
 }
 
-/* Podnadpis na PC */
 .hero-subtitle {
     font-size: clamp(0.75rem, 2vw, 0.9rem);
     font-weight: 300;
     letter-spacing: 4px;
-    color: rgba(255, 255, 255, 0.6); /* Šedšia farba ako u trénera */
+    color: rgba(255, 255, 255, 0.6); 
     margin-bottom: 40px;
-    margin-right: -4px; /* Optická korekcia */
+    margin-right: -4px; 
 }
 
 .scroll-down {
@@ -748,14 +743,12 @@ footer {
     }
 }
 
-/* OPRAVA PRE MOBIL: Dizajn trénera (Veľké zalomené písmo, zoom fotky) */
 @media (max-width: 480px) {
     
     .mobile-break { display: block; }
     .desktop-space { display: none; }
 
     .hero-section {
-        /* OPRAVA: Tvár ide na 35% doľava a 80px nižšie od vrchu (rovnako ako na PC)! */
         background-position: 35% 80px; 
         background-size: 260%; 
         padding-bottom: 40px;

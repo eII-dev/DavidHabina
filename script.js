@@ -4,10 +4,11 @@ const scrollWrapper = isMobile ? document.body : window;
 
 // --- LENIS SMOOTH SCROLL ---
 const lenis = new Lenis({
-    wrapper: isMobile ? document.body : window,
-    content: document.documentElement,
-    smoothTouch: false, // Na mobile ide natívny touch fix cez CSS
-    duration: 1.1, // Krásny hladký dojazd na PC
+    wrapper: scrollWrapper,
+    // Na mobile ide natívny touch fix cez CSS, tu sa to len synchronizuje
+    smoothTouch: false, 
+    // ZRÝCHLENÉ: Zmenené z 1.1 na 0.6 pre svižnejší pocit z posúvania na PC
+    duration: 0.6, 
 });
 
 // Plynulé posúvanie k ukotveným odkazom (menu)
@@ -28,29 +29,31 @@ ScrollTrigger.defaults({
     scroller: scrollWrapper
 });
 
+// ZÁSADNÁ OPRAVA PRE MOBIL: GSAP musí vyslovene počúvať natívny scroll na body
+if (isMobile) {
+    document.body.addEventListener('scroll', ScrollTrigger.update);
+}
 lenis.on('scroll', ScrollTrigger.update);
+
 gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
 });
 gsap.ticker.lagSmoothing(0, 0);
 
-// Namiesto AOS spúšťame animácie cez GSAP (plynulejšie)
+// --- ZRÝCHLENÉ GSAP ANIMÁCIE ---
 function initGSAPAnimations(elements) {
     elements.forEach(el => {
-        gsap.fromTo(el, 
-            { opacity: 0, y: 30 },
-            {
-                opacity: 1, 
-                y: 0, 
-                duration: 0.6, 
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: el,
-                    scroller: scrollWrapper,
-                    start: "top 90%", // Spustí animáciu bez meškania (bez cascade delay)
-                }
+        gsap.to(el, {
+            opacity: 1, 
+            y: 0, 
+            duration: 0.35, // RÝCHLEJŠIE: Skrátené z 0.6 na 0.35
+            ease: "power1.out", // Jemnejšia a rýchlejšia krivka
+            scrollTrigger: {
+                trigger: el,
+                scroller: scrollWrapper,
+                start: "top 95%", // Spustí sa hneď, ako vykukne spodný okraj
             }
-        );
+        });
     });
 }
 
@@ -97,7 +100,7 @@ function renderBlogPosts() {
     globalBlogItems.forEach((item, index) => {
         const article = document.createElement('article');
         article.className = 'blog-card';
-        article.setAttribute('data-aos', 'true'); // Pre GSAP selektor
+        article.setAttribute('data-aos', 'true'); 
         
         article.innerHTML = `
             <div class="blog-info">
@@ -120,7 +123,7 @@ function renderBlogPosts() {
         container.appendChild(article);
     });
     
-    // Po vygenerovaní blogov im priradíme GSAP animáciu
+    // Aktivácia animácií po načítaní
     initGSAPAnimations(document.querySelectorAll('.blog-card'));
     ScrollTrigger.refresh();
 }
@@ -142,13 +145,13 @@ function openBlogModal(index) {
     document.getElementById('modal-content-en').innerHTML = parseContent(item.content_en || item.body || item.desc_en);
     
     document.getElementById('blog-modal').classList.add('active');
-    lenis.stop(); // Bezpečnejšie zamknutie scrollu cez Lenis
+    lenis.stop(); 
 }
 
 function closeBlogModal() {
     const modal = document.getElementById('blog-modal');
     if (modal) modal.classList.remove('active');
-    lenis.start(); // Odomknutie scrollu
+    lenis.start(); 
 }
 
 document.addEventListener('keydown', (e) => {
@@ -157,15 +160,13 @@ document.addEventListener('keydown', (e) => {
 
 // --- INICIALIZÁCIA STRÁNKY ---
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Nastavenia
     const savedLang = localStorage.getItem('selectedLang') || 'sk';
     setLanguage(savedLang);
     loadBlogPosts();
     
-    // 2. Aplikovanie GSAP namiesto AOS pre všetky načítané prvky
+    // Spustenie animácií
     initGSAPAnimations(document.querySelectorAll('[data-aos]'));
 
-    // 3. Mobilné Menu Logika
     const hamburgerToggle = document.getElementById('hamburger-toggle');
     const navLinks = document.getElementById('nav-links');
     const hamburgerIcon = document.getElementById('hamburger-icon');
@@ -176,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navLinks.classList.contains('active')) {
                 hamburgerIcon.classList.remove('fa-bars');
                 hamburgerIcon.classList.add('fa-xmark');
-                lenis.stop(); // Používame Lenis na uzamknutie scrollu!
+                lenis.stop(); 
             } else {
                 hamburgerIcon.classList.remove('fa-xmark');
                 hamburgerIcon.classList.add('fa-bars');
@@ -194,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Kontakt formulár
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
