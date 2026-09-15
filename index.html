@@ -31,23 +31,27 @@
 </head>
 <body>
 
-    <!-- Navigácia -->
+    <!-- Nová Split-Navigácia (Logo v strede, odkazy rozdelené vľavo a vpravo) -->
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="#domov" class="signature-logo">David Habina</a>
-
-            <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
-                <i class="fa-solid fa-bars" id="hamburger-icon"></i>
-            </button>
-
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#omne">O MNE</a></li>
+        <div class="nav-container split-nav">
+            
+            <!-- Ľavá strana menu -->
+            <ul class="nav-links nav-left" id="nav-links-left">
                 <li><a href="#sluzby">SLUŽBY</a></li>
+                <li><a href="#omne">O MNE</a></li>
                 <li><a href="#referencie">REFERENCIE</a></li>
+            </ul>
+
+            <!-- Stredové logo (David Habina) -->
+            <a href="#domov" class="signature-logo center-logo">DAVID HABINA</a>
+
+            <!-- Pravá strana menu -->
+            <ul class="nav-links nav-right" id="nav-links-right">
                 <li><a href="#blog">BLOG</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#kontakt" class="btn-kontakt">KONTAKT</a></li>
                 
+                <!-- Sociálne siete v mobilnom menu -->
                 <li class="mobile-socials">
                     <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -55,11 +59,10 @@
                 </li>
             </ul>
 
-            <div class="nav-socials">
-                <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
+            <!-- Hamburger tlačidlo pre mobil -->
+            <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
+                <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+            </button>
         </div>
     </nav>
 
