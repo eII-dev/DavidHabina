@@ -360,7 +360,7 @@ body {
     justify-content: center;
 }
 
-/* --- BLOG (VODOROVNÝ SLIDER S ŠÍPKAMI A OBRÁZKAMI) --- */
+/* --- BLOG --- */
 .blog-header-row {
     display: flex;
     justify-content: space-between;
