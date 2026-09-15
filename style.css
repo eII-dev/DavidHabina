@@ -735,25 +735,24 @@ footer {
     .desktop-space { display: none; }
 
     .hero-section {
-        /* Extrémny zoom a posun doprava, aby bola tvár presne v strede */
-        background-position: 70% 5%; 
+        /* OPRAVA: Tvár posunutá späť do stredu (zmena zo 70% na 35%) */
+        background-position: 35% 5%; 
         background-size: 260%; 
         padding-bottom: 40px;
     }
 
     .hero-title {
-        font-size: 3.5rem; /* Obrovský font ako u trénera */
+        font-size: 3.5rem; 
         letter-spacing: 12px;
         line-height: 1.1;
         margin-bottom: 25px;
-        margin-right: -12px; /* Optický fix pre letter-spacing */
+        margin-right: -12px; 
     }
 
     .hero-subtitle {
         font-size: 0.8rem;
         letter-spacing: 4px;
         line-height: 1.6;
-        /* Zúženie šírky, aby sa text "FINANČNÝ PORADCA" zalomil na 2 riadky */
         max-width: 250px; 
         margin: 0 auto 30px auto;
     }
