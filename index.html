@@ -26,10 +26,10 @@
     <!-- ŠTÝLY -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Google Fonts zrýchlené pomocou display=swap -->
+    <!-- Google Fonts zrýchlené pomocou display=swap (Pridaný weight 200 pre extra tenký font!) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Ne-blokujúce načítanie FontAwesome ikôn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -94,7 +94,12 @@
         <header id="domov" class="hero-section">
             <div class="hero-overlay"></div>
             <div class="hero-content" data-aos="fade-up">
-                <h1 class="hero-title">DAVID HABINA</h1>
+                
+                <!-- Rozdelené meno pre dokonalý "Michal Diškant" efekt na mobile -->
+                <h1 class="hero-title">
+                    DAVID<span class="desktop-space"> </span><br class="mobile-break">HABINA
+                </h1>
+                
                 <p class="hero-subtitle">
                     <span class="lang-sk">PROFESIONÁLNY FINANČNÝ PORADCA</span>
                     <span class="lang-en">PROFESSIONAL FINANCIAL ADVISOR</span>
@@ -403,9 +408,9 @@
     <script>
         AOS.init({
             once: true,
-            offset: 0, /* Spustí hneď ako to prejde okrajom obrazovky */
-            duration: 400, /* Zrýchlená animácia z 500 na 400 */
-            easing: 'ease-out-quad', /* Prirodzenejší smooth prechod */
+            offset: 0, 
+            duration: 400, 
+            easing: 'ease-out-quad', 
         });
     </script>
     

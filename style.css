@@ -193,10 +193,10 @@ body.lang-en .lang-sk {
     width: 100%;
     background-color: #000;
     
-    /* OPRAVA PRE PC: Pôvodné nastavenie, aby fotka bola správne zhora */
+    /* Na PC vycentrujeme jemne viac dole, nech je to elegantné */
     background-image: url('davidko.webp');
     background-repeat: no-repeat;
-    background-position: center top; 
+    background-position: center 10%; 
     background-size: cover;
     
     display: flex;
@@ -208,7 +208,8 @@ body.lang-en .lang-sk {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.9) 100%);
+    /* Luxusnejší a tmavší gradient ako u trénera */
+    background: linear-gradient(to bottom, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.5) 45%, rgba(8,8,8,0.95) 100%);
 }
 
 .hero-content {
@@ -219,21 +220,30 @@ body.lang-en .lang-sk {
     width: 100%;
 }
 
+/* Pomocné triedy pre zalomenie textu */
+.mobile-break { display: none; }
+.desktop-space { display: inline; }
+
+/* Názov na PC (High-end vzhľad) */
 .hero-title {
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    font-weight: 300;
-    letter-spacing: 6px;
-    margin-bottom: 10px;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 200; /* Extrémne tenký font! */
+    letter-spacing: 10px; /* Široké medzery */
+    margin-bottom: 15px;
     text-transform: uppercase;
-    line-height: 1.2;
+    line-height: 1.1;
+    /* Optická korekcia vycentrovania kvôli letter-spacingu */
+    margin-right: -10px; 
 }
 
+/* Podnadpis na PC */
 .hero-subtitle {
     font-size: clamp(0.75rem, 2vw, 0.9rem);
-    font-weight: 500;
-    letter-spacing: 3px;
-    color: var(--text-gray);
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.6); /* Šedšia farba ako u trénera */
     margin-bottom: 40px;
+    margin-right: -4px; /* Optická korekcia */
 }
 
 .scroll-down {
@@ -243,6 +253,7 @@ body.lang-en .lang-sk {
     display: inline-block;
     padding: 10px;
     will-change: transform;
+    opacity: 0.8;
 }
 
 @keyframes bounce {
@@ -689,13 +700,6 @@ footer {
         transform: translateY(-3px);
     }
 
-    /* OPRAVA PRE TABLET: Jemný zoom */
-    .hero-section {
-        background-position: center 5%; 
-        background-size: 150%; 
-        padding-bottom: 80px;
-    }
-
     .section {
         padding: 60px 0;
     }
@@ -724,19 +728,38 @@ footer {
     }
 }
 
-/* OPRAVA PRE MOBIL: Výrazný zoom a vycentrovanie tváre */
+/* OPRAVA PRE MOBIL: Dizajn trénera (Veľké zalomené písmo, zoom fotky) */
 @media (max-width: 480px) {
+    
+    .mobile-break { display: block; }
+    .desktop-space { display: none; }
+
     .hero-section {
-        background-position: center 8%; 
-        background-size: 220%; 
+        /* Extrémny zoom a posun doprava, aby bola tvár presne v strede */
+        background-position: 70% 5%; 
+        background-size: 260%; 
+        padding-bottom: 40px;
+    }
+
+    .hero-title {
+        font-size: 3.5rem; /* Obrovský font ako u trénera */
+        letter-spacing: 12px;
+        line-height: 1.1;
+        margin-bottom: 25px;
+        margin-right: -12px; /* Optický fix pre letter-spacing */
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 4px;
+        line-height: 1.6;
+        /* Zúženie šírky, aby sa text "FINANČNÝ PORADCA" zalomil na 2 riadky */
+        max-width: 250px; 
+        margin: 0 auto 30px auto;
     }
     
     .service-box, .blog-card {
         padding: 25px 20px;
-    }
-    
-    .hero-title {
-        font-size: 2.2rem; 
     }
     
     .contact-wrapper {
