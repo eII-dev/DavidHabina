@@ -19,20 +19,25 @@
             --transition-fast: 0.3s ease;
         }
 
-        /* POISTKA PROTI BLACKSCREENU: Všetko na GDPR stránke bude hneď viditeľné */
-        * {
+        /* ÚPLNÝ FIX PROTI BLACKSCREENU - Všetko je okamžite viditeľné */
+        html, body {
+            background-color: #080808 !important;
+            color: #ffffff !important;
+            opacity: 1 !important;
+            visibility: visible !important;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
             opacity: 1 !important;
             visibility: visible !important;
             transform: none !important;
         }
 
         body {
-            background-color: var(--bg-black) !important;
-            color: var(--text-white) !important;
-            font-family: var(--font-main);
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
         }
 
@@ -67,7 +72,7 @@
         .signature-logo {
             font-size: 1.05rem;
             font-weight: 300;
-            color: var(--text-white);
+            color: #ffffff;
             text-decoration: none;
             letter-spacing: 5px;
             text-transform: uppercase;
@@ -76,7 +81,7 @@
         .lang-switch {
             font-size: 0.8rem;
             font-weight: 600;
-            color: var(--text-gray);
+            color: #a0a0a0;
             display: flex;
             align-items: center;
         }
@@ -84,33 +89,33 @@
         .lang-switch button {
             background: none;
             border: none;
-            color: var(--text-gray);
+            color: #a0a0a0;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             padding: 4px;
-            font-family: var(--font-main);
+            font-family: 'Montserrat', sans-serif;
         }
 
         .lang-switch button.active-lang {
-            color: var(--accent-gold);
+            color: #c8a261;
             font-weight: 800;
         }
 
         .gdpr-section {
             padding: 150px 0 100px 0;
-            background-color: var(--bg-black);
+            background-color: #080808;
             min-height: 100vh;
         }
 
         .gdpr-content {
             max-width: 800px;
             margin: 0 auto;
-            color: var(--text-gray);
+            color: #a0a0a0;
         }
 
         .gdpr-content h1 {
-            color: var(--text-white);
+            color: #ffffff;
             margin-bottom: 40px;
             font-size: 2.5rem;
             font-weight: 300;
@@ -118,7 +123,7 @@
         }
 
         .gdpr-content h3 {
-            color: var(--accent-gold);
+            color: #c8a261;
             margin: 30px 0 15px 0;
             font-size: 1.2rem;
             font-weight: 600;
@@ -137,17 +142,18 @@
         .btn-back {
             display: inline-block;
             margin-top: 40px;
-            color: var(--accent-gold);
+            color: #c8a261;
             text-decoration: none;
             font-weight: 700;
-            border: 1px solid var(--accent-gold);
+            border: 1px solid #c8a261;
             padding: 10px 20px;
             border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
         .btn-back:hover {
-            background-color: var(--accent-gold);
-            color: #000;
+            background-color: #c8a261;
+            color: #000000;
         }
 
         @media (max-width: 900px) {
