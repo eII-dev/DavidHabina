@@ -123,7 +123,7 @@ function initGSAPAnimations(elements) {
     });
 }
 
-// --- BLOG LOGIKA (S najnovšími vpravo) ---
+// --- BLOG LOGIKA (S podporou obrázkov a najnovšími vpravo) ---
 let globalBlogItems = [];
 
 async function loadBlogPosts() {
@@ -142,7 +142,6 @@ function renderBlogPosts() {
     if (!container) return;
     container.innerHTML = '';
 
-    // Otočíme pole, aby najnovšie články boli na konci (vpravo)
     const sortedItems = [...globalBlogItems].reverse();
 
     sortedItems.forEach((item, index) => {
@@ -155,8 +154,12 @@ function renderBlogPosts() {
         const title = item.title || item.title_sk || '';
         const desc = item.description || item.desc_sk || '';
         const date = item.date || '';
+        const image = item.image || '';
+
+        let imageHtml = image ? `<div class="blog-image-wrapper"><img src="${image}" alt="${title}" loading="lazy"></div>` : '';
 
         article.innerHTML = `
+            ${imageHtml}
             <div class="blog-info">
                 <span class="blog-date">${date}</span>
                 <h3>${title}</h3>
@@ -229,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadBlogPosts();
     initCounters(); 
     
-    // Ovládanie šípkami pre vodorovný posuv blogu
     const scrollLeftBtn = document.getElementById('scroll-left-btn');
     const scrollRightBtn = document.getElementById('scroll-right-btn');
     const blogGrid = document.getElementById('blog-grid');
