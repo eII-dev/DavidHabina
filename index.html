@@ -249,6 +249,51 @@
             </div>
         </div>
 
+        <!-- GDPR MODAL OKNO (Namiesto samostatnej stránky, úplne bezpečné) -->
+        <div id="gdpr-modal" class="modal-overlay" onclick="closeGdprModal()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeGdprModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
+                <h2 style="color: var(--accent-gold); margin-bottom: 20px;">
+                    <span class="lang-sk">Ochrana osobných údajov (GDPR)</span>
+                    <span class="lang-en">Privacy Policy (GDPR)</span>
+                </h2>
+                <div class="modal-body">
+                    <div class="lang-sk">
+                        <p>Ochrana vašich osobných údajov je pre mňa dôležitá. Tento dokument vysvetľuje, ako zhromažďujem, používam a chránim vaše dáta pri používaní tohto webu.</p>
+                        <h3>1. Prevádzkovateľ osobných údajov</h3>
+                        <p>Prevádzkovateľom vašich osobných údajov je David Habina, pôsobiaci ako nezávislý finančný poradca. V prípade otázok ma môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong>.</p>
+                        <h3>2. Aké údaje zhromažďujem a prečo?</h3>
+                        <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie mojich služieb:</p>
+                        <ul>
+                            <li><strong>Meno a priezvisko</strong> (na identifikáciu)</li>
+                            <li><strong>E-mailová adresa a telefónne číslo</strong> (na komunikáciu)</li>
+                            <li><strong>Obsah správy</strong> (pre lepšie porozumenie vašej požiadavky)</li>
+                        </ul>
+                        <p>Vaše údaje sú spracúvané na základe vášho súhlasu (čl. 6 ods. 1 písm. a) GDPR), ktorý vyjadrujete odoslaním formulára.</p>
+                        <h3>3. Komu údaje poskytujem?</h3>
+                        <p>Vaše osobné údaje nepredávam ani nezdieľam s tretími stranami na marketingové účely. Dáta môžu byť zdieľané výlučne s finančnými inštitúciami (banky, poisťovne) až po našej osobnej dohode a podpísaní sprostredkovateľskej zmluvy pri riešení vašej finančnej situácie.</p>
+                        <h3>4. Súbory Cookies</h3>
+                        <p>Tento web používa iba základné technické súbory cookies, ktoré sú nevyhnutné pre správne fungovanie stránky.</p>
+                        <h3>5. Vaše práva</h3>
+                        <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu, vymazanie ("právo na zabudnutie"), obmedzenie spracovania a taktiež máte právo kedykoľvek odvolať svoj súhlas.</p>
+                    </div>
+                    <div class="lang-en">
+                        <p>Protecting your personal data is important to me. This document explains how I collect, use, and protect your data when you use this website.</p>
+                        <h3>1. Data Controller</h3>
+                        <p>The controller of your personal data is David Habina, acting as an independent financial advisor. Contact: <strong>davidhabina@prosight.sk</strong>.</p>
+                        <h3>2. What data do I collect and why?</h3>
+                        <p>Through the contact form on the website, I collect name, email, phone number, and message content based on your consent.</p>
+                        <h3>3. Who do I share the data with?</h3>
+                        <p>Data is not sold or shared with third parties for marketing purposes. It may be shared with financial institutions upon agreement.</p>
+                        <h3>4. Cookies</h3>
+                        <p>This website uses only basic technical cookies necessary for proper functioning.</p>
+                        <h3>5. Your Rights</h3>
+                        <p>You have the right to access, correct, or delete your personal data at any time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section id="faq" class="section dark-section">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -352,8 +397,8 @@
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="gdpr-consent" name="gdpr_suhlas" required>
                             <label for="gdpr-consent">
-                                <span class="lang-sk">Súhlasím so <a href="ochrana-udajov.html" target="_blank">spracovaním osobných údajov</a>.</span>
-                                <span class="lang-en">I agree to the <a href="ochrana-udajov.html" target="_blank">processing of personal data</a>.</span>
+                                <span class="lang-sk">Súhlasím so <a href="#" onclick="openGdprModal(event)">spracovaním osobných údajov</a>.</span>
+                                <span class="lang-en">I agree to the <a href="#" onclick="openGdprModal(event)">processing of personal data</a>.</span>
                             </label>
                         </div>
 
@@ -376,7 +421,7 @@
                 <span class="lang-en">Copyright &copy; 2026 David Habina. All rights reserved.</span>
             </p>
             <div class="footer-links">
-                <a href="ochrana-udajov.html">
+                <a href="#" onclick="openGdprModal(event)">
                     <span class="lang-sk">Ochrana osobných údajov (GDPR)</span>
                     <span class="lang-en">Privacy Policy (GDPR)</span>
                 </a>
@@ -387,8 +432,8 @@
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>
-                <span class="lang-sk">Pre najlepší zážitok z nášho webu používame súbory cookies. Kliknutím na "Prijať všetky" súhlasíte s ich používaním. Viac v <a href="ochrana-udajov.html">Zásadách ochrany osobných údajov</a>.</span>
-                <span class="lang-en">We use cookies to ensure you get the best experience on our website. By clicking "Accept All", you consent to our use of cookies. See our <a href="ochrana-udajov.html">Privacy Policy</a>.</span>
+                <span class="lang-sk">Pre najlepší zážitok z nášho webu používame súbory cookies. Kliknutím na "Prijať všetky" súhlasíte s ich používaním. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</span>
+                <span class="lang-en">We use cookies to ensure you get the best experience on our website. By clicking "Accept All", you consent to our use of cookies. See our <a href="#" onclick="openGdprModal(event)">Privacy Policy</a>.</span>
             </p>
             <div class="cookie-buttons">
                 <button id="accept-cookies" class="btn-cookie-accept">

@@ -79,12 +79,12 @@ function initGSAPAnimations(elements) {
             {
                 opacity: 1, 
                 y: 0, 
-                duration: 0.4, // Rýchly nábeh
+                duration: 0.4, 
                 ease: "power1.out", 
                 scrollTrigger: {
                     trigger: el,
                     scroller: scrollWrapper,
-                    start: "top 98%", // Spustí sa ihneď, ako prvok vstúpi do obrazovky
+                    start: "top 98%", 
                 }
             }
         );
@@ -187,8 +187,29 @@ function closeBlogModal() {
     document.body.style.setProperty('overflow-y', 'auto', 'important'); 
 }
 
+// --- GDPR MODAL LOGIKA ---
+function openGdprModal(e) {
+    if (e) e.preventDefault();
+    const modal = document.getElementById('gdpr-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.setProperty('overflow-y', 'hidden', 'important');
+    }
+}
+
+function closeGdprModal() {
+    const modal = document.getElementById('gdpr-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.setProperty('overflow-y', 'auto', 'important');
+    }
+}
+
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeBlogModal();
+    if (e.key === 'Escape') {
+        closeBlogModal();
+        closeGdprModal();
+    }
 });
 
 // --- INICIALIZÁCIA STRÁNKY ---
