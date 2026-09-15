@@ -31,12 +31,15 @@
 </head>
 <body class="lang-sk">
 
-    <!-- Navbar -->
-    <nav class="navbar" data-aos="fade-down">
-        <div class="container nav-container">
+    <!-- Navigácia -->
+    <nav class="navbar">
+        <div class="nav-container">
             <a href="#domov" class="signature-logo">David Habina</a>
 
-            <!-- Menu -->
+            <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
+                <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+            </button>
+
             <ul class="nav-links" id="nav-links">
                 <li><a href="#omne"><span class="lang-sk">O MNE</span><span class="lang-en">ABOUT ME</span></a></li>
                 <li><a href="#sluzby"><span class="lang-sk">SLUŽBY</span><span class="lang-en">SERVICES</span></a></li>
@@ -45,7 +48,11 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#kontakt" class="btn-kontakt"><span class="lang-sk">KONTAKT</span><span class="lang-en">CONTACT</span></a></li>
                 
-                <!-- Sociálne siete v mobilnom menu -->
+                <li class="lang-switch">
+                    <button type="button" id="lang-sk-btn" onclick="setLanguage('sk')" class="active-lang">SK</button> / 
+                    <button type="button" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
+                </li>
+
                 <li class="mobile-socials">
                     <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -53,60 +60,68 @@
                 </li>
             </ul>
 
-            <!-- Pravá strana: Jazyk + Sociálne siete -->
-            <div class="nav-actions">
-                <li class="lang-switch" style="list-style: none;">
-                    <button type="button" id="lang-sk-btn" onclick="setLanguage('sk')" class="active-lang">SK</button> / 
-                    <button type="button" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
-                </li>
-
-                <div class="nav-socials">
-                    <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
+            <div class="nav-socials">
+                <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
-
-            <!-- Hamburger tlačidlo -->
-            <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
-                <i class="fa-solid fa-bars" id="hamburger-icon"></i>
-            </button>
         </div>
     </nav>
 
     <main>
-        <!-- Úplne nový Split-Screen Hero -->
+        <!-- Hero sekcia -->
         <header id="domov" class="hero-section">
-            <div class="container hero-content" data-aos="fade-up">
-                <div class="hero-text-side">
-                    <div class="hero-badge">
-                        <i class="fa-solid fa-circle"></i>
-                        <span class="lang-sk">Nezávislý finančný expert</span>
-                        <span class="lang-en">Independent Financial Expert</span>
-                    </div>
-                    <h1 class="hero-title">
-                        DAVID<span class="desktop-space"> </span><br class="mobile-break">HABINA
-                    </h1>
-                    <p class="hero-subtitle">
-                        <span class="lang-sk">PROFESIONÁLNE FINANČNÉ PORADENSTVO</span>
-                        <span class="lang-en">PROFESSIONAL FINANCIAL ADVISORY</span>
-                    </p>
-                    <div class="hero-cta-group">
-                        <a href="#kontakt" class="btn-hero-primary">
-                            <span class="lang-sk">Dohodnúť konzultáciu</span>
-                            <span class="lang-en">Book a consultation</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-card-visual" data-aos="fade-left">
-                    <img src="davidko.webp" alt="David Habina">
-                </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    DAVID<span class="desktop-space"> </span><br class="mobile-break">HABINA
+                </h1>
+                
+                <p class="hero-subtitle">
+                    <span class="lang-sk">PROFESIONÁLNY FINANČNÝ PORADCA</span>
+                    <span class="lang-en">PROFESSIONAL FINANCIAL ADVISOR</span>
+                </p>
+                
+                <a href="#omne" class="scroll-down" aria-label="Posunúť nadol">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </a>
             </div>
         </header>
 
+        <!-- NOVÁ SEKCIA: ŠTATISTIKY A ČÍSLA (Pohyblivá rubrika) -->
+        <section class="stats-section">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="15">0</span><span class="stat-suffix">M+</span>
+                    </div>
+                    <span class="stat-label"><span class="lang-sk">Vybavené financie v €</span><span class="lang-en">Secured Finance in €</span></span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
+                    </div>
+                    <span class="stat-label"><span class="lang-sk">Spokojných klientov</span><span class="lang-en">Satisfied Clients</span></span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+                    </div>
+                    <span class="stat-label"><span class="lang-sk">Rokov praxe</span><span class="lang-en">Years of Experience</span></span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                    </div>
+                    <span class="stat-label"><span class="lang-sk">Individuálny prístup</span><span class="lang-en">Individual Approach</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sekcia: O MNE -->
         <section id="omne" class="section dark-section">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
+                <div class="section-header">
                     <span class="sub-heading">
                         <span class="lang-sk">SPOĽAHLIVOSŤ & FLEXIBILITA</span>
                         <span class="lang-en">RELIABILITY & FLEXIBILITY</span>
@@ -117,7 +132,7 @@
                     </h2>
                 </div>
                 <div class="about-grid">
-                    <div class="about-text" data-aos="fade-up">
+                    <div class="about-text">
                         <p class="highlight-p">
                             <span class="lang-sk">Svet financií býva komplikovaný. Mojou úlohou je priniesť vám doň absolútny prehľad, kľud a maximálny úžitok.</span>
                             <span class="lang-en">The world of finance can be complex. My goal is to bring you absolute clarity, peace of mind, and maximum value.</span>
@@ -127,21 +142,21 @@
                             <span class="lang-en">As an independent financial advisor I specialize in resolving even the most complex financial situations. I handle all bureaucracy, bank negotiations, and insurance paperwork down to the finest detail for you.</span>
                         </p>
                         <div class="about-features">
-                            <div class="feature-item" data-aos="fade-right">
+                            <div class="feature-item">
                                 <i class="fa-solid fa-check"></i>
                                 <span>
                                     <span class="lang-sk">100% Flexibilný prístup (stretnutie osobne v Košiciach alebo online)</span>
                                     <span class="lang-en">100% Flexible approach (in-person meeting in Kosice or online)</span>
                                 </span>
                             </div>
-                            <div class="feature-item" data-aos="fade-right">
+                            <div class="feature-item">
                                 <i class="fa-solid fa-check"></i>
                                 <span>
                                     <span class="lang-sk">Kompletné vybavenie agendy bez vášho stresu</span>
                                     <span class="lang-en">Complete agenda management with zero stress for you</span>
                                 </span>
                             </div>
-                            <div class="feature-item" data-aos="fade-right">
+                            <div class="feature-item">
                                 <i class="fa-solid fa-check"></i>
                                 <span>
                                     <span class="lang-sk">Riešenia na mieru s dlhodobým servisom</span>
@@ -154,9 +169,10 @@
             </div>
         </section>
 
+        <!-- Sekcia: SLUŽBY -->
         <section id="sluzby" class="section darker-section">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
+                <div class="section-header">
                     <span class="sub-heading">
                         <span class="lang-sk">ČO PRE VÁS VYBAVÍM</span>
                         <span class="lang-en">WHAT I DO FOR YOU</span>
@@ -167,7 +183,7 @@
                     </h2>
                 </div>
                 <div class="services-grid">
-                    <div class="service-box" data-aos="zoom-in">
+                    <div class="service-box">
                         <div class="service-icon"><i class="fa-solid fa-house"></i></div>
                         <h3>
                             <span class="lang-sk">HYPOTÉKY A ÚVERY</span>
@@ -178,7 +194,7 @@
                             <span class="lang-en">Securing the best mortgage rates, refinancing existing loans, and saving thousands of euros in interest.</span>
                         </p>
                     </div>
-                    <div class="service-box" data-aos="zoom-in">
+                    <div class="service-box">
                         <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
                         <h3>
                             <span class="lang-sk">INVESTÍCIE A SPORENIE</span>
@@ -189,7 +205,7 @@
                             <span class="lang-en">Building wealth, protection against inflation, and setting up passive income streams through proven investment funds.</span>
                         </p>
                     </div>
-                    <div class="service-box" data-aos="zoom-in">
+                    <div class="service-box">
                         <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
                         <h3>
                             <span class="lang-sk">POISTENIE</span>
@@ -200,7 +216,7 @@
                             <span class="lang-en">High-quality life, property, and asset insurance coverage designed to protect you when it truly matters.</span>
                         </p>
                     </div>
-                    <div class="service-box" data-aos="zoom-in">
+                    <div class="service-box">
                         <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
                         <h3>
                             <span class="lang-sk">FINANČNÉ PLÁNOVANIE</span>
@@ -215,9 +231,10 @@
             </div>
         </section>
 
+        <!-- Sekcia: REFERENCIE -->
         <section id="referencie" class="section dark-section">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
+                <div class="section-header">
                     <span class="sub-heading">
                         <span class="lang-sk">HODNOTENIA KLIENTOV</span>
                         <span class="lang-en">CLIENT REVIEWS</span>
@@ -228,15 +245,16 @@
                     </h2>
                 </div>
                 
-                <div class="reviews-widget-wrapper" data-aos="fade-up">
+                <div class="reviews-widget-wrapper">
                     <script defer src='https://cdn.trustindex.io/loader.js?77e04b480bf8788da416e3293f0'></script>
                 </div>
             </div>
         </section>
 
+        <!-- Sekcia: BLOG -->
         <section id="blog" class="section darker-section">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
+                <div class="section-header">
                     <span class="sub-heading">
                         <span class="lang-sk">RADY & TIPY</span>
                         <span class="lang-en">TIPS & INSIGHTS</span>
@@ -251,6 +269,7 @@
             </div>
         </section>
 
+        <!-- Blog Modal -->
         <div id="blog-modal" class="modal-overlay" onclick="closeBlogModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeBlogModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
@@ -266,11 +285,11 @@
             </div>
         </div>
 
-        <!-- GDPR MODAL OKNO -->
+        <!-- GDPR Modal -->
         <div id="gdpr-modal" class="modal-overlay" onclick="closeGdprModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeGdprModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
-                <h2 style="color: var(--accent-emerald); margin-bottom: 20px;">
+                <h2 style="color: var(--accent-gold); margin-bottom: 20px;">
                     <span class="lang-sk">Ochrana osobných údajov (GDPR)</span>
                     <span class="lang-en">Privacy Policy (GDPR)</span>
                 </h2>
@@ -280,40 +299,25 @@
                         <h3>1. Prevádzkovateľ osobných údajov</h3>
                         <p>Prevádzkovateľom vašich osobných údajov je David Habina, pôsobiaci ako nezávislý finančný poradca. V prípade otázok ma môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong>.</p>
                         <h3>2. Aké údaje zhromažďujem a prečo?</h3>
-                        <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie mojich služieb:</p>
-                        <ul>
-                            <li><strong>Meno a priezvisko</strong> (na identifikáciu)</li>
-                            <li><strong>E-mailová adresa a telefónne číslo</strong> (na komunikáciu)</li>
-                            <li><strong>Obsah správy</strong> (pre lepšie porozumenie vašej požiadavky)</li>
-                        </ul>
-                        <p>Vaše údaje sú spracúvané na základe vášho súhlasu (čl. 6 ods. 1 písm. a) GDPR), ktorý vyjadrujete odoslaním formulára.</p>
+                        <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie mojich služieb.</p>
                         <h3>3. Komu údaje poskytujem?</h3>
-                        <p>Vaše osobné údaje nepredávam ani nezdieľam s tretími stranami na marketingové účely. Dáta môžu byť zdieľané výlučne s finančnými inštitúciami (banky, poisťovne) až po našej osobnej dohode a podpísaní sprostredkovateľskej zmluvy pri riešení vašej finančnej situácie.</p>
+                        <p>Vaše osobné údaje nepredávam ani nezdieľam s tretími stranami na marketingové účely.</p>
                         <h3>4. Súbory Cookies</h3>
-                        <p>Tento web používa iba základné technické súbory cookies, ktoré sú nevyhnutné pre správne fungovanie stránky.</p>
+                        <p>Tento web používa iba základné technické súbory cookies.</p>
                         <h3>5. Vaše práva</h3>
-                        <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu, vymazanie ("právo na zabudnutie"), obmedzenie spracovania a taktiež máte právo kedykoľvek odvolať svoj súhlas.</p>
+                        <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu alebo vymazanie.</p>
                     </div>
                     <div class="lang-en">
-                        <p>Protecting your personal data is important to me. This document explains how I collect, use, and protect your data when you use this website.</p>
-                        <h3>1. Data Controller</h3>
-                        <p>The controller of your personal data is David Habina, acting as an independent financial advisor. Contact: <strong>davidhabina@prosight.sk</strong>.</p>
-                        <h3>2. What data do I collect and why?</h3>
-                        <p>Through the contact form on the website, I collect name, email, phone number, and message content based on your consent.</p>
-                        <h3>3. Who do I share the data with?</h3>
-                        <p>Data is not sold or shared with third parties for marketing purposes. It may be shared with financial institutions upon agreement.</p>
-                        <h3>4. Cookies</h3>
-                        <p>This website uses only basic technical cookies necessary for proper functioning.</p>
-                        <h3>5. Your Rights</h3>
-                        <p>You have the right to access, correct, or delete your personal data at any time.</p>
+                        <p>Protecting your personal data is important to me. Contact: <strong>davidhabina@prosight.sk</strong>.</p>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Sekcia: FAQ -->
         <section id="faq" class="section dark-section">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
+                <div class="section-header">
                     <span class="sub-heading">
                         <span class="lang-sk">ČASTO KLADENÉ OTÁZKY</span>
                         <span class="lang-en">FREQUENTLY ASKED QUESTIONS</span>
@@ -321,7 +325,7 @@
                     <h2>FAQ</h2>
                 </div>
                 <div class="faq-list">
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item">
                         <h4>
                             <span class="lang-sk">Koľko ma stoja vaše služby?</span>
                             <span class="lang-en">How much do your services cost?</span>
@@ -331,7 +335,7 @@
                             <span class="lang-en">Consultations and complete financial service are free of charge for you. My compensation is provided directly by financial institutions.</span>
                         </p>
                     </div>
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item">
                         <h4>
                             <span class="lang-sk">Pôsobíte iba v Košiciach?</span>
                             <span class="lang-en">Do you operate only in Kosice?</span>
@@ -341,7 +345,7 @@
                             <span class="lang-en">In person, I primarily operate in Kosice and surrounding areas, but thanks to modern technology, we can handle everything entirely online anywhere in Slovakia.</span>
                         </p>
                     </div>
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item">
                         <h4>
                             <span class="lang-sk">V čom je výhoda spolupracovať so mnou?</span>
                             <span class="lang-en">What is the advantage of working with me?</span>
@@ -355,9 +359,10 @@
             </div>
         </section>
 
+        <!-- Sekcia: KONTAKT -->
         <section id="kontakt" class="section darker-section">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
+                <div class="section-header">
                     <span class="sub-heading">
                         <span class="lang-sk">PORADÍM VÁM</span>
                         <span class="lang-en">GET IN TOUCH</span>
@@ -368,7 +373,7 @@
                     </h2>
                 </div>
                 <div class="contact-wrapper">
-                    <div class="contact-details" data-aos="fade-up">
+                    <div class="contact-details">
                         <h3>DAVID HABINA</h3>
                         <p class="contact-role">
                             <span class="lang-sk">Finančný Poradca</span>
@@ -392,7 +397,7 @@
                         </div>
                     </div>
 
-                    <form class="contact-form" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-aos="fade-up">
+                    <form class="contact-form" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                         <input type="hidden" name="form-name" value="kontakt" />
                         <p style="display:none;">
                             <label>Spam protection: <input name="bot-field" /></label>
@@ -446,11 +451,12 @@
         </div>
     </footer>
 
+    <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>
-                <span class="lang-sk">Pre najlepší zážitok z nášho webu používame súbory cookies. Kliknutím na "Prijať všetky" súhlasíte s ich používaním. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</span>
-                <span class="lang-en">We use cookies to ensure you get the best experience on our website. By clicking "Accept All", you consent to our use of cookies. See our <a href="#" onclick="openGdprModal(event)">Privacy Policy</a>.</span>
+                <span class="lang-sk">Pre najlepší zážitok z nášho webu používame súbory cookies. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</span>
+                <span class="lang-en">We use cookies to ensure you get the best experience. See our <a href="#" onclick="openGdprModal(event)">Privacy Policy</a>.</span>
             </p>
             <div class="cookie-buttons">
                 <button id="accept-cookies" class="btn-cookie-accept">

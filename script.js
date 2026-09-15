@@ -12,6 +12,38 @@ if (isMobile) {
     document.body.addEventListener('scroll', ScrollTrigger.update);
 }
 
+// --- ANIMÁCIA ŠTATISTÍK (COUNTER) ---
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200; // menšie číslo = rýchlejší prepočet
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                
+                const updateCount = () => {
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 25);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+
+                updateCount();
+                observer.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    counters.forEach(counter => observer.observe(counter));
+}
+
 // --- CENTRÁLNA LOGIKA PRE MENU A PREKLIKY ---
 const hamburgerToggle = document.getElementById('hamburger-toggle');
 const navLinks = document.getElementById('nav-links');
@@ -217,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('selectedLang') || 'sk';
     setLanguage(savedLang);
     loadBlogPosts();
+    initCounters(); // Spustenie animácie čísiel a štatistík
     
     setTimeout(() => {
         initGSAPAnimations(document.querySelectorAll('[data-aos]'));
