@@ -5,11 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ochrana osobných údajov | David Habina</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* Úplný reset a vynútenie viditeľnosti, aby nikdy nebola čierna obrazovka */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+        :root {
+            --bg-black: #080808;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --accent-gold: #c8a261;
+            --accent-gold-hover: #b08c4b;
+            --font-main: 'Montserrat', sans-serif;
+            --font-logo: 'Cinzel', serif;
+        }
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(8, 8, 8, 0.95);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .signature-logo {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--text-white);
+            text-decoration: none;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        .lang-switch button {
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 4px;
+            font-family: var(--font-main);
+        }
+        .lang-switch button.active-lang {
+            color: var(--accent-gold);
+            font-weight: 800;
+        }
         .gdpr-section {
             padding: 150px 0 100px 0;
             background-color: var(--bg-black);
@@ -50,30 +113,27 @@
             border: 1px solid var(--accent-gold);
             padding: 10px 20px;
             border-radius: 5px;
-            transition: all var(--transition-fast);
         }
         .btn-back:hover {
             background-color: var(--accent-gold);
             color: #000;
         }
-        /* Poistka, aby texty v GDPR svietili a neboli skryté kvôli chýbajúcemu JS */
-        body div {
-            opacity: 1 !important;
-            transform: none !important;
+        /* Jazykové prepínanie */
+        body.lang-sk .lang-en,
+        body.lang-en .lang-sk {
+            display: none !important;
         }
     </style>
 </head>
 <body class="lang-sk">
 
     <nav class="navbar">
-        <div class="nav-container">
+        <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
             <a href="index.html" class="signature-logo">David Habina</a>
-            <ul class="nav-links" style="justify-content: flex-end;">
-                <li class="lang-switch" style="display: flex;">
-                    <button type="button" onclick="setLanguage('sk')" class="active-lang" id="lang-sk-btn">SK</button> / 
-                    <button type="button" onclick="setLanguage('en')" id="lang-en-btn">EN</button>
-                </li>
-            </ul>
+            <div class="lang-switch">
+                <button type="button" onclick="setLanguage('sk')" class="active-lang" id="lang-sk-btn">SK</button> / 
+                <button type="button" onclick="setLanguage('en')" id="lang-en-btn">EN</button>
+            </div>
         </div>
     </nav>
 
