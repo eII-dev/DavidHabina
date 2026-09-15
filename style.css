@@ -18,13 +18,6 @@
     box-sizing: border-box;
 }
 
-/* Príprava pre GSAP animácie - Iba priehľadnosť a posun! */
-[data-aos] {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: none !important; 
-}
-
 body {
     background-color: var(--bg-black);
     color: var(--text-white);
@@ -195,13 +188,10 @@ body.lang-en .lang-sk {
     min-height: 600px;
     width: 100%;
     background-color: #000;
-    
     background-image: url('davidko.webp');
     background-repeat: no-repeat;
-    
     background-position: center 80px; 
     background-size: cover;
-    
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -373,7 +363,7 @@ body.lang-en .lang-sk {
     font-size: 0.9rem;
 }
 
-/* --- REFERENCIE (TRUSTINDEX WIDGET WRAPPER) --- */
+/* --- REFERENCIE --- */
 .reviews-widget-wrapper {
     min-height: 150px;
     display: flex;
@@ -625,7 +615,7 @@ footer {
     align-items: center;
 }
 
-/* --- GDPR CHECKBOX & FOOTER LINKS --- */
+/* --- GDPR CHECKBOX --- */
 .checkbox-group {
     display: flex;
     align-items: flex-start;
@@ -644,7 +634,7 @@ footer {
 }
 
 .checkbox-group label {
-    font-size: 0.75rem; /* Zmenšené písmo pre mobil, aby nepôsobilo giganticky */
+    font-size: 0.75rem; 
     color: var(--text-gray);
     line-height: 1.4;
     cursor: pointer;
@@ -745,7 +735,6 @@ footer {
 
 /* --- RESPONZIVITA (MOBIL & TABLET) --- */
 @media (max-width: 900px) {
-    /* PREMIUM MOBILE LOCK */
     html {
         overflow: hidden !important;
         height: 100% !important;
@@ -761,17 +750,9 @@ footer {
         -webkit-overflow-scrolling: touch;
     }
 
-    .navbar {
-        padding: 15px 20px;
-    }
-
-    .hamburger-toggle {
-        display: block;
-    }
-
-    .nav-socials {
-        display: none;
-    }
+    .navbar { padding: 15px 20px; }
+    .hamburger-toggle { display: block; }
+    .nav-socials { display: none; }
 
     .nav-links {
         position: fixed;
@@ -789,29 +770,18 @@ footer {
         transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1000;
         padding: 40px 20px;
-        will-change: right;
         overflow-y: auto;
     }
 
-    .nav-links.active {
-        right: 0;
-    }
-
-    .nav-links a {
-        font-size: 1.1rem;
-        letter-spacing: 2px;
-    }
+    .nav-links.active { right: 0; }
+    .nav-links a { font-size: 1.1rem; letter-spacing: 2px; }
 
     .lang-switch {
         margin-left: 0;
         margin-top: 10px;
         font-size: 1rem;
     }
-
-    .lang-switch button {
-        font-size: 1rem;
-        padding: 8px 12px;
-    }
+    .lang-switch button { font-size: 1rem; padding: 8px 12px; }
 
     .mobile-socials {
         display: flex;
@@ -819,65 +789,23 @@ footer {
         margin-top: 15px;
         align-items: center;
     }
+    .mobile-socials a { color: var(--accent-gold); font-size: 1.4rem; padding: 8px; }
 
-    .mobile-socials a {
-        color: var(--accent-gold);
-        font-size: 1.4rem;
-        padding: 8px;
-        transition: transform var(--transition-fast), color var(--transition-fast);
-    }
-
-    .mobile-socials a:hover {
-        color: var(--text-white);
-        transform: translateY(-3px);
-    }
-
-    .section {
-        padding: 60px 0;
-    }
-
-    .section-header {
-        margin-bottom: 40px;
-    }
-
-    .highlight-p {
-        font-size: 1.05rem;
-    }
-
-    .contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .modal-content {
-        padding: 25px;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
+    .section { padding: 60px 0; }
+    .section-header { margin-bottom: 40px; }
+    .highlight-p { font-size: 1.05rem; }
+    .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .modal-content { padding: 25px; }
+    .footer-content { flex-direction: column; gap: 12px; text-align: center; }
 }
 
 @media (max-width: 768px) {
-    .cookie-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-    .cookie-buttons {
-        width: 100%;
-        justify-content: center;
-        flex-direction: column;
-    }
-    .btn-cookie-accept, .btn-cookie-decline {
-        width: 100%;
-    }
+    .cookie-content { flex-direction: column; text-align: center; gap: 20px; }
+    .cookie-buttons { width: 100%; justify-content: center; flex-direction: column; }
+    .btn-cookie-accept, .btn-cookie-decline { width: 100%; }
 }
 
 @media (max-width: 480px) {
-    
     .mobile-break { display: block; }
     .desktop-space { display: none; }
 
@@ -903,11 +831,6 @@ footer {
         margin: 0 auto 30px auto;
     }
     
-    .service-box, .blog-card {
-        padding: 25px 20px;
-    }
-    
-    .contact-wrapper {
-        gap: 30px; 
-    }
+    .service-box, .blog-card { padding: 25px 20px; }
+    .contact-wrapper { gap: 30px; }
 }

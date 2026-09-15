@@ -56,8 +56,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     const offsetTop = targetElement.getBoundingClientRect().top + document.body.scrollTop - 80;
                     gsap.to(document.body, {
                         scrollTop: offsetTop,
-                        duration: 0.8,
-                        ease: "power2.inOut"
+                        duration: 0.6,
+                        ease: "power2.out"
                     });
                 } else {
                     const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
@@ -71,20 +71,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// --- ELEGANTNÉ GSAP ANIMÁCIE ---
+// --- RÝCHLE A PLYNULÉ GSAP ANIMÁCIE ---
 function initGSAPAnimations(elements) {
     elements.forEach(el => {
         gsap.fromTo(el, 
-            { opacity: 0, y: 30 },
+            { opacity: 0, y: 20 },
             {
                 opacity: 1, 
                 y: 0, 
-                duration: 0.5, 
-                ease: "power2.out", 
+                duration: 0.4, // Rýchly nábeh
+                ease: "power1.out", 
                 scrollTrigger: {
                     trigger: el,
                     scroller: scrollWrapper,
-                    start: "top 95%", 
+                    start: "top 98%", // Spustí sa ihneď, ako prvok vstúpi do obrazovky
                 }
             }
         );
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         initGSAPAnimations(document.querySelectorAll('[data-aos]'));
         ScrollTrigger.refresh();
-    }, 100);
+    }, 50);
 
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
