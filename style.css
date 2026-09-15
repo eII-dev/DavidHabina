@@ -191,12 +191,14 @@ body.lang-en .lang-sk {
     height: 100dvh;
     min-height: 600px;
     width: 100%;
+    /* Čierne pozadie vyplní medzeru hore */
     background-color: #000;
     
-    /* Na PC vycentrujeme jemne viac dole, nech je to elegantné */
     background-image: url('davidko.webp');
     background-repeat: no-repeat;
-    background-position: center 10%; 
+    
+    /* OPRAVA PRE PC: Posunuté o 80px nižšie od vrchu, aby menu neprekrývalo vlasy */
+    background-position: center 80px; 
     background-size: cover;
     
     display: flex;
@@ -735,8 +737,8 @@ footer {
     .desktop-space { display: none; }
 
     .hero-section {
-        /* OPRAVA: Tvár posunutá späť do stredu (zmena zo 70% na 35%) */
-        background-position: 35% 5%; 
+        /* OPRAVA: Tvár ide na 35% doľava (aby bola v strede) a 80px nižšie od vrchu! */
+        background-position: 35% 80px; 
         background-size: 260%; 
         padding-bottom: 40px;
     }
