@@ -1,14 +1,5 @@
-// --- PROSTREDIE PRE MOBILNÝ FIX ---
 const isMobile = window.innerWidth <= 900;
 const scrollWrapper = isMobile ? document.body : window;
-
-// --- LENIS SMOOTH SCROLL ---
-const lenis = new Lenis({
-    wrapper: scrollWrapper,
-    smoothTouch: false, 
-    duration: 0.9,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
-});
 
 // --- GSAP & SCROLLTRIGGER SYNC ---
 gsap.registerPlugin(ScrollTrigger);
@@ -20,12 +11,6 @@ ScrollTrigger.defaults({
 if (isMobile) {
     document.body.addEventListener('scroll', ScrollTrigger.update);
 }
-lenis.on('scroll', ScrollTrigger.update);
-
-gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-});
-gsap.ticker.lagSmoothing(0, 0);
 
 // --- CENTRÁLNA LOGIKA PRE MENU A PREKLIKY ---
 const hamburgerToggle = document.getElementById('hamburger-toggle');
@@ -41,13 +26,11 @@ function toggleMenu(forceClose = false) {
         navLinks.classList.add('active');
         hamburgerIcon.classList.remove('fa-bars');
         hamburgerIcon.classList.add('fa-xmark');
-        lenis.stop(); 
         document.body.style.setProperty('overflow-y', 'hidden', 'important'); 
     } else {
         navLinks.classList.remove('active');
         hamburgerIcon.classList.remove('fa-xmark');
         hamburgerIcon.classList.add('fa-bars');
-        lenis.start(); 
         document.body.style.setProperty('overflow-y', 'auto', 'important'); 
     }
 }
@@ -56,7 +39,7 @@ if (hamburgerToggle) {
     hamburgerToggle.addEventListener('click', () => toggleMenu());
 }
 
-// --- OPRAVENÉ PREKLIKY ---
+// --- PREKLIKY ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault(); 
@@ -71,16 +54,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             setTimeout(() => {
                 if (isMobile) {
                     const offsetTop = targetElement.getBoundingClientRect().top + document.body.scrollTop - 80;
-                    
                     gsap.to(document.body, {
                         scrollTop: offsetTop,
                         duration: 0.8,
                         ease: "power2.inOut"
                     });
                 } else {
-                    lenis.scrollTo(targetElement, { 
-                        offset: -80, 
-                        duration: 1.2  
+                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
                     });
                 }
             }, 50); 
@@ -195,14 +178,12 @@ function openBlogModal(index) {
     document.getElementById('modal-content-en').innerHTML = parseContent(item.content_en || item.body || item.desc_en);
     
     document.getElementById('blog-modal').classList.add('active');
-    lenis.stop(); 
     document.body.style.setProperty('overflow-y', 'hidden', 'important'); 
 }
 
 function closeBlogModal() {
     const modal = document.getElementById('blog-modal');
     if (modal) modal.classList.remove('active');
-    lenis.start(); 
     document.body.style.setProperty('overflow-y', 'auto', 'important'); 
 }
 

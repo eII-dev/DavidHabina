@@ -5,40 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>David Habina | Profesionálny Finančný Poradca Košice</title>
     
-    <!-- SEO Meta Tagy -->
     <meta name="description" content="Profesionálny nezávislý finančný poradca v Košiciach. Hypotéky, úvery, investície, poistenie a finančné plánovanie na mieru bez stresu.">
     <meta name="keywords" content="finančný poradca Košice, hypotéka, investovanie, poistenie, finančné plánovanie, David Habina">
     <meta name="author" content="David Habina">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph (Zdieľanie na sociálnych sieťach) -->
     <meta property="og:title" content="David Habina | Profesionálny Finančný Poradca Košice">
     <meta property="og:description" content="Kompletné finančné služby, hypotéky, investície a poistenie na mieru v Košiciach aj online.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="davidko.webp">
 
-    <!-- Preload hlavnej fotky pre okamžité načítanie hero sekcie (LCP) -->
     <link rel="preload" href="davidko.webp" as="image" type="image/webp">
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- ŠTÝLY -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Google Fonts zrýchlené pomocou display=swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Ne-blokujúce načítanie FontAwesome ikôn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <!-- Netlify Identity widget načítavaný odložene -->
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    
-    <!-- Marked.js pre rýchly preklad Markdown obsahu z CMS na HTML -->
     <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body class="lang-sk">
@@ -48,12 +36,10 @@
         <div class="nav-container">
             <a href="#domov" class="signature-logo">David Habina</a>
 
-            <!-- Hamburger tlačidlo -->
             <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
                 <i class="fa-solid fa-bars" id="hamburger-icon"></i>
             </button>
 
-            <!-- Menu -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="#omne"><span class="lang-sk">O MNE</span><span class="lang-en">ABOUT ME</span></a></li>
                 <li><a href="#sluzby"><span class="lang-sk">SLUŽBY</span><span class="lang-en">SERVICES</span></a></li>
@@ -62,13 +48,11 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#kontakt" class="btn-kontakt"><span class="lang-sk">KONTAKT</span><span class="lang-en">CONTACT</span></a></li>
                 
-                <!-- Tlačidlá pre jazyky -->
                 <li class="lang-switch">
                     <button type="button" id="lang-sk-btn" onclick="setLanguage('sk')" class="active-lang">SK</button> / 
                     <button type="button" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
                 </li>
 
-                <!-- Sociálne siete v mobilnom menu -->
                 <li class="mobile-socials">
                     <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -76,7 +60,6 @@
                 </li>
             </ul>
 
-            <!-- Sociálne siete na desktope -->
             <div class="nav-socials">
                 <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -85,14 +68,10 @@
         </div>
     </nav>
 
-    <!-- Hlavný obsah webu -->
     <main>
-        <!-- Úvodná sekcia (Hero) -->
         <header id="domov" class="hero-section">
             <div class="hero-overlay"></div>
             <div class="hero-content" data-aos="fade-up">
-                
-                <!-- Rozdelené meno pre dokonalý "Michal Diškant" efekt na mobile -->
                 <h1 class="hero-title">
                     DAVID<span class="desktop-space"> </span><br class="mobile-break">HABINA
                 </h1>
@@ -108,7 +87,6 @@
             </div>
         </header>
 
-        <!-- Sekcia: O MNE -->
         <section id="omne" class="section dark-section">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -159,7 +137,6 @@
             </div>
         </section>
 
-        <!-- Sekcia: SLUŽBY -->
         <section id="sluzby" class="section darker-section">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -221,7 +198,6 @@
             </div>
         </section>
 
-        <!-- Sekcia: REFERENCIE (GOOGLE RECENZIE) -->
         <section id="referencie" class="section dark-section">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -235,14 +211,12 @@
                     </h2>
                 </div>
                 
-                <!-- Trustindex Google Reviews Widget -->
                 <div class="reviews-widget-wrapper" data-aos="fade-up">
                     <script defer src='https://cdn.trustindex.io/loader.js?77e04b480bf8788da416e3293f0'></script>
                 </div>
             </div>
         </section>
 
-        <!-- Sekcia: BLOG -->
         <section id="blog" class="section darker-section">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -260,7 +234,6 @@
             </div>
         </section>
 
-        <!-- MODAL OKNO PRE DETAIL ČLÁNKU -->
         <div id="blog-modal" class="modal-overlay" onclick="closeBlogModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeBlogModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
@@ -276,7 +249,6 @@
             </div>
         </div>
 
-        <!-- Sekcia: FAQ -->
         <section id="faq" class="section dark-section">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -321,7 +293,6 @@
             </div>
         </section>
 
-        <!-- Sekcia: KONTAKT -->
         <section id="kontakt" class="section darker-section">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -359,7 +330,6 @@
                         </div>
                     </div>
 
-                    <!-- Formulár pre Netlify -->
                     <form class="contact-form" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-aos="fade-up">
                         <input type="hidden" name="form-name" value="kontakt" />
                         <p style="display:none;">
@@ -379,7 +349,6 @@
                             <textarea name="sprava" rows="5" placeholder="S čím vám môžem pomôcť? / How can I help you?" required></textarea>
                         </div>
                         
-                        <!-- GDPR Checkbox -->
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="gdpr-consent" name="gdpr_suhlas" required>
                             <label for="gdpr-consent">
@@ -400,7 +369,6 @@
         </section>
     </main>
 
-    <!-- Pätička s odkazom na GDPR -->
     <footer>
         <div class="container footer-content">
             <p>
@@ -416,7 +384,6 @@
         </div>
     </footer>
 
-    <!-- COOKIE BANNER -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>
@@ -436,14 +403,8 @@
         </div>
     </div>
 
-    <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- Lenis Smooth Scroll -->
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-    
-    <!-- NÁŠ EXTERNÝ JAVASCRIPT -->
     <script src="script.js"></script>
 </body>
 </html>
