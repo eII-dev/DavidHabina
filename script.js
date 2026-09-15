@@ -1,3 +1,60 @@
+// --- PROSTREDIE PRE MOBILNÝ FIX ---
+const isMobile = window.innerWidth <= 900;
+const scrollWrapper = isMobile ? document.body : window;
+
+// --- LENIS SMOOTH SCROLL ---
+const lenis = new Lenis({
+    wrapper: isMobile ? document.body : window,
+    content: document.documentElement,
+    smoothTouch: false, // Na mobile ide natívny touch fix cez CSS
+    duration: 1.1, // Krásny hladký dojazd na PC
+});
+
+// Plynulé posúvanie k ukotveným odkazom (menu)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            lenis.scrollTo(target);
+        }
+    });
+});
+
+// --- GSAP & SCROLLTRIGGER SYNC ---
+gsap.registerPlugin(ScrollTrigger);
+
+ScrollTrigger.defaults({
+    scroller: scrollWrapper
+});
+
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0, 0);
+
+// Namiesto AOS spúšťame animácie cez GSAP (plynulejšie)
+function initGSAPAnimations(elements) {
+    elements.forEach(el => {
+        gsap.fromTo(el, 
+            { opacity: 0, y: 30 },
+            {
+                opacity: 1, 
+                y: 0, 
+                duration: 0.6, 
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: el,
+                    scroller: scrollWrapper,
+                    start: "top 90%", // Spustí animáciu bez meškania (bez cascade delay)
+                }
+            }
+        );
+    });
+}
+
+// --- JAZYKOVÉ NASTAVENIE ---
 let globalBlogItems = [];
 
 function setLanguage(lang) {
@@ -20,6 +77,7 @@ function setLanguage(lang) {
     }
 }
 
+// --- BLOG LOGIKA ---
 async function loadBlogPosts() {
     try {
         const response = await fetch('data/blog.json');
@@ -39,10 +97,8 @@ function renderBlogPosts() {
     globalBlogItems.forEach((item, index) => {
         const article = document.createElement('article');
         article.className = 'blog-card';
-        // Pridaný data-aos atribút aj pre dynamicky generované články
-        article.setAttribute('data-aos', 'fade-up');
-        article.setAttribute('data-aos-delay', (index % 3) * 100); 
-
+        article.setAttribute('data-aos', 'true'); // Pre GSAP selektor
+        
         article.innerHTML = `
             <div class="blog-info">
                 <span class="blog-date">${item.date || ''}</span>
@@ -63,6 +119,10 @@ function renderBlogPosts() {
         `;
         container.appendChild(article);
     });
+    
+    // Po vygenerovaní blogov im priradíme GSAP animáciu
+    initGSAPAnimations(document.querySelectorAll('.blog-card'));
+    ScrollTrigger.refresh();
 }
 
 function openBlogModal(index) {
@@ -73,7 +133,6 @@ function openBlogModal(index) {
     document.getElementById('modal-title-en').innerText = item.title_en || item.title || '';
     document.getElementById('modal-date').innerText = item.date || '';
     
-    // Konverzia Markdown na HTML ak je knižnica načítaná
     const parseContent = (text) => {
         if (!text) return '';
         return typeof marked !== 'undefined' ? marked.parse(text) : text.replace(/\n/g, '<br>');
@@ -83,25 +142,30 @@ function openBlogModal(index) {
     document.getElementById('modal-content-en').innerHTML = parseContent(item.content_en || item.body || item.desc_en);
     
     document.getElementById('blog-modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lenis.stop(); // Bezpečnejšie zamknutie scrollu cez Lenis
 }
 
 function closeBlogModal() {
     const modal = document.getElementById('blog-modal');
     if (modal) modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    lenis.start(); // Odomknutie scrollu
 }
 
-// Zatvorenie modálneho okna stlačením klávesy ESC
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeBlogModal();
 });
 
+// --- INICIALIZÁCIA STRÁNKY ---
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Nastavenia
     const savedLang = localStorage.getItem('selectedLang') || 'sk';
     setLanguage(savedLang);
     loadBlogPosts();
+    
+    // 2. Aplikovanie GSAP namiesto AOS pre všetky načítané prvky
+    initGSAPAnimations(document.querySelectorAll('[data-aos]'));
 
+    // 3. Mobilné Menu Logika
     const hamburgerToggle = document.getElementById('hamburger-toggle');
     const navLinks = document.getElementById('nav-links');
     const hamburgerIcon = document.getElementById('hamburger-icon');
@@ -112,13 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navLinks.classList.contains('active')) {
                 hamburgerIcon.classList.remove('fa-bars');
                 hamburgerIcon.classList.add('fa-xmark');
-                // Zablokuje scrollovanie pozadia pri otvorenom menu
-                document.body.style.overflow = 'hidden'; 
+                lenis.stop(); // Používame Lenis na uzamknutie scrollu!
             } else {
                 hamburgerIcon.classList.remove('fa-xmark');
                 hamburgerIcon.classList.add('fa-bars');
-                // Odblokuje scrollovanie
-                document.body.style.overflow = ''; 
+                lenis.start(); 
             }
         });
 
@@ -127,19 +189,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinks.classList.remove('active');
                 hamburgerIcon.classList.remove('fa-xmark');
                 hamburgerIcon.classList.add('fa-bars');
-                // Odblokuje scrollovanie po kliknutí na odkaz v menu
-                document.body.style.overflow = ''; 
+                lenis.start(); 
             });
         });
     }
 
+    // 4. Kontakt formulár
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-
             const formData = new FormData(contactForm);
 
             fetch('/', {
@@ -149,15 +210,13 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(() => {
                 const isEn = document.body.classList.contains('lang-en');
-                
                 if (isEn) {
                     formStatus.style.color = '#28a745';
-                    formStatus.innerText = 'Thank you! Your message has been sent successfully. I will get back to you soon.';
+                    formStatus.innerText = 'Thank you! Your message has been sent successfully.';
                 } else {
                     formStatus.style.color = '#28a745';
-                    formStatus.innerText = 'Ďakujem! Vaša správa bola úspešne odoslaná. Čoskoro sa vám ozvem.';
+                    formStatus.innerText = 'Ďakujem! Vaša správa bola úspešne odoslaná.';
                 }
-
                 contactForm.reset();
             })
             .catch(() => {
@@ -168,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Netlify Identity presmerovanie po prihlásení
+// Netlify Identity
 if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
         if (!user) {

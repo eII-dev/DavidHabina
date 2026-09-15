@@ -26,7 +26,7 @@
     <!-- ŠTÝLY -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Google Fonts zrýchlené pomocou display=swap (Pridaný weight 200 pre extra tenký font!) -->
+    <!-- Google Fonts zrýchlené pomocou display=swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,9 +34,6 @@
     <!-- Ne-blokujúce načítanie FontAwesome ikôn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-
-    <!-- AOS Kniznica pre animacie (CSS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Netlify Identity widget načítavaný odložene -->
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -259,7 +256,7 @@
                     </h2>
                 </div>
                 
-                <div class="blog-grid" id="blog-grid" data-aos="fade-up"></div>
+                <div class="blog-grid" id="blog-grid"></div>
             </div>
         </section>
 
@@ -393,7 +390,7 @@
         </section>
     </main>
 
-      <!-- Pätička -->
+    <!-- Pätička -->
     <footer>
         <div class="container footer-content">
             <p>
@@ -403,16 +400,12 @@
         </div>
     </footer>
 
-    <!-- AOS Script pre inicializáciu animácií -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true,
-            offset: 0, 
-            duration: 400, 
-            easing: 'ease-out-quad', 
-        });
-    </script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
     
     <!-- NÁŠ EXTERNÝ JAVASCRIPT -->
     <script src="script.js"></script>

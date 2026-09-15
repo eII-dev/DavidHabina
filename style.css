@@ -18,8 +18,9 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+/* Kvôli GSAP musíme elementy pred animáciou skryť */
+[data-aos] {
+    opacity: 0;
 }
 
 body {
@@ -631,6 +632,23 @@ footer {
 
 /* --- RESPONZIVITA (MOBIL & TABLET) --- */
 @media (max-width: 900px) {
+    /* PREMIUM MOBILE LOCK - Zamedzuje preskakovaniu adresnej lišty! */
+    html {
+        overflow: hidden !important;
+        height: 100% !important;
+    }
+    body {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    /* Koniec Mobile Lock-u */
+
     .navbar {
         padding: 15px 20px;
     }
@@ -737,7 +755,7 @@ footer {
     .desktop-space { display: none; }
 
     .hero-section {
-        /* OPRAVA: Tvár ide na 35% doľava (aby bola v strede) a 80px nižšie od vrchu! */
+        /* OPRAVA: Tvár ide na 35% doľava a 80px nižšie od vrchu (rovnako ako na PC)! */
         background-position: 35% 80px; 
         background-size: 260%; 
         padding-bottom: 40px;
