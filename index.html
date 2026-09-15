@@ -29,7 +29,7 @@
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
-<body class="lang-sk">
+<body>
 
     <!-- Navigácia -->
     <nav class="navbar">
@@ -41,18 +41,13 @@
             </button>
 
             <ul class="nav-links" id="nav-links">
-                <li><a href="#omne"><span class="lang-sk">O MNE</span><span class="lang-en">ABOUT ME</span></a></li>
-                <li><a href="#sluzby"><span class="lang-sk">SLUŽBY</span><span class="lang-en">SERVICES</span></a></li>
-                <li><a href="#referencie"><span class="lang-sk">REFERENCIE</span><span class="lang-en">TESTIMONIALS</span></a></li>
+                <li><a href="#omne">O MNE</a></li>
+                <li><a href="#sluzby">SLUŽBY</a></li>
+                <li><a href="#referencie">REFERENCIE</a></li>
                 <li><a href="#blog">BLOG</a></li>
                 <li><a href="#faq">FAQ</a></li>
-                <li><a href="#kontakt" class="btn-kontakt"><span class="lang-sk">KONTAKT</span><span class="lang-en">CONTACT</span></a></li>
+                <li><a href="#kontakt" class="btn-kontakt">KONTAKT</a></li>
                 
-                <li class="lang-switch">
-                    <button type="button" id="lang-sk-btn" onclick="setLanguage('sk')" class="active-lang">SK</button> / 
-                    <button type="button" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
-                </li>
-
                 <li class="mobile-socials">
                     <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -78,8 +73,7 @@
                 </h1>
                 
                 <p class="hero-subtitle">
-                    <span class="lang-sk">PROFESIONÁLNY FINANČNÝ PORADCA</span>
-                    <span class="lang-en">PROFESSIONAL FINANCIAL ADVISOR</span>
+                    PROFESIONÁLNY FINANČNÝ PORADCA
                 </p>
                 
                 <a href="#omne" class="scroll-down" aria-label="Posunúť nadol">
@@ -88,32 +82,32 @@
             </div>
         </header>
 
-        <!-- NOVÁ SEKCIA: ŠTATISTIKY A ČÍSLA (Pohyblivá rubrika) -->
+        <!-- Štatistiky -->
         <section class="stats-section">
             <div class="container stats-grid">
                 <div class="stat-item">
                     <div class="stat-number-wrapper">
                         <span class="stat-number" data-target="15">0</span><span class="stat-suffix">M+</span>
                     </div>
-                    <span class="stat-label"><span class="lang-sk">Vybavené financie v €</span><span class="lang-en">Secured Finance in €</span></span>
+                    <span class="stat-label">Vybavené financie v €</span>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number-wrapper">
                         <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
                     </div>
-                    <span class="stat-label"><span class="lang-sk">Spokojných klientov</span><span class="lang-en">Satisfied Clients</span></span>
+                    <span class="stat-label">Spokojných klientov</span>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number-wrapper">
                         <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
                     </div>
-                    <span class="stat-label"><span class="lang-sk">Rokov praxe</span><span class="lang-en">Years of Experience</span></span>
+                    <span class="stat-label">Rokov praxe</span>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number-wrapper">
                         <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
                     </div>
-                    <span class="stat-label"><span class="lang-sk">Individuálny prístup</span><span class="lang-en">Individual Approach</span></span>
+                    <span class="stat-label">Individuálny prístup</span>
                 </div>
             </div>
         </section>
@@ -122,46 +116,29 @@
         <section id="omne" class="section dark-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="sub-heading">
-                        <span class="lang-sk">SPOĽAHLIVOSŤ & FLEXIBILITA</span>
-                        <span class="lang-en">RELIABILITY & FLEXIBILITY</span>
-                    </span>
-                    <h2>
-                        <span class="lang-sk">KTO SOM?</span>
-                        <span class="lang-en">WHO I AM?</span>
-                    </h2>
+                    <span class="sub-heading">SPOĽAHLIVOSŤ & FLEXIBILITA</span>
+                    <h2>KTO SOM?</h2>
                 </div>
                 <div class="about-grid">
                     <div class="about-text">
                         <p class="highlight-p">
-                            <span class="lang-sk">Svet financií býva komplikovaný. Mojou úlohou je priniesť vám doň absolútny prehľad, kľud a maximálny úžitok.</span>
-                            <span class="lang-en">The world of finance can be complex. My goal is to bring you absolute clarity, peace of mind, and maximum value.</span>
+                            Svet financií býva komplikovaný. Mojou úlohou je priniesť vám doň absolútny prehľad, kľud a maximálny úžitok.
                         </p>
                         <p>
-                            <span class="lang-sk">Ako nezávislý finančný poradca sa špecializujem na riešenie aj tých najzložitejších finančných situácií. Všetku byrokraciu, vyjednávanie s bankami a poisťovňami vybavím do posledného detailu za vás.</span>
-                            <span class="lang-en">As an independent financial advisor I specialize in resolving even the most complex financial situations. I handle all bureaucracy, bank negotiations, and insurance paperwork down to the finest detail for you.</span>
+                            Ako nezávislý finančný poradca sa špecializujem na riešenie aj tých najzložitejších finančných situácií. Všetku byrokraciu, vyjednávanie s bankami a poisťovňami vybavím do posledného detailu za vás.
                         </p>
                         <div class="about-features">
                             <div class="feature-item">
                                 <i class="fa-solid fa-check"></i>
-                                <span>
-                                    <span class="lang-sk">100% Flexibilný prístup (stretnutie osobne v Košiciach alebo online)</span>
-                                    <span class="lang-en">100% Flexible approach (in-person meeting in Kosice or online)</span>
-                                </span>
+                                <span>100% Flexibilný prístup (stretnutie osobne v Košiciach alebo online)</span>
                             </div>
                             <div class="feature-item">
                                 <i class="fa-solid fa-check"></i>
-                                <span>
-                                    <span class="lang-sk">Kompletné vybavenie agendy bez vášho stresu</span>
-                                    <span class="lang-en">Complete agenda management with zero stress for you</span>
-                                </span>
+                                <span>Kompletné vybavenie agendy bez vášho stresu</span>
                             </div>
                             <div class="feature-item">
                                 <i class="fa-solid fa-check"></i>
-                                <span>
-                                    <span class="lang-sk">Riešenia na mieru s dlhodobým servisom</span>
-                                    <span class="lang-en">Tailored solutions with long-term dedicated service</span>
-                                </span>
+                                <span>Riešenia na mieru s dlhodobým servisom</span>
                             </div>
                         </div>
                     </div>
@@ -173,59 +150,29 @@
         <section id="sluzby" class="section darker-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="sub-heading">
-                        <span class="lang-sk">ČO PRE VÁS VYBAVÍM</span>
-                        <span class="lang-en">WHAT I DO FOR YOU</span>
-                    </span>
-                    <h2>
-                        <span class="lang-sk">FINANČNÉ SLUŽBY</span>
-                        <span class="lang-en">FINANCIAL SERVICES</span>
-                    </h2>
+                    <span class="sub-heading">ČO PRE VÁS VYBAVÍM</span>
+                    <h2>FINANČNÉ SLUŽBY</h2>
                 </div>
                 <div class="services-grid">
                     <div class="service-box">
                         <div class="service-icon"><i class="fa-solid fa-house"></i></div>
-                        <h3>
-                            <span class="lang-sk">HYPOTÉKY A ÚVERY</span>
-                            <span class="lang-en">MORTGAGES & LOANS</span>
-                        </h3>
-                        <p>
-                            <span class="lang-sk">Vybavenie najvýhodnejšej hypotéky, refinancovanie starých úverov a úspora tisícov eur na úrokoch.</span>
-                            <span class="lang-en">Securing the best mortgage rates, refinancing existing loans, and saving thousands of euros in interest.</span>
-                        </p>
+                        <h3>HYPOTÉKY A ÚVERY</h3>
+                        <p>Vybavenie najvýhodnejšej hypotéky, refinancovanie starých úverov a úspora tisícov eur na úrokoch.</p>
                     </div>
                     <div class="service-box">
                         <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
-                        <h3>
-                            <span class="lang-sk">INVESTÍCIE A SPORENIE</span>
-                            <span class="lang-en">INVESTMENTS & SAVINGS</span>
-                        </h3>
-                        <p>
-                            <span class="lang-sk">Budovanie majetku, ochrana pred infláciou a nastavenie pasívneho príjmu prostredníctvom overených fondov.</span>
-                            <span class="lang-en">Building wealth, protection against inflation, and setting up passive income streams through proven investment funds.</span>
-                        </p>
+                        <h3>INVESTÍCIE A SPORENIE</h3>
+                        <p>Budovanie majetku, ochrana pred infláciou a nastavenie pasívneho príjmu prostredníctvom overených fondov.</p>
                     </div>
                     <div class="service-box">
                         <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h3>
-                            <span class="lang-sk">POISTENIE</span>
-                            <span class="lang-en">INSURANCE</span>
-                        </h3>
-                        <p>
-                            <span class="lang-sk">Kvalitné životné poistenie, poistenie nehnuteľnosti a majetku s krytím, ktoré vás v núdzi skutočne podrží.</span>
-                            <span class="lang-en">High-quality life, property, and asset insurance coverage designed to protect you when it truly matters.</span>
-                        </p>
+                        <h3>POISTENIE</h3>
+                        <p>Kvalitné životné poistenie, poistenie nehnuteľnosti a majetku s krytím, ktoré vás v núdzi skutočne podrží.</p>
                     </div>
                     <div class="service-box">
                         <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
-                        <h3>
-                            <span class="lang-sk">FINANČNÉ PLÁNOVANIE</span>
-                            <span class="lang-en">FINANCIAL PLANNING</span>
-                        </h3>
-                        <p>
-                            <span class="lang-sk">Komplexná analýza osobných alebo firemných financií a vytvorenie nepriestrelnej stratégie pre budúcnosť.</span>
-                            <span class="lang-en">Comprehensive personal or corporate financial analysis and building a bulletproof strategy for your future.</span>
-                        </p>
+                        <h3>FINANČNÉ PLÁNOVANIE</h3>
+                        <p>Komplexná analýza osobných alebo firemných financií a vytvorenie nepriestrelnej stratégie pre budúcnosť.</p>
                     </div>
                 </div>
             </div>
@@ -235,14 +182,8 @@
         <section id="referencie" class="section dark-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="sub-heading">
-                        <span class="lang-sk">HODNOTENIA KLIENTOV</span>
-                        <span class="lang-en">CLIENT REVIEWS</span>
-                    </span>
-                    <h2>
-                        <span class="lang-sk">GOOGLE RECENZIE</span>
-                        <span class="lang-en">GOOGLE REVIEWS</span>
-                    </h2>
+                    <span class="sub-heading">HODNOTENIA KLIENTOV</span>
+                    <h2>GOOGLE RECENZIE</h2>
                 </div>
                 
                 <div class="reviews-widget-wrapper">
@@ -255,14 +196,8 @@
         <section id="blog" class="section darker-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="sub-heading">
-                        <span class="lang-sk">RADY & TIPY</span>
-                        <span class="lang-en">TIPS & INSIGHTS</span>
-                    </span>
-                    <h2>
-                        <span class="lang-sk">BLOG A ČLÁNKY</span>
-                        <span class="lang-en">BLOG & ARTICLES</span>
-                    </h2>
+                    <span class="sub-heading">RADY & TIPY</span>
+                    <h2>BLOG A ČLÁNKY</h2>
                 </div>
                 
                 <div class="blog-grid" id="blog-grid"></div>
@@ -274,13 +209,9 @@
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeBlogModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
                 <span id="modal-date" class="blog-date"></span>
-                <h2>
-                    <span id="modal-title-sk" class="lang-sk"></span>
-                    <span id="modal-title-en" class="lang-en"></span>
-                </h2>
+                <h2 id="modal-title"></h2>
                 <div class="modal-body">
-                    <div id="modal-content-sk" class="lang-sk"></div>
-                    <div id="modal-content-en" class="lang-en"></div>
+                    <div id="modal-content"></div>
                 </div>
             </div>
         </div>
@@ -289,27 +220,19 @@
         <div id="gdpr-modal" class="modal-overlay" onclick="closeGdprModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeGdprModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
-                <h2 style="color: var(--accent-gold); margin-bottom: 20px;">
-                    <span class="lang-sk">Ochrana osobných údajov (GDPR)</span>
-                    <span class="lang-en">Privacy Policy (GDPR)</span>
-                </h2>
+                <h2 style="color: var(--accent-gold); margin-bottom: 20px;">Ochrana osobných údajov (GDPR)</h2>
                 <div class="modal-body">
-                    <div class="lang-sk">
-                        <p>Ochrana vašich osobných údajov je pre mňa dôležitá. Tento dokument vysvetľuje, ako zhromažďujem, používam a chránim vaše dáta pri používaní tohto webu.</p>
-                        <h3>1. Prevádzkovateľ osobných údajov</h3>
-                        <p>Prevádzkovateľom vašich osobných údajov je David Habina, pôsobiaci ako nezávislý finančný poradca. V prípade otázok ma môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong>.</p>
-                        <h3>2. Aké údaje zhromažďujem a prečo?</h3>
-                        <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie mojich služieb.</p>
-                        <h3>3. Komu údaje poskytujem?</h3>
-                        <p>Vaše osobné údaje nepredávam ani nezdieľam s tretími stranami na marketingové účely.</p>
-                        <h3>4. Súbory Cookies</h3>
-                        <p>Tento web používa iba základné technické súbory cookies.</p>
-                        <h3>5. Vaše práva</h3>
-                        <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu alebo vymazanie.</p>
-                    </div>
-                    <div class="lang-en">
-                        <p>Protecting your personal data is important to me. Contact: <strong>davidhabina@prosight.sk</strong>.</p>
-                    </div>
+                    <p>Ochrana vašich osobných údajov je pre mňa dôležitá. Tento dokument vysvetľuje, ako zhromažďujem, používam a chránim vaše dáta pri používaní tohto webu.</p>
+                    <h3>1. Prevádzkovateľ osobných údajov</h3>
+                    <p>Prevádzkovateľom vašich osobných údajov je David Habina, pôsobiaci ako nezávislý finančný poradca. V prípade otázok ma môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong>.</p>
+                    <h3>2. Aké údaje zhromažďujem a prečo?</h3>
+                    <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie mojich služieb.</p>
+                    <h3>3. Komu údaje poskytujem?</h3>
+                    <p>Vaše osobné údaje nepredávam ani nezdieľam s tretími stranami na marketingové účely.</p>
+                    <h3>4. Súbory Cookies</h3>
+                    <p>Tento web používa iba základné technické súbory cookies.</p>
+                    <h3>5. Vaše práva</h3>
+                    <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu alebo vymazanie.</p>
                 </div>
             </div>
         </div>
@@ -318,42 +241,21 @@
         <section id="faq" class="section dark-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="sub-heading">
-                        <span class="lang-sk">ČASTO KLADENÉ OTÁZKY</span>
-                        <span class="lang-en">FREQUENTLY ASKED QUESTIONS</span>
-                    </span>
+                    <span class="sub-heading">ČASTO KLADENÉ OTÁZKY</span>
                     <h2>FAQ</h2>
                 </div>
                 <div class="faq-list">
                     <div class="faq-item">
-                        <h4>
-                            <span class="lang-sk">Koľko ma stoja vaše služby?</span>
-                            <span class="lang-en">How much do your services cost?</span>
-                        </h4>
-                        <p>
-                            <span class="lang-sk">Konzultácie a kompletný finančný servis sú pre vás bezplatné. Moja odmena je hradená priamo finančnými inštitúciami.</span>
-                            <span class="lang-en">Consultations and complete financial service are free of charge for you. My compensation is provided directly by financial institutions.</span>
-                        </p>
+                        <h4>Koľko ma stoja vaše služby?</h4>
+                        <p>Konzultácie a kompletný finančný servis sú pre vás bezplatné. Moja odmena je hradená priamo finančnými inštitúciami.</p>
                     </div>
                     <div class="faq-item">
-                        <h4>
-                            <span class="lang-sk">Pôsobíte iba v Košiciach?</span>
-                            <span class="lang-en">Do you operate only in Kosice?</span>
-                        </h4>
-                        <p>
-                            <span class="lang-sk">Osobne pôsobím primárne v Košiciach a okolí, avšak vďaka moderným technológiám vieme všetko potrebné vyriešiť aj kompletne online kdekoľvek na Slovensku.</span>
-                            <span class="lang-en">In person, I primarily operate in Kosice and surrounding areas, but thanks to modern technology, we can handle everything entirely online anywhere in Slovakia.</span>
-                        </p>
+                        <h4>Pôsobíte iba v Košiciach?</h4>
+                        <p>Osobne pôsobím primárne v Košiciach a okolí, avšak vďaka moderným technológiám vieme všetko potrebné vyriešiť aj kompletne online kdekoľvek na Slovensku.</p>
                     </div>
                     <div class="faq-item">
-                        <h4>
-                            <span class="lang-sk">V čom je výhoda spolupracovať so mnou?</span>
-                            <span class="lang-en">What is the advantage of working with me?</span>
-                        </h4>
-                        <p>
-                            <span class="lang-sk">Banka vám ponúkne iba svoje produkty. Ja preberiem celý trh, nájdem pre vás najvýhodnejšie riešenie a vybavím všetky administratívne úkony za vás.</span>
-                            <span class="lang-en">A single bank will only offer its own products. I analyze the entire market, find the most advantageous solution for you, and manage all administrative tasks on your behalf.</span>
-                        </p>
+                        <h4>V čom je výhoda spolupracovať so mnou?</h4>
+                        <p>Banka vám ponúkne iba svoje produkty. Ja preberiem celý trh, nájdem pre vás najvýhodnejšie riešenie a vybavím všetky administratívne úkony za vás.</p>
                     </div>
                 </div>
             </div>
@@ -363,29 +265,17 @@
         <section id="kontakt" class="section darker-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="sub-heading">
-                        <span class="lang-sk">PORADÍM VÁM</span>
-                        <span class="lang-en">GET IN TOUCH</span>
-                    </span>
-                    <h2>
-                        <span class="lang-sk">KONTAKTUJTE MA</span>
-                        <span class="lang-en">CONTACT ME</span>
-                    </h2>
+                    <span class="sub-heading">PORADÍM VÁM</span>
+                    <h2>KONTAKTUJTE MA</h2>
                 </div>
                 <div class="contact-wrapper">
                     <div class="contact-details">
                         <h3>DAVID HABINA</h3>
-                        <p class="contact-role">
-                            <span class="lang-sk">Finančný Poradca</span>
-                            <span class="lang-en">Financial Advisor</span>
-                        </p>
+                        <p class="contact-role">Finančný Poradca</p>
                         
                         <div class="contact-line">
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>
-                                <span class="lang-sk">Košice a okolie (Slovensko)</span>
-                                <span class="lang-en">Kosice and surroundings (Slovakia)</span>
-                            </span>
+                            <span>Košice a okolie (Slovensko)</span>
                         </div>
                         <div class="contact-line">
                             <i class="fa-solid fa-envelope"></i>
@@ -404,30 +294,24 @@
                         </p>
 
                         <div class="form-group">
-                            <input type="text" name="meno" placeholder="Meno a priezvisko / Full Name" required>
+                            <input type="text" name="meno" placeholder="Meno a priezvisko" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="Váš E-mail / Your E-mail" required>
+                            <input type="email" name="email" placeholder="Váš E-mail" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="telefon" placeholder="Telefónne číslo / Phone Number">
+                            <input type="tel" name="telefon" placeholder="Telefónne číslo">
                         </div>
                         <div class="form-group">
-                            <textarea name="sprava" rows="5" placeholder="S čím vám môžem pomôcť? / How can I help you?" required></textarea>
+                            <textarea name="sprava" rows="5" placeholder="S čím vám môžem pomôcť?" required></textarea>
                         </div>
                         
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="gdpr-consent" name="gdpr_suhlas" required>
-                            <label for="gdpr-consent">
-                                <span class="lang-sk">Súhlasím so <a href="#" onclick="openGdprModal(event)">spracovaním osobných údajov</a>.</span>
-                                <span class="lang-en">I agree to the <a href="#" onclick="openGdprModal(event)">processing of personal data</a>.</span>
-                            </label>
+                            <label for="gdpr-consent">Súhlasím so <a href="#" onclick="openGdprModal(event)">spracovaním osobných údajov</a>.</label>
                         </div>
 
-                        <button type="submit" class="btn-submit">
-                            <span class="lang-sk">ODOSLAŤ SPRÁVU</span>
-                            <span class="lang-en">SEND MESSAGE</span>
-                        </button>
+                        <button type="submit" class="btn-submit">ODOSLAŤ SPRÁVU</button>
 
                         <div id="form-status" style="margin-top: 15px; font-weight: 600; text-align: center;"></div>
                     </form>
@@ -438,15 +322,9 @@
 
     <footer>
         <div class="container footer-content">
-            <p>
-                <span class="lang-sk">Copyright &copy; 2026 David Habina. Všetky práva vyhradené.</span>
-                <span class="lang-en">Copyright &copy; 2026 David Habina. All rights reserved.</span>
-            </p>
+            <p>Copyright &copy; 2026 David Habina. Všetky práva vyhradené.</p>
             <div class="footer-links">
-                <a href="#" onclick="openGdprModal(event)">
-                    <span class="lang-sk">Ochrana osobných údajov (GDPR)</span>
-                    <span class="lang-en">Privacy Policy (GDPR)</span>
-                </a>
+                <a href="#" onclick="openGdprModal(event)">Ochrana osobných údajov (GDPR)</a>
             </div>
         </div>
     </footer>
@@ -454,19 +332,10 @@
     <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
-            <p>
-                <span class="lang-sk">Pre najlepší zážitok z nášho webu používame súbory cookies. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</span>
-                <span class="lang-en">We use cookies to ensure you get the best experience. See our <a href="#" onclick="openGdprModal(event)">Privacy Policy</a>.</span>
-            </p>
+            <p>Pre najlepší zážitok z nášho webu používame súbory cookies. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</p>
             <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn-cookie-accept">
-                    <span class="lang-sk">Prijať všetky</span>
-                    <span class="lang-en">Accept All</span>
-                </button>
-                <button id="decline-cookies" class="btn-cookie-decline">
-                    <span class="lang-sk">Iba nevyhnutné</span>
-                    <span class="lang-en">Essential Only</span>
-                </button>
+                <button id="accept-cookies" class="btn-cookie-accept">Prijať všetky</button>
+                <button id="decline-cookies" class="btn-cookie-decline">Iba nevyhnutné</button>
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@ if (isMobile) {
 // --- ANIMÁCIA ŠTATISTÍK (COUNTER) ---
 function initCounters() {
     const counters = document.querySelectorAll('.stat-number');
-    const speed = 200; // menšie číslo = rýchlejší prepočet
+    const speed = 200;
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -123,30 +123,9 @@ function initGSAPAnimations(elements) {
     });
 }
 
-// --- JAZYKOVÉ NASTAVENIE ---
+// --- BLOG LOGIKA (LEN SLOVENSKY) ---
 let globalBlogItems = [];
 
-function setLanguage(lang) {
-    const body = document.body;
-    const btnSk = document.getElementById('lang-sk-btn');
-    const btnEn = document.getElementById('lang-en-btn');
-
-    if (lang === 'en') {
-        body.classList.remove('lang-sk');
-        body.classList.add('lang-en');
-        btnSk?.classList.remove('active-lang');
-        btnEn?.classList.add('active-lang');
-        localStorage.setItem('selectedLang', 'en');
-    } else {
-        body.classList.remove('lang-en');
-        body.classList.add('lang-sk');
-        btnEn?.classList.remove('active-lang');
-        btnSk?.classList.add('active-lang');
-        localStorage.setItem('selectedLang', 'sk');
-    }
-}
-
-// --- BLOG LOGIKA ---
 async function loadBlogPosts() {
     try {
         const response = await fetch('data/blog.json');
@@ -168,20 +147,17 @@ function renderBlogPosts() {
         article.className = 'blog-card';
         article.setAttribute('data-aos', 'true'); 
         
+        const title = item.title || item.title_sk || '';
+        const desc = item.description || item.desc_sk || '';
+        const date = item.date || '';
+
         article.innerHTML = `
             <div class="blog-info">
-                <span class="blog-date">${item.date || ''}</span>
-                <h3>
-                    <span class="lang-sk">${item.title_sk || item.title || ''}</span>
-                    <span class="lang-en">${item.title_en || item.title || ''}</span>
-                </h3>
-                <p>
-                    <span class="lang-sk">${item.desc_sk || item.description || ''}</span>
-                    <span class="lang-en">${item.desc_en || item.description || ''}</span>
-                </p>
+                <span class="blog-date">${date}</span>
+                <h3>${title}</h3>
+                <p>${desc}</p>
                 <button onclick="openBlogModal(${index})" class="read-more-btn">
-                    <span class="lang-sk">Čítať viac</span>
-                    <span class="lang-en">Read more</span> 
+                    <span>Čítať viac</span> 
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
@@ -197,17 +173,16 @@ function openBlogModal(index) {
     const item = globalBlogItems[index];
     if (!item) return;
     
-    document.getElementById('modal-title-sk').innerText = item.title_sk || item.title || '';
-    document.getElementById('modal-title-en').innerText = item.title_en || item.title || '';
+    document.getElementById('modal-title').innerText = item.title || item.title_sk || '';
     document.getElementById('modal-date').innerText = item.date || '';
     
+    const content = item.body || item.content_sk || item.description || '';
     const parseContent = (text) => {
         if (!text) return '';
         return typeof marked !== 'undefined' ? marked.parse(text) : text.replace(/\n/g, '<br>');
     };
 
-    document.getElementById('modal-content-sk').innerHTML = parseContent(item.content_sk || item.body || item.desc_sk);
-    document.getElementById('modal-content-en').innerHTML = parseContent(item.content_en || item.body || item.desc_en);
+    document.getElementById('modal-content').innerHTML = parseContent(content);
     
     document.getElementById('blog-modal').classList.add('active');
     document.body.style.setProperty('overflow-y', 'hidden', 'important'); 
@@ -246,10 +221,8 @@ document.addEventListener('keydown', (e) => {
 
 // --- INICIALIZÁCIA STRÁNKY ---
 document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('selectedLang') || 'sk';
-    setLanguage(savedLang);
     loadBlogPosts();
-    initCounters(); // Spustenie animácie čísiel a štatistík
+    initCounters(); 
     
     setTimeout(() => {
         initGSAPAnimations(document.querySelectorAll('[data-aos]'));
@@ -270,14 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: new URLSearchParams(formData).toString()
             })
             .then(() => {
-                const isEn = document.body.classList.contains('lang-en');
-                if (isEn) {
-                    formStatus.style.color = '#28a745';
-                    formStatus.innerText = 'Thank you! Your message has been sent successfully.';
-                } else {
-                    formStatus.style.color = '#28a745';
-                    formStatus.innerText = 'Ďakujem! Vaša správa bola úspešne odoslaná.';
-                }
+                formStatus.style.color = '#28a745';
+                formStatus.innerText = 'Ďakujem! Vaša správa bola úspešne odoslaná.';
                 contactForm.reset();
             })
             .catch(() => {
