@@ -130,12 +130,14 @@ async function loadBlogPosts() {
     try {
         const response = await fetch('data/blog.json');
         const data = await response.json();
-        globalBlogItems = data.items || data.articles || [];
+        // Podpora pre objekt s items (Decap CMS formát) aj pre priame pole
+        globalBlogItems = Array.isArray(data) ? data : (data.items || data.articles || []);
         renderBlogPosts();
     } catch (error) {
         console.error('Chyba pri načítavaní blogu:', error);
     }
 }
+
 
 function renderBlogPosts() {
     const container = document.getElementById('blog-grid');
