@@ -57,6 +57,7 @@ if (hamburgerToggle) {
     hamburgerToggle.addEventListener('click', () => toggleMenu());
 }
 
+// --- OPRAVENÉ PREKLIKY (Rozdelené pre PC a MOBIL) ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault(); 
@@ -66,13 +67,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetElement = document.querySelector(targetId);
 
         if (targetElement) {
+            // Zavrieme menu na mobile, ak je otvorené, a odomkneme scrollovanie
             toggleMenu(true);
+            
             setTimeout(() => {
-                lenis.scrollTo(targetElement, { 
-                    offset: -80, 
-                    duration: 1.2  
-                });
-            }, 50);
+                if (isMobile) {
+                    // EXKLUZÍVNY MOBILNÝ FIX: Presný výpočet a GSAP scroll po uzamknutom body
+                    const offsetTop = targetElement.getBoundingClientRect().top + document.body.scrollTop - 80;
+                    
+                    gsap.to(document.body, {
+                        scrollTop: offsetTop,
+                        duration: 0.8,
+                        ease: "power2.inOut"
+                    });
+                } else {
+                    // PC LOGIKA (Zostáva nezmenená)
+                    lenis.scrollTo(targetElement, { 
+                        offset: -80, 
+                        duration: 1.2  
+                    });
+                }
+            }, 50); // Krátke oneskorenie na uistenie, že CSS overflow je odomknutý
         }
     });
 });
@@ -80,7 +95,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // --- ELEGANTNÉ GSAP ANIMÁCIE ---
 function initGSAPAnimations(elements) {
     elements.forEach(el => {
-        // Použijeme fromTo pre absolútnu istotu, že sa CSS štýly správne prepláchnu
         gsap.fromTo(el, 
             { opacity: 0, y: 30 },
             {
