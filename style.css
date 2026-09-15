@@ -175,7 +175,7 @@ body.lang-en .lang-sk {
     font-size: 1.6rem;
     cursor: pointer;
     z-index: 1001;
-    padding: 12px; /* Zväčšená dotyková plocha */
+    padding: 12px;
     margin-right: -12px;
     transition: color var(--transition-fast);
 }
@@ -187,13 +187,18 @@ body.lang-en .lang-sk {
 /* --- HERO SEKCIA --- */
 .hero-section {
     position: relative;
-    /* Používame 100dvh pre moderné mobilné prehliadače, inak 100vh */
     height: 100vh;
     height: 100dvh;
     min-height: 600px;
     width: 100%;
-    /* Na desktope chceme vidieť viac z obleku, takže center top */
-    background: url('davidko.webp') no-repeat center 20% / cover;
+    background-color: #000;
+    
+    /* OPRAVA PRE PC: Pôvodné nastavenie, aby fotka bola správne zhora */
+    background-image: url('davidko.webp');
+    background-repeat: no-repeat;
+    background-position: center top; 
+    background-size: cover;
+    
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -203,7 +208,6 @@ body.lang-en .lang-sk {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    /* Upravený gradient, aby bol text čitateľnejší aj na obleku */
     background: linear-gradient(to bottom, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.9) 100%);
 }
 
@@ -612,7 +616,6 @@ footer {
     align-items: center;
 }
 
-
 /* --- RESPONZIVITA (MOBIL & TABLET) --- */
 @media (max-width: 900px) {
     .navbar {
@@ -644,7 +647,6 @@ footer {
         z-index: 1000;
         padding: 40px 20px;
         will-change: right;
-        /* Scroll pre menu, ak by bolo príliš veľa položiek */
         overflow-y: auto;
     }
 
@@ -687,11 +689,11 @@ footer {
         transform: translateY(-3px);
     }
 
-    /* --- ÚPRAVA HERO SEKACIE PRE MOBIL (FOTKA) --- */
+    /* OPRAVA PRE TABLET: Jemný zoom */
     .hero-section {
-        /* Centrujeme fotku viac na tvár a hrudník (ako u trénera) */
-        background-position: center 10%; 
-        padding-bottom: 80px; /* trochu viac miesta dole pre text */
+        background-position: center 5%; 
+        background-size: 150%; 
+        padding-bottom: 80px;
     }
 
     .section {
@@ -722,8 +724,13 @@ footer {
     }
 }
 
-/* Pre veľmi malé obrazovky (iPhone SE a pod.) */
+/* OPRAVA PRE MOBIL: Výrazný zoom a vycentrovanie tváre */
 @media (max-width: 480px) {
+    .hero-section {
+        background-position: center 8%; 
+        background-size: 220%; 
+    }
+    
     .service-box, .blog-card {
         padding: 25px 20px;
     }
