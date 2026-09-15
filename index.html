@@ -36,10 +36,7 @@
         <div class="nav-container">
             <a href="#domov" class="signature-logo">David Habina</a>
 
-            <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
-                <i class="fa-solid fa-bars" id="hamburger-icon"></i>
-            </button>
-
+            <!-- Menu -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="#omne"><span class="lang-sk">O MNE</span><span class="lang-en">ABOUT ME</span></a></li>
                 <li><a href="#sluzby"><span class="lang-sk">SLUŽBY</span><span class="lang-en">SERVICES</span></a></li>
@@ -48,11 +45,7 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#kontakt" class="btn-kontakt"><span class="lang-sk">KONTAKT</span><span class="lang-en">CONTACT</span></a></li>
                 
-                <li class="lang-switch">
-                    <button type="button" id="lang-sk-btn" onclick="setLanguage('sk')" class="active-lang">SK</button> / 
-                    <button type="button" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
-                </li>
-
+                <!-- Sociálne siete v mobilnom menu -->
                 <li class="mobile-socials">
                     <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -60,11 +53,24 @@
                 </li>
             </ul>
 
-            <div class="nav-socials">
-                <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <!-- Pravá strana: Jazyk + Sociálne siete -->
+            <div class="nav-actions">
+                <li class="lang-switch" style="list-style: none;">
+                    <button type="button" id="lang-sk-btn" onclick="setLanguage('sk')" class="active-lang">SK</button> / 
+                    <button type="button" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
+                </li>
+
+                <div class="nav-socials">
+                    <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
             </div>
+
+            <!-- Hamburger tlačidlo pre mobil -->
+            <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
+                <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+            </button>
         </div>
     </nav>
 
@@ -249,11 +255,11 @@
             </div>
         </div>
 
-        <!-- GDPR MODAL OKNO (Namiesto samostatnej stránky, úplne bezpečné) -->
+        <!-- GDPR MODAL OKNO -->
         <div id="gdpr-modal" class="modal-overlay" onclick="closeGdprModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeGdprModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
-                <h2 style="color: var(--accent-gold); margin-bottom: 20px;">
+                <h2 style="color: var(--accent-green); margin-bottom: 20px;">
                     <span class="lang-sk">Ochrana osobných údajov (GDPR)</span>
                     <span class="lang-en">Privacy Policy (GDPR)</span>
                 </h2>

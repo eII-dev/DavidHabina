@@ -1,15 +1,16 @@
-/* --- ZÁKLADNÉ NASTAVENIA & PREMENNÉ (NOVÁ PALETA) --- */
+/* --- ZÁKLADNÉ NASTAVENIA & PREMENNÉ (ZELENO-BIELA PALETA) --- */
 :root {
-    --bg-black: #050505;
-    --bg-dark-1: #0a0a0c;
-    --bg-dark-2: #101014;
+    --bg-black: #050807;
+    --bg-dark-1: #0a0f0d;
+    --bg-dark-2: #101714;
     --text-white: #ffffff;
-    --text-gray: #9494a0;
+    --text-gray: #9ba8a2;
     
-    /* ZMENA FARBY: Zlatú nahrádza prémiová platinová/strieborná */
-    --accent-gold: #d4d4d8;
-    --accent-gold-hover: #f4f4f5;
-    --accent-border: rgba(212, 212, 216, 0.2);
+    /* ZELENÁ PALETA DÔVERY A RASTU */
+    --accent-green: #10b981;
+    --accent-green-hover: #059669;
+    --accent-green-glow: rgba(16, 185, 129, 0.25);
+    --accent-border: rgba(16, 185, 129, 0.2);
     
     --font-main: 'Montserrat', sans-serif;
     --font-logo: 'Cinzel', serif;
@@ -42,7 +43,6 @@ body.lang-en .lang-sk {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-gray);
-    margin-left: 10px;
     display: flex;
     align-items: center;
 }
@@ -60,7 +60,7 @@ body.lang-en .lang-sk {
 }
 
 .lang-switch button.active-lang {
-    color: var(--accent-gold);
+    color: var(--accent-green);
     font-weight: 800;
 }
 
@@ -68,7 +68,7 @@ body.lang-en .lang-sk {
     color: var(--text-white);
 }
 
-/* --- CONTAINER & NOVÁ HORNÁ LIŠTA (NAVBAR) --- */
+/* --- CONTAINER & NOVÝ UNIKÁTNY NAVBAR --- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -80,9 +80,8 @@ body.lang-en .lang-sk {
     top: 0;
     left: 0;
     width: 100%;
-    /* Iné usporiadanie: jemnejší box s obrysom namiesto plného blur bloku */
-    padding: 15px 40px;
-    background: rgba(5, 5, 5, 0.9);
+    padding: 18px 40px;
+    background: rgba(5, 8, 7, 0.9);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     z-index: 1000;
@@ -98,74 +97,91 @@ body.lang-en .lang-sk {
 
 .signature-logo {
     font-family: var(--font-main);
-    font-size: 1.1rem;
-    font-weight: 400;
+    font-size: 1.15rem;
+    font-weight: 500;
     color: var(--text-white);
     text-decoration: none;
-    letter-spacing: 6px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     transition: color var(--transition-fast);
     z-index: 1001;
 }
 
 .signature-logo:hover {
-    color: var(--accent-gold);
+    color: var(--accent-green);
 }
 
-/* Nový štýl menu - vzdušnejšie, s jemným ohraničením */
 .nav-links {
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 30px;
-    background: rgba(255, 255, 255, 0.02);
-    padding: 8px 24px;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 25px;
 }
 
 .nav-links a {
     color: var(--text-gray);
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     transition: color var(--transition-fast);
 }
 
 .nav-links a:hover {
-    color: var(--text-white);
+    color: var(--accent-green);
 }
 
 .btn-kontakt {
-    background-color: transparent !important;
-    color: var(--text-white) !important;
-    border: 1px solid var(--accent-gold);
-    padding: 8px 20px !important;
-    border-radius: 20px !important;
-    font-weight: 600 !important;
-    transition: all var(--transition-fast) !important;
+    background-color: var(--accent-green);
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 15px var(--accent-green-glow);
+    transition: all var(--transition-fast);
+    display: inline-block;
 }
 
 .btn-kontakt:hover {
-    background-color: var(--accent-gold) !important;
-    color: #000 !important;
+    background-color: var(--accent-green-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--accent-green-glow);
+}
+
+/* Úplne nové usporiadanie sociálnych sietí v hornej lište (desktop) */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .nav-socials {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     align-items: center;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 20px;
 }
 
 .nav-socials a {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--accent-border);
+    border-radius: 50%;
     color: var(--text-gray);
     font-size: 0.85rem;
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .nav-socials a:hover {
-    color: var(--text-white);
+    background: var(--accent-green);
+    color: #fff;
+    border-color: var(--accent-green);
+    transform: translateY(-2px);
 }
 
 .mobile-socials {
@@ -176,8 +192,8 @@ body.lang-en .lang-sk {
     display: none;
     background: none;
     border: none;
-    color: var(--accent-gold);
-    font-size: 1.5rem;
+    color: var(--accent-green);
+    font-size: 1.6rem;
     cursor: pointer;
     z-index: 1001;
     padding: 10px;
@@ -204,7 +220,7 @@ body.lang-en .lang-sk {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.6) 50%, rgba(5,5,5,0.98) 100%);
+    background: linear-gradient(to bottom, rgba(5,8,7,0.2) 0%, rgba(5,8,7,0.55) 50%, rgba(5,8,7,0.98) 100%);
 }
 
 .hero-content {
@@ -232,7 +248,7 @@ body.lang-en .lang-sk {
     font-size: clamp(0.75rem, 2vw, 0.9rem);
     font-weight: 300;
     letter-spacing: 5px;
-    color: var(--accent-gold); 
+    color: var(--accent-green); 
     margin-bottom: 40px;
     margin-right: -5px; 
 }
@@ -275,8 +291,8 @@ body.lang-en .lang-sk {
 .sub-heading {
     font-size: 0.7rem;
     letter-spacing: 4px;
-    color: var(--accent-gold);
-    font-weight: 600;
+    color: var(--accent-green);
+    font-weight: 700;
     display: block;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -324,7 +340,7 @@ body.lang-en .lang-sk {
 }
 
 .feature-item i {
-    color: var(--accent-gold);
+    color: var(--accent-green);
     margin-top: 4px;
 }
 
@@ -344,12 +360,12 @@ body.lang-en .lang-sk {
 
 .service-box:hover {
     transform: translateY(-5px);
-    border-color: var(--text-white);
+    border-color: var(--accent-green);
 }
 
 .service-icon {
     font-size: 1.8rem;
-    color: var(--accent-gold);
+    color: var(--accent-green);
     margin-bottom: 20px;
 }
 
@@ -390,9 +406,9 @@ body.lang-en .lang-sk {
 
 .blog-date {
     font-size: 0.7rem;
-    color: var(--accent-gold);
+    color: var(--accent-green);
     letter-spacing: 2px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .blog-card h3 {
@@ -424,10 +440,10 @@ body.lang-en .lang-sk {
 }
 
 .read-more-btn:hover {
-    color: var(--accent-gold);
+    color: var(--accent-green);
 }
 
-/* --- BLOG MODAL --- */
+/* --- BLOG & GDPR MODAL --- */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -450,7 +466,7 @@ body.lang-en .lang-sk {
 
 .modal-content {
     background-color: var(--bg-dark-1);
-    border: 1px solid var(--accent-gold);
+    border: 1px solid var(--accent-green);
     max-width: 750px;
     width: 100%;
     max-height: 85vh;
@@ -473,7 +489,7 @@ body.lang-en .lang-sk {
 }
 
 .modal-close:hover {
-    color: var(--accent-gold);
+    color: var(--accent-green);
 }
 
 .modal-content h2 {
@@ -501,7 +517,7 @@ body.lang-en .lang-sk {
 .faq-item {
     background-color: var(--bg-dark-2);
     padding: 25px;
-    border-left: 2px solid var(--accent-gold);
+    border-left: 3px solid var(--accent-green);
     border-top: 1px solid var(--accent-border);
     border-right: 1px solid var(--accent-border);
     border-bottom: 1px solid var(--accent-border);
@@ -532,7 +548,7 @@ body.lang-en .lang-sk {
 }
 
 .contact-role {
-    color: var(--accent-gold);
+    color: var(--accent-green);
     letter-spacing: 2px;
     font-size: 0.8rem;
     font-weight: 600;
@@ -547,7 +563,7 @@ body.lang-en .lang-sk {
 }
 
 .contact-line i {
-    color: var(--accent-gold);
+    color: var(--accent-green);
     font-size: 1rem;
     width: 20px;
     text-align: center;
@@ -561,7 +577,7 @@ body.lang-en .lang-sk {
 }
 
 .contact-line a:hover {
-    color: var(--accent-gold);
+    color: var(--accent-green);
 }
 
 .contact-form {
@@ -583,22 +599,23 @@ body.lang-en .lang-sk {
 
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
-    border-color: var(--accent-gold);
+    border-color: var(--accent-green);
 }
 
 .btn-submit {
-    background-color: var(--accent-gold);
-    color: #000;
+    background-color: var(--accent-green);
+    color: #fff;
     padding: 15px;
     border: none;
     font-weight: 700;
     letter-spacing: 2px;
     cursor: pointer;
+    box-shadow: 0 4px 15px var(--accent-green-glow);
     transition: all var(--transition-fast);
 }
 
 .btn-submit:hover {
-    background-color: var(--accent-gold-hover);
+    background-color: var(--accent-green-hover);
     transform: translateY(-2px);
 }
 
@@ -631,7 +648,7 @@ footer {
     height: 16px;
     min-width: 16px;
     margin-top: 2px;
-    accent-color: var(--accent-gold);
+    accent-color: var(--accent-green);
     cursor: pointer;
 }
 
@@ -643,7 +660,7 @@ footer {
 }
 
 .checkbox-group label a {
-    color: var(--accent-gold);
+    color: var(--accent-green);
     text-decoration: underline;
 }
 
@@ -654,7 +671,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: var(--accent-gold);
+    color: var(--accent-green);
 }
 
 .cookie-banner {
@@ -662,7 +679,7 @@ footer {
     bottom: -150%;
     left: 0;
     width: 100%;
-    background: rgba(10, 10, 12, 0.95);
+    background: rgba(10, 15, 13, 0.95);
     backdrop-filter: blur(10px);
     border-top: 1px solid var(--accent-border);
     z-index: 9999;
@@ -692,7 +709,7 @@ footer {
 }
 
 .cookie-content a {
-    color: var(--accent-gold);
+    color: var(--accent-green);
     text-decoration: underline;
 }
 
@@ -713,13 +730,13 @@ footer {
 }
 
 .btn-cookie-accept {
-    background-color: var(--accent-gold);
-    color: #000;
+    background-color: var(--accent-green);
+    color: #fff;
     border: none;
 }
 
 .btn-cookie-accept:hover {
-    background-color: var(--accent-gold-hover);
+    background-color: var(--accent-green-hover);
 }
 
 .btn-cookie-decline {
@@ -759,7 +776,7 @@ footer {
         right: -100%;
         width: 100%;
         height: 100vh;
-        background: rgba(5, 5, 5, 0.98);
+        background: rgba(5, 8, 7, 0.98);
         backdrop-filter: blur(15px);
         flex-direction: column;
         justify-content: center;
@@ -787,7 +804,7 @@ footer {
         margin-top: 15px;
         align-items: center;
     }
-    .mobile-socials a { color: var(--accent-gold); font-size: 1.3rem; padding: 8px; }
+    .mobile-socials a { color: var(--accent-green); font-size: 1.3rem; padding: 8px; }
 
     .section { padding: 60px 0; }
     .section-header { margin-bottom: 40px; }
