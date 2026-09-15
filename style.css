@@ -18,11 +18,12 @@
     box-sizing: border-box;
 }
 
-/* Kvôli GSAP musíme elementy pred animáciou skryť a jemne posunúť (rýchlejšia odozva) */
+/* Príprava pre GSAP animácie */
 [data-aos] {
     opacity: 0;
-    transform: translateY(20px);
-    transition: none !important; /* Zamedzuje konfliktu s GSAPom */
+    transform: translateY(30px);
+    visibility: hidden; /* Zamedzuje prebliknutiu */
+    transition: none !important; 
 }
 
 body {
@@ -627,7 +628,7 @@ footer {
 
 /* --- RESPONZIVITA (MOBIL & TABLET) --- */
 @media (max-width: 900px) {
-    /* PREMIUM MOBILE LOCK - Zamedzuje preskakovaniu adresnej lišty! */
+    /* PREMIUM MOBILE LOCK */
     html {
         overflow: hidden !important;
         height: 100% !important;
@@ -638,7 +639,8 @@ footer {
         left: 0;
         width: 100%;
         height: 100% !important;
-        overflow-y: auto !important;
+        /* JS toto mení na hidden pri otvorenom menu */
+        overflow-y: auto !important; 
         overflow-x: hidden !important;
         -webkit-overflow-scrolling: touch;
     }

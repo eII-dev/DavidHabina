@@ -2,24 +2,12 @@
 const isMobile = window.innerWidth <= 900;
 const scrollWrapper = isMobile ? document.body : window;
 
-// --- LENIS SMOOTH SCROLL ---
+// --- LENIS SMOOTH SCROLL (Optimalizovaný pre maslovú plynulosť) ---
 const lenis = new Lenis({
     wrapper: scrollWrapper,
-    // Na mobile ide natívny touch fix cez CSS, tu sa to len synchronizuje
-    smoothTouch: false, 
-    // ZRÝCHLENÉ: Zmenené z 1.1 na 0.6 pre svižnejší pocit z posúvania na PC
-    duration: 0.6, 
-});
-
-// Plynulé posúvanie k ukotveným odkazom (menu)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            lenis.scrollTo(target);
-        }
-    });
+    smoothTouch: false, // Nechávame natívny touch fix cez CSS na mobile
+    duration: 0.9, // Ideálna hodnota pre luxusný dojazd na PC
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Jemná GSAP krivka
 });
 
 // --- GSAP & SCROLLTRIGGER SYNC ---
@@ -29,7 +17,7 @@ ScrollTrigger.defaults({
     scroller: scrollWrapper
 });
 
-// ZÁSADNÁ OPRAVA PRE MOBIL: GSAP musí vyslovene počúvať natívny scroll na body
+// Vynútené počúvanie natívneho scrollu na mobile pre GSAP
 if (isMobile) {
     document.body.addEventListener('scroll', ScrollTrigger.update);
 }
@@ -40,18 +28,74 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0, 0);
 
-// --- ZRÝCHLENÉ GSAP ANIMÁCIE ---
+// --- CENTRÁLNA LOGIKA PRE MENU A PREKLIKY ---
+const hamburgerToggle = document.getElementById('hamburger-toggle');
+const navLinks = document.getElementById('nav-links');
+const hamburgerIcon = document.getElementById('hamburger-icon');
+
+function toggleMenu(forceClose = false) {
+    if (!navLinks || !hamburgerToggle) return;
+    
+    const isOpening = !navLinks.classList.contains('active') && !forceClose;
+
+    if (isOpening) {
+        // Otvorenie menu
+        navLinks.classList.add('active');
+        hamburgerIcon.classList.remove('fa-bars');
+        hamburgerIcon.classList.add('fa-xmark');
+        lenis.stop(); // Zastaví Lenis na PC
+        document.body.style.setProperty('overflow-y', 'hidden', 'important'); // Tvrdý zámok na pozadie pre mobil
+    } else {
+        // Zatvorenie menu
+        navLinks.classList.remove('active');
+        hamburgerIcon.classList.remove('fa-xmark');
+        hamburgerIcon.classList.add('fa-bars');
+        lenis.start(); // Spustí Lenis
+        document.body.style.setProperty('overflow-y', 'auto', 'important'); // Odomkne pozadie na mobile
+    }
+}
+
+// Kliknutie na hamburger ikonku
+if (hamburgerToggle) {
+    hamburgerToggle.addEventListener('click', () => toggleMenu());
+}
+
+// Kliknutie na AKÝKOĽVEK odkaz (na PC aj mobile)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault(); // Zabráni tvrdému skoku
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            // Zavrieme menu a odomkneme scrollovanie
+            toggleMenu(true);
+            
+            // Malý delay zabezpečí, že sa odomknutie aplikuje pred štartom scrollovania
+            setTimeout(() => {
+                lenis.scrollTo(targetElement, { 
+                    offset: -80, // Odsadí 80px zhora, aby nadpis neskončil pod fixným menu!
+                    duration: 1.2  // Elegantná a plynulá rýchlosť presunu na sekciu
+                });
+            }, 50);
+        }
+    });
+});
+
+// --- RÝCHLE A ELEGANTNÉ GSAP ANIMÁCIE ---
 function initGSAPAnimations(elements) {
     elements.forEach(el => {
         gsap.to(el, {
             opacity: 1, 
             y: 0, 
-            duration: 0.35, // RÝCHLEJŠIE: Skrátené z 0.6 na 0.35
-            ease: "power1.out", // Jemnejšia a rýchlejšia krivka
+            duration: 0.45, // Rýchly ale elegantný nábeh prvkov
+            ease: "power2.out", 
             scrollTrigger: {
                 trigger: el,
                 scroller: scrollWrapper,
-                start: "top 95%", // Spustí sa hneď, ako vykukne spodný okraj
+                start: "top 95%", 
             }
         });
     });
@@ -146,12 +190,14 @@ function openBlogModal(index) {
     
     document.getElementById('blog-modal').classList.add('active');
     lenis.stop(); 
+    document.body.style.setProperty('overflow-y', 'hidden', 'important'); // Zámok na mobile
 }
 
 function closeBlogModal() {
     const modal = document.getElementById('blog-modal');
     if (modal) modal.classList.remove('active');
     lenis.start(); 
+    document.body.style.setProperty('overflow-y', 'auto', 'important'); // Odomknutie na mobile
 }
 
 document.addEventListener('keydown', (e) => {
@@ -166,34 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Spustenie animácií
     initGSAPAnimations(document.querySelectorAll('[data-aos]'));
-
-    const hamburgerToggle = document.getElementById('hamburger-toggle');
-    const navLinks = document.getElementById('nav-links');
-    const hamburgerIcon = document.getElementById('hamburger-icon');
-
-    if (hamburgerToggle && navLinks) {
-        hamburgerToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            if (navLinks.classList.contains('active')) {
-                hamburgerIcon.classList.remove('fa-bars');
-                hamburgerIcon.classList.add('fa-xmark');
-                lenis.stop(); 
-            } else {
-                hamburgerIcon.classList.remove('fa-xmark');
-                hamburgerIcon.classList.add('fa-bars');
-                lenis.start(); 
-            }
-        });
-
-        document.querySelectorAll('#nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburgerIcon.classList.remove('fa-xmark');
-                hamburgerIcon.classList.add('fa-bars');
-                lenis.start(); 
-            });
-        });
-    }
 
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
