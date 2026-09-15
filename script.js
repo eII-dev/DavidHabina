@@ -130,7 +130,6 @@ async function loadBlogPosts() {
     try {
         const response = await fetch('data/blog.json');
         const data = await response.json();
-        // Podpora pre objekt s items (Decap CMS formát) aj pre priame pole
         globalBlogItems = Array.isArray(data) ? data : (data.items || data.articles || []);
         renderBlogPosts();
     } catch (error) {
