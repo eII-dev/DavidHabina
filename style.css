@@ -105,41 +105,6 @@ body {
     color: var(--accent-gold);
 }
 
-.btn-kontakt {
-    background-color: var(--accent-gold);
-    color: #000 !important;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-weight: 700 !important;
-    transition: background-color var(--transition-fast), transform 0.2s ease;
-    display: inline-block;
-}
-
-.btn-kontakt:hover {
-    background-color: var(--accent-gold-hover);
-    transform: translateY(-2px);
-}
-
-/* Desktopové sociálne siete vpravo */
-.desktop-socials {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-left: 20px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    padding-left: 20px;
-}
-
-.desktop-socials a {
-    color: var(--text-white);
-    font-size: 0.9rem;
-    transition: color var(--transition-fast);
-}
-
-.desktop-socials a:hover {
-    color: var(--accent-gold);
-}
-
 .mobile-only-link {
     display: none;
 }

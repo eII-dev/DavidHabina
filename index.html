@@ -48,7 +48,7 @@
                 <li class="mobile-only-link"><a href="#referencie">REFERENCIE</a></li>
                 <li><a href="#blog">BLOG</a></li>
                 <li><a href="#faq">FAQ</a></li>
-                <li><a href="#kontakt" class="btn-kontakt">KONTAKT</a></li>
+                <li><a href="#kontakt">KONTAKT</a></li>
                 
                 <li class="mobile-socials">
                     <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -56,12 +56,6 @@
                     <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                 </li>
             </ul>
-
-            <div class="desktop-socials">
-                <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
 
             <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
                 <i class="fa-solid fa-bars" id="hamburger-icon"></i>
@@ -283,4 +277,66 @@
                         </div>
 
                         <div class="contact-socials">
-                            <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f
+                            <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="kontakt" />
+                        <p style="display:none;">
+                            <label>Spam protection: <input name="bot-field" /></label>
+                        </p>
+
+                        <div class="form-group">
+                            <input type="text" name="meno" placeholder="Meno a priezvisko" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Váš E-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="telefon" placeholder="Telefónne číslo">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="sprava" rows="5" placeholder="S čím vám môžem pomôcť?" required></textarea>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="gdpr-consent" name="gdpr_suhlas" required>
+                            <label for="gdpr-consent">Súhlasím so <a href="#" onclick="openGdprModal(event)">spracovaním osobných údajov</a>.</label>
+                        </div>
+
+                        <button type="submit" class="btn-submit">ODOSLAŤ SPRÁVU</button>
+
+                        <div id="form-status" style="margin-top: 15px; font-weight: 600; text-align: center;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>Copyright &copy; 2026 David Habina. Všetky práva vyhradené.</p>
+            <div class="footer-links">
+                <a href="#" onclick="openGdprModal(event)">Ochrana osobných údajov (GDPR)</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Pre najlepší zážitok z nášho webu používame súbory cookies. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn-cookie-accept">Prijať všetky</button>
+                <button id="decline-cookies" class="btn-cookie-decline">Iba nevyhnutné</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
