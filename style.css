@@ -140,7 +140,7 @@ body {
     background-color: #000;
     background-image: url('davidko.webp');
     background-repeat: no-repeat;
-    background-position: 90% 80px; /* Výrazne posunuté doprava na PC */
+    background-position: center 80px;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -898,6 +898,15 @@ footer {
     .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
     .modal-content { padding: 25px; }
     .footer-content { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* --- EXKLUZÍVNE PRE PC: PRESNÉ VYCENTROVANIE HLAVY --- */
+@media (min-width: 901px) {
+    .hero-section {
+        /* Hodnota 65% posunie obrázok doprava tak, aby bola tvár presne v osi textu. 
+           Ak by bolo treba ešte milimeter doprava, zmeň na 68% alebo 70% */
+        background-position: 68% 80px !important; 
+    }
 }
 
 @media (max-width: 768px) {
