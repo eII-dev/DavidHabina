@@ -1,318 +1,165 @@
-const isMobile = window.innerWidth <= 900;
-const scrollWrapper = isMobile ? document.body : window;
+document.addEventListener("DOMContentLoaded", () => {
+    // --- 1. MOBILNÉ MENU (Hamburger) ---
+    const hamburgerToggle = document.getElementById("hamburger-toggle");
+    const navLinksMobile = document.getElementById("nav-links-mobile");
+    const hamburgerIcon = document.getElementById("hamburger-icon");
 
-// --- GSAP & SCROLLTRIGGER SYNC ---
-gsap.registerPlugin(ScrollTrigger);
-
-ScrollTrigger.defaults({
-    scroller: scrollWrapper
-});
-
-if (isMobile) {
-    document.body.addEventListener('scroll', ScrollTrigger.update);
-}
-
-// --- ANIMÁCIA ŠTATISTÍK (COUNTER) ---
-function initCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200;
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = +counter.getAttribute('data-target');
-                
-                const updateCount = () => {
-                    const count = +counter.innerText;
-                    const inc = target / speed;
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 25);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-
-                updateCount();
-                observer.unobserve(counter);
+    if (hamburgerToggle && navLinksMobile) {
+        hamburgerToggle.addEventListener("click", () => {
+            navLinksMobile.classList.toggle("active");
+            if (navLinksMobile.classList.contains("active")) {
+                hamburgerIcon.classList.remove("fa-bars");
+                hamburgerIcon.classList.add("fa-xmark");
+            } else {
+                hamburgerIcon.classList.remove("fa-xmark");
+                hamburgerIcon.classList.add("fa-bars");
             }
         });
-    }, { threshold: 0.3 });
 
-    counters.forEach(counter => observer.observe(counter));
-}
-
-// --- CENTRÁLNA LOGIKA PRE MENU A PREKLIKY ---
-const hamburgerToggle = document.getElementById('hamburger-toggle');
-const navLinks = document.getElementById('nav-links-mobile');
-const hamburgerIcon = document.getElementById('hamburger-icon');
-
-function toggleMenu(forceClose = false) {
-    if (!navLinks || !hamburgerToggle) return;
-    
-    const isOpening = !navLinks.classList.contains('active') && !forceClose;
-
-    if (isOpening) {
-        navLinks.classList.add('active');
-        hamburgerIcon.classList.remove('fa-bars');
-        hamburgerIcon.classList.add('fa-xmark');
-        document.body.style.setProperty('overflow-y', 'hidden', 'important'); 
-    } else {
-        navLinks.classList.remove('active');
-        hamburgerIcon.classList.remove('fa-xmark');
-        hamburgerIcon.classList.add('fa-bars');
-        document.body.style.setProperty('overflow-y', 'auto', 'important'); 
+        // Zatvorenie menu po kliknutí na akýkoľvek odkaz
+        navLinksMobile.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinksMobile.classList.remove("active");
+                hamburgerIcon.classList.remove("fa-xmark");
+                hamburgerIcon.classList.add("fa-bars");
+            });
+        });
     }
-}
 
-if (hamburgerToggle) {
-    hamburgerToggle.addEventListener('click', () => toggleMenu());
-}
-
-// --- PREKLIKY ---
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault(); 
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-            toggleMenu(true);
-            
-            setTimeout(() => {
-                if (isMobile) {
-                    const offsetTop = targetElement.getBoundingClientRect().top + document.body.scrollTop - 80;
-                    gsap.to(document.body, {
-                        scrollTop: offsetTop,
-                        duration: 0.6,
-                        ease: "power2.out"
-                    });
-                } else {
-                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 50); 
-        }
-    });
-});
-
-// --- RÝCHLE A PLYNULÉ GSAP ANIMÁCIE ---
-function initGSAPAnimations(elements) {
-    elements.forEach(el => {
-        gsap.fromTo(el, 
-            { opacity: 0, y: 20 },
-            {
-                opacity: 1, 
-                y: 0, 
-                duration: 0.4, 
-                ease: "power1.out", 
-                scrollTrigger: {
-                    trigger: el,
-                    scroller: scrollWrapper,
-                    start: "top 98%", 
-                }
-            }
-        );
-    });
-}
-
-// --- BLOG LOGIKA (S podporou obrázkov a najnovšími vpravo) ---
-let globalBlogItems = [];
-
-async function loadBlogPosts() {
-    try {
-        const response = await fetch('data/blog.json');
-        const data = await response.json();
-        globalBlogItems = Array.isArray(data) ? data : (data.items || data.articles || []);
-        renderBlogPosts();
-    } catch (error) {
-        console.error('Chyba pri načítavaní blogu:', error);
-    }
-}
-
-function renderBlogPosts() {
-    const container = document.getElementById('blog-grid');
-    if (!container) return;
-    container.innerHTML = '';
-
-    const sortedItems = [...globalBlogItems].reverse();
-
-    sortedItems.forEach((item, index) => {
-        const originalIndex = globalBlogItems.length - 1 - index;
-        
-        const article = document.createElement('article');
-        article.className = 'blog-card';
-        article.setAttribute('data-aos', 'true'); 
-        
-        const title = item.title || item.title_sk || '';
-        const desc = item.description || item.desc_sk || '';
-        const date = item.date || '';
-        const image = item.image || '';
-
-        let imageHtml = image ? `<div class="blog-image-wrapper"><img src="${image}" alt="${title}" loading="lazy"></div>` : '';
-
-        article.innerHTML = `
-            ${imageHtml}
-            <div class="blog-info">
-                <span class="blog-date">${date}</span>
-                <h3>${title}</h3>
-                <p>${desc}</p>
-                <button onclick="openBlogModal(${originalIndex})" class="read-more-btn">
-                    <span>Čítať viac</span> 
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-        `;
-        container.appendChild(article);
-    });
-    
-    initGSAPAnimations(document.querySelectorAll('.blog-card'));
-    ScrollTrigger.refresh();
-}
-
-function openBlogModal(index) {
-    const item = globalBlogItems[index];
-    if (!item) return;
-    
-    document.getElementById('modal-title').innerText = item.title || item.title_sk || '';
-    document.getElementById('modal-date').innerText = item.date || '';
-    
-    const content = item.body || item.content_sk || item.description || '';
-    const parseContent = (text) => {
-        if (!text) return '';
-        return typeof marked !== 'undefined' ? marked.parse(text) : text.replace(/\n/g, '<br>');
+    // --- 2. GDPR MODAL ---
+    window.openGdprModal = function(event) {
+        if (event) event.preventDefault();
+        const modal = document.getElementById("gdpr-modal");
+        if (modal) modal.classList.add("active");
     };
 
-    document.getElementById('modal-content').innerHTML = parseContent(content);
-    
-    document.getElementById('blog-modal').classList.add('active');
-    document.body.style.setProperty('overflow-y', 'hidden', 'important'); 
-}
+    window.closeGdprModal = function() {
+        const modal = document.getElementById("gdpr-modal");
+        if (modal) modal.classList.remove("active");
+    };
 
-function closeBlogModal() {
-    const modal = document.getElementById('blog-modal');
-    if (modal) modal.classList.remove('active');
-    document.body.style.setProperty('overflow-y', 'auto', 'important'); 
-}
+    // --- 3. COOKIE BANNER ---
+    const cookieBanner = document.getElementById("cookie-banner");
+    const acceptCookiesBtn = document.getElementById("accept-cookies");
+    const declineCookiesBtn = document.getElementById("decline-cookies");
 
-// --- GDPR MODAL LOGIKA ---
-function openGdprModal(e) {
-    if (e) e.preventDefault();
-    const modal = document.getElementById('gdpr-modal');
-    if (modal) {
-        modal.classList.add('active');
-        document.body.style.setProperty('overflow-y', 'hidden', 'important');
-    }
-}
+    if (cookieBanner) {
+        if (!localStorage.getItem("cookieConsent")) {
+            setTimeout(() => {
+                cookieBanner.classList.add("show");
+            }, 1000);
+        }
 
-function closeGdprModal() {
-    const modal = document.getElementById('gdpr-modal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.setProperty('overflow-y', 'auto', 'important');
-    }
-}
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeBlogModal();
-        closeGdprModal();
-    }
-});
-
-// --- INICIALIZÁCIA STRÁNKY ---
-document.addEventListener('DOMContentLoaded', () => {
-    loadBlogPosts();
-    initCounters(); 
-    
-    const scrollLeftBtn = document.getElementById('scroll-left-btn');
-    const scrollRightBtn = document.getElementById('scroll-right-btn');
-    const blogGrid = document.getElementById('blog-grid');
-
-    if (scrollLeftBtn && blogGrid) {
-        scrollLeftBtn.addEventListener('click', () => {
-            blogGrid.scrollBy({ left: -390, behavior: 'smooth' });
-        });
-    }
-
-    if (scrollRightBtn && blogGrid) {
-        scrollRightBtn.addEventListener('click', () => {
-            blogGrid.scrollBy({ left: 390, behavior: 'smooth' });
-        });
-    }
-
-    setTimeout(() => {
-        initGSAPAnimations(document.querySelectorAll('[data-aos]'));
-        ScrollTrigger.refresh();
-    }, 50);
-
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-
-            fetch('/', {
-                method: 'POST',
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(() => {
-                formStatus.style.color = '#28a745';
-                formStatus.innerText = 'Ďakujem! Vaša správa bola úspešne odoslaná.';
-                contactForm.reset();
-            })
-            .catch(() => {
-                formStatus.style.color = '#dc3545';
-                formStatus.innerText = 'Chyba pri odosielaní. Skúste to prosím znova.';
-            });
-        });
-    }
-});
-
-// Netlify Identity
-if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-        if (!user) {
-            window.netlifyIdentity.on("login", () => {
-                document.location.href = "/admin/";
+        if (acceptCookiesBtn) {
+            acceptCookiesBtn.addEventListener("click", () => {
+                localStorage.setItem("cookieConsent", "all");
+                cookieBanner.classList.remove("show");
             });
         }
-    });
-}
 
-// --- COOKIE BANNER LOGIKA ---
-document.addEventListener('DOMContentLoaded', () => {
-    const cookieBanner = document.getElementById('cookie-banner');
-    const btnAccept = document.getElementById('accept-cookies');
-    const btnDecline = document.getElementById('decline-cookies');
-
-    if (!localStorage.getItem('cookieConsent')) {
-        setTimeout(() => {
-            if (cookieBanner) cookieBanner.classList.add('show');
-        }, 1500);
+        if (declineCookiesBtn) {
+            declineCookiesBtn.addEventListener("click", () => {
+                localStorage.setItem("cookieConsent", "necessary");
+                cookieBanner.classList.remove("show");
+            });
+        }
     }
 
-    if (btnAccept) {
-        btnAccept.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'accepted');
-            cookieBanner.classList.remove('show');
+    // --- 4. BLOG MODAL ---
+    window.closeBlogModal = function() {
+        const modal = document.getElementById("blog-modal");
+        if (modal) modal.classList.remove("active");
+    };
+
+    // --- 5. GSAP ELEGANTNÉ ANIMÁCIE ---
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Úvodná animácia Hero sekcie pri načítaní stránky
+        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        heroTl.from(".hero-title", { duration: 1.2, y: 40, opacity: 0, delay: 0.2 })
+              .from(".hero-subtitle", { duration: 1.2, y: 30, opacity: 0 }, "-=0.8")
+              .from(".scroll-down", { duration: 1, opacity: 0 }, "-=0.6");
+
+        // Elegantné vynáranie nadpisov sekcií pri scrollovaní
+        gsap.utils.toArray(".section-header").forEach(header => {
+            gsap.from(header, {
+                scrollTrigger: {
+                    trigger: header,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                duration: 1,
+                y: 30,
+                opacity: 0,
+                ease: "power2.out"
+            });
         });
-    }
 
-    if (btnDecline) {
-        btnDecline.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'declined');
-            cookieBanner.classList.remove('show');
+        // Postupné (stagger) vynáranie boxov so službami
+        gsap.from(".service-box", {
+            scrollTrigger: {
+                trigger: ".services-grid",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            duration: 0.8,
+            y: 40,
+            opacity: 0,
+            stagger: 0.15,
+            ease: "power2.out"
+        });
+
+        // Vynáranie obsahu v sekcii "O mne"
+        gsap.from(".about-text > *", {
+            scrollTrigger: {
+                trigger: "#omne",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            duration: 0.8,
+            y: 30,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
+
+        // Postupné vysúvanie FAQ otázok
+        gsap.from(".faq-item", {
+            scrollTrigger: {
+                trigger: ".faq-list",
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            duration: 0.6,
+            x: -30,
+            opacity: 0,
+            stagger: 0.1,
+            ease: "power2.out"
+        });
+
+        // Plynulé sčítavanie štatistík pri prechode zrakom
+        const stats = document.querySelectorAll(".stat-number");
+        stats.forEach(stat => {
+            const target = parseInt(stat.getAttribute("data-target"));
+            if (!isNaN(target)) {
+                ScrollTrigger.create({
+                    trigger: stat,
+                    start: "top 85%",
+                    once: true,
+                    onEnter: () => {
+                        let count = { val: 0 };
+                        gsap.to(count, {
+                            val: target,
+                            duration: 2,
+                            ease: "power1.out",
+                            onUpdate: () => {
+                                stat.innerText = Math.floor(count.val);
+                            }
+                        });
+                    }
+                });
+            }
         });
     }
 });
