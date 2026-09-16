@@ -936,8 +936,8 @@ footer {
     .contact-wrapper { gap: 30px; }
 }
 
-/* Skrytie reklamy Elfsight */
-[class*="elfsight-app"] a[href*="elfsight.com"],
-.eapps-link {
-    display: none !important;
+/* Orezanie Elfsight reklamy (Shadow DOM hack) */
+.elfsight-app-5e075a91-74b7-43d5-a9c0-fc958e255fa5 {
+    clip-path: inset(0 0 60px 0) !important;
+    margin-bottom: -60px !important;
 }
