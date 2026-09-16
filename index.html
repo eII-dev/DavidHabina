@@ -15,7 +15,8 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="davidko.webp">
 
-    <link rel="preload" href="davidko.webp" as="image" type="image/webp">
+    <!-- Zvýšená priorita načítania hlavného obrázka pre vyššiu rýchlosť (LCP) -->
+    <link rel="preload" href="davidko.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     
@@ -193,7 +194,9 @@
                 </div>
                 
                 <div class="reviews-widget-wrapper">
-                    <script defer src='https://cdn.trustindex.io/loader.js?77e04b480bf8788da416e3293f0'></script>
+                    <!-- Elfsight Google Reviews | Nahradený Trustindex -->
+                    <script src="https://elfsightcdn.com/platform.js" async></script>
+                    <div class="elfsight-app-5e075a91-74b7-43d5-a9c0-fc958e255fa5" data-elfsight-app-lazy></div>
                 </div>
             </div>
         </section>
