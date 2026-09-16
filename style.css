@@ -138,20 +138,30 @@ body {
     min-height: 600px;
     width: 100%;
     background-color: #000;
-    background-image: url('davidko.webp');
-    background-repeat: no-repeat;
-    background-position: center 80px;
-    background-size: cover;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 60px;
 }
 
+/* Reálny HTML obrázok v hero sekcii (PC nastavenie) */
+.hero-bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Upravuj toto číslo: ak je hlava stále vľavo, zvyšuj na 82%, 85%, 90% atď. */
+    object-position: 78% center; 
+    z-index: 0;
+}
+
 .hero-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.5) 45%, rgba(8,8,8,0.95) 100%);
+    z-index: 1;
 }
 
 .hero-content {
@@ -900,15 +910,6 @@ footer {
     .footer-content { flex-direction: column; gap: 12px; text-align: center; }
 }
 
-/* --- EXKLUZÍVNE PRE PC: PRESNÉ VYCENTROVANIE HLAVY --- */
-@media (min-width: 901px) {
-    .hero-section {
-        /* Hodnota 65% posunie obrázok doprava tak, aby bola tvár presne v osi textu. 
-           Ak by bolo treba ešte milimeter doprava, zmeň na 68% alebo 70% */
-        background-position: 68% 80px !important; 
-    }
-}
-
 @media (max-width: 768px) {
     .cookie-content { flex-direction: column; text-align: center; gap: 20px; }
     .cookie-buttons { width: 100%; justify-content: center; flex-direction: column; }
@@ -919,10 +920,9 @@ footer {
     .mobile-break { display: block; }
     .desktop-space { display: none; }
 
-    .hero-section {
-        background-position: 35% 80px; 
-        background-size: 260%; 
-        padding-bottom: 40px;
+    /* Mobil nechávame nedotknutý podľa požiadavky */
+    .hero-bg-image {
+        object-position: 35% center !important;
     }
 
     .hero-title {
