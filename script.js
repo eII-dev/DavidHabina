@@ -65,28 +65,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- 4. BLOG DATA & RENDERING (2x bez obrázka, 1x s obrázkom z Decap CMS) ---
+    // --- 4. BLOG DATA & RENDERING (Presne podľa blog.json z Decap CMS) ---
     const blogPosts = [
         {
-            title: "Ako si správne nastaviť hypotéku v roku 2026",
-            date: "12. FEBRUÁR 2026",
-            image: "", // Bez obrázka
-            summary: "Úrokové sadzby prechádzajú zmenami. Pozrite sa na kľúčové kroky, ako získať najvýhodnejšie financovanie pre vaše nové bývanie bez zbytočných preplatkov.",
-            content: "Svet hypoték prináša každoročne nové výzvy. Pri výbere banky sa neoplatí pozerať len na samotný úrok, ale aj na poplatky, podmienky predčasného splatenia či povinné poistenie.\n\n### Na čo si dať pozor?\n1. Fixácia úrokovej sadzby.\n2. LTV (výška úveru vzhľadom k hodnote nehnuteľnosti).\n3. Možnosti mimoriadnych splátok bez sankcií.\n\nAk chcete ušetriť tisíce eur, oplatí sa preveriť ponuky viacerých bánk naraz, s čím vám ako nezávislý sprostredkovateľ rád pomôžem."
+            title: "Ako si dohodnúť najnižší úrok na hypotéke?",
+            date: "4. SEPTEMBER 2026",
+            image: "",
+            summary: "Prehľad kľúčových faktorov, ktoré rozhodujú o podmienkach pri financovaní bývania...",
+            content: "Získanie najlepšieho úroku na hypotéke nie je len o šťastí, ale o dôkladnej príprave.\n\n### 1. Porovnajte celý trh\nBanka vám vždy ponúkne len svoje vlastné produkty. Ak však porovnáte ponuky všetkých bánk na trhu, dokážete ušetriť desiatky tisíc eur na úrokoch.\n\n### 2. Príprava úverového registra\nPred žiadosťou o hypotéku je dôležité mať čistý úverový register a správne nastavené existujúce záväzky.\n\nObráťte sa na mňa a všetko vybavím za vás bez zbytočného stresu."
         },
         {
-            title: "Investovanie pre začiatočníkov: Ako ochrániť peniaze pred infláciou",
-            date: "28. JANUÁR 2026",
-            image: "", // Bez obrázka
-            summary: "Nechať peniaze na bežnom účte sa dnes neoplatí. Zistite, ako fungujú podielové fondy a prečo je pravidelné sporenie kľúčom k finančnej nezávislosti.",
-            content: "Inflácia ukrajuje z úspor každého z nás. Jediným spôsobom, ako peniaze dlhodobo zhodnotiť, je rozumné investovanie do overených aktív.\n\n### Základné pravidlá investovania:\n- **Čas je váš najlepší priateľ** (sila zloženého úrokovania).\n- **Diverzifikácia portfólia** (nedávajte všetky vajíčka do jedného košíka).\n- **Pravidelnosť a disciplína** (vyhátnuť sa panike pri výkyvoch trhu)."
+            title: "Investovanie pre začiatočníkov: Kde začať?",
+            date: "28. AUGUST 2026",
+            image: "",
+            summary: "Základné pravidlá pre budovanie finančnej rezervy a dlhodobého majetku bez rizika...",
+            content: "Mnoho ľudí sa obáva investovania kvôli riziku. Pri správne nastavenej stratégii je však investovanie najlepším nástrojom na ochranu peňazí pred infláciou.\n\n### Základné pravidlá:\n1. Vytvorte si najprv núdzovú rezervu (3 až 6-násobok mesačných výdavkov).\n2. Investujte pravidelne a dlhodobo.\n3. Diverzifikujte svoje portfolio."
         },
         {
-            title: "Prehľad noviniek a úspešných realizácií v Košiciach",
-            date: "15. FEBRUÁR 2026",
-            image: "davidko.webp", // S obrázkom (spravované cez Decap CMS)
-            summary: "Pozrite si fotogalériu a zhrnutie úspešne vybavených financovaní a moderných stretnutí s klientmi v Business Center Rozvojová.",
-            content: "Za posledné obdobie sa nám podarilo pomôcť desiatkam klientov v Košiciach a okolí s financovaním bývania a investícií.\n\nTeší ma dôvera, ktorú mi prejavujete. Všetky osobné stretnutia prebiehajú v príjemnom a profesionálnom prostredí Business Center Rozvojová."
+            title: "Ako nestratiť peniaze v roku 2026 💵🔎",
+            date: "15.SEPTEMBER 2026",
+            image: "/images/714e6904-f562-38dd-9522-f1de3447647a.jpg",
+            summary: "Rast cien je realita, ktorej sa nevyhne nikto z nás. Pozri sa, ako ovplyvňuje tvoje financie a prečo dáva zmysel nechať peniaze pracovať.",
+            content: `# **ČO ROBÍ INFLÁCIA S ÚSPORAMI ?**\n\nInflácia potichu ukrajuje z hodnoty peňazí. Ak necháš úspory len ležať na účte alebo doma „pod vankúšom“, síce sa **ich suma nemení, ale to, čo si za ne kúpiš, áno — a smerom nadol.**\n\nPredstav si jednoduchý príklad:\nDnes spravíš veľký nákup potravín za 100 €.\nAk budú ceny o rok vyššie **o 5 %, ten istý nákup ťa bude stáť približne 105 €.**\n\nTvojich 100 € nezmizlo ale ich kúpna sila áno.\n\nA práve preto dlhodobo **neinvestované peniaze znamenajú tichú, ale reálnu stratu.**\n\n![](/images/8d9233ce-de39-0bc7-672f-0a1b0fb0dc69.jpg)\n\n**ODPORÚČANIE**\n\n**Úprava trvalého príkazu na existujúcich investičných zmluvách.** Variabilný symbol aj IBAN zostávajú nezmenené. **Ak využívaš investície a chcel by si sa na to pozrieť alebo ak ešte neivestuješ a preferuješ sa dozvedieť viac informácií, neváhaj ma kontaktovať.**\n\n**PRÍKLADY PLATIEB**\n\n**35 € / mesačne**\n+ 4,2 % = **36,48 €**\n\n**50 € / mesačne**\n+ 4,2 % = **52,10 €**\n\n**75 € / mesačne**\n+ 4,2 % = **78,15 €**\n\n**100 € / mesačne**\n+ 4,2 % = **104,20 €**\n\n![](/images/1b1666f9-0e3a-3b63-7eb3-584ecc40f350.jpg)\n\n**PREČO NAVÝŠIŤ INVESTÍCIU ?**\n\n**Ochrana reálnej hodnoty Tvojich investícií:** Tvoja investícia bude držať krok s infláciou.\n \n\n**Vyššia konečná suma:** Zvýšením príspevkov dosiahneš vyššiu celkovú investovanú sumu.\n\nChráň svoje investície pred infláciou a zabezpeč ich rast aj v súčasnom ekonomickom prostredí.\n\nPríklad investície **3000 eur/jednorázovo na začiatku + 100 eur/mesačne po dobu 20 rokov** pri priemernom zhodnotení **8.39 % ročne:** čistý zisk v čase = **47 000 eur**\n\n\n![](/images/38e85202-757d-2bfb-0b92-d35754e702f5.png)\n\nPríklad **konzervatívnejšej investície 50 000 eur jednorázovo po dobu 5 rokov** pri priemernom zhodnotení **4.25 % ročne:** čistý zisk v čase = **11 500 eur**\n\n![](/images/094817fa-2b29-dc08-02b7-bab421a4a6b7.png)`
         }
     ];
 
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "blog-card";
             
-            // Vykreslí obal s obrázkom iba vtedy, ak obrázok v poli existuje
+            // Vykreslí obrázok iba ak ho článok obsahuje (pre prvé dva nebude, pre tretí áno)
             const imageWrapperHtml = post.image 
                 ? `<div class="blog-image-wrapper"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` 
                 : '';
@@ -126,7 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     const contentDiv = document.getElementById("modal-content");
                     let fullHtml = "";
-                    if (post.image) {
+                    // Ak má článok hlavný obrázok, zobrazí sa aj v modale hore
+                    if (post.image && post.image !== "/images/714e6904-f562-38dd-9522-f1de3447647a.jpg") {
                         fullHtml += `<img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:4px; margin-bottom:20px;">`;
                     }
                     if (typeof marked !== 'undefined') {
