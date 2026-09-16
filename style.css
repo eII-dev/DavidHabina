@@ -936,8 +936,8 @@ footer {
     .contact-wrapper { gap: 30px; }
 }
 
-/* Orezanie Elfsight reklamy (Shadow DOM hack) */
+/* Orezanie Elfsight reklamy (Shadow DOM hack) s opravou šípok */
 .elfsight-app-5e075a91-74b7-43d5-a9c0-fc958e255fa5 {
-    clip-path: inset(0 0 60px 0) !important;
+    clip-path: inset(-100px -100px 60px -100px) !important;
     margin-bottom: -60px !important;
 }
