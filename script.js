@@ -65,23 +65,103 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- 4. BLOG MODAL ---
+    // --- 4. BLOG DATA & RENDERING ---
+    const blogPosts = [
+        {
+            title: "Ako si správne nastaviť hypotéku v roku 2026",
+            date: "12. FEBRUÁR 2026",
+            image: "davidko.webp",
+            summary: "Úrokové sadzby prechádzajú zmenami. Pozrite sa na kľúčové kroky, ako získať najvýhodnejšie financovanie pre vaše nové bývanie bez zbytočných preplatkov.",
+            content: "Svet hypoték prináša každoročne nové výzvy. Pri výbere banky sa neoplatí pozerať len na samotný úrok, ale aj na poplatky, podmienky predčasného splatenia či povinné poistenie.\n\n### Na čo si dať pozor?\n1. Fixácia úrokovej sadzby.\n2. LTV (výška úveru vzhľadom k hodnote nehnuteľnosti).\n3. Možnosti mimoriadnych splátok bez sankcií.\n\nAk chcete ušetriť tisíce eur, oplatí sa preveriť ponuky viacerých bánk naraz, s čím vám ako nezávislý sprostredkovateľ rád pomôžem."
+        },
+        {
+            title: "Investovanie pre začiatočníkov: Ako ochrániť peniaze pred infláciou",
+            date: "28. JANUÁR 2026",
+            image: "davidko.webp",
+            summary: "Nechať peniaze na bežnom účte sa dnes neoplatí. Zistite, ako fungujú podielové fondy a prečo je pravidelné sporenie kľúčom k finančnej nezávislosti.",
+            content: "Inflácia ukrajuje z úspor každého z nás. Jediným spôsobom, ako peniaze dlhodobo zhodnotiť, je rozumné investovanie do overených aktív.\n\n### Základné pravidlá investovania:\n- **Čas je váš najlepší priateľ** (sila zloženého úrokovania).\n- **Diverzifikácia portfólia** (nedávajte všetky vajíčka do jedného košíka).\n- **Pravidelnosť a disciplína** (vyhátnuť sa panike pri výkyvoch trhu)."
+        },
+        {
+            title: "Životné poistenie: Chránite seba alebo len rodinný rozpočet?",
+            date: "15. JANUÁR 2026",
+            image: "davidko.webp",
+            summary: "Kvalitné poistenie by malo krýt vážne riziká, nie každú drobnú bolesť. Pozrite sa, ako si nastaviť zmluvu, ktorá vás v núdzi skutočne podrží.",
+            content: "Mnoho ľudí má uzavreté poistky, ktoré sú buď predražené, alebo v kritickej situácii nepomôžu. Správne nastavené životné poistenie sa primárne sústredí na veľké životné riziká:\n\n- Trvalé následky úrazov\n- Kritické choroby\n- Invalidita a výpadok príjmu\n\nMenšie výdavky zvládne pokryť finančná rezervu, poistenie tu je na ochranu toho najcennejšieho – vášho príjmu."
+        }
+    ];
+
+    const blogGrid = document.getElementById("blog-grid");
+    if (blogGrid) {
+        blogGrid.innerHTML = "";
+        blogPosts.forEach((post, index) => {
+            const card = document.createElement("div");
+            card.className = "blog-card";
+            card.innerHTML = `
+                <div class="blog-image-wrapper">
+                    <img src="${post.image}" alt="${post.title}" loading="lazy">
+                </div>
+                <div>
+                    <span class="blog-date">${post.date}</span>
+                    <h3>${post.title}</h3>
+                    <p>${post.summary}</p>
+                </div>
+                <button class="read-more-btn" data-index="${index}">Čítať viac <i class="fa-solid fa-arrow-right"></i></button>
+            `;
+            blogGrid.appendChild(card);
+        });
+
+        // Kliknutie na "Čítať viac"
+        blogGrid.addEventListener("click", (e) => {
+            const btn = e.target.closest(".read-more-btn");
+            if (btn) {
+                const index = btn.getAttribute("data-index");
+                const post = blogPosts[index];
+                if (post) {
+                    document.getElementById("modal-title").innerText = post.title;
+                    document.getElementById("modal-date").innerText = post.date;
+                    
+                    const contentDiv = document.getElementById("modal-content");
+                    if (typeof marked !== 'undefined') {
+                        contentDiv.innerHTML = marked.parse(post.content);
+                    } else {
+                        contentDiv.innerHTML = `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
+                    }
+
+                    document.getElementById("blog-modal").classList.add("active");
+                }
+            }
+        });
+    }
+
+    // Zatvorenie blog modalu
     window.closeBlogModal = function() {
         const modal = document.getElementById("blog-modal");
         if (modal) modal.classList.remove("active");
     };
 
+    // Šípky na posúvanie blogu
+    const scrollLeftBtn = document.getElementById("scroll-left-btn");
+    const scrollRightBtn = document.getElementById("scroll-right-btn");
+    if (blogGrid && scrollLeftBtn && scrollRightBtn) {
+        scrollLeftBtn.addEventListener("click", () => {
+            blogGrid.scrollBy({ left: -390, behavior: 'smooth' });
+        });
+        scrollRightBtn.addEventListener("click", () => {
+            blogGrid.scrollBy({ left: 390, behavior: 'smooth' });
+        });
+    }
+
     // --- 5. GSAP ELEGANTNÉ ANIMÁCIE ---
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Úvodná animácia Hero sekcie pri načítaní stránky
+        // Úvodná animácia Hero sekcie pri načítaní stránki
         const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
         heroTl.from(".hero-title", { duration: 1.2, y: 40, opacity: 0, delay: 0.2 })
               .from(".hero-subtitle", { duration: 1.2, y: 30, opacity: 0 }, "-=0.8")
               .from(".scroll-down", { duration: 1, opacity: 0 }, "-=0.6");
 
-        // Elegantné vynáranie nadpisov sekcií pri scrollovaní
+        // Elegantné vynáranie nadpisov sekcií
         gsap.utils.toArray(".section-header").forEach(header => {
             gsap.from(header, {
                 scrollTrigger: {
@@ -96,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // Postupné (stagger) vynáranie boxov so službami
+        // Postupné vynáranie služieb
         gsap.from(".service-box", {
             scrollTrigger: {
                 trigger: ".services-grid",
@@ -110,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power2.out"
         });
 
-        // Vynáranie obsahu v sekcii "O mne"
+        // Vynáranie obsahu "O mne"
         gsap.from(".about-text > *", {
             scrollTrigger: {
                 trigger: "#omne",
@@ -124,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power2.out"
         });
 
-        // Postupné vysúvanie FAQ otázok
+        // FAQ položky
         gsap.from(".faq-item", {
             scrollTrigger: {
                 trigger: ".faq-list",
@@ -138,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power2.out"
         });
 
-        // Plynulé sčítavanie štatistík pri prechode zrakom
+        // Živé sčítavanie štatistík
         const stats = document.querySelectorAll(".stat-number");
         stats.forEach(stat => {
             const target = parseInt(stat.getAttribute("data-target"));
