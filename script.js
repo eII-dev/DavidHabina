@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 const rawItems = data.items || [];
                 
-                // Mapovanie a otočenie poradia, aby najnovší pridaný článok bol vľavo
                 const blogPosts = rawItems.map(item => ({
                     title: item.title_sk || item.title || "",
                     date: item.date || "",
@@ -103,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     blogGrid.appendChild(card);
                 });
 
-                // Kliknutie na "Čítať viac" (Otvorenie modalu)
                 blogGrid.addEventListener("click", (e) => {
                     const btn = e.target.closest(".read-more-btn");
                     if (btn) {
@@ -153,8 +151,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 5. GSAP ELEGANTNÉ ANIMÁCIE ---
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    // --- 5. GSAP ANIMÁCIE (Iba pre PC / Desktop > 900px, aby nerozbili mobil) ---
+    const stats = document.querySelectorAll(".stat-number");
+    
+    if (window.innerWidth > 900 && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
         const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -215,7 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power2.out"
         });
 
-        const stats = document.querySelectorAll(".stat-number");
         stats.forEach(stat => {
             const target = parseInt(stat.getAttribute("data-target"));
             if (!isNaN(target)) {
@@ -235,6 +234,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
                     }
                 });
+            }
+        });
+    } else {
+        // Fallback pre mobil: hneď nastaví reálne čísla štatistík, žiadne nuly
+        stats.forEach(stat => {
+            const target = stat.getAttribute("data-target");
+            if (target) {
+                stat.innerText = target;
             }
         });
     }
