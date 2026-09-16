@@ -935,3 +935,9 @@ footer {
     .service-box, .blog-card { padding: 25px 20px; }
     .contact-wrapper { gap: 30px; }
 }
+
+/* Skrytie reklamy Elfsight */
+[class*="elfsight-app"] a[href*="elfsight.com"],
+.eapps-link {
+    display: none !important;
+}
