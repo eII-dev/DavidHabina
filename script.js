@@ -65,28 +65,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- 4. BLOG DATA & RENDERING ---
+    // --- 4. BLOG DATA & RENDERING (2x bez obrázka, 1x s obrázkom z Decap CMS) ---
     const blogPosts = [
         {
             title: "Ako si správne nastaviť hypotéku v roku 2026",
             date: "12. FEBRUÁR 2026",
-            image: "davidko.webp",
+            image: "", // Bez obrázka
             summary: "Úrokové sadzby prechádzajú zmenami. Pozrite sa na kľúčové kroky, ako získať najvýhodnejšie financovanie pre vaše nové bývanie bez zbytočných preplatkov.",
             content: "Svet hypoték prináša každoročne nové výzvy. Pri výbere banky sa neoplatí pozerať len na samotný úrok, ale aj na poplatky, podmienky predčasného splatenia či povinné poistenie.\n\n### Na čo si dať pozor?\n1. Fixácia úrokovej sadzby.\n2. LTV (výška úveru vzhľadom k hodnote nehnuteľnosti).\n3. Možnosti mimoriadnych splátok bez sankcií.\n\nAk chcete ušetriť tisíce eur, oplatí sa preveriť ponuky viacerých bánk naraz, s čím vám ako nezávislý sprostredkovateľ rád pomôžem."
         },
         {
             title: "Investovanie pre začiatočníkov: Ako ochrániť peniaze pred infláciou",
             date: "28. JANUÁR 2026",
-            image: "davidko.webp",
+            image: "", // Bez obrázka
             summary: "Nechať peniaze na bežnom účte sa dnes neoplatí. Zistite, ako fungujú podielové fondy a prečo je pravidelné sporenie kľúčom k finančnej nezávislosti.",
             content: "Inflácia ukrajuje z úspor každého z nás. Jediným spôsobom, ako peniaze dlhodobo zhodnotiť, je rozumné investovanie do overených aktív.\n\n### Základné pravidlá investovania:\n- **Čas je váš najlepší priateľ** (sila zloženého úrokovania).\n- **Diverzifikácia portfólia** (nedávajte všetky vajíčka do jedného košíka).\n- **Pravidelnosť a disciplína** (vyhátnuť sa panike pri výkyvoch trhu)."
         },
         {
-            title: "Životné poistenie: Chránite seba alebo len rodinný rozpočet?",
-            date: "15. JANUÁR 2026",
-            image: "davidko.webp",
-            summary: "Kvalitné poistenie by malo krýt vážne riziká, nie každú drobnú bolesť. Pozrite sa, ako si nastaviť zmluvu, ktorá vás v núdzi skutočne podrží.",
-            content: "Mnoho ľudí má uzavreté poistky, ktoré sú buď predražené, alebo v kritickej situácii nepomôžu. Správne nastavené životné poistenie sa primárne sústredí na veľké životné riziká:\n\n- Trvalé následky úrazov\n- Kritické choroby\n- Invalidita a výpadok príjmu\n\nMenšie výdavky zvládne pokryť finančná rezervu, poistenie tu je na ochranu toho najcennejšieho – vášho príjmu."
+            title: "Prehľad noviniek a úspešných realizácií v Košiciach",
+            date: "15. FEBRUÁR 2026",
+            image: "davidko.webp", // S obrázkom (spravované cez Decap CMS)
+            summary: "Pozrite si fotogalériu a zhrnutie úspešne vybavených financovaní a moderných stretnutí s klientmi v Business Center Rozvojová.",
+            content: "Za posledné obdobie sa nám podarilo pomôcť desiatkam klientov v Košiciach a okolí s financovaním bývania a investícií.\n\nTeší ma dôvera, ktorú mi prejavujete. Všetky osobné stretnutia prebiehajú v príjemnom a profesionálnom prostredí Business Center Rozvojová."
         }
     ];
 
@@ -96,10 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
         blogPosts.forEach((post, index) => {
             const card = document.createElement("div");
             card.className = "blog-card";
+            
+            // Vykreslí obal s obrázkom iba vtedy, ak obrázok v poli existuje
+            const imageWrapperHtml = post.image 
+                ? `<div class="blog-image-wrapper"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` 
+                : '';
+
             card.innerHTML = `
-                <div class="blog-image-wrapper">
-                    <img src="${post.image}" alt="${post.title}" loading="lazy">
-                </div>
+                ${imageWrapperHtml}
                 <div>
                     <span class="blog-date">${post.date}</span>
                     <h3>${post.title}</h3>
@@ -121,11 +125,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.getElementById("modal-date").innerText = post.date;
                     
                     const contentDiv = document.getElementById("modal-content");
-                    if (typeof marked !== 'undefined') {
-                        contentDiv.innerHTML = marked.parse(post.content);
-                    } else {
-                        contentDiv.innerHTML = `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
+                    let fullHtml = "";
+                    if (post.image) {
+                        fullHtml += `<img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:4px; margin-bottom:20px;">`;
                     }
+                    if (typeof marked !== 'undefined') {
+                        fullHtml += marked.parse(post.content);
+                    } else {
+                        fullHtml += `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
+                    }
+                    contentDiv.innerHTML = fullHtml;
 
                     document.getElementById("blog-modal").classList.add("active");
                 }
@@ -155,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Úvodná animácia Hero sekcie pri načítaní stránki
+        // Úvodná animácia Hero sekcie pri načítaní stránky
         const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
         heroTl.from(".hero-title", { duration: 1.2, y: 40, opacity: 0, delay: 0.2 })
               .from(".hero-subtitle", { duration: 1.2, y: 30, opacity: 0 }, "-=0.8")
