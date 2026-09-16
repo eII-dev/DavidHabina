@@ -140,7 +140,7 @@ body {
     background-color: #000;
     background-image: url('davidko.webp');
     background-repeat: no-repeat;
-    background-position: 28% 80px; /* PC pozícia: posunuté viac doprava, výška a veľkosť zachovaná */
+    background-position: 10% 80px; /* Výrazne posunuté doprava pre PC */
     background-size: cover;
     display: flex;
     justify-content: center;
