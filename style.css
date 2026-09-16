@@ -941,3 +941,43 @@ footer {
     clip-path: inset(-100px -100px 60px -100px) !important;
     margin-bottom: -60px !important;
 }
+
+/* --- VLASTNÉ TLAČIDLO PRE GOOGLE RECENZIE --- */
+.write-review-container {
+    text-align: center;
+    margin-top: 80px; /* 60px kompenzácia za orezaný Elfsight + 20px medzera */
+    position: relative;
+    z-index: 10;
+}
+
+.btn-write-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--text-gray);
+    padding: 12px 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.btn-write-review i {
+    color: #fbbc04; /* Oficiálna Google žltá farba pre ikonku */
+    font-size: 1.1rem;
+}
+
+.btn-write-review:hover {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.btn-write-review:hover i {
+    color: #000; /* Pri prejdení myšou ikonka sčernie, aby na zlatej vynikla */
+}
