@@ -64,25 +64,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- 4. DYNAMICKÉ NAČÍTAVANIE BLOGOV Z DECAP CMS (blog.json) ---
+    // --- 4. DYNAMICKÉ NAČÍTAVANIE BLOGOV Z data/blog.json (Najnovší vľavo) ---
     const blogGrid = document.getElementById("blog-grid");
     
     if (blogGrid) {
-        fetch('blog.json')
+        fetch('data/blog.json')
             .then(response => response.json())
             .then(data => {
                 const rawItems = data.items || [];
                 
-                // Mapovanie dát z Decap CMS šruktúry na použiteľné objekty
+                // Mapovanie a otočenie poradia, aby najnovší pridaný článok bol vľavo
                 const blogPosts = rawItems.map(item => ({
                     title: item.title_sk || item.title || "",
                     date: item.date || "",
                     image: item.image || "",
                     summary: item.desc_sk || item.desc || "",
                     content: item.content_sk || item.content || ""
-                }));
+                })).reverse();
 
-                // Vykreslenie kariet do mriežky
                 blogGrid.innerHTML = "";
                 blogPosts.forEach((post, index) => {
                     const card = document.createElement("div");
@@ -115,23 +114,24 @@ document.addEventListener("DOMContentLoaded", () => {
                             document.getElementById("modal-date").innerText = post.date;
                             
                             const contentDiv = document.getElementById("modal-content");
-                            let parsedContent = post.content;
-
-                            // Bezpečné parsovanie markdownu cez marked.js, obrázky dostanú max-width
-                            if (typeof marked !== 'undefined') {
-                                parsedContent = marked.parse(post.content);
-                            } else {
-                                parsedContent = `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
+                            let fullHtml = "";
+                            if (post.image) {
+                                fullHtml += `<img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:4px; margin-bottom:20px;">`;
                             }
+                            if (typeof marked !== 'undefined') {
+                                fullHtml += marked.parse(post.content);
+                            } else {
+                                fullHtml += `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
+                            }
+                            contentDiv.innerHTML = fullHtml;
 
-                            contentDiv.innerHTML = parsedContent;
                             document.getElementById("blog-modal").classList.add("active");
                         }
                     }
                 });
             })
             .catch(error => {
-                console.error("Chyba pri načítavaní blog.json:", error);
+                console.error("Chyba pri načítavaní data/blog.json:", error);
             });
     }
 
