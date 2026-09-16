@@ -65,8 +65,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- 4. BLOG DATA & RENDERING (Presne podľa blog.json z Decap CMS) ---
+    // --- 4. BLOG DATA & RENDERING (Najnovší článok je prvý -> zobrazený vľavo) ---
     const blogPosts = [
+        {
+            title: "Ako nestratiť peniaze v roku 2026 💵🔎",
+            date: "15.SEPTEMBER 2026",
+            image: "/images/714e6904-f562-38dd-9522-f1de3447647a.jpg",
+            summary: "Rast cien je realita, ktorej sa nevyhne nikto z nás. Pozri sa, ako ovplyvňuje tvoje financie a prečo dáva zmysel nechať peniaze pracovať.",
+            content: `# **ČO ROBÍ INFLÁCIA S ÚSPORAMI ?**\n\nInflácia potichu ukrajuje z hodnoty peňazí. Ak necháš úspory len ležať na účte alebo doma „pod vankúšom“, síce sa **ich suma nemení, ale to, čo si za ne kúpiš, áno — a smerom nadol.**\n\nPredstav si jednoduchý príklad:\nDnes spravíš veľký nákup potravín za 100 €.\nAk budú ceny o rok vyššie **o 5 %, ten istý nákup ťa bude stáť približne 105 €.**\n\nTvojich 100 € nezmizlo ale ich kúpna sila áno.\n\nA práve preto dlhodobo **neinvestované peniaze znamenajú tichú, ale reálnu stratu.**\n\n![](/images/8d9233ce-de39-0bc7-672f-0a1b0fb0dc69.jpg)\n\n**ODPORÚČANIE**\n\n**Úprava trvalého príkazu na existujúcich investičných zmluvách.** Variabilný symbol aj IBAN zostávajú nezmenené. **Ak využívaš investície a chcel by si sa na to pozrieť alebo ak ešte neivestuješ a preferuješ sa dozvedieť viac informácií, neváhaj ma kontaktovať.**\n\n**PRÍKLADY PLATIEB**\n\n**35 € / mesačne**\n+ 4,2 % = **36,48 €**\n\n**50 € / mesačne**\n+ 4,2 % = **52,10 €**\n\n**75 € / mesačne**\n+ 4,2 % = **78,15 €**\n\n**100 € / mesačne**\n+ 4,2 % = **104,20 €**\n\n![](/images/1b1666f9-0e3a-3b63-7eb3-584ecc40f350.jpg)\n\n**PREČO NAVÝŠIŤ INVESTÍCIU ?**\n\n**Ochrana reálnej hodnoty Tvojich investícií:** Tvoja investícia bude držať krok s infláciou.\n \n\n**Vyššia konečná suma:** Zvýšením príspevkov dosiahneš vyššiu celkovú investovanú sumu.\n\nChráň svoje investície pred infláciou a zabezpeč ich rast aj v súčasnom ekonomickom prostredí.\n\nPríklad investície **3000 eur/jednorázovo na začiatku + 100 eur/mesačne po dobu 20 rokov** pri priemernom zhodnotení **8.39 % ročne:** čistý zisk v čase = **47 000 eur**\n\n\n![](/images/38e85202-757d-2bfb-0b92-d35754e702f5.png)\n\nPríklad **konzervatívnejšej investície 50 000 eur jednorázovo po dobu 5 rokov** pri priemernom zhodnotení **4.25 % ročne:** čistý zisk v čase = **11 500 eur**\n\n![](/images/094817fa-2b29-dc08-02b7-bab421a4a6b7.png)`
+        },
         {
             title: "Ako si dohodnúť najnižší úrok na hypotéke?",
             date: "4. SEPTEMBER 2026",
@@ -80,13 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
             image: "",
             summary: "Základné pravidlá pre budovanie finančnej rezervy a dlhodobého majetku bez rizika...",
             content: "Mnoho ľudí sa obáva investovania kvôli riziku. Pri správne nastavenej stratégii je však investovanie najlepším nástrojom na ochranu peňazí pred infláciou.\n\n### Základné pravidlá:\n1. Vytvorte si najprv núdzovú rezervu (3 až 6-násobok mesačných výdavkov).\n2. Investujte pravidelne a dlhodobo.\n3. Diverzifikujte svoje portfolio."
-        },
-        {
-            title: "Ako nestratiť peniaze v roku 2026 💵🔎",
-            date: "15.SEPTEMBER 2026",
-            image: "/images/714e6904-f562-38dd-9522-f1de3447647a.jpg",
-            summary: "Rast cien je realita, ktorej sa nevyhne nikto z nás. Pozri sa, ako ovplyvňuje tvoje financie a prečo dáva zmysel nechať peniaze pracovať.",
-            content: `# **ČO ROBÍ INFLÁCIA S ÚSPORAMI ?**\n\nInflácia potichu ukrajuje z hodnoty peňazí. Ak necháš úspory len ležať na účte alebo doma „pod vankúšom“, síce sa **ich suma nemení, ale to, čo si za ne kúpiš, áno — a smerom nadol.**\n\nPredstav si jednoduchý príklad:\nDnes spravíš veľký nákup potravín za 100 €.\nAk budú ceny o rok vyššie **o 5 %, ten istý nákup ťa bude stáť približne 105 €.**\n\nTvojich 100 € nezmizlo ale ich kúpna sila áno.\n\nA práve preto dlhodobo **neinvestované peniaze znamenajú tichú, ale reálnu stratu.**\n\n![](/images/8d9233ce-de39-0bc7-672f-0a1b0fb0dc69.jpg)\n\n**ODPORÚČANIE**\n\n**Úprava trvalého príkazu na existujúcich investičných zmluvách.** Variabilný symbol aj IBAN zostávajú nezmenené. **Ak využívaš investície a chcel by si sa na to pozrieť alebo ak ešte neivestuješ a preferuješ sa dozvedieť viac informácií, neváhaj ma kontaktovať.**\n\n**PRÍKLADY PLATIEB**\n\n**35 € / mesačne**\n+ 4,2 % = **36,48 €**\n\n**50 € / mesačne**\n+ 4,2 % = **52,10 €**\n\n**75 € / mesačne**\n+ 4,2 % = **78,15 €**\n\n**100 € / mesačne**\n+ 4,2 % = **104,20 €**\n\n![](/images/1b1666f9-0e3a-3b63-7eb3-584ecc40f350.jpg)\n\n**PREČO NAVÝŠIŤ INVESTÍCIU ?**\n\n**Ochrana reálnej hodnoty Tvojich investícií:** Tvoja investícia bude držať krok s infláciou.\n \n\n**Vyššia konečná suma:** Zvýšením príspevkov dosiahneš vyššiu celkovú investovanú sumu.\n\nChráň svoje investície pred infláciou a zabezpeč ich rast aj v súčasnom ekonomickom prostredí.\n\nPríklad investície **3000 eur/jednorázovo na začiatku + 100 eur/mesačne po dobu 20 rokov** pri priemernom zhodnotení **8.39 % ročne:** čistý zisk v čase = **47 000 eur**\n\n\n![](/images/38e85202-757d-2bfb-0b92-d35754e702f5.png)\n\nPríklad **konzervatívnejšej investície 50 000 eur jednorázovo po dobu 5 rokov** pri priemernom zhodnotení **4.25 % ročne:** čistý zisk v čase = **11 500 eur**\n\n![](/images/094817fa-2b29-dc08-02b7-bab421a4a6b7.png)`
         }
     ];
 
@@ -97,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "blog-card";
             
-            // Vykreslí obrázok iba ak ho článok obsahuje (pre prvé dva nebude, pre tretí áno)
             const imageWrapperHtml = post.image 
                 ? `<div class="blog-image-wrapper"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` 
                 : '';
@@ -126,8 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     const contentDiv = document.getElementById("modal-content");
                     let fullHtml = "";
-                    // Ak má článok hlavný obrázok, zobrazí sa aj v modale hore
-                    if (post.image && post.image !== "/images/714e6904-f562-38dd-9522-f1de3447647a.jpg") {
+                    if (post.image) {
                         fullHtml += `<img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:4px; margin-bottom:20px;">`;
                     }
                     if (typeof marked !== 'undefined') {
