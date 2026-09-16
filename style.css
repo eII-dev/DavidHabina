@@ -140,7 +140,7 @@ body {
     background-color: #000;
     background-image: url('davidko.webp');
     background-repeat: no-repeat;
-    background-position: 50% 80px; /* Vyvážené pre PC */
+    background-position: 60% 80px; /* Posunuté viac doprava na PC */
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -911,7 +911,7 @@ footer {
     .desktop-space { display: none; }
 
     .hero-section {
-        background-position: 35% 80px; /* Vrátené pôvodné vycentrovanie na mobile, ktoré fungovalo */
+        background-position: 35% 80px; 
         background-size: 260%; 
         padding-bottom: 40px;
     }
