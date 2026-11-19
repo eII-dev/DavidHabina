@@ -13,34 +13,23 @@ document.addEventListener("DOMContentLoaded", () => {
         handleScroll();
     }
 
-    // --- 0B. JEMNÝ & UHLADENÝ 3D POHYB KARIET A 3D OBJEKTOV ---
+    // --- 0B. VEĽMI JEMNÉ & UHLADENÉ NAKLONENIE BENTO DLAŽDÍC ---
     if (window.innerWidth > 900) {
-        const cards3d = document.querySelectorAll(".bento-3d");
-        cards3d.forEach(card => {
-            const obj3d = card.querySelector(".bento-3d-object");
-
-            card.addEventListener("mousemove", (e) => {
-                const rect = card.getBoundingClientRect();
+        const tiltTiles = document.querySelectorAll(".tile-tilt");
+        tiltTiles.forEach(tile => {
+            tile.addEventListener("mousemove", (e) => {
+                const rect = tile.getBoundingClientRect();
                 const normX = ((e.clientX - rect.left) / rect.width) - 0.5;
                 const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
 
-                const rotateY = normX * 2.2;
-                const rotateX = -normY * 2.2;
+                const rotateY = normX * 2.0;
+                const rotateX = -normY * 2.0;
 
-                card.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
-
-                if (obj3d) {
-                    const moveX = normX * -7;
-                    const moveY = normY * -7;
-                    obj3d.style.transform = `translate3d(${moveX.toFixed(1)}px, ${moveY.toFixed(1)}px, 0)`;
-                }
+                tile.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
             }, { passive: true });
 
-            card.addEventListener("mouseleave", () => {
-                card.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)";
-                if (obj3d) {
-                    obj3d.style.transform = "translate3d(0px, 0px, 0px)";
-                }
+            tile.addEventListener("mouseleave", () => {
+                tile.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)";
             });
         });
     }
@@ -501,7 +490,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        gsap.utils.toArray(".bento-about-mosaic, .bento-services-asymmetric, .cr-bento-showcase").forEach(grid => {
+        gsap.utils.toArray(".bento-grid-about, .bento-grid-services, .cr-bento-showcase").forEach(grid => {
             gsap.from(grid.children, {
                 scrollTrigger: {
                     trigger: grid,
