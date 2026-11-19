@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --- 0. FULL-WIDTH LIQUID NAVBAR SCROLL EFEKT ---
+    // --- 0. FULL-WIDTH NAVBAR SCROLL EFEKT ---
     const navbar = document.getElementById("navbar");
     if (navbar) {
         const handleScroll = () => {
@@ -11,19 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
-    }
-
-    // --- 0B. INTERAKTÍVNY LIQUID GLASS SVETELNÝ ODLESK NA KARTÁCH ---
-    if (window.innerWidth > 900) {
-        document.querySelectorAll(".liquid-glass-dark, .liquid-glass-light").forEach(card => {
-            card.addEventListener("mousemove", (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-            });
-        });
     }
 
     // --- 1. MOBILNÉ MENU (Hamburger) ---
@@ -202,10 +189,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollRightBtn = document.getElementById("scroll-right-btn");
     if (blogGrid && scrollLeftBtn && scrollRightBtn) {
         scrollLeftBtn.addEventListener("click", () => {
-            blogGrid.scrollBy({ left: -390, behavior: 'smooth' });
+            blogGrid.scrollBy({ left: -384, behavior: 'smooth' });
         });
         scrollRightBtn.addEventListener("click", () => {
-            blogGrid.scrollBy({ left: 390, behavior: 'smooth' });
+            blogGrid.scrollBy({ left: 384, behavior: 'smooth' });
         });
     }
 
@@ -216,12 +203,12 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.registerPlugin(ScrollTrigger);
 
         const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        heroTl.from(".hero-badge", { duration: 0.75, y: 18, opacity: 0, delay: 0.1 })
-              .from(".hero-title", { duration: 0.95, y: 28, opacity: 0 }, "-=0.45")
-              .from(".hero-subtitle", { duration: 0.85, y: 20, opacity: 0 }, "-=0.6")
-              .from(".hero-description", { duration: 0.85, y: 18, opacity: 0 }, "-=0.6")
-              .from(".hero-actions", { duration: 0.75, y: 16, opacity: 0 }, "-=0.55")
-              .from(".hero-portrait", { duration: 1.1, x: 24, opacity: 0 }, "-=0.95");
+        heroTl.from(".hero-eyebrow", { duration: 0.7, y: 14, opacity: 0, delay: 0.1 })
+              .from(".hero-title", { duration: 0.9, y: 24, opacity: 0 }, "-=0.45")
+              .from(".hero-subtitle", { duration: 0.8, y: 18, opacity: 0 }, "-=0.6")
+              .from(".hero-description", { duration: 0.8, y: 16, opacity: 0 }, "-=0.6")
+              .from(".hero-actions", { duration: 0.75, y: 14, opacity: 0 }, "-=0.55")
+              .from(".hero-portrait", { duration: 1.1, opacity: 0 }, "-=0.9");
 
         gsap.utils.toArray(".section-header").forEach(header => {
             gsap.from(header, {
@@ -230,10 +217,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     start: "top 86%",
                     toggleActions: "play none none none"
                 },
-                duration: 0.85,
-                y: 26,
+                duration: 0.8,
+                y: 22,
                 opacity: 0,
-                ease: "power3.out"
+                ease: "power2.out"
             });
         });
 
@@ -243,11 +230,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 start: "top 82%",
                 toggleActions: "play none none none"
             },
-            duration: 0.8,
-            y: 30,
+            duration: 0.75,
+            y: 24,
             opacity: 0,
-            stagger: 0.12,
-            ease: "power3.out"
+            stagger: 0.1,
+            ease: "power2.out"
         });
 
         gsap.from(".service-box", {
@@ -256,11 +243,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 start: "top 82%",
                 toggleActions: "play none none none"
             },
-            duration: 0.8,
-            y: 32,
+            duration: 0.75,
+            y: 26,
             opacity: 0,
-            stagger: 0.12,
-            ease: "power3.out"
+            stagger: 0.1,
+            ease: "power2.out"
         });
 
         gsap.from(".faq-item", {
@@ -269,10 +256,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 start: "top 85%",
                 toggleActions: "play none none none"
             },
-            duration: 0.65,
-            y: 20,
+            duration: 0.6,
+            y: 16,
             opacity: 0,
-            stagger: 0.1,
+            stagger: 0.08,
             ease: "power2.out"
         });
 
@@ -298,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     } else {
-        // Fallback pre mobil: hneď nastaví reálne čísla štatistík
         stats.forEach(stat => {
             const target = stat.getAttribute("data-target");
             if (target) {
