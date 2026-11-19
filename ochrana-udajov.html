@@ -5,42 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ochrana osobných údajov | David Habina</title>
     
-    <!-- Nový inline SVG favicon s iniciálmi DH -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%23080808'/><rect x='30' y='30' width='452' height='452' rx='90' fill='none' stroke='%23c8a261' stroke-width='12'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23c8a261' font-family='Times New Roman, serif' font-size='260' font-weight='bold' letter-spacing='-5'>DH</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%2308090c'/><rect x='28' y='28' width='456' height='456' rx='96' fill='none' stroke='%23c59b5f' stroke-width='14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='230' font-weight='700' letter-spacing='-8'>DH</text></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-black: #080808;
-            --text-white: #ffffff;
-            --text-gray: #a0a0a0;
-            --accent-gold: #c8a261;
-            --accent-gold-hover: #b08c4b;
-            --font-main: 'Montserrat', sans-serif;
-            --transition-fast: 0.3s ease;
+            --bg-light: #f5f5f7;
+            --bg-white: #ffffff;
+            --text-ink: #1d1d1f;
+            --text-slate: #6e6e73;
+            --accent-gold: #c59b5f;
+            --prosight-blue: #0066cc;
         }
 
-        html, body {
-            background-color: #080808 !important;
-            color: #ffffff !important;
-            opacity: 1 !important;
-            visibility: visible !important;
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        *, *::before, *::after {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: none !important;
-        }
-
         body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            background-color: var(--bg-light);
+            color: var(--text-ink);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
         body.lang-sk .lang-en,
@@ -48,195 +39,231 @@
             display: none !important;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .navbar-wrap {
+            position: fixed;
+            top: 16px;
+            left: 0;
+            width: 100%;
             padding: 0 20px;
+            z-index: 1000;
         }
 
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 40px;
-            background: rgba(8, 8, 8, 0.95);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            background: rgba(12, 14, 19, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-radius: 9999px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .signature-logo {
-            font-size: 1.05rem;
-            font-weight: 300;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 700;
             color: #ffffff;
             text-decoration: none;
-            letter-spacing: 5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .lang-switch {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #a0a0a0;
             display: flex;
             align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px;
+            border-radius: 9999px;
         }
 
         .lang-switch button {
             background: none;
             border: none;
-            color: #a0a0a0;
-            font-size: 0.85rem;
-            font-weight: 600;
+            color: rgba(255, 255, 255, 0.65);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
             cursor: pointer;
-            padding: 4px;
-            font-family: 'Montserrat', sans-serif;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            transition: all 0.25s ease;
         }
 
         .lang-switch button.active-lang {
-            color: #c8a261;
-            font-weight: 800;
+            background: #ffffff;
+            color: #060709;
         }
 
         .gdpr-section {
-            padding: 150px 0 100px 0;
-            background-color: #080808;
+            padding: 120px 20px 80px;
             min-height: 100vh;
         }
 
-        .gdpr-content {
-            max-width: 800px;
+        .gdpr-card {
+            max-width: 820px;
             margin: 0 auto;
-            color: #a0a0a0;
+            background: var(--bg-white);
+            border-radius: 28px;
+            padding: 52px 48px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.06);
         }
 
-        .gdpr-content h1 {
-            color: #ffffff;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            font-weight: 300;
-            letter-spacing: 2px;
+        .gdpr-badge {
+            display: inline-block;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--prosight-blue);
+            background: rgba(0, 102, 204, 0.1);
+            padding: 5px 13px;
+            border-radius: 9999px;
+            margin-bottom: 16px;
         }
 
-        .gdpr-content h3 {
-            color: #c8a261;
-            margin: 30px 0 15px 0;
-            font-size: 1.2rem;
-            font-weight: 600;
+        .gdpr-card h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 28px;
+            color: var(--text-ink);
         }
 
-        .gdpr-content p, .gdpr-content ul {
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.8;
+        .gdpr-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-ink);
+            margin: 30px 0 10px;
+            font-size: 1.15rem;
+            font-weight: 700;
         }
 
-        .gdpr-content ul {
+        .gdpr-card p, .gdpr-card ul {
+            margin-bottom: 16px;
+            font-size: 0.96rem;
+            color: var(--text-slate);
+        }
+
+        .gdpr-card ul {
             padding-left: 20px;
         }
 
+        .gdpr-card li {
+            margin-bottom: 8px;
+        }
+
+        .gdpr-card strong {
+            color: var(--text-ink);
+        }
+
         .btn-back {
-            display: inline-block;
-            margin-top: 40px;
-            color: #c8a261;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 32px;
+            background: var(--text-ink);
+            color: #ffffff;
             text-decoration: none;
-            font-weight: 700;
-            border: 1px solid #c8a261;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 13px 24px;
+            border-radius: 9999px;
+            transition: background 0.25s ease, transform 0.25s ease;
         }
 
         .btn-back:hover {
-            background-color: #c8a261;
-            color: #000000;
+            background: var(--prosight-blue);
+            transform: translateY(-2px);
         }
 
-        @media (max-width: 900px) {
-            .navbar { padding: 15px 20px; }
-            .gdpr-section { padding: 120px 0 60px 0; }
-            .gdpr-content h1 { font-size: 2rem; }
+        @media (max-width: 640px) {
+            .gdpr-card {
+                padding: 32px 24px;
+                border-radius: 22px;
+            }
         }
     </style>
 </head>
 <body class="lang-sk">
 
-    <nav class="navbar">
-        <div class="container nav-container">
+    <div class="navbar-wrap">
+        <nav class="navbar">
             <a href="index.html" class="signature-logo">David Habina</a>
             <div class="lang-switch">
-                <button type="button" onclick="setLanguage('sk')" class="active-lang" id="lang-sk-btn">SK</button> / 
+                <button type="button" onclick="setLanguage('sk')" class="active-lang" id="lang-sk-btn">SK</button>
                 <button type="button" onclick="setLanguage('en')" id="lang-en-btn">EN</button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <section class="gdpr-section">
-        <div class="container gdpr-content">
+        <div class="gdpr-card">
+            <span class="gdpr-badge">GDPR</span>
             <h1>
-                <span class="lang-sk">Ochrana osobných údajov (GDPR)[span_65](start_span)[span_65](end_span)</span>
-                <span class="lang-en">Privacy Policy (GDPR)[span_66](start_span)[span_66](end_span)</span>
+                <span class="lang-sk">Ochrana osobných údajov (GDPR)</span>
+                <span class="lang-en">Privacy Policy (GDPR)</span>
             </h1>
 
             <div class="lang-sk">
-                <p>Ochrana vašich osobných údajov je pre mňa dôležitá. Tento dokument vysvetľuje, ako zhromažďujem, používam a chránim vaše dáta pri používaní tohto webu.[span_67](start_span)[span_67](end_span)</p>
+                <p>Ochrana vašich osobných údajov je pre mňa dôležitá. Tento dokument vysvetľuje, ako zhromažďujem, používam a chránim vaše dáta pri používaní tohto webu.</p>
                 
-                <h3>1. Prevádzkovateľ osobných údajov[span_68](start_span)[span_68](end_span)</h3>
-                <p>Prevádzkovateľom vašich osobných údajov je David Habina, pôsobiaci ako nezávislý finančný sprostredkovateľ. V prípade otázok ma môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong>.[span_69](start_span)[span_69](end_span)</p>
+                <h3>1. Prevádzkovateľ osobných údajov</h3>
+                <p>Prevádzkovateľom vašich osobných údajov je David Habina, pôsobiaci ako nezávislý finančný sprostredkovateľ. V prípade otázok ma môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong>.</p>
                 
-                <h3>2. Aké údaje zhromažďujem a prečo?[span_70](start_span)[span_70](end_span)</h3>
-                <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie mojich služieb:[span_71](start_span)[span_71](end_span)</p>
+                <h3>2. Aké údaje zhromažďujem a prečo?</h3>
+                <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie mojich služieb:</p>
                 <ul>
-                    <li><strong>Meno a priezvisko</strong> (na identifikáciu)[span_72](start_span)[span_72](end_span)</li>
-                    <li><strong>E-mailová adresa a telefónne číslo</strong> (na komunikáciu)[span_73](start_span)[span_73](end_span)</li>
-                    <li><strong>Obsah správy</strong> (pre lepšie porozumenie vašej požiadavke)[span_74](start_span)[span_74](end_span)</li>
+                    <li><strong>Meno a priezvisko</strong> (na identifikáciu)</li>
+                    <li><strong>E-mailová adresa a telefónne číslo</strong> (na komunikáciu)</li>
+                    <li><strong>Obsah správy</strong> (pre lepšie porozumenie vašej požiadavke)</li>
                 </ul>
-                <p>Vaše údaje sú spracúvané na základe vášho súhlasu (čl. 6 ods. 1 písm. a) GDPR), ktorý vyjadrujete odoslaním formulára.[span_75](start_span)[span_75](end_span)</p>
+                <p>Vaše údaje sú spracúvané na základe vášho súhlasu (čl. 6 ods. 1 písm. a) GDPR), ktorý vyjadrujete odoslaním formulára.</p>
 
-                <h3>3. Komu údaje poskytujem?[span_76](start_span)[span_76](end_span)</h3>
-                <p>Vaše osobné údaje nepredávam ani nezdieľam s tretími stranami na marketingové účely. Dáta môžu byť zdieľané výlučne s finančnými inštitúciami (banky, poisťovne) až po našej osobnej dohode a podpísaní sprostredkovateľskej zmluvy pri riešení vašej finančnej situácie.[span_77](start_span)[span_77](end_span)</p>
+                <h3>3. Komu údaje poskytujem?</h3>
+                <p>Vaše osobné údaje nepredávam ani nezdieľam s tretími stranami na marketingové účely. Dáta môžu byť zdieľané výlučne s finančnými inštitúciami (banky, poisťovne) až po našej osobnej dohode a podpísaní sprostredkovateľskej zmluvy pri riešení vašej finančnej situácie.</p>
 
-                <h3>4. Súbory Cookies[span_78](start_span)[span_78](end_span)</h3>
-                <p>Tento web používa iba základné technické súbory cookies, ktoré sú nevyhnutné pre správne fungovanie stránky. Nepoužívame invazívne sledovacie nástroje bez vášho výslovného súhlasu v cookie lište.[span_79](start_span)[span_79](end_span)</p>
+                <h3>4. Súbory Cookies</h3>
+                <p>Tento web používa iba základné technické súbory cookies, ktoré sú nevyhnutné pre správne fungovanie stránky. Nepoužívame invazívne sledovacie nástroje bez vášho výslovného súhlasu v cookie lište.</p>
 
-                <h3>5. Vaše práva[span_80](start_span)[span_80](end_span)</h3>
-                <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu, vymazanie ("právo na zabudnutie"), obmedzenie spracovania a taktiež máte právo kedykoľvek odvolať svoj súhlas kontaktovaním na môj e-mail.[span_81](start_span)[span_81](end_span)</p>
+                <h3>5. Vaše práva</h3>
+                <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu, vymazanie („právo na zabudnutie“), obmedzenie spracovania a taktiež máte právo kedykoľvek odvolať svoj súhlas kontaktovaním na môj e-mail.</p>
             </div>
 
             <div class="lang-en">
-                <p>Protecting your personal data is important to me. This document explains how I collect, use, and protect your data when you use this website.[span_82](start_span)[span_82](end_span)</p>
+                <p>Protecting your personal data is important to me. This document explains how I collect, use, and protect your data when you use this website.</p>
                 
-                <h3>1. Data Controller[span_83](start_span)[span_83](end_span)</h3>
-                <p>The controller of your personal data is David Habina, acting as an independent financial advisor. If you have any questions, you can contact me via email at: <strong>davidhabina@prosight.sk</strong>.[span_84](start_span)[span_84](end_span)</p>
+                <h3>1. Data Controller</h3>
+                <p>The controller of your personal data is David Habina, acting as an independent financial advisor. If you have any questions, you can contact me via email at: <strong>davidhabina@prosight.sk</strong>.</p>
                 
-                <h3>2. What data do I collect and why?[span_85](start_span)[span_85](end_span)</h3>
-                <p>Through the contact form on the website, I collect only the data necessary to contact you back and provide my services:[span_86](start_span)[span_86](end_span)</p>
+                <h3>2. What data do I collect and why?</h3>
+                <p>Through the contact form on the website, I collect only the data necessary to contact you back and provide my services:</p>
                 <ul>
-                    <li><strong>Full Name</strong> (for identification)[span_87](start_span)[span_87](end_span)</li>
-                    <li><strong>Email Address and Phone Number</strong> (for communication)[span_88](start_span)[span_88](end_span)</li>
-                    <li><strong>Message Content</strong> (to better understand your request)[span_89](start_span)[span_89](end_span)</li>
+                    <li><strong>Full Name</strong> (for identification)</li>
+                    <li><strong>Email Address and Phone Number</strong> (for communication)</li>
+                    <li><strong>Message Content</strong> (to better understand your request)</li>
                 </ul>
-                <p>Your data is processed based on your consent (Art. 6(1)(a) GDPR), which you express by submitting the form.[span_90](start_span)[span_90](end_span)</p>
+                <p>Your data is processed based on your consent (Art. 6(1)(a) GDPR), which you express by submitting the form.</p>
 
-                <h3>3. Who do I share the data with?[span_91](start_span)[span_91](end_span)</h3>
-                <p>I do not sell or share your personal data with third parties for marketing purposes. Data may be shared exclusively with financial institutions (banks, insurance companies) only after our mutual agreement and the signing of a mediation contract to resolve your financial situation.[span_92](start_span)[span_92](end_span)</p>
+                <h3>3. Who do I share the data with?</h3>
+                <p>I do not sell or share your personal data with third parties for marketing purposes. Data may be shared exclusively with financial institutions (banks, insurance companies) only after our mutual agreement and the signing of a mediation contract to resolve your financial situation.</p>
 
-                <h3>4. Cookies[span_93](start_span)[span_93](end_span)</h3>
-                <p>This website uses only basic technical cookies necessary for the proper functioning of the site. We do not use invasive tracking tools without your explicit consent in the cookie banner.[span_94](start_span)[span_94](end_span)</p>
+                <h3>4. Cookies</h3>
+                <p>This website uses only basic technical cookies necessary for the proper functioning of the site. We do not use invasive tracking tools without your explicit consent in the cookie banner.</p>
 
-                <h3>5. Your Rights[span_95](start_span)[span_95](end_span)</h3>
-                <p>Under the GDPR, you have the right to request access to your data, its correction, deletion ("right to be forgotten"), restriction of processing, and you also have the right to withdraw your consent at any time by contacting my email.[span_96](start_span)[span_96](end_span)</p>
+                <h3>5. Your Rights</h3>
+                <p>Under the GDPR, you have the right to request access to your data, its correction, deletion ("right to be forgotten"), restriction of processing, and you also have the right to withdraw your consent at any time by contacting my email.</p>
             </div>
 
             <a href="index.html" class="btn-back">
-                <span class="lang-sk">&larr; Späť na hlavnú stránku[span_97](start_span)[span_97](end_span)</span>
-                <span class="lang-en">&larr; Back to homepage[span_98](start_span)[span_98](end_span)</span>
+                <span class="lang-sk">&larr; Späť na hlavnú stránku</span>
+                <span class="lang-en">&larr; Back to homepage</span>
             </a>
         </div>
     </section>

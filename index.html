@@ -6,25 +6,26 @@
     <title>David Habina | Finančný Sprostredkovateľ Košice</title>
     
     <meta name="description" content="Nezávislý finančný sprostredkovateľ v Košiciach. Hypotéky, úvery, investície, poistenie a finančné plánovanie na mieru bez stresu.">
-    <meta name="keywords" content="finančný sprostredkovateľ Košice, hypotéka, investovanie, poistenie, finančné plánovanie, David Habina">
+    <meta name="keywords" content="finančný sprostredkovateľ Košice, hypotéka, investovanie, poistenie, finančné plánovanie, David Habina, PROSIGHT">
     <meta name="author" content="David Habina">
     <meta name="robots" content="index, follow">
 
     <meta property="og:title" content="David Habina | Finančný Sprostredkovateľ Košice">
-    <meta property="og:description" content="Kompletné finančné služby, hypotéky, investície a poistenie na mieru v Košiciach aj online.">
+    <meta property="og:description" content="Jasný pohľad na vaše financie. Hypotéky, investície a poistenie na mieru v Košiciach aj online.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="davidko.webp">
 
     <link rel="preload" href="davidko.webp" as="image" type="image/webp" fetchpriority="high">
     
     <!-- Inline SVG favicon s iniciálmi DH -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%23080808'/><rect x='30' y='30' width='452' height='452' rx='90' fill='none' stroke='%23c8a261' stroke-width='12'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23c8a261' font-family='Times New Roman, serif' font-size='260' font-weight='bold' letter-spacing='-5'>DH</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%2308090c'/><rect x='28' y='28' width='456' height='456' rx='96' fill='none' stroke='%23c59b5f' stroke-width='14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='230' font-weight='700' letter-spacing='-8'>DH</text></svg>">
     
     <link rel="stylesheet" href="style.css">
     
+    <!-- Apple & PROSIGHT moderná typografia -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
@@ -34,120 +35,168 @@
 </head>
 <body>
 
-    <!-- Split-Navigácia -->
-    <nav class="navbar">
-        <div class="nav-container split-nav">
-            
-            <!-- Ľavá strana menu (Desktop) -->
-            <ul class="nav-links nav-left">
-                <li><a href="#omne">O MNE</a></li>
-                <li><a href="#sluzby">SLUŽBY</a></li>
-                <li><a href="#referencie">REFERENCIE</a></li>
-            </ul>
-
-            <!-- Stredové logo -->
-            <a href="#domov" class="signature-logo center-logo">DAVID HABINA</a>
-
-            <!-- Pravá strana menu (Desktop + Všetky položky pre mobil) -->
-            <ul class="nav-links nav-right" id="nav-links-mobile">
-                <li class="mobile-only-link"><a href="#omne">O MNE</a></li>
-                <li class="mobile-only-link"><a href="#sluzby">SLUŽBY</a></li>
-                <li class="mobile-only-link"><a href="#referencie">REFERENCIE</a></li>
-                <li><a href="#blog">BLOG</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#kontakt">KONTAKT</a></li>
+    <!-- Plávajúca Apple-style sklenená navigácia -->
+    <header class="navbar-wrapper">
+        <nav class="navbar" id="navbar">
+            <div class="nav-container split-nav">
                 
-                <!-- Sociálne siete v mobilnom menu -->
-                <li class="mobile-socials">
-                    <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                </li>
-            </ul>
+                <!-- Ľavá strana menu (Desktop) -->
+                <ul class="nav-links nav-left">
+                    <li><a href="#omne">O mne</a></li>
+                    <li><a href="#sluzby">Služby</a></li>
+                    <li><a href="#referencie">Referencie</a></li>
+                </ul>
 
-            <!-- Hamburger tlačidlo pre mobil -->
-            <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
-                <i class="fa-solid fa-bars" id="hamburger-icon"></i>
-            </button>
-        </div>
-    </nav>
+                <!-- Stredové logo -->
+                <a href="#domov" class="center-logo">
+                    <span class="logo-dot"></span>DAVID HABINA
+                </a>
+
+                <!-- Pravá strana menu (Desktop + Všetky položky pre mobil) -->
+                <ul class="nav-links nav-right" id="nav-links-mobile">
+                    <li class="mobile-only-link"><a href="#omne">O mne</a></li>
+                    <li class="mobile-only-link"><a href="#sluzby">Služby</a></li>
+                    <li class="mobile-only-link"><a href="#referencie">Referencie</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#kontakt" class="nav-cta-pill">Kontakt</a></li>
+                    
+                    <!-- Sociálne siete v mobilnom menu -->
+                    <li class="mobile-socials">
+                        <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </li>
+                </ul>
+
+                <!-- Hamburger tlačidlo pre mobil -->
+                <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
+                    <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
 
     <main>
-        <!-- Hero sekcia -->
-        <header id="domov" class="hero-section">
+        <!-- HERO SEKCIA (Apple Pro + PROSIGHT Editorial) -->
+        <section id="domov" class="hero-section">
             <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    DAVID<span class="desktop-space"> </span><br class="mobile-break">HABINA
-                </h1>
-                
-                <p class="hero-subtitle">
-                    FINANČNÝ SPROSTREDKOVATEĽ
-                </p>
-                
-                <a href="#omne" class="scroll-down" aria-label="Posunúť nadol">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
-            </div>
-        </header>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-pulse"></span>
+                        <span>PROSIGHT Slovensko &bull; Košice &amp; Online</span>
+                    </div>
 
-        <!-- Štatistiky -->
-        <section class="stats-section">
-            <div class="container stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number-wrapper">
-                        <span class="stat-number" data-target="15">0</span><span class="stat-suffix">M+</span>
+                    <h1 class="hero-title">
+                        David<span class="desktop-space"> </span><br class="mobile-break">Habina
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Jasný pohľad na vaše financie.
+                    </p>
+                    <p class="hero-description">
+                        Nezávislé finančné sprostredkovanie bez zbytočných fráz. Hypotéky, investície a ochrana príjmu nastavené transparentne na mieru.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#kontakt" class="btn-apple-primary">
+                            <span>Bezplatná konzultácia</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#sluzby" class="btn-apple-glass">
+                            <span>Preskúmať služby</span>
+                        </a>
                     </div>
-                    <span class="stat-label">Vybavené financie v €</span>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number-wrapper">
-                        <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
+            </div>
+
+            <a href="#statistiky" class="scroll-down" aria-label="Posunúť nadol">
+                <span class="scroll-mouse"></span>
+            </a>
+        </section>
+
+        <!-- ŠTATISTIKY (Apple Bento Metrics Bar) -->
+        <section id="statistiky" class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number" data-target="15">0</span><span class="stat-suffix">M+ €</span>
+                        </div>
+                        <span class="stat-label">Vybavené financie</span>
                     </div>
-                    <span class="stat-label">Spokojných klientov</span>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number-wrapper">
-                        <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+                    <div class="stat-item">
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
+                        </div>
+                        <span class="stat-label">Spokojných klientov</span>
                     </div>
-                    <span class="stat-label">Rokov praxe</span>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number-wrapper">
-                        <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                    <div class="stat-item">
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+                        </div>
+                        <span class="stat-label">Rokov praxe na trhu</span>
                     </div>
-                    <span class="stat-label">Individuálny prístup</span>
+                    <div class="stat-item">
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                        </div>
+                        <span class="stat-label">Individuálny prístup</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sekcia: O MNE -->
-        <section id="omne" class="section dark-section">
+        <!-- SEKCIA: O MNE (Apple Bento Grid) -->
+        <section id="omne" class="section apple-light-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="sub-heading">SPOĽAHLIVOSŤ & FLEXIBILITA</span>
-                    <h2>KTO SOM?</h2>
+                    <span class="sub-heading">SPOĽAHLIVOSŤ &amp; FLEXIBILITA</span>
+                    <h2>Kto som a ako pracujem?</h2>
                 </div>
-                <div class="about-grid">
-                    <div class="about-text">
+
+                <div class="about-bento-grid">
+                    <!-- Hlavná veľká Bento karta -->
+                    <div class="bento-card bento-main about-text">
+                        <div class="bento-tag">Filozofia spolupráce</div>
                         <p class="highlight-p">
-                            Svet financií býva komplikovaný. Mojou úlohou je priniesť vám doň absolútny prehľad, kľud a maximálny úžitok.
+                            Svet financií býva komplikovaný. Mojou úlohou je priniesť vám doň absolútny prehľad, pokoj a maximálny úžitok.
                         </p>
-                        <p>
-                            Ako nezávislý finančný sprostredkovateľ sa špecializujem na riešenie aj tých najzložitejších finančných situácií. Všetku byrokraciu, vyjednávanie s bankami a poisťovňami vybavím do posledného detailu za vás.
+                        <p class="secondary-p">
+                            Ako nezávislý finančný sprostredkovateľ sa špecializujem na riešenie aj tých najzložitejších finančných situácií. Všetku byrokraciu, porovnanie celého trhu aj vyjednávanie s bankami a poisťovňami vybavím do posledného detailu za vás.
                         </p>
-                        <div class="about-features">
-                            <div class="feature-item">
-                                <i class="fa-solid fa-check"></i>
-                                <span>100% Flexibilný prístup (stretnutie osobne v Košiciach alebo online)</span>
+                    </div>
+
+                    <!-- 3 Bento karty výhod -->
+                    <div class="about-features">
+                        <div class="bento-card feature-item">
+                            <div class="feature-icon-wrap blue">
+                                <i class="fa-solid fa-location-dot"></i>
                             </div>
-                            <div class="feature-item">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Kompletné vybavenie agendy bez vášho stresu</span>
+                            <div class="feature-copy">
+                                <h3>100% Flexibilný prístup</h3>
+                                <span>Stretnutie osobne v Košiciach alebo pohodlne online odkiaľkoľvek na Slovensku.</span>
                             </div>
-                            <div class="feature-item">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Riešenia na mieru s dlhodobým servisom</span>
+                        </div>
+
+                        <div class="bento-card feature-item">
+                            <div class="feature-icon-wrap gold">
+                                <i class="fa-solid fa-file-signature"></i>
+                            </div>
+                            <div class="feature-copy">
+                                <h3>Agenda bez vášho stresu</h3>
+                                <span>Kompletné vybavenie dokumentácie, komunikácia s bankami a dohľad nad schválením.</span>
+                            </div>
+                        </div>
+
+                        <div class="bento-card feature-item">
+                            <div class="feature-icon-wrap emerald">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <div class="feature-copy">
+                                <h3>Dlhodobý servis na mieru</h3>
+                                <span>Podpisom zmluvy sa spolupráca nekončí. Pravidelne strážim výhodnosť vašich nastavení.</span>
                             </div>
                         </div>
                     </div>
@@ -155,68 +204,92 @@
             </div>
         </section>
 
-        <!-- Sekcia: SLUŽBY -->
-        <section id="sluzby" class="section darker-section">
+        <!-- SEKCIA: SLUŽBY (PROSIGHT Modulárny Bento Systém) -->
+        <section id="sluzby" class="section apple-white-section">
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">ČO PRE VÁS VYBAVÍM</span>
-                    <h2>FINANČNÉ SLUŽBY</h2>
+                    <h2>Finančné služby pod jednou strechou</h2>
+                    <p class="section-lead">Komplexné riešenia postavené na faktoch, dátach a transparentných podmienkach.</p>
                 </div>
+
                 <div class="services-grid">
-                    <div class="service-box">
-                        <div class="service-icon"><i class="fa-solid fa-house"></i></div>
-                        <h3>HYPOTÉKY A ÚVERY</h3>
+                    <div class="service-box" data-category="mortgages">
+                        <div class="service-top">
+                            <div class="service-icon icon-blue"><i class="fa-solid fa-house"></i></div>
+                            <span class="service-pill pill-blue">Bývanie</span>
+                        </div>
+                        <h3>Hypotéky a úvery</h3>
                         <p>Vybavenie najvýhodnejšej hypotéky, refinancovanie starých úverov a úspora tisícov eur na úrokoch.</p>
+                        <a href="#kontakt" class="service-link">Porovnať možnosti <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
-                    <div class="service-box">
-                        <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
-                        <h3>INVESTÍCIE A SPORENIE</h3>
-                        <p>Budovanie majetku, ochrana pred infláciou a nastavenie pasívneho príjmu prostredníctvom overených fondov.</p>
+
+                    <div class="service-box" data-category="investments">
+                        <div class="service-top">
+                            <div class="service-icon icon-emerald"><i class="fa-solid fa-chart-line"></i></div>
+                            <span class="service-pill pill-emerald">Majetok</span>
+                        </div>
+                        <h3>Investície a sporenie</h3>
+                        <p>Budovanie majetku, ochrana pred infláciou a nastavenie pasívneho príjmu prostredníctvom overených ETF a fondov.</p>
+                        <a href="#kontakt" class="service-link">Vytvoriť plán <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
-                    <div class="service-box">
-                        <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h3>POISTENIE</h3>
+
+                    <div class="service-box" data-category="insurance">
+                        <div class="service-top">
+                            <div class="service-icon icon-amber"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="service-pill pill-amber">Ochrana</span>
+                        </div>
+                        <h3>Poistenie</h3>
                         <p>Kvalitné životné poistenie, poistenie nehnuteľnosti a majetku s krytím, ktoré vás v núdzi skutočne podrží.</p>
+                        <a href="#kontakt" class="service-link">Skontrolovať zmluvy <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
-                    <div class="service-box">
-                        <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
-                        <h3>FINANČNÉ PLÁNOVANIE</h3>
+
+                    <div class="service-box" data-category="planning">
+                        <div class="service-top">
+                            <div class="service-icon icon-indigo"><i class="fa-solid fa-briefcase"></i></div>
+                            <span class="service-pill pill-indigo">Stratégia</span>
+                        </div>
+                        <h3>Finančné plánovanie</h3>
                         <p>Komplexná analýza osobných alebo firemných financií a vytvorenie nepriestrelnej stratégie pre budúcnosť.</p>
+                        <a href="#kontakt" class="service-link">Chcem analýzu <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sekcia: REFERENCIE -->
-        <section id="referencie" class="section dark-section">
+        <!-- SEKCIA: REFERENCIE -->
+        <section id="referencie" class="section apple-light-section">
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">HODNOTENIA KLIENTOV</span>
-                    <h2>GOOGLE RECENZIE</h2>
+                    <h2>Overené Google recenzie</h2>
+                    <p class="section-lead">Dôvera sa buduje výsledkami. Prečítajte si skúsenosti klientov, ktorým som pomohol.</p>
                 </div>
                 
-                <div class="reviews-widget-wrapper">
-                    <!-- Elfsight Google Reviews -->
-                    <script src="https://elfsightcdn.com/platform.js" async></script>
-                    <div class="elfsight-app-5e075a91-74b7-43d5-a9c0-fc958e255fa5" data-elfsight-app-lazy></div>
-                </div>
+                <div class="reviews-card-container">
+                    <div class="reviews-widget-wrapper">
+                        <!-- Elfsight Google Reviews -->
+                        <script src="https://elfsightcdn.com/platform.js" async></script>
+                        <div class="elfsight-app-5e075a91-74b7-43d5-a9c0-fc958e255fa5" data-elfsight-app-lazy></div>
+                    </div>
 
-                <!-- VLASTNÉ TLAČIDLO NA RECENZIU -->
-                <div class="write-review-container">
-                    <a href="https://www.google.com/search?q=David+Habina&oq=David+habina&sourceid=chrome&ie=UTF-8#lrd=0x473ee10550253b7b:0xc174ba0a0a71b140,3,,,," target="_blank" rel="noopener noreferrer" class="btn-write-review">
-                        <i class="fa-brands fa-google"></i> Napísať recenziu
-                    </a>
+                    <!-- VLASTNÉ TLAČIDLO NA RECENZIU -->
+                    <div class="write-review-container">
+                        <a href="https://www.google.com/search?q=David+Habina&oq=David+habina&sourceid=chrome&ie=UTF-8#lrd=0x473ee10550253b7b:0xc174ba0a0a71b140,3,,,," target="_blank" rel="noopener noreferrer" class="btn-write-review">
+                            <i class="fa-brands fa-google"></i> Napísať recenziu na Google
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sekcia: BLOG -->
-        <section id="blog" class="section darker-section">
+        <!-- SEKCIA: BLOG (Apple Newsroom / PROSIGHT Insights) -->
+        <section id="blog" class="section apple-white-section">
             <div class="container">
                 <div class="section-header blog-header-row">
                     <div>
-                        <span class="sub-heading">RADY & TIPY</span>
-                        <h2>BLOG A ČLÁNKY</h2>
+                        <span class="sub-heading">RADY &amp; TIPY ZO SVETA FINANCIÍ</span>
+                        <h2>Blog a odborné články</h2>
                     </div>
                     <div class="blog-scroll-arrows">
                         <button type="button" id="scroll-left-btn" aria-label="Posunúť doľava"><i class="fa-solid fa-arrow-left"></i></button>
@@ -244,7 +317,8 @@
         <div id="gdpr-modal" class="modal-overlay" onclick="closeGdprModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeGdprModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
-                <h2 style="color: var(--accent-gold); margin-bottom: 20px;">Ochrana osobných údajov (GDPR)</h2>
+                <span class="blog-date">PRÁVNE INFORMÁCIE</span>
+                <h2>Ochrana osobných údajov (GDPR)</h2>
                 <div class="modal-body">
                     <p>Ochrana vašich osobných údajov je pre mňa dôležitá. Tento dokument vysvetľuje, ako zhromažďujem, používam a chránim vaše dáta pri používaní tohto webu.</p>
                     <h3>1. Prevádzkovateľ osobných údajov</h3>
@@ -261,63 +335,86 @@
             </div>
         </div>
 
-        <!-- Sekcia: FAQ -->
-        <section id="faq" class="section dark-section">
+        <!-- SEKCIA: FAQ (Apple Clean Accordion) -->
+        <section id="faq" class="section apple-light-section">
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">ČASTO KLADENÉ OTÁZKY</span>
-                    <h2>FAQ</h2>
+                    <h2>Odpovede na to najdôležitejšie</h2>
                 </div>
                 <div class="faq-list">
-                    <div class="faq-item">
-                        <h4>Koľko ma stoja vaše služby?</h4>
-                        <p>Konzultácie a kompletný finančný servis sú pre vás bezplatné. Moja odmena je hradená priamo finančnými inštitúciami.</p>
+                    <div class="faq-item active">
+                        <button type="button" class="faq-question" aria-expanded="true">
+                            <span>Koľko ma stoja vaše služby?</span>
+                            <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Konzultácie a kompletný finančný servis sú pre vás bezplatné. Moja odmena je hradená priamo finančnými inštitúciami.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
-                        <h4>Pôsobíte iba v Košiciach?</h4>
-                        <p>Osobne pôsobím primárne v Košiciach a okolí, avšak vďaka moderným technológiám vieme všetko potrebné vyriešiť aj kompletne online kdekoľvek na Slovensku.</p>
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            <span>Pôsobíte iba v Košiciach?</span>
+                            <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Osobne pôsobím primárne v Košiciach a okolí, avšak vďaka moderným technológiám vieme všetko potrebné vyriešiť aj kompletne online kdekoľvek na Slovensku.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
-                        <h4>V čom je výhoda spolupracovať so mnou?</h4>
-                        <p>Banka vám ponúkne iba svoje produkty. Ja preberiem celý trh, nájdem pre vás najvýhodnejšie riešenie a vybavím všetky administratívne úkony za vás.</p>
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            <span>V čom je výhoda spolupracovať so mnou?</span>
+                            <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Banka vám ponúkne iba svoje produkty. Ja preberiem celý trh, nájdem pre vás najvýhodnejšie riešenie a vybavím všetky administratívne úkony za vás.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sekcia: KONTAKT -->
-        <section id="kontakt" class="section darker-section">
+        <!-- SEKCIA: KONTAKT (Apple Pro Obsidian Finale) -->
+        <section id="kontakt" class="section obsidian-section">
             <div class="container">
-                <div class="section-header">
-                    <span class="sub-heading">PORADÍM VÁM</span>
-                    <h2>KONTAKTUJTE MA</h2>
+                <div class="section-header light-header">
+                    <span class="sub-heading">ZAČNIME SPOLUPRÁCU</span>
+                    <h2>Kontaktujte ma</h2>
+                    <p class="section-lead">Napíšte mi správu alebo zavolajte. Prvý krok k lepšie nastaveným financiám je nezáväzný.</p>
                 </div>
+
                 <div class="contact-wrapper">
-                    <div class="contact-details">
-                        <h3>DAVID HABINA</h3>
-                        <p class="contact-role">Finančný Sprostredkovateľ</p>
+                    <div class="contact-details-card">
+                        <div class="contact-card-badge">PROSIGHT Slovensko</div>
+                        <h3>David Habina</h3>
+                        <p class="contact-role">Finančný sprostredkovateľ</p>
                         
-                        <div class="contact-line" style="align-items: flex-start;">
-                            <i class="fa-solid fa-location-dot" style="margin-top: 4px;"></i>
-                            <div>
-                                <span style="display: block; font-weight: 500; color: var(--text-white);">Business Center Rozvojová</span>
-                                <span style="display: block; font-size: 0.9rem; color: var(--text-gray);">Rozvojová 2A, 040 90 Košice</span>
+                        <div class="contact-info-list">
+                            <div class="contact-line">
+                                <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                                <div>
+                                    <span class="contact-main-text">Business Center Rozvojová</span>
+                                    <span class="contact-sub-text">Rozvojová 2A, 040 90 Košice</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-line">
-                            <i class="fa-solid fa-envelope"></i>
-                            <a href="mailto:davidhabina@prosight.sk">davidhabina@prosight.sk</a>
-                        </div>
-                        <div class="contact-line">
-                            <i class="fa-solid fa-phone"></i>
-                            <a href="tel:+421917332362">+421 917 332 362</a>
+                            <div class="contact-line">
+                                <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+                                <a href="mailto:davidhabina@prosight.sk">davidhabina@prosight.sk</a>
+                            </div>
+                            <div class="contact-line">
+                                <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+                                <a href="tel:+421917332362">+421 917 332 362</a>
+                            </div>
                         </div>
 
                         <!-- Sociálne siete v sekcii kontakt -->
-                        <div class="contact-socials">
-                            <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <div class="contact-socials-wrap">
+                            <span class="socials-label">Sledujte ma alebo napíšte priamo:</span>
+                            <div class="contact-socials">
+                                <a href="https://www.facebook.com/david.n.angel.5/?locale=sk_SK" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            </div>
                         </div>
                     </div>
 
@@ -327,17 +424,25 @@
                             <label>Spam protection: <input name="bot-field" /></label>
                         </p>
 
-                        <div class="form-group">
-                            <input type="text" name="meno" placeholder="Meno a priezvisko" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="input-meno">Meno a priezvisko *</label>
+                                <input id="input-meno" type="text" name="meno" placeholder="Ján Novák" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-telefon">Telefónne číslo</label>
+                                <input id="input-telefon" type="tel" name="telefon" placeholder="+421 900 000 000">
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="Váš E-mail" required>
+                            <label for="input-email">Váš E-mail *</label>
+                            <input id="input-email" type="email" name="email" placeholder="jan.novak@email.sk" required>
                         </div>
+
                         <div class="form-group">
-                            <input type="tel" name="telefon" placeholder="Telefónne číslo">
-                        </div>
-                        <div class="form-group">
-                            <textarea name="sprava" rows="5" placeholder="S čím vám môžem pomôcť?" required></textarea>
+                            <label for="input-sprava">S čím vám môžem pomôcť? *</label>
+                            <textarea id="input-sprava" name="sprava" rows="4" placeholder="Napíšte stručne, čo riešite (napr. hypotéka, investovanie, kontrola zmlúv)..." required></textarea>
                         </div>
                         
                         <div class="form-group checkbox-group">
@@ -345,9 +450,12 @@
                             <label for="gdpr-consent">Súhlasím so <a href="#" onclick="openGdprModal(event)">spracovaním osobných údajov</a>.</label>
                         </div>
 
-                        <button type="submit" class="btn-submit">ODOSLAŤ SPRÁVU</button>
+                        <button type="submit" class="btn-submit">
+                            <span>Odoslať správu</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
 
-                        <div id="form-status" style="margin-top: 15px; font-weight: 600; text-align: center;"></div>
+                        <div id="form-status" style="margin-top: 10px; font-weight: 600; text-align: center;"></div>
                     </form>
                 </div>
             </div>
@@ -356,14 +464,17 @@
 
     <footer>
         <div class="container footer-content">
-            <p>Copyright &copy; 2026 David Habina. Všetky práva vyhradené.</p>
+            <div class="footer-brand">
+                <span class="footer-logo">DAVID HABINA</span>
+                <p>Copyright &copy; 2026 David Habina. Všetky práva vyhradené.</p>
+            </div>
             <div class="footer-links">
                 <a href="#" onclick="openGdprModal(event)">Ochrana osobných údajov (GDPR)</a>
             </div>
         </div>
     </footer>
 
-    <!-- Cookie Banner -->
+    <!-- Cookie Banner (Dynamic Island Style) -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>Pre najlepší zážitok z nášho webu používame súbory cookies. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</p>
