@@ -1169,20 +1169,26 @@ body.reader-open {
     border-bottom: 1px solid var(--border-light);
 }
 
-.reader-author-badge {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
+.reader-author-avatar {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
     border-radius: 50%;
-    background: var(--bg-black);
-    border: 1.5px solid var(--emerald-primary);
-    color: #ffffff;
-    font-size: 0.85rem;
-    font-weight: 600;
+    background-color: var(--bg-black);
+    border: 2px solid var(--emerald-primary);
+    box-shadow: 0 3px 10px rgba(25, 107, 71, 0.18);
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    letter-spacing: -0.02em;
+}
+
+.reader-author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 14%;
+    display: block;
 }
 
 .reader-author-line strong {
