@@ -211,7 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 contentDiv.innerHTML = `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
                             }
 
-                            // Prepočítať progress lištu po načítaní obrázkov v článku
                             contentDiv.querySelectorAll("img").forEach(img => {
                                 img.setAttribute("loading", "lazy");
                                 img.addEventListener("load", updateArticleProgress, { once: true });
@@ -232,7 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // Zatvorenie full-screen článku
     window.closeBlogModal = function() {
         if (blogModal) {
             blogModal.classList.remove("active");
@@ -241,7 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Zatvorenie čítacích okien klávesou Escape
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
             window.closeBlogModal();
@@ -249,7 +246,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Šípky na posúvanie článkov
     const scrollLeftBtn = document.getElementById("scroll-left-btn");
     const scrollRightBtn = document.getElementById("scroll-right-btn");
     if (blogGrid && scrollLeftBtn && scrollRightBtn) {
@@ -261,41 +257,44 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 6. ODOSLANIE KONTAKTNÉHO FORMULÁRA SO SLOVENSKOU NOTIFIKÁCIOU A FAJKOU ---
-    const contactForm = document.getElementById("contact-form");
-    const formStatus = document.getElementById("form-status");
-    const submitBtn = document.getElementById("submit-btn");
+    // --- 6. ODOSLANIE FORMULÁROV (HLAVNÝ KONTAKT AJ KARIÉRA) ---
+    const setupNetlifyForm = (formId, statusId, btnId, successTitle, successSubtitle) => {
+        const formEl = document.getElementById(formId);
+        const statusEl = document.getElementById(statusId);
+        const btnEl = document.getElementById(btnId);
 
-    if (contactForm && formStatus) {
-        contactForm.addEventListener("submit", async (e) => {
+        if (!formEl || !statusEl) return;
+
+        formEl.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : "";
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = `<span>Odosielam správu...</span><i class="fa-solid fa-spinner fa-spin"></i>`;
+            const originalBtnHtml = btnEl ? btnEl.innerHTML : "";
+            if (btnEl) {
+                btnEl.disabled = true;
+                btnEl.innerHTML = `<span>Odosielam...</span><i class="fa-solid fa-spinner fa-spin"></i>`;
             }
 
-            formStatus.innerHTML = "";
+            statusEl.innerHTML = "";
 
             try {
-                const formData = new FormData(contactForm);
+                const formData = new FormData(formEl);
                 const encodedData = new URLSearchParams(formData).toString();
+                const targetUrl = formEl.getAttribute("action") || "/";
 
-                const response = await fetch("/", {
+                const response = await fetch(targetUrl, {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
                     body: encodedData
                 });
 
                 if (response.ok) {
-                    contactForm.reset();
-                    formStatus.innerHTML = `
+                    formEl.reset();
+                    statusEl.innerHTML = `
                         <div class="form-feedback success">
                             <i class="fa-solid fa-circle-check"></i>
                             <div>
-                                <strong>Správa bola úspešne odoslaná.</strong>
-                                <span>Ďakujem za váš záujem, ozvem sa vám čo najskôr.</span>
+                                <strong>${successTitle}</strong>
+                                <span>${successSubtitle}</span>
                             </div>
                         </div>
                     `;
@@ -303,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     throw new Error("Chyba servera");
                 }
             } catch (err) {
-                formStatus.innerHTML = `
+                statusEl.innerHTML = `
                     <div class="form-feedback error">
                         <i class="fa-solid fa-circle-exclamation"></i>
                         <div>
@@ -313,13 +312,29 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `;
             } finally {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
+                if (btnEl) {
+                    btnEl.disabled = false;
+                    btnEl.innerHTML = originalBtnHtml;
                 }
             }
         });
-    }
+    };
+
+    setupNetlifyForm(
+        "contact-form",
+        "form-status",
+        "submit-btn",
+        "Správa bola úspešne odoslaná.",
+        "Ďakujem za váš záujem, ozvem sa vám čo najskôr."
+    );
+
+    setupNetlifyForm(
+        "career-form",
+        "career-form-status",
+        "career-submit-btn",
+        "Záujem o spoluprácu bol odoslaný.",
+        "Ďakujem, ozvem sa ti do 24 hodín a dohodneme si nezáväzný rozhovor."
+    );
 
     // --- 7. PLYNULÉ NABIEHANIE ŠTATISTÍK ---
     const statsSection = document.getElementById("statistiky");
@@ -381,14 +396,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth > 900 && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
-        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        heroTl.from(".hero-eyebrow", { duration: 0.65, y: 12, opacity: 0, delay: 0.08 })
-              .from(".hero-title", { duration: 0.85, y: 22, opacity: 0 }, "-=0.4")
-              .from(".hero-subtitle", { duration: 0.75, y: 16, opacity: 0 }, "-=0.55")
-              .from(".hero-description", { duration: 0.75, y: 14, opacity: 0 }, "-=0.55")
-              .from(".hero-benefits", { duration: 0.7, y: 12, opacity: 0 }, "-=0.5")
-              .from(".hero-actions", { duration: 0.7, y: 12, opacity: 0 }, "-=0.5")
-              .from(".hero-portrait", { duration: 1.05, opacity: 0 }, "-=0.85");
+        if (document.querySelector(".hero-title")) {
+            const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            heroTl.from(".hero-eyebrow", { duration: 0.65, y: 12, opacity: 0, delay: 0.08 })
+                  .from(".hero-title", { duration: 0.85, y: 22, opacity: 0 }, "-=0.4")
+                  .from(".hero-subtitle", { duration: 0.75, y: 16, opacity: 0 }, "-=0.55")
+                  .from(".hero-description", { duration: 0.75, y: 14, opacity: 0 }, "-=0.55")
+                  .from(".hero-benefits", { duration: 0.7, y: 12, opacity: 0 }, "-=0.5")
+                  .from(".hero-actions", { duration: 0.7, y: 12, opacity: 0 }, "-=0.5")
+                  .from(".hero-portrait", { duration: 1.05, opacity: 0 }, "-=0.85");
+        }
+
+        if (document.querySelector(".career-hero-title")) {
+            const careerTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            careerTl.from(".career-hero-copy > *", { duration: 0.75, y: 18, opacity: 0, stagger: 0.09, delay: 0.06 })
+                    .from(".career-mentor-card", { duration: 0.85, y: 22, opacity: 0 }, "-=0.55");
+        }
 
         gsap.utils.toArray(".section-header").forEach(header => {
             gsap.from(header, {
@@ -404,43 +427,94 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        gsap.from(".bento-card", {
-            scrollTrigger: {
-                trigger: ".about-bento-grid",
-                start: "top 82%",
-                toggleActions: "play none none none"
-            },
-            duration: 0.75,
-            y: 24,
-            opacity: 0,
-            stagger: 0.1,
-            ease: "power2.out"
-        });
+        if (document.querySelector(".about-bento-grid")) {
+            gsap.from(".bento-card", {
+                scrollTrigger: {
+                    trigger: ".about-bento-grid",
+                    start: "top 82%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.75,
+                y: 24,
+                opacity: 0,
+                stagger: 0.1,
+                ease: "power2.out"
+            });
+        }
 
-        gsap.from(".service-box", {
-            scrollTrigger: {
-                trigger: ".services-grid",
-                start: "top 82%",
-                toggleActions: "play none none none"
-            },
-            duration: 0.75,
-            y: 26,
-            opacity: 0,
-            stagger: 0.1,
-            ease: "power2.out"
-        });
+        if (document.querySelector(".services-grid")) {
+            gsap.from(".service-box", {
+                scrollTrigger: {
+                    trigger: ".services-grid",
+                    start: "top 82%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.75,
+                y: 26,
+                opacity: 0,
+                stagger: 0.1,
+                ease: "power2.out"
+            });
+        }
 
-        gsap.from(".faq-item", {
-            scrollTrigger: {
-                trigger: ".faq-list",
-                start: "top 85%",
-                toggleActions: "play none none none"
-            },
-            duration: 0.6,
-            y: 16,
-            opacity: 0,
-            stagger: 0.08,
-            ease: "power2.out"
-        });
+        if (document.querySelector(".career-pillars-grid")) {
+            gsap.from(".career-pillar-card", {
+                scrollTrigger: {
+                    trigger: ".career-pillars-grid",
+                    start: "top 82%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.75,
+                y: 24,
+                opacity: 0,
+                stagger: 0.1,
+                ease: "power2.out"
+            });
+        }
+
+        if (document.querySelector(".career-profiles-grid")) {
+            gsap.from(".career-profile-card", {
+                scrollTrigger: {
+                    trigger: ".career-profiles-grid",
+                    start: "top 82%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.75,
+                y: 24,
+                opacity: 0,
+                stagger: 0.1,
+                ease: "power2.out"
+            });
+        }
+
+        if (document.querySelector(".career-steps-grid")) {
+            gsap.from(".career-step-card", {
+                scrollTrigger: {
+                    trigger: ".career-steps-grid",
+                    start: "top 84%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.7,
+                y: 20,
+                opacity: 0,
+                stagger: 0.08,
+                ease: "power2.out"
+            });
+        }
+
+        if (document.querySelector(".faq-list")) {
+            gsap.from(".faq-item", {
+                scrollTrigger: {
+                    trigger: ".faq-list",
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.6,
+                y: 16,
+                opacity: 0,
+                stagger: 0.08,
+                ease: "power2.out"
+            });
+        }
     }
 });

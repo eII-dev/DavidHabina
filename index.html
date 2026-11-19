@@ -35,24 +35,22 @@
 </head>
 <body>
 
-    <!-- Full-Width Horná Lišta (Sekcie naľavo so svetelným podčiarknutím, Dávid Habina napravo) -->
+    <!-- Full-Width Horná Lišta -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
-            <!-- Hamburger tlačidlo pre mobil (naľavo) -->
             <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
                 <i class="fa-solid fa-bars" id="hamburger-icon"></i>
             </button>
 
-            <!-- Sekcie naľavo -->
             <ul class="nav-links" id="nav-links-mobile">
                 <li><a href="#omne">O mne</a></li>
                 <li><a href="#sluzby">Služby</a></li>
                 <li><a href="#referencie">Referencie</a></li>
                 <li><a href="#blog">Články</a></li>
+                <li><a href="kariera.html">Kariéra</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#kontakt" class="nav-cta-pill">Kontakt</a></li>
                 
-                <!-- Sociálne siete v mobilnom menu -->
                 <li class="mobile-socials">
                     <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -60,7 +58,6 @@
                 </li>
             </ul>
 
-            <!-- Meno napravo -->
             <a href="#domov" class="brand-logo">
                 <span>Dávid Habina</span>
             </a>
@@ -70,7 +67,6 @@
     <main>
         <!-- HERO SEKCIA -->
         <section id="domov" class="hero-section finance-bg-dark">
-            <!-- Decentná finančná rastová krivka v pozadí -->
             <div class="hero-finance-curve" aria-hidden="true">
                 <svg viewBox="0 0 1440 800" fill="none" preserveAspectRatio="none">
                     <defs>
@@ -92,11 +88,9 @@
                 </svg>
             </div>
 
-            <!-- Portrét úplne napravo bez viditeľného pozadia -->
             <div class="hero-portrait" role="img" aria-label="Dávid Habina"></div>
             <div class="hero-overlay"></div>
 
-            <!-- Obsah naľavo -->
             <div class="container hero-container">
                 <div class="hero-content">
                     <p class="hero-eyebrow">Finančný sprostredkovateľ</p>
@@ -109,7 +103,7 @@
                         Viac peňazí, menej starostí a jasný plán pre vaše financie.
                     </p>
                     <p class="hero-description">
-                        Pomôžem vám získať výhodnejšiu hypotéku, zmysluplne zhodnotť úspory a nastaviť poistenie tak, aby ste nepreplácali — s kompletným vybavením od A po Z.
+                        Pomôžem vám získať výhodnejšiu hypotéku, zmysluplne zhodnotiť úspory a nastaviť poistenie tak, aby ste nepreplácali — s kompletným vybavením od A po Z.
                     </p>
 
                     <div class="hero-benefits">
@@ -131,7 +125,7 @@
             </div>
         </section>
 
-        <!-- ŠTATISTIKY (3 karty s plynulým nabiehaním čísel) -->
+        <!-- ŠTATISTIKY -->
         <section id="statistiky" class="stats-section finance-bg-dark">
             <div class="container">
                 <div class="stats-grid">
@@ -166,7 +160,6 @@
                 </div>
 
                 <div class="about-bento-grid">
-                    <!-- Hlavná karta -->
                     <div class="bento-card bento-main about-text hover-glow">
                         <div class="bento-tag">Filozofia spolupráce</div>
                         <p class="highlight-p">
@@ -177,7 +170,6 @@
                         </p>
                     </div>
 
-                    <!-- 3 karty výhod -->
                     <div class="about-features">
                         <div class="bento-card feature-item hover-glow">
                             <div class="feature-icon-wrap">
@@ -285,12 +277,10 @@
                 
                 <div class="reviews-card-container hover-glow">
                     <div class="reviews-widget-wrapper">
-                        <!-- Elfsight Google Reviews -->
                         <script src="https://elfsightcdn.com/platform.js" async></script>
                         <div class="elfsight-app-5e075a91-74b7-43d5-a9c0-fc958e255fa5"></div>
                     </div>
 
-                    <!-- VLASTNÉ TLAČIDLO NA RECENZIU -->
                     <div class="write-review-container">
                         <a href="https://www.google.com/search?q=David+Habina&oq=David+habina&sourceid=chrome&ie=UTF-8#lrd=0x473ee10550253b7b:0xc174ba0a0a71b140,3,,,," target="_blank" rel="noopener noreferrer" class="btn-write-review">
                             <i class="fa-brands fa-google"></i> Napísať recenziu na Google
@@ -330,7 +320,6 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                <!-- Smaragdová lišta priebehu čítania -->
                 <div class="reader-progress-track" aria-hidden="true">
                     <div class="reader-progress-fill" id="article-progress-bar"></div>
                 </div>
@@ -497,7 +486,6 @@
                                 </div>
                             </div>
 
-                            <!-- Firemné / fakturačné údaje s. r. o. -->
                             <div class="company-legal-box">
                                 <div class="company-legal-header">
                                     <i class="fa-solid fa-building"></i>
@@ -511,7 +499,6 @@
                             </div>
                         </div>
 
-                        <!-- Sociálne siete v sekcii kontakt -->
                         <div class="contact-socials-wrap">
                             <span class="socials-label">Sledujte ma alebo napíšte priamo:</span>
                             <div class="contact-socials">
@@ -522,7 +509,7 @@
                         </div>
                     </div>
 
-                    <form class="contact-form hover-glow-dark" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <form class="contact-form hover-glow-dark" id="contact-form" name="kontakt" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
                         <input type="hidden" name="form-name" value="kontakt" />
                         <input type="hidden" name="subject" value="Nová správa z webu davidhabina.sk" />
                         <p style="display:none;">
