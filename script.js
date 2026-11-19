@@ -115,9 +115,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- 5. DYNAMICKÉ NAČÍTAVANIE ČLÁNKOV Z data/blog.json (Najnovší vľavo) ---
+    // --- 5. DYNAMICKÉ NAČÍTAVANIE ČLÁNKOV Z data/blog.json (Čistý editoriálny vzhľad bez fotiek) ---
     const blogGrid = document.getElementById("blog-grid");
     
+    const getReadingTime = (text) => {
+        const cleanText = (text || "").replace(/[#*_`>\-\[\]()]/g, " ").trim();
+        const words = cleanText ? cleanText.split(/\s+/).length : 0;
+        const minutes = Math.max(1, Math.ceil(words / 180));
+        return `${minutes} min čítania`;
+    };
+
     if (blogGrid) {
         fetch('data/blog.json')
             .then(response => response.json())
@@ -127,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const blogPosts = rawItems.map(item => ({
                     title: item.title_sk || item.title || "",
                     date: item.date || "",
-                    image: item.image || "",
                     summary: item.desc_sk || item.desc || "",
                     content: item.content_sk || item.content || ""
                 })).reverse();
@@ -136,43 +142,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 blogPosts.forEach((post, index) => {
                     const card = document.createElement("article");
                     card.className = "blog-card hover-glow";
-                    
-                    const imageWrapperHtml = post.image 
-                        ? `<div class="blog-image-wrapper"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` 
-                        : '';
+                    const readTime = getReadingTime(post.content || post.summary);
 
                     card.innerHTML = `
                         <div>
-                            ${imageWrapperHtml}
-                            <span class="blog-date">${post.date}</span>
+                            <div class="blog-card-meta">
+                                <span class="blog-date">${post.date}</span>
+                                <span class="blog-read-time"><i class="fa-regular fa-clock"></i> ${readTime}</span>
+                            </div>
                             <h3>${post.title}</h3>
                             <p>${post.summary}</p>
                         </div>
-                        <button class="read-more-btn" data-index="${index}">Čítať článok <i class="fa-solid fa-arrow-right"></i></button>
+                        <div class="blog-card-footer">
+                            <button type="button" class="read-more-btn" data-index="${index}">
+                                <span>Čítať článok</span>
+                                <span class="read-more-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                            </button>
+                        </div>
                     `;
                     blogGrid.appendChild(card);
                 });
 
                 blogGrid.addEventListener("click", (e) => {
-                    const btn = e.target.closest(".read-more-btn");
-                    if (btn) {
-                        const index = btn.getAttribute("data-index");
-                        const post = blogPosts[index];
+                    const cardEl = e.target.closest(".blog-card");
+                    if (cardEl) {
+                        const btn = cardEl.querySelector(".read-more-btn");
+                        const index = btn ? btn.getAttribute("data-index") : null;
+                        const post = index !== null ? blogPosts[index] : null;
                         if (post) {
                             document.getElementById("modal-title").innerText = post.title;
                             document.getElementById("modal-date").innerText = post.date;
                             
                             const contentDiv = document.getElementById("modal-content");
-                            let fullHtml = "";
-                            if (post.image) {
-                                fullHtml += `<img src="${post.image}" alt="${post.title}">`;
-                            }
                             if (typeof marked !== 'undefined') {
-                                fullHtml += marked.parse(post.content);
+                                contentDiv.innerHTML = marked.parse(post.content);
                             } else {
-                                fullHtml += `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
+                                contentDiv.innerHTML = `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
                             }
-                            contentDiv.innerHTML = fullHtml;
 
                             document.getElementById("blog-modal").classList.add("active");
                         }
@@ -203,10 +209,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollRightBtn = document.getElementById("scroll-right-btn");
     if (blogGrid && scrollLeftBtn && scrollRightBtn) {
         scrollLeftBtn.addEventListener("click", () => {
-            blogGrid.scrollBy({ left: -384, behavior: 'smooth' });
+            blogGrid.scrollBy({ left: -388, behavior: 'smooth' });
         });
         scrollRightBtn.addEventListener("click", () => {
-            blogGrid.scrollBy({ left: 384, behavior: 'smooth' });
+            blogGrid.scrollBy({ left: 388, behavior: 'smooth' });
         });
     }
 
