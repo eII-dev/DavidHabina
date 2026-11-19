@@ -13,6 +13,20 @@ document.addEventListener("DOMContentLoaded", () => {
         handleScroll();
     }
 
+    // --- 0B. ELEGANTNÉ PODSVIETENIE KARIET PRI PRECHODE MYŠOU ---
+    if (window.innerWidth > 900) {
+        document.addEventListener("mousemove", (e) => {
+            const card = e.target.closest(".hover-glow, .hover-glow-dark");
+            if (card) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            }
+        }, { passive: true });
+    }
+
     // --- 1. MOBILNÉ MENU (Hamburger) ---
     const hamburgerToggle = document.getElementById("hamburger-toggle");
     const navLinksMobile = document.getElementById("nav-links-mobile");
@@ -121,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 blogGrid.innerHTML = "";
                 blogPosts.forEach((post, index) => {
                     const card = document.createElement("article");
-                    card.className = "blog-card";
+                    card.className = "blog-card hover-glow";
                     
                     const imageWrapperHtml = post.image 
                         ? `<div class="blog-image-wrapper"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` 

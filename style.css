@@ -1,30 +1,29 @@
 /* ==========================================================================
-   EDITORIAL MINIMALISM + DEEP EMERALD — DÁVID HABINA
+   EDITORIAL MINIMALISM + DEEP EMERALD + SUBTLE FINANCE GRID — DÁVID HABINA
    ========================================================================== */
 
 :root {
     /* Čisté tmavé pozadie zladené s ateliérovou fotkou */
     --bg-black: #080808;
-    --bg-dark-surface: #111312;
-    --bg-dark-elevated: #171a18;
+    --bg-dark-surface: #0f1210;
 
     /* Svetlé architektonické povrchy */
-    --bg-light: #f6f7f6;
-    --bg-white: #ffffff;
+    --bg-light: #f5f7f6;
+    --bg-white: #fcfdfc;
     --text-ink: #111413;
     --text-muted: #5a6360;
 
-    /* Kultivovaná smaragdovo zelená paleta (bez neónov) */
+    /* Kultivovaná smaragdovo zelená paleta */
     --emerald-deep: #145338;
     --emerald-primary: #196b47;
     --emerald-hover: #135437;
     --emerald-accent: #2c8c62;
     --emerald-tint: rgba(25, 107, 71, 0.08);
-    --emerald-border: rgba(25, 107, 71, 0.22);
+    --emerald-border: rgba(25, 107, 71, 0.24);
 
     /* Okraje & tiene */
     --border-light: rgba(17, 20, 19, 0.08);
-    --border-dark: rgba(255, 255, 255, 0.1);
+    --border-dark: rgba(255, 255, 255, 0.09);
     --shadow-subtle: 0 2px 14px rgba(17, 20, 19, 0.035);
     --shadow-elevated: 0 14px 34px rgba(17, 20, 19, 0.07);
 
@@ -71,6 +70,80 @@ body.menu-open {
 }
 
 /* ==========================================================================
+   CELOSTRÁNKOVÉ FINANČNÉ POZADIE (JEMNÁ ARCHITEKTONICKÁ MRIEŽKA)
+   ========================================================================== */
+.finance-bg-dark {
+    background-color: var(--bg-black);
+    background-image:
+        linear-gradient(to right, rgba(44, 140, 98, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(44, 140, 98, 0.05) 1px, transparent 1px);
+    background-size: 52px 52px;
+}
+
+.finance-bg-light {
+    background-color: var(--bg-light);
+    background-image:
+        linear-gradient(to right, rgba(25, 107, 71, 0.048) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(25, 107, 71, 0.048) 1px, transparent 1px);
+    background-size: 52px 52px;
+}
+
+.finance-bg-white {
+    background-color: var(--bg-white);
+    background-image:
+        linear-gradient(to right, rgba(25, 107, 71, 0.032) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(25, 107, 71, 0.032) 1px, transparent 1px);
+    background-size: 52px 52px;
+}
+
+/* ==========================================================================
+   ELEGANTNÉ PODSVIETENIE KARIET PRI PRECHODE MYŠOU
+   ========================================================================== */
+.hover-glow,
+.hover-glow-dark {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-glow::after,
+.hover-glow-dark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+}
+
+.hover-glow::after {
+    background: radial-gradient(
+        460px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(25, 107, 71, 0.075),
+        transparent 68%
+    );
+}
+
+.hover-glow-dark::after {
+    background: radial-gradient(
+        460px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(44, 140, 98, 0.13),
+        transparent 68%
+    );
+}
+
+.hover-glow:hover::after,
+.hover-glow-dark:hover::after {
+    opacity: 1;
+}
+
+.hover-glow > *,
+.hover-glow-dark > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
    FULL-WIDTH HORNÁ LIŠTA (SEKCIE NAĽAVO, DÁVID HABINA NAPRAVO)
    ========================================================================== */
 .navbar {
@@ -79,7 +152,7 @@ body.menu-open {
     left: 0;
     width: 100%;
     height: 70px;
-    background: rgba(8, 8, 8, 0.78);
+    background: rgba(8, 8, 8, 0.8);
     backdrop-filter: saturate(160%) blur(20px);
     -webkit-backdrop-filter: saturate(160%) blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -180,11 +253,22 @@ body.menu-open {
     min-height: 92vh;
     min-height: 92dvh;
     width: 100%;
-    background-color: var(--bg-black);
     display: flex;
     align-items: center;
     padding: 130px 0 90px;
     overflow: hidden;
+}
+
+.hero-finance-curve {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-finance-curve svg {
+    width: 100%;
+    height: 100%;
 }
 
 /* Fotka úplne vpravo s neviditeľným prechodom pozadia */
@@ -329,7 +413,6 @@ body.menu-open {
    ŠTATISTIKY
    ========================================================================== */
 .stats-section {
-    background-color: var(--bg-black);
     border-top: 1px solid rgba(255, 255, 255, 0.07);
     padding: 52px 0 64px;
 }
@@ -341,16 +424,17 @@ body.menu-open {
 }
 
 .stat-item {
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(15, 18, 16, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-lg);
     padding: 28px 22px;
     text-align: center;
-    transition: border-color var(--transition-smooth);
+    transition: border-color var(--transition-smooth), transform var(--transition-smooth);
 }
 
 .stat-item:hover {
     border-color: rgba(44, 140, 98, 0.45);
+    transform: translateY(-2px);
 }
 
 .stat-number-wrapper {
@@ -385,17 +469,14 @@ body.menu-open {
 }
 
 .surface-light {
-    background-color: var(--bg-light);
     color: var(--text-ink);
 }
 
 .surface-white {
-    background-color: var(--bg-white);
     color: var(--text-ink);
 }
 
 .surface-dark {
-    background-color: var(--bg-black);
     color: #ffffff;
 }
 
@@ -453,15 +534,18 @@ body.menu-open {
 }
 
 .bento-card {
-    background: var(--bg-white);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-subtle);
-    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .bento-card:hover {
     transform: translateY(-3px);
+    border-color: var(--emerald-border);
     box-shadow: var(--shadow-elevated);
 }
 
@@ -550,7 +634,9 @@ body.menu-open {
 }
 
 .service-box {
-    background-color: var(--bg-light);
+    background-color: rgba(245, 247, 246, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-xl);
     padding: 38px 34px;
@@ -561,7 +647,7 @@ body.menu-open {
 }
 
 .service-box:hover {
-    background-color: var(--bg-white);
+    background-color: #ffffff;
     border-color: var(--emerald-border);
     transform: translateY(-4px);
     box-shadow: var(--shadow-elevated);
@@ -627,32 +713,44 @@ body.menu-open {
 }
 
 /* ==========================================================================
-   REFERENCIE (GOOGLE RECENZIE)
+   REFERENCIE (GOOGLE RECENZIE — ČISTÉ A NEPORUŠENÉ ZOBRAZENIE)
    ========================================================================== */
 .reviews-card-container {
-    background: var(--bg-white);
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-xl);
-    padding: 38px 28px 42px;
+    padding: 40px 32px;
     box-shadow: var(--shadow-subtle);
+    transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.reviews-card-container:hover {
+    border-color: var(--emerald-border);
+    box-shadow: var(--shadow-elevated);
 }
 
 .reviews-widget-wrapper {
-    min-height: 150px;
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    min-height: 220px;
+    display: block;
 }
 
-/* Orezanie Elfsight reklamy (Shadow DOM hack) s opravou šípok */
 .elfsight-app-5e075a91-74b7-43d5-a9c0-fc958e255fa5 {
-    clip-path: inset(-100px -100px 60px -100px) !important;
-    margin-bottom: -60px !important;
-    width: 100%;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Skrytie prípadného externého odkazu bez orezávania kariet recenzií */
+.reviews-widget-wrapper a[href*="elfsight.com"] {
+    display: none !important;
 }
 
 .write-review-container {
     text-align: center;
-    margin-top: 74px;
+    margin-top: 28px;
+    padding-top: 8px;
     position: relative;
     z-index: 10;
 }
@@ -737,7 +835,7 @@ body.menu-open {
 .blog-card {
     flex: 0 0 360px;
     scroll-snap-align: start;
-    background-color: var(--bg-light);
+    background-color: rgba(245, 247, 246, 0.9);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
     padding: 24px;
@@ -748,7 +846,7 @@ body.menu-open {
 }
 
 .blog-card:hover {
-    background-color: var(--bg-white);
+    background-color: #ffffff;
     border-color: var(--emerald-border);
     transform: translateY(-4px);
     box-shadow: var(--shadow-elevated);
@@ -845,7 +943,7 @@ body.menu-open {
 }
 
 .modal-content {
-    background-color: var(--bg-white);
+    background-color: #ffffff;
     color: var(--text-ink);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-xl);
@@ -932,13 +1030,16 @@ body.menu-open {
 }
 
 .faq-item {
-    background-color: var(--bg-white);
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-subtle);
     transition: border-color 0.22s ease;
 }
 
+.faq-item:hover,
 .faq-item.active {
     border-color: var(--emerald-border);
 }
@@ -1009,13 +1110,18 @@ body.menu-open {
 }
 
 .contact-details-card {
-    background: var(--bg-dark-surface);
+    background: rgba(15, 18, 16, 0.9);
     border: 1px solid var(--border-dark);
     border-radius: var(--radius-xl);
     padding: 40px 36px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: border-color var(--transition-smooth);
+}
+
+.contact-details-card:hover {
+    border-color: rgba(44, 140, 98, 0.38);
 }
 
 .contact-details-card h3 {
@@ -1119,13 +1225,18 @@ body.menu-open {
 
 /* Kontaktný formulár */
 .contact-form {
-    background: var(--bg-dark-surface);
+    background: rgba(15, 18, 16, 0.9);
     border: 1px solid var(--border-dark);
     border-radius: var(--radius-xl);
     padding: 40px 36px;
     display: flex;
     flex-direction: column;
     gap: 18px;
+    transition: border-color var(--transition-smooth);
+}
+
+.contact-form:hover {
+    border-color: rgba(44, 140, 98, 0.38);
 }
 
 .form-row {
@@ -1225,7 +1336,6 @@ body.menu-open {
    ========================================================================== */
 footer {
     padding: 34px 0 42px;
-    background-color: var(--bg-black);
     border-top: 1px solid rgba(255, 255, 255, 0.07);
     font-size: 0.84rem;
     color: rgba(255, 255, 255, 0.54);
@@ -1268,7 +1378,7 @@ footer {
     transform: translateX(-50%);
     width: calc(100% - 32px);
     max-width: 940px;
-    background: rgba(17, 19, 18, 0.94);
+    background: rgba(15, 18, 16, 0.95);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1493,10 +1603,11 @@ footer {
 
     .bento-main,
     .service-box,
+    .reviews-card-container,
     .contact-details-card,
     .contact-form,
     .modal-content {
-        padding: 28px 22px;
+        padding: 28px 20px;
     }
 
     .cookie-content {

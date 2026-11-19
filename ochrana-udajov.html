@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-light: #f6f7f6;
+            --bg-light: #f5f7f6;
             --bg-white: #ffffff;
             --text-ink: #111413;
             --text-muted: #5a6360;
@@ -30,6 +30,10 @@
 
         body {
             background-color: var(--bg-light);
+            background-image:
+                linear-gradient(to right, rgba(25, 107, 71, 0.048) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(25, 107, 71, 0.048) 1px, transparent 1px);
+            background-size: 52px 52px;
             color: var(--text-ink);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.7;
@@ -107,7 +111,9 @@
         .gdpr-card {
             max-width: 800px;
             margin: 0 auto;
-            background: var(--bg-white);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 48px 46px;
             box-shadow: 0 2px 14px rgba(17, 20, 19, 0.035);
