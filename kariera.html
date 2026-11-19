@@ -15,11 +15,11 @@
     <meta property="og:image" content="davidko.webp">
 
     <!-- Inline SVG favicon v smaragdovom dizajne s iniciálmi DH -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='110' fill='%23080808'/><rect x='28' y='28' width='456' height='456' rx='88' fill='none' stroke='%231d7a50' stroke-width='14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='220' font-weight='600' letter-spacing='-6'>DH</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='110' fill='%23080a09'/><rect x='28' y='28' width='456' height='456' rx='88' fill='none' stroke='%23196b47' stroke-width='14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='220' font-weight='600' letter-spacing='-6'>DH</text></svg>">
     
     <link rel="stylesheet" href="style.css">
     
-    <!-- Moderná typografia Plus Jakarta Sans + Inter -->
+    <!-- Čistá moderná typografia Plus Jakarta Sans + Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 </head>
-<body class="dark-editorial-body">
+<body>
 
     <!-- Full-Width Horná Lišta -->
     <header class="navbar" id="navbar">
@@ -59,9 +59,26 @@
     </header>
 
     <main>
-        <!-- 1. MODERNÝ HERO -->
-        <section class="cr-hero">
-            <div class="ambient-aurora aurora-hero" aria-hidden="true"></div>
+        <!-- 1. TMAVÝ HERO S FINANČNOU KRIVKOU -->
+        <section class="cr-hero finance-bg-dark">
+            <div class="hero-finance-curve" aria-hidden="true">
+                <svg viewBox="0 0 1440 680" fill="none" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="crCurveLine" x1="0" y1="620" x2="1440" y2="120" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#196b47" stop-opacity="0"/>
+                            <stop offset="35%" stop-color="#196b47" stop-opacity="0.34"/>
+                            <stop offset="75%" stop-color="#228257" stop-opacity="0.28"/>
+                            <stop offset="100%" stop-color="#196b47" stop-opacity="0"/>
+                        </linearGradient>
+                        <linearGradient id="crCurveFill" x1="720" y1="140" x2="720" y2="680" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#196b47" stop-opacity="0.14"/>
+                            <stop offset="100%" stop-color="#080a09" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M -40 590 C 280 545, 480 430, 760 340 C 1030 255, 1220 175, 1480 95 L 1480 680 L -40 680 Z" fill="url(#crCurveFill)"/>
+                    <path d="M -40 590 C 280 545, 480 430, 760 340 C 1030 255, 1220 175, 1480 95" stroke="url(#crCurveLine)" stroke-width="1.6"/>
+                </svg>
+            </div>
 
             <div class="container">
                 <div class="cr-hero-inner">
@@ -74,7 +91,7 @@
 
                     <h1 class="cr-title">
                         Rob financie inak.<br>
-                        <span class="mint-highlight">Slobodne a na vlastné meno.</span>
+                        <span class="emerald-highlight">Slobodne a na vlastné meno.</span>
                     </h1>
 
                     <p class="cr-lead">
@@ -94,89 +111,122 @@
             </div>
         </section>
 
-        <!-- 2. ASYMETRICKÝ 3D BENTO GRID BENEFITOV -->
-        <section id="vyhody" class="section bento-section">
-            <div class="ambient-aurora aurora-services" aria-hidden="true"></div>
+        <!-- 2. SVETLÁ ASYMETRICKÁ BENTO SEKCIA (3D OBJEKT V KAŽDEJ KARTE) -->
+        <section id="vyhody" class="section surface-light finance-bg-light">
             <div class="container">
                 <div class="cr-bento-showcase">
-                    <!-- Ľavá vysoká dominantná karta (cez 2 riadky) -->
-                    <article class="bento-card-glass bento-3d bento-teal-glow cr-bento-tall">
+                    <!-- 1. Ľavá vysoká dominantná karta (cez 2 riadky) -->
+                    <article class="bento-card bento-light-card bento-3d cr-bento-tall">
                         <div class="cr-tall-top">
-                            <h2 class="cr-bento-mega-mint">Benefity<br>spolupráce</h2>
+                            <span class="bento-pill-light">Čo ti dám do rúk</span>
+                            <h2 class="cr-bento-mega-emerald">Benefity<br>spolupráce</h2>
                             <p class="cr-tall-copy">
                                 Nejde o obyčajné zamestnanie. Buduješ vlastné klientske portfólio s kompletným zázemím, modernými nástrojmi a podporou, ktorá ťa podrží od prvého dňa.
                             </p>
                         </div>
 
-                        <!-- 3D Sochársky objekt: Prepletené lesklé obsidiánovo-smaragdové prstence -->
+                        <!-- 3D Objekt 1: Prepletené smaragdovo-bridlicové prstence -->
                         <div class="bento-3d-object cr-tall-3d-art" aria-hidden="true">
-                            <svg viewBox="0 0 340 260" fill="none">
+                            <svg viewBox="0 0 320 240" fill="none">
                                 <defs>
-                                    <linearGradient id="crMetal1" x1="30" y1="30" x2="260" y2="230" gradientUnits="userSpaceOnUse">
-                                        <stop offset="0%" stop-color="#a7f3d0"/>
-                                        <stop offset="26%" stop-color="#22332e"/>
-                                        <stop offset="58%" stop-color="#090d0c"/>
-                                        <stop offset="86%" stop-color="#2c8c62"/>
-                                        <stop offset="100%" stop-color="#6ee7b7"/>
+                                    <linearGradient id="crLightRing1" x1="30" y1="30" x2="250" y2="210" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#298a5f"/>
+                                        <stop offset="50%" stop-color="#144d34"/>
+                                        <stop offset="100%" stop-color="#0b261b"/>
                                     </linearGradient>
-                                    <linearGradient id="crMetal2" x1="310" y1="40" x2="90" y2="220" gradientUnits="userSpaceOnUse">
-                                        <stop offset="0%" stop-color="#6ee7b7"/>
-                                        <stop offset="32%" stop-color="#17493a"/>
-                                        <stop offset="68%" stop-color="#080c0b"/>
-                                        <stop offset="100%" stop-color="#a7f3d0"/>
+                                    <linearGradient id="crLightRing2" x1="290" y1="40" x2="90" y2="200" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#389c6f"/>
+                                        <stop offset="55%" stop-color="#196b47"/>
+                                        <stop offset="100%" stop-color="#0e3624"/>
                                     </linearGradient>
-                                    <filter id="cr3dDrop" x="-20%" y="-20%" width="140%" height="140%">
-                                        <feDropShadow dx="0" dy="24" stdDeviation="16" flood-color="#000000" flood-opacity="0.82"/>
+                                    <filter id="crLightShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#0d261b" flood-opacity="0.18"/>
                                     </filter>
                                 </defs>
-                                <g filter="url(#cr3dDrop)">
-                                    <ellipse cx="142" cy="136" rx="86" ry="54" transform="rotate(-24 142 136)" stroke="url(#crMetal1)" stroke-width="28"/>
-                                    <ellipse cx="142" cy="136" rx="86" ry="54" transform="rotate(-24 142 136)" stroke="rgba(255,255,255,0.3)" stroke-width="1.6"/>
-                                    <ellipse cx="212" cy="150" rx="80" ry="50" transform="rotate(22 212 150)" stroke="url(#crMetal2)" stroke-width="26"/>
-                                    <ellipse cx="212" cy="150" rx="80" ry="50" transform="rotate(22 212 150)" stroke="rgba(167,243,208,0.4)" stroke-width="1.6"/>
+                                <g filter="url(#crLightShadow)">
+                                    <ellipse cx="132" cy="126" rx="80" ry="50" transform="rotate(-24 132 126)" stroke="url(#crLightRing1)" stroke-width="26"/>
+                                    <ellipse cx="132" cy="126" rx="80" ry="50" transform="rotate(-24 132 126)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+                                    <ellipse cx="198" cy="140" rx="74" ry="46" transform="rotate(22 198 140)" stroke="url(#crLightRing2)" stroke-width="24"/>
+                                    <ellipse cx="198" cy="140" rx="74" ry="46" transform="rotate(22 198 140)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
                                 </g>
                             </svg>
                         </div>
                     </article>
 
-                    <!-- Horný stred: Obrie číslo 10+ -->
-                    <article class="bento-card-glass bento-3d bento-teal-glow cr-bento-stat">
-                        <div class="cr-mega-num">10+</div>
-                        <p class="cr-stat-label">rokov praxe<br>a know-how</p>
+                    <!-- 2. Horný stred: 10+ rokov praxe + 3D Kompas -->
+                    <article class="bento-card bento-light-card bento-3d cr-bento-stat">
+                        <div class="cr-stat-copy">
+                            <div class="cr-mega-num">10+</div>
+                            <p class="cr-stat-label">rokov praxe<br>a know-how</p>
+                        </div>
+
+                        <!-- 3D Objekt 2: 3D Smaragdový kompas -->
+                        <div class="bento-3d-object cr-card-3d-corner" aria-hidden="true">
+                            <svg viewBox="0 0 150 150" fill="none">
+                                <g filter="url(#crLightShadow)">
+                                    <circle cx="82" cy="82" r="44" fill="url(#crLightRing1)"/>
+                                    <circle cx="82" cy="82" r="34" stroke="rgba(255,255,255,0.32)" stroke-width="1.2"/>
+                                    <polygon points="82,48 90,74 116,82 90,90 82,116 74,90 48,82 74,74" fill="#ffffff" fill-opacity="0.92"/>
+                                </g>
+                            </svg>
+                        </div>
                     </article>
 
-                    <!-- Horný pravý: Obrie číslo 0 € -->
-                    <article class="bento-card-glass bento-3d bento-emerald-deep cr-bento-stat">
-                        <div class="cr-mega-num">0 €</div>
-                        <p class="cr-stat-label">strop na tvojom<br>mesačnom príjme</p>
+                    <!-- 3. Horný pravý: 0 € strop + 3D Rastové stĺpce -->
+                    <article class="bento-card bento-light-card bento-3d cr-bento-stat">
+                        <div class="cr-stat-copy">
+                            <div class="cr-mega-num">0 €</div>
+                            <p class="cr-stat-label">strop na tvojom<br>mesačnom príjme</p>
+                        </div>
+
+                        <!-- 3D Objekt 3: 3D Rastové stĺpce so sférou -->
+                        <div class="bento-3d-object cr-card-3d-corner" aria-hidden="true">
+                            <svg viewBox="0 0 150 150" fill="none">
+                                <g filter="url(#crLightShadow)">
+                                    <rect x="42" y="92" width="18" height="40" rx="6" fill="url(#crLightRing1)"/>
+                                    <rect x="68" y="72" width="18" height="60" rx="6" fill="url(#crLightRing1)"/>
+                                    <rect x="94" y="48" width="18" height="84" rx="6" fill="url(#crLightRing2)"/>
+                                    <circle cx="103" cy="30" r="10" fill="#196b47"/>
+                                </g>
+                            </svg>
+                        </div>
                     </article>
 
-                    <!-- Dolný stred: Časová flexibilita -->
-                    <article class="bento-card-glass bento-3d bento-teal-glow cr-bento-feature">
-                        <h3 class="cr-bento-title-mint">Časová<br>flexibilita</h3>
-                        <p>Pracuj podľa seba. Kdekoľvek, kedykoľvek — v kancelárii v Košiciach alebo online.</p>
+                    <!-- 4. Dolný stred: Časová flexibilita + 3D Orbitálne kruhy -->
+                    <article class="bento-card bento-light-card bento-3d cr-bento-feature">
+                        <div class="cr-feature-copy">
+                            <h3 class="cr-bento-title-emerald">Časová<br>flexibilita</h3>
+                            <p>Pracuj podľa seba. Kdekoľvek, kedykoľvek — v kancelárii v Košiciach alebo online.</p>
+                        </div>
+
+                        <!-- 3D Objekt 4: 3D Časový gyroskop -->
+                        <div class="bento-3d-object cr-card-3d-corner" aria-hidden="true">
+                            <svg viewBox="0 0 150 150" fill="none">
+                                <g filter="url(#crLightShadow)">
+                                    <ellipse cx="82" cy="84" rx="48" ry="20" transform="rotate(-22 82 84)" stroke="url(#crLightRing1)" stroke-width="8"/>
+                                    <ellipse cx="82" cy="84" rx="48" ry="20" transform="rotate(28 82 84)" stroke="url(#crLightRing2)" stroke-width="8"/>
+                                    <circle cx="82" cy="84" r="14" fill="#196b47"/>
+                                </g>
+                            </svg>
+                        </div>
                     </article>
 
-                    <!-- Dolný pravý: Osobný mentor -->
-                    <article class="bento-card-glass bento-3d bento-dark-slate cr-bento-feature cr-bento-mentor-card">
-                        <div>
-                            <h3 class="cr-bento-title-mint">Osobný<br>mentor</h3>
+                    <!-- 5. Dolný pravý: Osobný mentor + 3D Dve postavy (tandem) -->
+                    <article class="bento-card bento-light-card bento-3d cr-bento-feature">
+                        <div class="cr-feature-copy">
+                            <h3 class="cr-bento-title-emerald">Osobný<br>mentor</h3>
                             <p>Prvé analýzy aj stretnutia riešime v tandeme 1 na 1, kým nemáš 100% istotu.</p>
                         </div>
 
-                        <!-- 3D Sochársky objekt: Levitujúca smaragdová sféra v prstenci -->
-                        <div class="bento-3d-object cr-mini-3d-orb" aria-hidden="true">
-                            <svg viewBox="0 0 180 180" fill="none">
-                                <defs>
-                                    <radialGradient id="crSphere" cx="35%" cy="30%" r="65%">
-                                        <stop offset="0%" stop-color="#ffffff"/>
-                                        <stop offset="28%" stop-color="#6ee7b7"/>
-                                        <stop offset="72%" stop-color="#145338"/>
-                                        <stop offset="100%" stop-color="#06120e"/>
-                                    </radialGradient>
-                                </defs>
-                                <ellipse cx="90" cy="95" rx="64" ry="24" transform="rotate(-22 90 95)" stroke="#6ee7b7" stroke-opacity="0.65" stroke-width="6"/>
-                                <circle cx="90" cy="92" r="30" fill="url(#crSphere)"/>
+                        <!-- 3D Objekt 5: 3D Tandem dvoch postáv -->
+                        <div class="bento-3d-object cr-card-3d-corner" aria-hidden="true">
+                            <svg viewBox="0 0 150 150" fill="none">
+                                <g filter="url(#crLightShadow)">
+                                    <circle cx="102" cy="54" r="13" fill="url(#crLightRing2)" fill-opacity="0.8"/>
+                                    <path d="M80 120 C80 98, 90 86, 102 86 C114 86, 124 98, 124 120 Z" fill="url(#crLightRing2)" fill-opacity="0.8"/>
+                                    <circle cx="68" cy="48" r="17" fill="url(#crLightRing1)"/>
+                                    <path d="M38 124 C38 96, 51 80, 68 80 C85 80, 98 96, 98 124 Z" fill="url(#crLightRing1)"/>
+                                </g>
                             </svg>
                         </div>
                     </article>
@@ -184,8 +234,8 @@
             </div>
         </section>
 
-        <!-- 3. INTERAKTÍVNY VÝBER CESTY -->
-        <section class="section bento-section">
+        <!-- 3. BIELA SEKCIA: INTERAKTÍVNY VÝBER CESTY -->
+        <section class="section surface-white finance-bg-white">
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">Tvoj štartovací bod</span>
@@ -205,9 +255,9 @@
                         </button>
                     </div>
 
-                    <div class="bento-card-glass bento-teal-glow cr-path-display" id="cr-path-display">
+                    <div class="bento-light-card cr-path-display" id="cr-path-display">
                         <div class="cr-path-top">
-                            <span class="bento-pill-dark" id="cr-path-badge">Ideálne pre nováčikov</span>
+                            <span class="bento-pill-light" id="cr-path-badge">Ideálne pre nováčikov</span>
                             <h3 id="cr-path-title">Naučím ťa remeslo od úplných základov</h3>
                             <p id="cr-path-desc">Nepotrebuješ ekonomickú školu ani predchádzajúcu prax. Dôležitá je chuť učiť sa, komunikovať s ľuďmi a budovať si vlastnú značku.</p>
                         </div>
@@ -222,10 +272,10 @@
             </div>
         </section>
 
-        <!-- 4. RÝCHLY & JEDNODUCHÝ FORMULÁR -->
-        <section id="kariera-formular" class="section bento-section">
+        <!-- 4. TMAVÁ SEKCIA: RÝCHLY & JEDNODUCHÝ FORMULÁR -->
+        <section id="kariera-formular" class="section surface-dark finance-bg-dark">
             <div class="container">
-                <div class="bento-card-glass bento-dark-slate cr-apply-box">
+                <div class="bento-dark-card cr-apply-box">
                     <div class="cr-apply-header">
                         <span class="sub-heading">30 sekúnd</span>
                         <h2>Poďme na kávu alebo online call</h2>
@@ -336,7 +386,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer class="finance-bg-dark">
         <div class="container footer-content">
             <div class="footer-brand">
                 <span class="footer-logo">Dávid Habina</span>

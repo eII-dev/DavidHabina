@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         handleScroll();
     }
 
-    // --- 0B. INTERAKTÍVNY 3D TILT + PARALAXA 3D OBJEKTOV + GLARE ---
+    // --- 0B. JEMNÝ & UHLADENÝ 3D POHYB KARIET A 3D OBJEKTOV ---
     if (window.innerWidth > 900) {
         const cards3d = document.querySelectorAll(".bento-3d");
         cards3d.forEach(card => {
@@ -21,31 +21,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
             card.addEventListener("mousemove", (e) => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+                const normX = ((e.clientX - rect.left) / rect.width) - 0.5;
+                const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
 
-                card.style.setProperty("--glare-x", `${x}px`);
-                card.style.setProperty("--glare-y", `${y}px`);
+                const rotateY = normX * 2.2;
+                const rotateX = -normY * 2.2;
 
-                const normX = (x / rect.width) - 0.5;
-                const normY = (y / rect.height) - 0.5;
-
-                const rotateY = normX * 6;
-                const rotateX = -normY * 6;
-
-                card.style.transform = `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+                card.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
 
                 if (obj3d) {
-                    const moveX = normX * -18;
-                    const moveY = normY * -18;
-                    obj3d.style.transform = `translate3d(${moveX.toFixed(1)}px, ${moveY.toFixed(1)}px, 24px) scale(1.04)`;
+                    const moveX = normX * -7;
+                    const moveY = normY * -7;
+                    obj3d.style.transform = `translate3d(${moveX.toFixed(1)}px, ${moveY.toFixed(1)}px, 0)`;
                 }
             }, { passive: true });
 
             card.addEventListener("mouseleave", () => {
-                card.style.transform = "perspective(1100px) rotateX(0deg) rotateY(0deg)";
+                card.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)";
                 if (obj3d) {
-                    obj3d.style.transform = "translate3d(0px, 0px, 0px) scale(1)";
+                    obj3d.style.transform = "translate3d(0px, 0px, 0px)";
                 }
             });
         });
@@ -343,10 +337,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollRightBtn = document.getElementById("scroll-right-btn");
     if (blogGrid && scrollLeftBtn && scrollRightBtn) {
         scrollLeftBtn.addEventListener("click", () => {
-            blogGrid.scrollBy({ left: -392, behavior: 'smooth' });
+            blogGrid.scrollBy({ left: -388, behavior: 'smooth' });
         });
         scrollRightBtn.addEventListener("click", () => {
-            blogGrid.scrollBy({ left: 392, behavior: 'smooth' });
+            blogGrid.scrollBy({ left: 388, behavior: 'smooth' });
         });
     }
 
@@ -487,7 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (document.querySelector(".hero-title")) {
             const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-            heroTl.from(".hero-badge-pill", { duration: 0.65, y: 12, opacity: 0, delay: 0.08 })
+            heroTl.from(".hero-eyebrow", { duration: 0.65, y: 12, opacity: 0, delay: 0.08 })
                   .from(".hero-title", { duration: 0.85, y: 22, opacity: 0 }, "-=0.4")
                   .from(".hero-subtitle", { duration: 0.75, y: 16, opacity: 0 }, "-=0.55")
                   .from(".hero-description", { duration: 0.75, y: 14, opacity: 0 }, "-=0.55")
@@ -511,13 +505,13 @@ document.addEventListener("DOMContentLoaded", () => {
             gsap.from(grid.children, {
                 scrollTrigger: {
                     trigger: grid,
-                    start: "top 82%",
+                    start: "top 84%",
                     toggleActions: "play none none none"
                 },
-                duration: 0.75,
-                y: 26,
+                duration: 0.7,
+                y: 20,
                 opacity: 0,
-                stagger: 0.1,
+                stagger: 0.09,
                 ease: "power2.out"
             });
         });
