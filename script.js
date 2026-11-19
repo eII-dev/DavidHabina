@@ -56,16 +56,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 2. GDPR MODAL ---
+    // --- 2. FULL-SCREEN GDPR READER ---
+    const gdprModal = document.getElementById("gdpr-modal");
+
     window.openGdprModal = function(event) {
         if (event) event.preventDefault();
-        const modal = document.getElementById("gdpr-modal");
-        if (modal) modal.classList.add("active");
+        if (gdprModal) {
+            gdprModal.scrollTop = 0;
+            gdprModal.classList.add("active");
+            document.body.classList.add("reader-open");
+        }
     };
 
     window.closeGdprModal = function() {
-        const modal = document.getElementById("gdpr-modal");
-        if (modal) modal.classList.remove("active");
+        if (gdprModal) {
+            gdprModal.classList.remove("active");
+            document.body.classList.remove("reader-open");
+        }
     };
 
     // --- 3. COOKIE BANNER ---
@@ -115,8 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- 5. DYNAMICKÉ NAČÍTAVANIE ČLÁNKOV Z data/blog.json (Čistý editoriálny vzhľad bez fotiek) ---
+    // --- 5. ČLÁNKY + FULL-SCREEN READER SO SMARAGDOVOU PROGRESS LIŠTOU ---
     const blogGrid = document.getElementById("blog-grid");
+    const blogModal = document.getElementById("blog-modal");
+    const articleProgressBar = document.getElementById("article-progress-bar");
     
     const getReadingTime = (text) => {
         const cleanText = (text || "").replace(/[#*_`>\-\[\]()]/g, " ").trim();
@@ -124,6 +133,37 @@ document.addEventListener("DOMContentLoaded", () => {
         const minutes = Math.max(1, Math.ceil(words / 180));
         return `${minutes} min čítania`;
     };
+
+    const updateArticleProgress = () => {
+        if (!blogModal || !articleProgressBar) return;
+        const scrollTop = blogModal.scrollTop;
+        const maxScroll = blogModal.scrollHeight - blogModal.clientHeight;
+        if (maxScroll <= 0) {
+            articleProgressBar.style.width = "100%";
+            return;
+        }
+        const percent = Math.min(100, Math.max(0, (scrollTop / maxScroll) * 100));
+        articleProgressBar.style.width = `${percent}%`;
+    };
+
+    if (blogModal) {
+        let ticking = false;
+        blogModal.addEventListener("scroll", () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateArticleProgress();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        window.addEventListener("resize", () => {
+            if (blogModal.classList.contains("active")) {
+                updateArticleProgress();
+            }
+        }, { passive: true });
+    }
 
     if (blogGrid) {
         fetch('data/blog.json')
@@ -165,14 +205,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 blogGrid.addEventListener("click", (e) => {
                     const cardEl = e.target.closest(".blog-card");
-                    if (cardEl) {
+                    if (cardEl && blogModal) {
                         const btn = cardEl.querySelector(".read-more-btn");
                         const index = btn ? btn.getAttribute("data-index") : null;
                         const post = index !== null ? blogPosts[index] : null;
                         if (post) {
+                            const readTime = getReadingTime(post.content || post.summary);
                             document.getElementById("modal-title").innerText = post.title;
                             document.getElementById("modal-date").innerText = post.date;
                             
+                            const readTimeEl = document.getElementById("modal-read-time");
+                            const readTimeTopEl = document.getElementById("modal-read-time-top");
+                            if (readTimeEl) readTimeEl.innerHTML = `<i class="fa-regular fa-clock"></i> ${readTime}`;
+                            if (readTimeTopEl) readTimeTopEl.innerText = readTime;
+
                             const contentDiv = document.getElementById("modal-content");
                             if (typeof marked !== 'undefined') {
                                 contentDiv.innerHTML = marked.parse(post.content);
@@ -180,7 +226,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                 contentDiv.innerHTML = `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
                             }
 
-                            document.getElementById("blog-modal").classList.add("active");
+                            blogModal.scrollTop = 0;
+                            if (articleProgressBar) articleProgressBar.style.width = "0%";
+                            blogModal.classList.add("active");
+                            document.body.classList.add("reader-open");
+
+                            requestAnimationFrame(updateArticleProgress);
                         }
                     }
                 });
@@ -190,13 +241,16 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // Zatvorenie modalu článku
+    // Zatvorenie full-screen článku
     window.closeBlogModal = function() {
-        const modal = document.getElementById("blog-modal");
-        if (modal) modal.classList.remove("active");
+        if (blogModal) {
+            blogModal.classList.remove("active");
+            document.body.classList.remove("reader-open");
+            if (articleProgressBar) articleProgressBar.style.width = "0%";
+        }
     };
 
-    // Zatvorenie modalov klávesou Escape
+    // Zatvorenie čítacích okien klávesou Escape
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
             window.closeBlogModal();

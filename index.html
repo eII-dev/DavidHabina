@@ -318,36 +318,111 @@
             </div>
         </section>
 
-        <!-- Článok Modal -->
-        <div id="blog-modal" class="modal-overlay" onclick="closeBlogModal()">
-            <div class="modal-content" onclick="event.stopPropagation()">
-                <button class="modal-close" onclick="closeBlogModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
-                <span id="modal-date" class="blog-date"></span>
-                <h2 id="modal-title"></h2>
-                <div class="modal-body">
-                    <div id="modal-content"></div>
+        <!-- FULL-SCREEN ČLÁNOK READER SO SMARAGDOVOU PROGRESS LIŠTOU -->
+        <div id="blog-modal" class="fullscreen-reader" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="reader-topbar">
+                <div class="reader-topbar-inner">
+                    <button type="button" class="reader-back-btn" onclick="closeBlogModal()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Späť na články</span>
+                    </button>
+                    <div class="reader-topbar-right">
+                        <span id="modal-read-time-top" class="reader-topbar-meta"></span>
+                        <button type="button" class="reader-close-icon" onclick="closeBlogModal()" aria-label="Zatvoriť článok">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Smaragdová lišta priebehu čítania -->
+                <div class="reader-progress-track" aria-hidden="true">
+                    <div class="reader-progress-fill" id="article-progress-bar"></div>
                 </div>
             </div>
+
+            <article class="reader-article-wrapper">
+                <div class="reader-container">
+                    <div class="reader-meta-row">
+                        <span id="modal-date" class="blog-date"></span>
+                        <span id="modal-read-time" class="blog-read-time"></span>
+                    </div>
+                    <h1 id="modal-title" class="reader-title"></h1>
+                    <div class="reader-author-line">
+                        <span class="reader-author-badge">DH</span>
+                        <div>
+                            <strong>Dávid Habina</strong>
+                            <span>Finančný sprostredkovateľ</span>
+                        </div>
+                    </div>
+                    <div class="reader-body" id="modal-content"></div>
+
+                    <div class="reader-footer-actions">
+                        <button type="button" class="reader-footer-back" onclick="closeBlogModal()">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Späť na všetky články</span>
+                        </button>
+                        <a href="#kontakt" class="btn-emerald-primary" onclick="closeBlogModal()">
+                            <span>Konzultovať tému</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
         </div>
 
-        <!-- GDPR Modal -->
-        <div id="gdpr-modal" class="modal-overlay" onclick="closeGdprModal()">
-            <div class="modal-content" onclick="event.stopPropagation()">
-                <button class="modal-close" onclick="closeGdprModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>
-                <span class="blog-date">Právne informácie</span>
-                <h2>Ochrana osobných údajov (GDPR)</h2>
-                <div class="modal-body">
-                    <p>Ochrana vašich osobných údajov je pre mňa dôležitá. Tento dokument vysvetľuje, ako zhromažďujem, používam a chránim vaše dáta pri používaní tohto webu.</p>
-                    <h3>1. Prevádzkovateľ osobných údajov</h3>
-                    <p>Prevádzkovateľom vašich osobných údajov je obchodná spoločnosť <strong>Finvisor s. r. o.</strong>, so sídlom Cintorínska 240/28, 044 15 Vyšná Myšľa, IČO: <strong>55709354</strong>, DIČ: <strong>2122064736</strong>, konajúca prostredníctvom konateľa Dávida Habinu. V prípade otázok nás môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong> alebo telefonicky na <strong>+421 917 332 362</strong>.</p>
-                    <h3>2. Aké údaje zhromažďujem a prečo?</h3>
-                    <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie finančných služieb (meno a priezvisko, e-mailová adresa, telefónne číslo a obsah správy).</p>
-                    <h3>3. Komu údaje poskytujem?</h3>
-                    <p>Vaše osobné údaje nepredávame ani nezdieľame s tretími stranami na marketingové účely. Údaje môžu byť poskytnuté výlučne finančným inštitúciám (banky, poisťovne, správcovské spoločnosti) až po vzájomnej dohode pri riešení vašej požiadavky.</p>
-                    <h3>4. Súbory Cookies</h3>
-                    <p>Tento web používa iba základné technické súbory cookies nevyhnutné pre správne fungovanie stránky.</p>
-                    <h3>5. Vaše práva</h3>
-                    <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu, vymazanie („právo na zabudnutie“), obmedzenie spracovania, ako aj právo kedykoľvek odvolať svoj súhlas na e-maile <strong>davidhabina@prosight.sk</strong>.</p>
+        <!-- FULL-SCREEN GDPR READER -->
+        <div id="gdpr-modal" class="fullscreen-reader" role="dialog" aria-modal="true" aria-labelledby="gdpr-modal-title">
+            <div class="reader-topbar">
+                <div class="reader-topbar-inner">
+                    <button type="button" class="reader-back-btn" onclick="closeGdprModal()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Späť na stránku</span>
+                    </button>
+                    <div class="reader-topbar-right">
+                        <span class="reader-topbar-meta">Finvisor s. r. o.</span>
+                        <button type="button" class="reader-close-icon" onclick="closeGdprModal()" aria-label="Zatvoriť GDPR">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reader-article-wrapper">
+                <div class="reader-container">
+                    <div class="reader-meta-row">
+                        <span class="blog-date">Právne informácie</span>
+                    </div>
+                    <h1 id="gdpr-modal-title" class="reader-title">Ochrana osobných údajov (GDPR)</h1>
+                    <div class="reader-body">
+                        <p>Ochrana vašich osobných údajov je pre nás dôležitá. Tento dokument vysvetľuje, ako zhromažďujeme, používame a chránime vaše dáta pri používaní tohto webu.</p>
+                        
+                        <h3>1. Prevádzkovateľ osobných údajov</h3>
+                        <p>Prevádzkovateľom vašich osobných údajov je obchodná spoločnosť <strong>Finvisor s. r. o.</strong>, so sídlom Cintorínska 240/28, 044 15 Vyšná Myšľa, IČO: <strong>55709354</strong>, DIČ: <strong>2122064736</strong>, konajúca prostredníctvom konateľa Dávida Habinu. V prípade otázok nás môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong> alebo telefonicky na <strong>+421 917 332 362</strong>.</p>
+                        
+                        <h3>2. Aké údaje zhromažďujeme a prečo?</h3>
+                        <p>Prostredníctvom kontaktného formulára na webe zhromažďujeme iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie finančných služieb:</p>
+                        <ul>
+                            <li><strong>Meno a priezvisko</strong> (na identifikáciu)</li>
+                            <li><strong>E-mailová adresa a telefónne číslo</strong> (na komunikáciu)</li>
+                            <li><strong>Obsah správy</strong> (pre lepšie porozumenie vašej požiadavke)</li>
+                        </ul>
+                        <p>Vaše údaje sú spracúvané na základe vášho súhlasu (čl. 6 ods. 1 písm. a) GDPR), ktorý vyjadrujete odoslaním formulára.</p>
+
+                        <h3>3. Komu údaje poskytujeme?</h3>
+                        <p>Vaše osobné údaje nepredávame ani nezdieľame s tretími stranami na marketingové účely. Údaje môžu byť poskytnuté výlučne finančným inštitúciám (banky, poisťovne, správcovské spoločnosti) až po vzájomnej dohode pri riešení vašej finančnej situácie.</p>
+
+                        <h3>4. Súbory Cookies</h3>
+                        <p>Tento web používa iba základné technické súbory cookies nevyhnutné pre správne fungovanie stránky. Nepoužívame invazívne sledovacie nástroje bez vášho výslovného súhlasu v cookie lište.</p>
+
+                        <h3>5. Vaše práva</h3>
+                        <p>Podľa nariadenia GDPR máte právo požadovať prístup k svojim údajom, ich opravu, vymazanie („právo na zabudnutie“), obmedzenie spracovania, ako aj právo kedykoľvek odvolať svoj súhlas kontaktovaním na e-mail <strong>davidhabina@prosight.sk</strong>.</p>
+                    </div>
+
+                    <div class="reader-footer-actions">
+                        <button type="button" class="reader-footer-back" onclick="closeGdprModal()">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Zatvoriť a vrátiť sa na stránku</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
