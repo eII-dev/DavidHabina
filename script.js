@@ -122,6 +122,83 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // --- 4B. INTERAKTÍVNY PREPÍNAČ KARIÉRNYCH CIEST ---
+    const pathTabs = document.querySelectorAll(".cr-tab-btn");
+    const pathDisplay = document.getElementById("cr-path-display");
+
+    if (pathTabs.length > 0 && pathDisplay) {
+        const pathData = {
+            novacik: {
+                label: "Začínam od nuly",
+                badge: "Ideálne pre nováčikov",
+                title: "Naučím ťa remeslo od úplných základov",
+                desc: "Nepotrebuješ ekonomickú školu ani predchádzajúcu prax. Dôležitá je chuť učiť sa, komunikovať s ľuďmi a budovať si vlastnú značku.",
+                perks: [
+                    "Kompletné zaškolenie v praxi",
+                    "Príprava na licenciu NBS",
+                    "Spoločné prvé stretnutia"
+                ]
+            },
+            prax: {
+                label: "Mám prax z obchodu / banky",
+                badge: "Pre skúsených obchodníkov a bankárov",
+                title: "Posuň svoju kariéru bez zbytočných obmedzení",
+                desc: "Ak už máš skúsenosti z banky, poisťovne alebo obchodu, získaš prístup k riešeniam celého trhu, silnú analytickú podporu a priestor rásť.",
+                perks: [
+                    "Rýchly prechod bez byrokracie",
+                    "Celý finančný trh pod jednou strechou",
+                    "Možnosť vybudovať vlastný tím"
+                ]
+            },
+            popri: {
+                label: "Popri VŠ alebo práci",
+                badge: "Flexibilný štart vlastným tempom",
+                title: "Otestuj si biznis popri škole alebo zamestnaní",
+                desc: "Začni postupne, naber prax na reálnych prípadoch a keď uvidíš prvé výsledky, plynulo prejdeš na plnohodnotné podnikanie.",
+                perks: [
+                    "Časový harmonogram podľa teba",
+                    "Žiadny tlak na okamžitú výpoveď",
+                    "Praktická finančná gramotnosť"
+                ]
+            }
+        };
+
+        const badgeEl = document.getElementById("cr-path-badge");
+        const titleEl = document.getElementById("cr-path-title");
+        const descEl = document.getElementById("cr-path-desc");
+        const perksEl = document.getElementById("cr-path-perks");
+        const pathInput = document.getElementById("career-path-input");
+
+        pathTabs.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const key = btn.getAttribute("data-path");
+                const info = pathData[key];
+                if (!info || btn.classList.contains("active")) return;
+
+                pathTabs.forEach(t => {
+                    t.classList.remove("active");
+                    t.setAttribute("aria-selected", "false");
+                });
+                btn.classList.add("active");
+                btn.setAttribute("aria-selected", "true");
+
+                pathDisplay.classList.add("switching");
+                setTimeout(() => {
+                    if (badgeEl) badgeEl.textContent = info.badge;
+                    if (titleEl) titleEl.textContent = info.title;
+                    if (descEl) descEl.textContent = info.desc;
+                    if (perksEl) {
+                        perksEl.innerHTML = info.perks
+                            .map(p => `<span><i class="fa-solid fa-check"></i> ${p}</span>`)
+                            .join("");
+                    }
+                    if (pathInput) pathInput.value = info.label;
+                    pathDisplay.classList.remove("switching");
+                }, 150);
+            });
+        });
+    }
+
     // --- 5. ČLÁNKY + FULL-SCREEN READER SO SMARAGDOVOU PROGRESS LIŠTOU ---
     const blogGrid = document.getElementById("blog-grid");
     const blogModal = document.getElementById("blog-modal");
@@ -407,13 +484,18 @@ document.addEventListener("DOMContentLoaded", () => {
                   .from(".hero-portrait", { duration: 1.05, opacity: 0 }, "-=0.85");
         }
 
-        if (document.querySelector(".career-hero-title")) {
-            const careerTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-            careerTl.from(".career-hero-copy > *", { duration: 0.75, y: 18, opacity: 0, stagger: 0.09, delay: 0.06 })
-                    .from(".career-mentor-card", { duration: 0.85, y: 22, opacity: 0 }, "-=0.55");
+        if (document.querySelector(".cr-title")) {
+            gsap.from(".cr-hero-inner > *", {
+                duration: 0.75,
+                y: 18,
+                opacity: 0,
+                stagger: 0.08,
+                delay: 0.05,
+                ease: "power3.out"
+            });
         }
 
-        gsap.utils.toArray(".section-header").forEach(header => {
+        gsap.utils.toArray(".section-header, .cr-section-head").forEach(header => {
             gsap.from(header, {
                 scrollTrigger: {
                     trigger: header,
@@ -426,6 +508,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 ease: "power2.out"
             });
         });
+
+        if (document.querySelector(".cr-monogram-grid")) {
+            gsap.from(".cr-monogram-card", {
+                scrollTrigger: {
+                    trigger: ".cr-monogram-grid",
+                    start: "top 82%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.75,
+                y: 24,
+                opacity: 0,
+                stagger: 0.12,
+                ease: "power2.out"
+            });
+        }
 
         if (document.querySelector(".about-bento-grid")) {
             gsap.from(".bento-card", {
@@ -453,51 +550,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 y: 26,
                 opacity: 0,
                 stagger: 0.1,
-                ease: "power2.out"
-            });
-        }
-
-        if (document.querySelector(".career-pillars-grid")) {
-            gsap.from(".career-pillar-card", {
-                scrollTrigger: {
-                    trigger: ".career-pillars-grid",
-                    start: "top 82%",
-                    toggleActions: "play none none none"
-                },
-                duration: 0.75,
-                y: 24,
-                opacity: 0,
-                stagger: 0.1,
-                ease: "power2.out"
-            });
-        }
-
-        if (document.querySelector(".career-profiles-grid")) {
-            gsap.from(".career-profile-card", {
-                scrollTrigger: {
-                    trigger: ".career-profiles-grid",
-                    start: "top 82%",
-                    toggleActions: "play none none none"
-                },
-                duration: 0.75,
-                y: 24,
-                opacity: 0,
-                stagger: 0.1,
-                ease: "power2.out"
-            });
-        }
-
-        if (document.querySelector(".career-steps-grid")) {
-            gsap.from(".career-step-card", {
-                scrollTrigger: {
-                    trigger: ".career-steps-grid",
-                    start: "top 84%",
-                    toggleActions: "play none none none"
-                },
-                duration: 0.7,
-                y: 20,
-                opacity: 0,
-                stagger: 0.08,
                 ease: "power2.out"
             });
         }
