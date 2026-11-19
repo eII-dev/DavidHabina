@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kariéra &amp; Partnerstvo | Dávid Habina</title>
     
-    <meta name="description" content="Buduj vlastný biznis vo financiách po boku Dávida Habinu. Osobný mentoring, časová sloboda a férové odmeňovanie bez stropu.">
+    <meta name="description" content="Buduj vlastné podnikanie vo financiách po boku Dávida Habinu. Osobný mentoring, časová sloboda a férové odmeňovanie bez stropu.">
     <meta name="author" content="Dávid Habina">
     <meta name="robots" content="index, follow">
 
@@ -15,7 +15,7 @@
     <meta property="og:image" content="davidko.webp">
 
     <!-- Inline SVG favicon v smaragdovom dizajne s iniciálmi DH -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='110' fill='%23080a09'/><rect x='28' y='28' width='456' height='456' rx='88' fill='none' stroke='%23196b47' stroke-width='14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='220' font-weight='600' letter-spacing='-6'>DH</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='110' fill='%23080808'/><rect x='28' y='28' width='456' height='456' rx='88' fill='none' stroke='%231d7a50' stroke-width='14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='220' font-weight='600' letter-spacing='-6'>DH</text></svg>">
     
     <link rel="stylesheet" href="style.css">
     
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 </head>
-<body>
+<body class="career-page-body">
 
     <!-- Full-Width Horná Lišta -->
     <header class="navbar" id="navbar">
@@ -59,26 +59,9 @@
     </header>
 
     <main>
-        <!-- 1. TMAVÝ HERO S KRIVKOU -->
-        <section class="cr-hero">
-            <div class="hero-finance-curve" aria-hidden="true">
-                <svg viewBox="0 0 1440 680" fill="none" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="crCurveStroke" x1="0" y1="620" x2="1440" y2="280" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#196b47" stop-opacity="0"/>
-                            <stop offset="35%" stop-color="#196b47" stop-opacity="0.36"/>
-                            <stop offset="72%" stop-color="#228257" stop-opacity="0.28"/>
-                            <stop offset="100%" stop-color="#196b47" stop-opacity="0"/>
-                        </linearGradient>
-                        <linearGradient id="crCurveArea" x1="720" y1="290" x2="720" y2="680" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#196b47" stop-opacity="0.16"/>
-                            <stop offset="100%" stop-color="#080a09" stop-opacity="0"/>
-                        </linearGradient>
-                    </defs>
-                    <path d="M -60 610 C 280 575, 540 485, 840 400 C 1100 326, 1290 290, 1500 275 L 1500 680 L -60 680 Z" fill="url(#crCurveArea)"/>
-                    <path d="M -60 610 C 280 575, 540 485, 840 400 C 1100 326, 1290 290, 1500 275" stroke="url(#crCurveStroke)" stroke-width="1.5"/>
-                </svg>
-            </div>
+        <!-- 1. MINIMALISTICKÝ & ODVÁŽNY HERO -->
+        <section class="cr-hero finance-bg-dark">
+            <div class="cr-hero-glow" aria-hidden="true"></div>
 
             <div class="container">
                 <div class="cr-hero-inner">
@@ -91,7 +74,7 @@
 
                     <h1 class="cr-title">
                         Rob financie inak.<br>
-                        <span class="emerald-highlight">Slobodne a na vlastné meno.</span>
+                        <span class="cr-title-accent">Slobodne a na vlastné meno.</span>
                     </h1>
 
                     <p class="cr-lead">
@@ -104,82 +87,96 @@
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
                         <a href="#vyhody" class="btn-subtle-glass">
-                            <span>Benefity spolupráce</span>
+                            <span>Prečo do toho ísť</span>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. ČISTÁ BIELA BENTO SEKCIA (ARCHITEKTONICKÉ DLAŽDICE) -->
-        <section id="vyhody" class="section surface-white">
+        <!-- 2. KĽÚČOVÉ VÝHODY S ČISTÝMI SMARAGDOVÝMI GRAFIKAMI -->
+        <section id="vyhody" class="cr-section cr-pillars-section">
             <div class="container">
-                <div class="cr-bento-showcase">
-                    <!-- 1. Ľavá vysoká dominantná karta (cez 2 riadky) -->
-                    <article class="bento-tile tile-light tile-tilt cr-bento-tall">
-                        <div>
-                            <span class="tile-tag-light">Čo ti dám do rúk</span>
-                            <h2 class="cr-bento-mega-emerald">Benefity<br>spolupráce</h2>
-                            <p class="cr-tall-copy">
-                                Nejde o obyčajné zamestnanie. Buduješ vlastné klientske portfólio s kompletným zázemím, modernými analytickými nástrojmi a podporou, ktorá ťa podrží od prvého dňa.
-                            </p>
-                        </div>
+                <div class="cr-section-head">
+                    <span class="cr-tag">Čo ti dám do rúk</span>
+                    <h2>Kľúčové výhody spolupráce</h2>
+                </div>
 
-                        <div class="tile-author-footer">
-                            <div class="tile-avatar-ring">
-                                <img src="davidko.webp" alt="Dávid Habina" loading="lazy">
-                            </div>
-                            <div>
-                                <strong>Priamy mentoring</strong>
-                                <span>Spolupracuješ priamo s Dávidom Habinom</span>
-                            </div>
+                <div class="cr-monogram-grid">
+                    <!-- Pilier 1 -->
+                    <article class="cr-monogram-card">
+                        <div class="cr-monogram-art" aria-hidden="true">
+                            <svg viewBox="0 0 260 220" fill="none">
+                                <defs>
+                                    <linearGradient id="dhGrad1" x1="0" y1="0" x2="260" y2="220" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#38b27c" stop-opacity="0.35"/>
+                                        <stop offset="100%" stop-color="#145338" stop-opacity="0.08"/>
+                                    </linearGradient>
+                                    <radialGradient id="dhCore1" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#38b27c" stop-opacity="0.45"/>
+                                        <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+                                    </radialGradient>
+                                </defs>
+                                <rect x="20" y="14" width="220" height="192" rx="28" fill="url(#dhGrad1)" stroke="rgba(56,178,124,0.28)" stroke-width="1.2"/>
+                                <circle cx="130" cy="110" r="78" fill="url(#dhCore1)"/>
+                                <circle cx="130" cy="110" r="56" stroke="rgba(255,255,255,0.14)" stroke-width="1" stroke-dasharray="4 4"/>
+                                <polygon points="130,46 144,96 194,110 144,124 130,174 116,124 66,110 116,96" fill="rgba(56,178,124,0.18)" stroke="#38b27c" stroke-width="1.4"/>
+                            </svg>
                         </div>
+                        <h3>Mentoring od 1. dňa</h3>
+                        <p>Neostaneš na to sám. Prvé analýzy, nastavenie riešení aj stretnutia s klientmi ideme spolu v tandeme, kým nemáš 100% istotu.</p>
                     </article>
 
-                    <!-- 2. Horný stred: 10+ rokov praxe -->
-                    <article class="bento-tile tile-light tile-tilt cr-bento-stat">
-                        <div class="stat-top-row">
-                            <div class="cr-mega-num">10+</div>
-                            <span class="tile-corner-badge"><i class="fa-solid fa-chart-line"></i></span>
+                    <!-- Pilier 2 -->
+                    <article class="cr-monogram-card">
+                        <div class="cr-monogram-art" aria-hidden="true">
+                            <svg viewBox="0 0 260 220" fill="none">
+                                <defs>
+                                    <linearGradient id="dhGrad2" x1="260" y1="0" x2="0" y2="220" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#38b27c" stop-opacity="0.32"/>
+                                        <stop offset="100%" stop-color="#145338" stop-opacity="0.06"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect x="20" y="14" width="220" height="192" rx="28" fill="url(#dhGrad2)" stroke="rgba(56,178,124,0.28)" stroke-width="1.2"/>
+                                <rect x="64" y="128" width="22" height="46" rx="6" fill="rgba(56,178,124,0.2)"/>
+                                <rect x="98" y="104" width="22" height="70" rx="6" fill="rgba(56,178,124,0.32)"/>
+                                <rect x="132" y="76" width="22" height="98" rx="6" fill="rgba(56,178,124,0.45)"/>
+                                <rect x="166" y="44" width="22" height="130" rx="6" fill="rgba(56,178,124,0.65)"/>
+                                <path d="M58 134 C 95 118, 130 84, 196 40" stroke="#38b27c" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
                         </div>
-                        <p class="cr-stat-label">rokov praxe<br>a overeného know-how</p>
+                        <h3>Príjem bez stropu</h3>
+                        <p>Zarábaš podľa reálnej hodnoty, ktorú klientom prinesieš — nie podľa tabuľky. Popri okamžitej odmene buduješ aj dlhodobý následný príjem.</p>
                     </article>
 
-                    <!-- 3. Horný pravý: 0 € strop -->
-                    <article class="bento-tile tile-light tile-tilt cr-bento-stat">
-                        <div class="stat-top-row">
-                            <div class="cr-mega-num">0 €</div>
-                            <span class="tile-corner-badge"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                    <!-- Pilier 3 -->
+                    <article class="cr-monogram-card">
+                        <div class="cr-monogram-art" aria-hidden="true">
+                            <svg viewBox="0 0 260 220" fill="none">
+                                <defs>
+                                    <linearGradient id="dhGrad3" x1="130" y1="14" x2="130" y2="206" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#38b27c" stop-opacity="0.32"/>
+                                        <stop offset="100%" stop-color="#145338" stop-opacity="0.06"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect x="20" y="14" width="220" height="192" rx="28" fill="url(#dhGrad3)" stroke="rgba(56,178,124,0.28)" stroke-width="1.2"/>
+                                <ellipse cx="130" cy="110" rx="82" ry="34" transform="rotate(-18 130 110)" stroke="#38b27c" stroke-width="1.4" stroke-opacity="0.7"/>
+                                <ellipse cx="130" cy="110" rx="82" ry="34" transform="rotate(18 130 110)" stroke="rgba(255,255,255,0.22)" stroke-width="1.1"/>
+                                <circle cx="196" cy="86" r="4.5" fill="#38b27c"/>
+                            </svg>
                         </div>
-                        <p class="cr-stat-label">strop na tvojom<br>mesačnom príjme</p>
-                    </article>
-
-                    <!-- 4. Dolný stred: Časová flexibilita -->
-                    <article class="bento-tile tile-light tile-tilt cr-bento-feature">
-                        <div class="stat-top-row">
-                            <h3 class="cr-bento-title-emerald">Časová<br>flexibilita</h3>
-                            <span class="tile-corner-badge"><i class="fa-regular fa-clock"></i></span>
-                        </div>
-                        <p>Pracuj podľa vlastného harmonogramu. Kdekoľvek a kedykoľvek — v modernej kancelárii v Košiciach alebo online.</p>
-                    </article>
-
-                    <!-- 5. Dolný pravý: Osobný mentor -->
-                    <article class="bento-tile tile-light tile-tilt cr-bento-feature">
-                        <div class="stat-top-row">
-                            <h3 class="cr-bento-title-emerald">Osobný<br>mentor</h3>
-                            <span class="tile-corner-badge"><i class="fa-solid fa-handshake"></i></span>
-                        </div>
-                        <p>Prvé analýzy aj stretnutia riešime v tandeme 1 na 1, kým nezískaš 100% samostatnosť a istotu.</p>
+                        <h3>Sloboda času a miesta</h3>
+                        <p>Žiadne odpichovanie príchodov. Pracuješ z modernej kancelárie v Košiciach (Business Center Rozvojová) alebo odkiaľkoľvek online.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- 3. JEMNÁ SVETLÁ SEKCIA: INTERAKTÍVNY VÝBER CESTY -->
-        <section class="section surface-light">
+        <!-- 3. INTERAKTÍVNY VÝBER CESTY -->
+        <section class="cr-section cr-paths-section finance-bg-dark">
             <div class="container">
-                <div class="section-header">
-                    <span class="sub-heading">Tvoj štartovací bod</span>
+                <div class="cr-section-head">
+                    <span class="cr-tag">Tvoj štartovací bod</span>
                     <h2>Vyber si, kde sa práve nachádzaš</h2>
                 </div>
 
@@ -196,9 +193,9 @@
                         </button>
                     </div>
 
-                    <div class="bento-tile tile-light cr-path-display" id="cr-path-display">
+                    <div class="cr-path-display" id="cr-path-display">
                         <div class="cr-path-top">
-                            <span class="tile-tag-light" id="cr-path-badge">Ideálne pre nováčikov</span>
+                            <span class="cr-path-badge" id="cr-path-badge">Ideálne pre nováčikov</span>
                             <h3 id="cr-path-title">Naučím ťa remeslo od úplných základov</h3>
                             <p id="cr-path-desc">Nepotrebuješ ekonomickú školu ani predchádzajúcu prax. Dôležitá je chuť učiť sa, komunikovať s ľuďmi a budovať si vlastnú značku.</p>
                         </div>
@@ -213,12 +210,12 @@
             </div>
         </section>
 
-        <!-- 4. TMAVÁ SEKCIA: RÝCHLY & JEDNODUCHÝ FORMULÁR -->
-        <section id="kariera-formular" class="section surface-dark">
+        <!-- 4. RÝCHLY & JEDNODUCHÝ FORMULÁR -->
+        <section id="kariera-formular" class="cr-section cr-apply-section">
             <div class="container">
-                <div class="tile-dark cr-apply-box">
+                <div class="cr-apply-box">
                     <div class="cr-apply-header">
-                        <span class="sub-heading">30 sekúnd</span>
+                        <span class="cr-tag">30 sekúnd</span>
                         <h2>Poďme na kávu alebo online call</h2>
                         <p>Žiadny životopis v PDF netreba. Nechaj na seba kontakt a do 24 hodín si zavoláme.</p>
                     </div>
@@ -327,7 +324,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer class="finance-bg-dark">
         <div class="container footer-content">
             <div class="footer-brand">
                 <span class="footer-logo">Dávid Habina</span>

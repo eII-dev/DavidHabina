@@ -13,25 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
         handleScroll();
     }
 
-    // --- 0B. VEĽMI JEMNÉ & UHLADENÉ NAKLONENIE BENTO DLAŽDÍC ---
+    // --- 0B. ELEGANTNÉ PODSVIETENIE KARIET PRI PRECHODE MYŠOU ---
     if (window.innerWidth > 900) {
-        const tiltTiles = document.querySelectorAll(".tile-tilt");
-        tiltTiles.forEach(tile => {
-            tile.addEventListener("mousemove", (e) => {
-                const rect = tile.getBoundingClientRect();
-                const normX = ((e.clientX - rect.left) / rect.width) - 0.5;
-                const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
-
-                const rotateY = normX * 2.0;
-                const rotateX = -normY * 2.0;
-
-                tile.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
-            }, { passive: true });
-
-            tile.addEventListener("mouseleave", () => {
-                tile.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)";
-            });
-        });
+        document.addEventListener("mousemove", (e) => {
+            const card = e.target.closest(".hover-glow, .hover-glow-dark");
+            if (card) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            }
+        }, { passive: true });
     }
 
     // --- 1. MOBILNÉ MENU (Hamburger) ---
@@ -234,6 +227,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 ticking = true;
             }
         }, { passive: true });
+
+        window.addEventListener("resize", () => {
+            if (blogModal.classList.contains("active")) {
+                updateArticleProgress();
+            }
+        }, { passive: true });
     }
 
     if (blogGrid) {
@@ -241,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => response.json())
             .then(data => {
                 const rawItems = data.items || [];
+                
                 const blogPosts = rawItems.map(item => ({
                     title: item.title_sk || item.title || "",
                     date: item.date || "",
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 blogGrid.innerHTML = "";
                 blogPosts.forEach((post, index) => {
                     const card = document.createElement("article");
-                    card.className = "blog-card";
+                    card.className = "blog-card hover-glow";
 
                     card.innerHTML = `
                         <div>
@@ -297,6 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (articleProgressBar) articleProgressBar.style.width = "0%";
                             blogModal.classList.add("active");
                             document.body.classList.add("reader-open");
+
                             requestAnimationFrame(updateArticleProgress);
                         }
                     }
@@ -425,16 +426,19 @@ document.addEventListener("DOMContentLoaded", () => {
             const target = parseInt(stat.getAttribute("data-target"), 10);
             if (isNaN(target)) return;
 
-            const duration = 1600;
+            const duration = 1700;
             const delay = index * 140;
 
             setTimeout(() => {
                 const startTime = performance.now();
+
                 const updateNumber = (currentTime) => {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
                     const easedProgress = 1 - Math.pow(1 - progress, 4);
-                    stat.innerText = Math.round(easedProgress * target);
+                    const currentVal = Math.round(easedProgress * target);
+
+                    stat.innerText = currentVal;
 
                     if (progress < 1) {
                         requestAnimationFrame(updateNumber);
@@ -442,6 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         stat.innerText = target;
                     }
                 };
+
                 requestAnimationFrame(updateNumber);
             }, delay);
         });
@@ -456,7 +461,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         observer.disconnect();
                     }
                 });
-            }, { threshold: 0.2 });
+            }, { threshold: 0.25 });
 
             observer.observe(statsSection);
         } else {
@@ -464,7 +469,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- 8. GSAP ANIMÁCIE SEKCÍ ---
+    // --- 8. GSAP ANIMÁCIE SEKCÍ (Pre Desktop > 900px) ---
     if (window.innerWidth > 900 && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -490,19 +495,78 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        gsap.utils.toArray(".bento-grid-about, .bento-grid-services, .cr-bento-showcase").forEach(grid => {
-            gsap.from(grid.children, {
+        gsap.utils.toArray(".section-header, .cr-section-head").forEach(header => {
+            gsap.from(header, {
                 scrollTrigger: {
-                    trigger: grid,
-                    start: "top 84%",
+                    trigger: header,
+                    start: "top 86%",
                     toggleActions: "play none none none"
                 },
-                duration: 0.7,
-                y: 20,
+                duration: 0.8,
+                y: 22,
                 opacity: 0,
-                stagger: 0.09,
                 ease: "power2.out"
             });
         });
+
+        if (document.querySelector(".cr-monogram-grid")) {
+            gsap.from(".cr-monogram-card", {
+                scrollTrigger: {
+                    trigger: ".cr-monogram-grid",
+                    start: "top 82%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.75,
+                y: 24,
+                opacity: 0,
+                stagger: 0.12,
+                ease: "power2.out"
+            });
+        }
+
+        if (document.querySelector(".about-bento-grid")) {
+            gsap.from(".bento-card", {
+                scrollTrigger: {
+                    trigger: ".about-bento-grid",
+                    start: "top 82%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.75,
+                y: 24,
+                opacity: 0,
+                stagger: 0.1,
+                ease: "power2.out"
+            });
+        }
+
+        if (document.querySelector(".services-grid")) {
+            gsap.from(".service-box", {
+                scrollTrigger: {
+                    trigger: ".services-grid",
+                    start: "top 82%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.75,
+                y: 26,
+                opacity: 0,
+                stagger: 0.1,
+                ease: "power2.out"
+            });
+        }
+
+        if (document.querySelector(".faq-list")) {
+            gsap.from(".faq-item", {
+                scrollTrigger: {
+                    trigger: ".faq-list",
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                duration: 0.6,
+                y: 16,
+                opacity: 0,
+                stagger: 0.08,
+                ease: "power2.out"
+            });
+        }
     }
 });
