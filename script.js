@@ -126,13 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const blogGrid = document.getElementById("blog-grid");
     const blogModal = document.getElementById("blog-modal");
     const articleProgressBar = document.getElementById("article-progress-bar");
-    
-    const getReadingTime = (text) => {
-        const cleanText = (text || "").replace(/[#*_`>\-\[\]()]/g, " ").trim();
-        const words = cleanText ? cleanText.split(/\s+/).length : 0;
-        const minutes = Math.max(1, Math.ceil(words / 180));
-        return `${minutes} min čítania`;
-    };
 
     const updateArticleProgress = () => {
         if (!blogModal || !articleProgressBar) return;
@@ -182,13 +175,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 blogPosts.forEach((post, index) => {
                     const card = document.createElement("article");
                     card.className = "blog-card hover-glow";
-                    const readTime = getReadingTime(post.content || post.summary);
 
                     card.innerHTML = `
                         <div>
                             <div class="blog-card-meta">
                                 <span class="blog-date">${post.date}</span>
-                                <span class="blog-read-time"><i class="fa-regular fa-clock"></i> ${readTime}</span>
                             </div>
                             <h3>${post.title}</h3>
                             <p>${post.summary}</p>
@@ -210,14 +201,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         const index = btn ? btn.getAttribute("data-index") : null;
                         const post = index !== null ? blogPosts[index] : null;
                         if (post) {
-                            const readTime = getReadingTime(post.content || post.summary);
                             document.getElementById("modal-title").innerText = post.title;
                             document.getElementById("modal-date").innerText = post.date;
-                            
-                            const readTimeEl = document.getElementById("modal-read-time");
-                            const readTimeTopEl = document.getElementById("modal-read-time-top");
-                            if (readTimeEl) readTimeEl.innerHTML = `<i class="fa-regular fa-clock"></i> ${readTime}`;
-                            if (readTimeTopEl) readTimeTopEl.innerText = readTime;
 
                             const contentDiv = document.getElementById("modal-content");
                             if (typeof marked !== 'undefined') {
@@ -225,6 +210,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             } else {
                                 contentDiv.innerHTML = `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
                             }
+
+                            // Prepočítať progress lištu po načítaní obrázkov v článku
+                            contentDiv.querySelectorAll("img").forEach(img => {
+                                img.setAttribute("loading", "lazy");
+                                img.addEventListener("load", updateArticleProgress, { once: true });
+                            });
 
                             blogModal.scrollTop = 0;
                             if (articleProgressBar) articleProgressBar.style.width = "0%";
