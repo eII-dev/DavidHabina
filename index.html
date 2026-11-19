@@ -11,7 +11,7 @@
     <meta name="robots" content="index, follow">
 
     <meta property="og:title" content="Dávid Habina | Finančný Sprostredkovateľ">
-    <meta property="og:description" content="Jasný pohľad na vaše financie. Hypotéky, investície a poistenie na mieru.">
+    <meta property="og:description" content="Viac peňazí, menej starostí a jasný plán pre vaše financie. Hypotéky, investície a poistenie na mieru.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="davidko.webp">
 
@@ -35,7 +35,7 @@
 </head>
 <body>
 
-    <!-- Full-Width Horná Lišta (Sekcie naľavo, Dávid Habina napravo) -->
+    <!-- Full-Width Horná Lišta (Sekcie naľavo so svetelným podčiarknutím, Dávid Habina napravo) -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
             <!-- Hamburger tlačidlo pre mobil (naľavo) -->
@@ -48,7 +48,7 @@
                 <li><a href="#omne">O mne</a></li>
                 <li><a href="#sluzby">Služby</a></li>
                 <li><a href="#referencie">Referencie</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="#blog">Články</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#kontakt" class="nav-cta-pill">Kontakt</a></li>
                 
@@ -68,7 +68,7 @@
     </header>
 
     <main>
-        <!-- HERO SEKCIA -->
+        <!-- HERO SEKCIA (Okamžite jasná identita + konkrétny prínos pre klienta) -->
         <section id="domov" class="hero-section finance-bg-dark">
             <!-- Decentná finančná rastová krivka v pozadí -->
             <div class="hero-finance-curve" aria-hidden="true">
@@ -99,18 +99,24 @@
             <!-- Obsah naľavo -->
             <div class="container hero-container">
                 <div class="hero-content">
-                    <p class="hero-eyebrow">Finančný sprostredkovateľ</p>
+                    <p class="hero-eyebrow">Nezávislý finančný sprostredkovateľ</p>
 
                     <h1 class="hero-title">
                         Dávid<span class="desktop-space"> </span><br class="mobile-break">Habina
                     </h1>
                     
                     <p class="hero-subtitle">
-                        Jasný pohľad na vaše financie.
+                        Viac peňazí, menej starostí a jasný plán pre vaše financie.
                     </p>
                     <p class="hero-description">
-                        Nezávislé finančné sprostredkovanie bez zbytočných fráz. Hypotéky, investície a ochrana príjmu nastavené transparentne na mieru.
+                        Pomôžem vám získať výhodnejšiu hypotéku, zmysluplne zhodnotiť úspory a nastaviť poistenie tak, aby ste nepreplácali — s kompletným vybavením od A po Z.
                     </p>
+
+                    <div class="hero-benefits">
+                        <span><i class="fa-solid fa-check"></i> Porovnanie celého trhu</span>
+                        <span><i class="fa-solid fa-check"></i> Bez poplatku za konzultáciu</span>
+                        <span><i class="fa-solid fa-check"></i> Vybavenie bez byrokracie</span>
+                    </div>
 
                     <div class="hero-actions">
                         <a href="#kontakt" class="btn-emerald-primary">
@@ -125,19 +131,13 @@
             </div>
         </section>
 
-        <!-- ŠTATISTIKY -->
+        <!-- ŠTATISTIKY (3 karty s plynulým nabiehaním čísel) -->
         <section id="statistiky" class="stats-section finance-bg-dark">
             <div class="container">
                 <div class="stats-grid">
                     <div class="stat-item hover-glow-dark">
                         <div class="stat-number-wrapper">
-                            <span class="stat-number" data-target="15">0</span><span class="stat-suffix">M+ €</span>
-                        </div>
-                        <span class="stat-label">Vybavené financie</span>
-                    </div>
-                    <div class="stat-item hover-glow-dark">
-                        <div class="stat-number-wrapper">
-                            <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
+                            <span class="stat-number" data-target="300">0</span><span class="stat-suffix">+</span>
                         </div>
                         <span class="stat-label">Spokojných klientov</span>
                     </div>
@@ -285,7 +285,7 @@
                 
                 <div class="reviews-card-container hover-glow">
                     <div class="reviews-widget-wrapper">
-                        <!-- Elfsight Google Reviews (bez orezávania a bez lazy-load glitchov) -->
+                        <!-- Elfsight Google Reviews -->
                         <script src="https://elfsightcdn.com/platform.js" async></script>
                         <div class="elfsight-app-5e075a91-74b7-43d5-a9c0-fc958e255fa5"></div>
                     </div>
@@ -300,13 +300,13 @@
             </div>
         </section>
 
-        <!-- SEKCIA: BLOG -->
+        <!-- SEKCIA: ČLÁNKY -->
         <section id="blog" class="section surface-white finance-bg-white">
             <div class="container">
                 <div class="section-header blog-header-row">
                     <div>
                         <span class="sub-heading">Rady &amp; tipy zo sveta financií</span>
-                        <h2>Blog a odborné články</h2>
+                        <h2>Články a odborné rady</h2>
                     </div>
                     <div class="blog-scroll-arrows">
                         <button type="button" id="scroll-left-btn" aria-label="Posunúť doľava"><i class="fa-solid fa-arrow-left"></i></button>
@@ -318,7 +318,7 @@
             </div>
         </section>
 
-        <!-- Blog Modal -->
+        <!-- Článok Modal -->
         <div id="blog-modal" class="modal-overlay" onclick="closeBlogModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeBlogModal()" aria-label="Zatvoriť modal"><i class="fa-solid fa-xmark"></i></button>

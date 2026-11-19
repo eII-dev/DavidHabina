@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- 5. DYNAMICKÉ NAČÍTAVANIE BLOGOV Z data/blog.json (Najnovší vľavo) ---
+    // --- 5. DYNAMICKÉ NAČÍTAVANIE ČLÁNKOV Z data/blog.json (Najnovší vľavo) ---
     const blogGrid = document.getElementById("blog-grid");
     
     if (blogGrid) {
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // Zatvorenie blog modalu
+    // Zatvorenie modalu článku
     window.closeBlogModal = function() {
         const modal = document.getElementById("blog-modal");
         if (modal) modal.classList.remove("active");
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Šípky na posúvanie blogu
+    // Šípky na posúvanie článkov
     const scrollLeftBtn = document.getElementById("scroll-left-btn");
     const scrollRightBtn = document.getElementById("scroll-right-btn");
     if (blogGrid && scrollLeftBtn && scrollRightBtn) {
@@ -210,19 +210,75 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 6. GSAP ANIMÁCIE (Pre Desktop > 900px) ---
+    // --- 6. PLYNULÉ NABIEHANIE ŠTATISTÍK (Funguje na všetkých zariadeniach) ---
+    const statsSection = document.getElementById("statistiky");
     const stats = document.querySelectorAll(".stat-number");
-    
+    let statsAnimated = false;
+
+    const animateStats = () => {
+        if (statsAnimated) return;
+        statsAnimated = true;
+
+        stats.forEach((stat, index) => {
+            const target = parseInt(stat.getAttribute("data-target"), 10);
+            if (isNaN(target)) return;
+
+            const duration = 1700;
+            const delay = index * 140;
+
+            setTimeout(() => {
+                const startTime = performance.now();
+
+                const updateNumber = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // Plynulé spomalenie na konci (easeOutQuart)
+                    const easedProgress = 1 - Math.pow(1 - progress, 4);
+                    const currentVal = Math.round(easedProgress * target);
+
+                    stat.innerText = currentVal;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateNumber);
+                    } else {
+                        stat.innerText = target;
+                    }
+                };
+
+                requestAnimationFrame(updateNumber);
+            }, delay);
+        });
+    };
+
+    if (statsSection && stats.length > 0) {
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            observer.observe(statsSection);
+        } else {
+            animateStats();
+        }
+    }
+
+    // --- 7. GSAP ANIMÁCIE SEKCÍ (Pre Desktop > 900px) ---
     if (window.innerWidth > 900 && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
         const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        heroTl.from(".hero-eyebrow", { duration: 0.7, y: 14, opacity: 0, delay: 0.1 })
-              .from(".hero-title", { duration: 0.9, y: 24, opacity: 0 }, "-=0.45")
-              .from(".hero-subtitle", { duration: 0.8, y: 18, opacity: 0 }, "-=0.6")
-              .from(".hero-description", { duration: 0.8, y: 16, opacity: 0 }, "-=0.6")
-              .from(".hero-actions", { duration: 0.75, y: 14, opacity: 0 }, "-=0.55")
-              .from(".hero-portrait", { duration: 1.1, opacity: 0 }, "-=0.9");
+        heroTl.from(".hero-eyebrow", { duration: 0.65, y: 12, opacity: 0, delay: 0.08 })
+              .from(".hero-title", { duration: 0.85, y: 22, opacity: 0 }, "-=0.4")
+              .from(".hero-subtitle", { duration: 0.75, y: 16, opacity: 0 }, "-=0.55")
+              .from(".hero-description", { duration: 0.75, y: 14, opacity: 0 }, "-=0.55")
+              .from(".hero-benefits", { duration: 0.7, y: 12, opacity: 0 }, "-=0.5")
+              .from(".hero-actions", { duration: 0.7, y: 12, opacity: 0 }, "-=0.5")
+              .from(".hero-portrait", { duration: 1.05, opacity: 0 }, "-=0.85");
 
         gsap.utils.toArray(".section-header").forEach(header => {
             gsap.from(header, {
@@ -275,35 +331,6 @@ document.addEventListener("DOMContentLoaded", () => {
             opacity: 0,
             stagger: 0.08,
             ease: "power2.out"
-        });
-
-        stats.forEach(stat => {
-            const target = parseInt(stat.getAttribute("data-target"));
-            if (!isNaN(target)) {
-                ScrollTrigger.create({
-                    trigger: stat,
-                    start: "top 88%",
-                    once: true,
-                    onEnter: () => {
-                        let count = { val: 0 };
-                        gsap.to(count, {
-                            val: target,
-                            duration: 1.8,
-                            ease: "power2.out",
-                            onUpdate: () => {
-                                stat.innerText = Math.floor(count.val);
-                            }
-                        });
-                    }
-                });
-            }
-        });
-    } else {
-        stats.forEach(stat => {
-            const target = stat.getAttribute("data-target");
-            if (target) {
-                stat.innerText = target;
-            }
         });
     }
 });
