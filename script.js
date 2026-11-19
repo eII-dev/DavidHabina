@@ -13,18 +13,42 @@ document.addEventListener("DOMContentLoaded", () => {
         handleScroll();
     }
 
-    // --- 0B. ELEGANTNÉ PODSVIETENIE KARIET PRI PRECHODE MYŠOU ---
+    // --- 0B. INTERAKTÍVNY 3D TILT + PARALAXA 3D OBJEKTOV + GLARE ---
     if (window.innerWidth > 900) {
-        document.addEventListener("mousemove", (e) => {
-            const card = e.target.closest(".hover-glow, .hover-glow-dark");
-            if (card) {
+        const cards3d = document.querySelectorAll(".bento-3d");
+        cards3d.forEach(card => {
+            const obj3d = card.querySelector(".bento-3d-object");
+
+            card.addEventListener("mousemove", (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-            }
-        }, { passive: true });
+
+                card.style.setProperty("--glare-x", `${x}px`);
+                card.style.setProperty("--glare-y", `${y}px`);
+
+                const normX = (x / rect.width) - 0.5;
+                const normY = (y / rect.height) - 0.5;
+
+                const rotateY = normX * 6;
+                const rotateX = -normY * 6;
+
+                card.style.transform = `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+
+                if (obj3d) {
+                    const moveX = normX * -18;
+                    const moveY = normY * -18;
+                    obj3d.style.transform = `translate3d(${moveX.toFixed(1)}px, ${moveY.toFixed(1)}px, 24px) scale(1.04)`;
+                }
+            }, { passive: true });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "perspective(1100px) rotateX(0deg) rotateY(0deg)";
+                if (obj3d) {
+                    obj3d.style.transform = "translate3d(0px, 0px, 0px) scale(1)";
+                }
+            });
+        });
     }
 
     // --- 1. MOBILNÉ MENU (Hamburger) ---
@@ -227,12 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ticking = true;
             }
         }, { passive: true });
-
-        window.addEventListener("resize", () => {
-            if (blogModal.classList.contains("active")) {
-                updateArticleProgress();
-            }
-        }, { passive: true });
     }
 
     if (blogGrid) {
@@ -240,7 +258,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => response.json())
             .then(data => {
                 const rawItems = data.items || [];
-                
                 const blogPosts = rawItems.map(item => ({
                     title: item.title_sk || item.title || "",
                     date: item.date || "",
@@ -251,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 blogGrid.innerHTML = "";
                 blogPosts.forEach((post, index) => {
                     const card = document.createElement("article");
-                    card.className = "blog-card hover-glow";
+                    card.className = "blog-card";
 
                     card.innerHTML = `
                         <div>
@@ -297,7 +314,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (articleProgressBar) articleProgressBar.style.width = "0%";
                             blogModal.classList.add("active");
                             document.body.classList.add("reader-open");
-
                             requestAnimationFrame(updateArticleProgress);
                         }
                     }
@@ -327,10 +343,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollRightBtn = document.getElementById("scroll-right-btn");
     if (blogGrid && scrollLeftBtn && scrollRightBtn) {
         scrollLeftBtn.addEventListener("click", () => {
-            blogGrid.scrollBy({ left: -388, behavior: 'smooth' });
+            blogGrid.scrollBy({ left: -392, behavior: 'smooth' });
         });
         scrollRightBtn.addEventListener("click", () => {
-            blogGrid.scrollBy({ left: 388, behavior: 'smooth' });
+            blogGrid.scrollBy({ left: 392, behavior: 'smooth' });
         });
     }
 
@@ -426,19 +442,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const target = parseInt(stat.getAttribute("data-target"), 10);
             if (isNaN(target)) return;
 
-            const duration = 1700;
+            const duration = 1600;
             const delay = index * 140;
 
             setTimeout(() => {
                 const startTime = performance.now();
-
                 const updateNumber = (currentTime) => {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
                     const easedProgress = 1 - Math.pow(1 - progress, 4);
-                    const currentVal = Math.round(easedProgress * target);
-
-                    stat.innerText = currentVal;
+                    stat.innerText = Math.round(easedProgress * target);
 
                     if (progress < 1) {
                         requestAnimationFrame(updateNumber);
@@ -446,7 +459,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         stat.innerText = target;
                     }
                 };
-
                 requestAnimationFrame(updateNumber);
             }, delay);
         });
@@ -461,7 +473,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         observer.disconnect();
                     }
                 });
-            }, { threshold: 0.25 });
+            }, { threshold: 0.2 });
 
             observer.observe(statsSection);
         } else {
@@ -469,13 +481,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- 8. GSAP ANIMÁCIE SEKCÍ (Pre Desktop > 900px) ---
+    // --- 8. GSAP ANIMÁCIE SEKCÍ ---
     if (window.innerWidth > 900 && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
         if (document.querySelector(".hero-title")) {
             const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-            heroTl.from(".hero-eyebrow", { duration: 0.65, y: 12, opacity: 0, delay: 0.08 })
+            heroTl.from(".hero-badge-pill", { duration: 0.65, y: 12, opacity: 0, delay: 0.08 })
                   .from(".hero-title", { duration: 0.85, y: 22, opacity: 0 }, "-=0.4")
                   .from(".hero-subtitle", { duration: 0.75, y: 16, opacity: 0 }, "-=0.55")
                   .from(".hero-description", { duration: 0.75, y: 14, opacity: 0 }, "-=0.55")
@@ -495,54 +507,10 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        gsap.utils.toArray(".section-header, .cr-section-head").forEach(header => {
-            gsap.from(header, {
+        gsap.utils.toArray(".bento-about-mosaic, .bento-services-asymmetric, .cr-bento-showcase").forEach(grid => {
+            gsap.from(grid.children, {
                 scrollTrigger: {
-                    trigger: header,
-                    start: "top 86%",
-                    toggleActions: "play none none none"
-                },
-                duration: 0.8,
-                y: 22,
-                opacity: 0,
-                ease: "power2.out"
-            });
-        });
-
-        if (document.querySelector(".cr-monogram-grid")) {
-            gsap.from(".cr-monogram-card", {
-                scrollTrigger: {
-                    trigger: ".cr-monogram-grid",
-                    start: "top 82%",
-                    toggleActions: "play none none none"
-                },
-                duration: 0.75,
-                y: 24,
-                opacity: 0,
-                stagger: 0.12,
-                ease: "power2.out"
-            });
-        }
-
-        if (document.querySelector(".about-bento-grid")) {
-            gsap.from(".bento-card", {
-                scrollTrigger: {
-                    trigger: ".about-bento-grid",
-                    start: "top 82%",
-                    toggleActions: "play none none none"
-                },
-                duration: 0.75,
-                y: 24,
-                opacity: 0,
-                stagger: 0.1,
-                ease: "power2.out"
-            });
-        }
-
-        if (document.querySelector(".services-grid")) {
-            gsap.from(".service-box", {
-                scrollTrigger: {
-                    trigger: ".services-grid",
+                    trigger: grid,
                     start: "top 82%",
                     toggleActions: "play none none none"
                 },
@@ -552,21 +520,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 stagger: 0.1,
                 ease: "power2.out"
             });
-        }
-
-        if (document.querySelector(".faq-list")) {
-            gsap.from(".faq-item", {
-                scrollTrigger: {
-                    trigger: ".faq-list",
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                },
-                duration: 0.6,
-                y: 16,
-                opacity: 0,
-                stagger: 0.08,
-                ease: "power2.out"
-            });
-        }
+        });
     }
 });

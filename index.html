@@ -22,10 +22,10 @@
     
     <link rel="stylesheet" href="style.css">
     
-    <!-- Čistá moderná typografia Inter -->
+    <!-- Moderná typografia Plus Jakarta Sans + Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
@@ -33,7 +33,7 @@
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
-<body>
+<body class="dark-editorial-body">
 
     <!-- Full-Width Horná Lišta -->
     <header class="navbar" id="navbar">
@@ -66,41 +66,25 @@
 
     <main>
         <!-- HERO SEKCIA -->
-        <section id="domov" class="hero-section finance-bg-dark">
-            <div class="hero-finance-curve" aria-hidden="true">
-                <svg viewBox="0 0 1440 800" fill="none" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="subtleFinanceArea" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#2c8c62" stop-opacity="0.11"/>
-                            <stop offset="100%" stop-color="#2c8c62" stop-opacity="0"/>
-                        </linearGradient>
-                        <linearGradient id="subtleFinanceLine" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stop-color="#2c8c62" stop-opacity="0.06"/>
-                            <stop offset="45%" stop-color="#2c8c62" stop-opacity="0.28"/>
-                            <stop offset="85%" stop-color="#2c8c62" stop-opacity="0.05"/>
-                        </linearGradient>
-                    </defs>
-                    <path d="M-40 690 C 180 670, 290 595, 450 575 C 610 555, 720 450, 910 410 C 1100 370, 1260 270, 1480 210 L 1480 820 L -40 820 Z" fill="url(#subtleFinanceArea)"/>
-                    <path d="M-40 690 C 180 670, 290 595, 450 575 C 610 555, 720 450, 910 410 C 1100 370, 1260 270, 1480 210" stroke="url(#subtleFinanceLine)" stroke-width="1.4"/>
-                    <path d="M-40 735 C 210 720, 340 655, 520 640 C 700 625, 820 535, 1010 500 C 1200 465, 1340 385, 1480 345" stroke="rgba(44, 140, 98, 0.12)" stroke-width="1" stroke-dasharray="5 5"/>
-                    <circle cx="450" cy="575" r="3" fill="#2c8c62" fill-opacity="0.45"/>
-                    <circle cx="910" cy="410" r="3.5" fill="#2c8c62" fill-opacity="0.5"/>
-                </svg>
-            </div>
+        <section id="domov" class="hero-section">
+            <div class="ambient-aurora aurora-hero" aria-hidden="true"></div>
 
             <div class="hero-portrait" role="img" aria-label="Dávid Habina"></div>
             <div class="hero-overlay"></div>
 
             <div class="container hero-container">
                 <div class="hero-content">
-                    <p class="hero-eyebrow">Finančný sprostredkovateľ</p>
+                    <div class="hero-badge-pill">
+                        <span class="pulse-dot"></span>
+                        <span>Finančný sprostredkovateľ &bull; Finvisor s. r. o.</span>
+                    </div>
 
                     <h1 class="hero-title">
                         Dávid<span class="desktop-space"> </span><br class="mobile-break">Habina
                     </h1>
                     
                     <p class="hero-subtitle">
-                        Viac peňazí, menej starostí a jasný plán pre vaše financie.
+                        Viac peňazí, menej starostí a <span class="mint-highlight">jasný plán</span> pre vaše financie.
                     </p>
                     <p class="hero-description">
                         Pomôžem vám získať výhodnejšiu hypotéku, zmysluplne zhodnotiť úspory a nastaviť poistenie tak, aby ste nepreplácali — s kompletným vybavením od A po Z.
@@ -125,88 +109,106 @@
             </div>
         </section>
 
-        <!-- ŠTATISTIKY -->
-        <section id="statistiky" class="stats-section finance-bg-dark">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item hover-glow-dark">
-                        <div class="stat-number-wrapper">
-                            <span class="stat-number" data-target="300">0</span><span class="stat-suffix">+</span>
-                        </div>
-                        <span class="stat-label">Spokojných klientov</span>
-                    </div>
-                    <div class="stat-item hover-glow-dark">
-                        <div class="stat-number-wrapper">
-                            <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
-                        </div>
-                        <span class="stat-label">Rokov praxe na trhu</span>
-                    </div>
-                    <div class="stat-item hover-glow-dark">
-                        <div class="stat-number-wrapper">
-                            <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
-                        </div>
-                        <span class="stat-label">Individuálny prístup</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEKCIA: O MNE -->
-        <section id="omne" class="section surface-light finance-bg-light">
+        <!-- SEKCIA: O MNE + ČÍSLA V MODERNOM BENTO GRIDE -->
+        <section id="omne" class="section bento-section">
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">Spoľahlivosť &amp; flexibilita</span>
-                    <h2>Kto som a ako pracujem?</h2>
+                    <h2>Prehľad, pokoj a výsledky v číslach</h2>
                 </div>
 
-                <div class="about-bento-grid">
-                    <div class="bento-card bento-main about-text hover-glow">
-                        <div class="bento-tag">Filozofia spolupráce</div>
-                        <p class="highlight-p">
-                            Svet financií býva komplikovaný. Mojou úlohou je priniesť vám doň absolútny prehľad, pokoj a maximálny úžitok.
-                        </p>
-                        <p class="secondary-p">
-                            Ako finančný sprostredkovateľ sa špecializujem na riešenie aj tých najzložitejších finančných situácií. Všetku byrokraciu, porovnanie celého trhu aj vyjednávanie s bankami a poisťovňami vybavím do posledného detailu za vás.
-                        </p>
-                    </div>
-
-                    <div class="about-features">
-                        <div class="bento-card feature-item hover-glow">
-                            <div class="feature-icon-wrap">
-                                <i class="fa-solid fa-location-dot"></i>
+                <div class="bento-about-mosaic" id="statistiky">
+                    <!-- 1. Veľká hlavná karta (ľavý stĺpec cez 2 riadky) -->
+                    <article class="bento-card-glass bento-3d bento-teal-glow bento-about-hero">
+                        <div class="bento-inner">
+                            <div>
+                                <span class="bento-pill-dark">Filozofia spolupráce</span>
+                                <h3 class="bento-display-md">
+                                    Svet financií býva komplikovaný. Mojou úlohou je priniesť vám doň <span class="mint-text">absolútny prehľad.</span>
+                                </h3>
+                                <p class="bento-muted-text">
+                                    Špecializujem sa na riešenie aj tých najzložitejších finančných situácií. Všetku byrokraciu, porovnanie celého trhu aj vyjednávanie s bankami a poisťovňami vybavím do posledného detailu za vás.
+                                </p>
                             </div>
-                            <div class="feature-copy">
-                                <h3>100% Flexibilný prístup</h3>
-                                <span>Stretnutie osobne v Košiciach alebo pohodlne online odkiaľkoľvek na Slovensku.</span>
+
+                            <div class="bento-bottom-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Osobne v Košiciach alebo online po celej SR</span>
                             </div>
                         </div>
 
-                        <div class="bento-card feature-item hover-glow">
-                            <div class="feature-icon-wrap">
-                                <i class="fa-solid fa-file-signature"></i>
-                            </div>
-                            <div class="feature-copy">
+                        <!-- 3D Sochársky objekt: Prepletené obsidiánovo-smaragdové prstence -->
+                        <div class="bento-3d-object obj-about-rings" aria-hidden="true">
+                            <svg viewBox="0 0 260 220" fill="none">
+                                <defs>
+                                    <linearGradient id="obsRing1" x1="20" y1="20" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#6ee7b7"/>
+                                        <stop offset="22%" stop-color="#1f2926"/>
+                                        <stop offset="55%" stop-color="#0a0e0d"/>
+                                        <stop offset="85%" stop-color="#2c8c62"/>
+                                        <stop offset="100%" stop-color="#a7f3d0"/>
+                                    </linearGradient>
+                                    <linearGradient id="obsRing2" x1="230" y1="30" x2="70" y2="190" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#a7f3d0"/>
+                                        <stop offset="30%" stop-color="#164e3f"/>
+                                        <stop offset="68%" stop-color="#090d0c"/>
+                                        <stop offset="100%" stop-color="#38b27c"/>
+                                    </linearGradient>
+                                    <filter id="soft3dShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000000" flood-opacity="0.75"/>
+                                    </filter>
+                                </defs>
+                                <g filter="url(#soft3dShadow)">
+                                    <ellipse cx="115" cy="115" rx="64" ry="42" transform="rotate(-28 115 115)" stroke="url(#obsRing1)" stroke-width="24"/>
+                                    <ellipse cx="115" cy="115" rx="64" ry="42" transform="rotate(-28 115 115)" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+                                    <ellipse cx="165" cy="128" rx="60" ry="38" transform="rotate(24 165 128)" stroke="url(#obsRing2)" stroke-width="22"/>
+                                    <ellipse cx="165" cy="128" rx="60" ry="38" transform="rotate(24 165 128)" stroke="rgba(167,243,208,0.35)" stroke-width="1.5"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </article>
+
+                    <!-- 2. Veľké číslo 300+ -->
+                    <article class="bento-card-glass bento-3d bento-teal-glow bento-metric-tile">
+                        <div class="bento-metric-num">
+                            <span class="stat-number" data-target="300">0</span><span>+</span>
+                        </div>
+                        <p class="bento-metric-title">spokojných klientov</p>
+                        <span class="bento-metric-sub">Dlhodobá starostlivosť o rodinné aj firemné financie</span>
+                    </article>
+
+                    <!-- 3. Veľké číslo 10+ -->
+                    <article class="bento-card-glass bento-3d bento-emerald-deep bento-metric-tile">
+                        <div class="bento-metric-num">
+                            <span class="stat-number" data-target="10">0</span><span>+</span>
+                        </div>
+                        <p class="bento-metric-title">rokov praxe na trhu</p>
+                        <span class="bento-metric-sub">Overené postupy v každej ekonomickej situácii</span>
+                    </article>
+
+                    <!-- 4. Karta: 100% bez byrokracie (spodný pravý široký blok) -->
+                    <article class="bento-card-glass bento-3d bento-dark-slate bento-about-wide">
+                        <div class="bento-wide-grid">
+                            <div>
+                                <div class="bento-metric-num small-num">
+                                    <span class="stat-number" data-target="100">0</span><span>%</span>
+                                </div>
                                 <h3>Agenda bez vášho stresu</h3>
-                                <span>Kompletné vybavenie dokumentácie, komunikácia s bankami a dohľad nad schválením.</span>
+                                <p>Kompletná dokumentácia, komunikácia s bankami, znalcami aj poisťovňami a pravidelná kontrola výhodnosti vašich zmlúv.</p>
+                            </div>
+                            <div class="bento-checklist-pills">
+                                <span><i class="fa-solid fa-check"></i> Celý trh na jednom mieste</span>
+                                <span><i class="fa-solid fa-check"></i> Osobne v KE aj online</span>
+                                <span><i class="fa-solid fa-check"></i> Dlhodobý servis po podpise</span>
                             </div>
                         </div>
-
-                        <div class="bento-card feature-item hover-glow">
-                            <div class="feature-icon-wrap">
-                                <i class="fa-solid fa-compass"></i>
-                            </div>
-                            <div class="feature-copy">
-                                <h3>Dlhodobý servis na mieru</h3>
-                                <span>Podpisom zmluvy sa spolupráca nekončí. Pravidelne strážim výhodnosť vašich nastavení.</span>
-                            </div>
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- SEKCIA: SLUŽBY -->
-        <section id="sluzby" class="section surface-white finance-bg-white">
+        <!-- SEKCIA: SLUŽBY V ASYMETRICKOM 3D BENTO GRIDE -->
+        <section id="sluzby" class="section bento-section">
+            <div class="ambient-aurora aurora-services" aria-hidden="true"></div>
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">Čo pre vás vybavím</span>
@@ -214,60 +216,155 @@
                     <p class="section-lead">Komplexné riešenia postavené na faktoch, dátach a transparentných podmienkach.</p>
                 </div>
 
-                <div class="services-grid">
-                    <div class="service-box hover-glow" data-category="mortgages">
-                        <div>
-                            <div class="service-top">
-                                <div class="service-icon"><i class="fa-solid fa-house"></i></div>
-                                <span class="service-pill">Bývanie</span>
-                            </div>
-                            <h3>Hypotéky a úvery</h3>
-                            <p>Vybavenie najvýhodnejšej hypotéky, refinancovanie starých úverov a úspora tisícov eur na úrokoch.</p>
+                <div class="bento-services-asymmetric">
+                    <!-- Služba 1 (Široká 7 stĺpcov): Hypotéky a úvery -->
+                    <article class="bento-card-glass bento-3d bento-teal-glow bento-srv-7" data-category="mortgages">
+                        <div class="bento-srv-content">
+                            <span class="bento-pill-dark">Bývanie &amp; Refinancovanie</span>
+                            <h3 class="bento-srv-heading">Hypotéky a úvery</h3>
+                            <p>Vybavenie najvýhodnejšej hypotéky, refinancovanie starých úverov a úspora tisícov eur na úrokoch bez behania po bankách.</p>
+                            <a href="#kontakt" class="bento-action-link">
+                                <span>Porovnať možnosti</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <a href="#kontakt" class="service-link">Porovnať možnosti <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
 
-                    <div class="service-box hover-glow" data-category="investments">
-                        <div>
-                            <div class="service-top">
-                                <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
-                                <span class="service-pill">Majetok</span>
-                            </div>
-                            <h3>Investície a sporenie</h3>
-                            <p>Budovanie majetku, ochrana pred infláciou a nastavenie pasívneho príjmu prostredníctvom overených ETF a fondov.</p>
+                        <!-- 3D Sochársky objekt: Sklenený architektonický dom/hranol -->
+                        <div class="bento-3d-object obj-srv-3d" aria-hidden="true">
+                            <svg viewBox="0 0 240 240" fill="none">
+                                <defs>
+                                    <linearGradient id="glassRoof" x1="40" y1="30" x2="200" y2="130" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.9"/>
+                                        <stop offset="50%" stop-color="#2c8c62" stop-opacity="0.55"/>
+                                        <stop offset="100%" stop-color="#0f2922" stop-opacity="0.9"/>
+                                    </linearGradient>
+                                    <linearGradient id="glassWallLeft" x1="55" y1="105" x2="125" y2="205" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#1e3a34" stop-opacity="0.95"/>
+                                        <stop offset="100%" stop-color="#090e0d" stop-opacity="0.98"/>
+                                    </linearGradient>
+                                    <linearGradient id="glassWallRight" x1="125" y1="105" x2="195" y2="205" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#38b27c" stop-opacity="0.45"/>
+                                        <stop offset="100%" stop-color="#0b1512" stop-opacity="0.95"/>
+                                    </linearGradient>
+                                    <filter id="objShadow1" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feDropShadow dx="0" dy="20" stdDeviation="14" flood-color="#000000" flood-opacity="0.8"/>
+                                    </filter>
+                                </defs>
+                                <g filter="url(#objShadow1)">
+                                    <!-- Ľavá 3D stena -->
+                                    <polygon points="58,112 124,142 124,206 58,174" fill="url(#glassWallLeft)" stroke="rgba(167,243,208,0.28)" stroke-width="1.2"/>
+                                    <!-- Pravá 3D stena -->
+                                    <polygon points="124,142 190,112 190,174 124,206" fill="url(#glassWallRight)" stroke="rgba(167,243,208,0.35)" stroke-width="1.2"/>
+                                    <!-- 3D Strecha -->
+                                    <polygon points="124,44 202,104 124,142 46,104" fill="url(#glassRoof)" stroke="#a7f3d0" stroke-width="1.5"/>
+                                    <!-- Vnútorný svetelný kľúč / jadro -->
+                                    <circle cx="124" cy="96" r="14" fill="#a7f3d0" fill-opacity="0.85"/>
+                                    <circle cx="124" cy="96" r="24" stroke="#6ee7b7" stroke-opacity="0.4" stroke-width="1.5"/>
+                                </g>
+                            </svg>
                         </div>
-                        <a href="#kontakt" class="service-link">Vytvoriť plán <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
+                    </article>
 
-                    <div class="service-box hover-glow" data-category="insurance">
-                        <div>
-                            <div class="service-top">
-                                <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                                <span class="service-pill">Ochrana</span>
-                            </div>
-                            <h3>Poistenie</h3>
-                            <p>Kvalitné životné poistenie, poistenie nehnuteľnosti a majetku s krytím, ktoré vás v núdzi skutočne podrží.</p>
+                    <!-- Služba 2 (Užšia 5 stĺpcov): Investície a sporenie -->
+                    <article class="bento-card-glass bento-3d bento-emerald-deep bento-srv-5" data-category="investments">
+                        <div class="bento-srv-content">
+                            <span class="bento-pill-dark">Majetok &amp; ETF</span>
+                            <h3 class="bento-srv-heading">Investície a sporenie</h3>
+                            <p>Budovanie majetku, ochrana pred infláciou a pasívny príjem cez overené ETF fondy.</p>
+                            <a href="#kontakt" class="bento-action-link">
+                                <span>Vytvoriť plán</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <a href="#kontakt" class="service-link">Skontrolovať zmluvy <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
 
-                    <div class="service-box hover-glow" data-category="planning">
-                        <div>
-                            <div class="service-top">
-                                <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
-                                <span class="service-pill">Stratégia</span>
-                            </div>
-                            <h3>Finančné plánovanie</h3>
-                            <p>Komplexná analýza osobných alebo firemných financií a vytvorenie nepriestrelnej stratégie pre budúcnosť.</p>
+                        <!-- 3D Sochársky objekt: Krištáľové 3D stĺpce + levitujúca sféra -->
+                        <div class="bento-3d-object obj-srv-3d" aria-hidden="true">
+                            <svg viewBox="0 0 240 240" fill="none">
+                                <defs>
+                                    <linearGradient id="pillarFront" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.75"/>
+                                        <stop offset="100%" stop-color="#0b1915" stop-opacity="0.96"/>
+                                    </linearGradient>
+                                    <radialGradient id="orbGrad" cx="35%" cy="30%" r="65%">
+                                        <stop offset="0%" stop-color="#ffffff"/>
+                                        <stop offset="30%" stop-color="#6ee7b7"/>
+                                        <stop offset="75%" stop-color="#145338"/>
+                                        <stop offset="100%" stop-color="#06120e"/>
+                                    </radialGradient>
+                                </defs>
+                                <g filter="url(#objShadow1)">
+                                    <rect x="52" y="136" width="32" height="68" rx="10" fill="url(#pillarFront)" stroke="rgba(167,243,208,0.3)" stroke-width="1.2"/>
+                                    <rect x="96" y="104" width="32" height="100" rx="10" fill="url(#pillarFront)" stroke="rgba(167,243,208,0.4)" stroke-width="1.2"/>
+                                    <rect x="140" y="68" width="32" height="136" rx="10" fill="url(#pillarFront)" stroke="rgba(167,243,208,0.55)" stroke-width="1.4"/>
+                                    <circle cx="156" cy="42" r="18" fill="url(#orbGrad)"/>
+                                </g>
+                            </svg>
                         </div>
-                        <a href="#kontakt" class="service-link">Chcem analýzu <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
+                    </article>
+
+                    <!-- Služba 3 (Užšia 5 stĺpcov): Poistenie -->
+                    <article class="bento-card-glass bento-3d bento-dark-slate bento-srv-5" data-category="insurance">
+                        <div class="bento-srv-content">
+                            <span class="bento-pill-dark">Ochrana príjmu</span>
+                            <h3 class="bento-srv-heading">Poistenie</h3>
+                            <p>Životné poistenie, poistenie nehnuteľnosti a majetku s krytím, ktoré vás v núdzi podrží.</p>
+                            <a href="#kontakt" class="bento-action-link">
+                                <span>Skontrolovať zmluvy</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- 3D Sochársky objekt: Vrstvený 3D obsidiánovo-smaragdový štít -->
+                        <div class="bento-3d-object obj-srv-3d" aria-hidden="true">
+                            <svg viewBox="0 0 240 240" fill="none">
+                                <defs>
+                                    <linearGradient id="shieldOuter" x1="50" y1="35" x2="190" y2="205" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#38b27c" stop-opacity="0.55"/>
+                                        <stop offset="50%" stop-color="#132620" stop-opacity="0.92"/>
+                                        <stop offset="100%" stop-color="#080c0b" stop-opacity="0.98"/>
+                                    </linearGradient>
+                                    <linearGradient id="shieldInner" x1="80" y1="60" x2="165" y2="175" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.85"/>
+                                        <stop offset="100%" stop-color="#145338" stop-opacity="0.7"/>
+                                    </linearGradient>
+                                </defs>
+                                <g filter="url(#objShadow1)">
+                                    <path d="M124 38 L186 64 V118 C186 162 158 192 124 206 C90 192 62 162 62 118 V64 L124 38 Z" fill="url(#shieldOuter)" stroke="rgba(167,243,208,0.42)" stroke-width="1.5"/>
+                                    <path d="M124 64 L164 81 V117 C164 146 146 166 124 176 C102 166 84 146 84 117 V81 L124 64 Z" fill="url(#shieldInner)" stroke="#a7f3d0" stroke-width="1.2"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </article>
+
+                    <!-- Služba 4 (Široká 7 stĺpcov): Finančné plánovanie -->
+                    <article class="bento-card-glass bento-3d bento-teal-glow bento-srv-7" data-category="planning">
+                        <div class="bento-srv-content">
+                            <span class="bento-pill-dark">Dlhodobá stratégia</span>
+                            <h3 class="bento-srv-heading">Finančné plánovanie</h3>
+                            <p>Komplexná analýza osobných alebo firemných financií a vytvorenie nepriestrelnej stratégie pre rentu, deti a budúcnosť.</p>
+                            <a href="#kontakt" class="bento-action-link">
+                                <span>Chcem analýzu</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- 3D Sochársky objekt: Orbitálny 3D gyroskop -->
+                        <div class="bento-3d-object obj-srv-3d" aria-hidden="true">
+                            <svg viewBox="0 0 240 240" fill="none">
+                                <g filter="url(#objShadow1)">
+                                    <ellipse cx="124" cy="124" rx="76" ry="32" transform="rotate(-25 124 124)" stroke="url(#obsRing1)" stroke-width="12"/>
+                                    <ellipse cx="124" cy="124" rx="76" ry="32" transform="rotate(35 124 124)" stroke="url(#obsRing2)" stroke-width="12"/>
+                                    <circle cx="124" cy="124" r="26" fill="url(#orbGrad)"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- SEKCIA: REFERENCIE -->
-        <section id="referencie" class="section surface-light finance-bg-light">
+        <section id="referencie" class="section bento-section">
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">Hodnotenia klientov</span>
@@ -275,7 +372,7 @@
                     <p class="section-lead">Dôvera sa buduje výsledkami. Prečítajte si skúsenosti klientov, ktorým som pomohol.</p>
                 </div>
                 
-                <div class="reviews-card-container hover-glow">
+                <div class="reviews-card-container bento-card-glass bento-dark-slate">
                     <div class="reviews-widget-wrapper">
                         <script src="https://elfsightcdn.com/platform.js" async></script>
                         <div class="elfsight-app-5e075a91-74b7-43d5-a9c0-fc958e255fa5"></div>
@@ -291,7 +388,7 @@
         </section>
 
         <!-- SEKCIA: ČLÁNKY -->
-        <section id="clanky" class="section surface-white finance-bg-white">
+        <section id="clanky" class="section bento-section">
             <div class="container">
                 <div class="section-header blog-header-row">
                     <div>
@@ -415,14 +512,14 @@
         </div>
 
         <!-- SEKCIA: FAQ -->
-        <section id="faq" class="section surface-light finance-bg-light">
+        <section id="faq" class="section bento-section">
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">Často kladené otázky</span>
                     <h2>Odpovede na to najdôležitejšie</h2>
                 </div>
                 <div class="faq-list">
-                    <div class="faq-item hover-glow active">
+                    <div class="faq-item bento-card-glass bento-dark-slate active">
                         <button type="button" class="faq-question" aria-expanded="true">
                             <span>Koľko ma stoja vaše služby?</span>
                             <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
@@ -431,7 +528,7 @@
                             <p>Konzultácie a kompletný finančný servis sú pre vás bezplatné. Moja odmena je hradená priamo finančnými inštitúciami.</p>
                         </div>
                     </div>
-                    <div class="faq-item hover-glow">
+                    <div class="faq-item bento-card-glass bento-dark-slate">
                         <button type="button" class="faq-question" aria-expanded="false">
                             <span>Pôsobíte iba v Košiciach?</span>
                             <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
@@ -440,7 +537,7 @@
                             <p>Osobne pôsobím primárne v Košiciach a okolí, avšak vďaka moderným technológiám vieme všetko potrebné vyriešiť aj kompletne online kdekoľvek na Slovensku.</p>
                         </div>
                     </div>
-                    <div class="faq-item hover-glow">
+                    <div class="faq-item bento-card-glass bento-dark-slate">
                         <button type="button" class="faq-question" aria-expanded="false">
                             <span>V čom je výhoda spolupracovať so mnou?</span>
                             <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
@@ -454,16 +551,16 @@
         </section>
 
         <!-- SEKCIA: KONTAKT -->
-        <section id="kontakt" class="section surface-dark finance-bg-dark">
+        <section id="kontakt" class="section bento-section">
             <div class="container">
-                <div class="section-header light-header">
+                <div class="section-header">
                     <span class="sub-heading">Začnime spoluprácu</span>
                     <h2>Kontaktujte ma</h2>
                     <p class="section-lead">Napíšte mi správu alebo zavolajte. Prvý krok k lepšie nastaveným financiám je nezáväzný.</p>
                 </div>
 
                 <div class="contact-wrapper">
-                    <div class="contact-details-card hover-glow-dark">
+                    <div class="contact-details-card bento-card-glass bento-teal-glow">
                         <div>
                             <h3>Dávid Habina</h3>
                             <p class="contact-role">Finančný sprostredkovateľ</p>
@@ -509,7 +606,7 @@
                         </div>
                     </div>
 
-                    <form class="contact-form hover-glow-dark" id="contact-form" name="kontakt" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+                    <form class="contact-form bento-card-glass bento-dark-slate" id="contact-form" name="kontakt" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
                         <input type="hidden" name="form-name" value="kontakt" />
                         <input type="hidden" name="subject" value="Nová správa z webu davidhabina.sk" />
                         <p style="display:none;">
@@ -554,7 +651,7 @@
         </section>
     </main>
 
-    <footer class="finance-bg-dark">
+    <footer>
         <div class="container footer-content">
             <div class="footer-brand">
                 <span class="footer-logo">Dávid Habina</span>
