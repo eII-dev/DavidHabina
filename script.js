@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --- 0. APPLE GLASS NAVBAR SCROLL EFEKT ---
+    // --- 0. FULL-WIDTH LIQUID NAVBAR SCROLL EFEKT ---
     const navbar = document.getElementById("navbar");
     if (navbar) {
         const handleScroll = () => {
@@ -11,6 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
+    }
+
+    // --- 0B. INTERAKTÍVNY LIQUID GLASS SVETELNÝ ODLESK NA KARTÁCH ---
+    if (window.innerWidth > 900) {
+        document.querySelectorAll(".liquid-glass-dark, .liquid-glass-light").forEach(card => {
+            card.addEventListener("mousemove", (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            });
+        });
     }
 
     // --- 1. MOBILNÉ MENU (Hamburger) ---
@@ -203,11 +216,12 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.registerPlugin(ScrollTrigger);
 
         const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        heroTl.from(".hero-badge", { duration: 0.8, y: 20, opacity: 0, delay: 0.1 })
-              .from(".hero-title", { duration: 1, y: 30, opacity: 0 }, "-=0.5")
-              .from(".hero-subtitle", { duration: 0.9, y: 22, opacity: 0 }, "-=0.65")
-              .from(".hero-description", { duration: 0.9, y: 20, opacity: 0 }, "-=0.65")
-              .from(".hero-actions", { duration: 0.8, y: 18, opacity: 0 }, "-=0.6");
+        heroTl.from(".hero-badge", { duration: 0.75, y: 18, opacity: 0, delay: 0.1 })
+              .from(".hero-title", { duration: 0.95, y: 28, opacity: 0 }, "-=0.45")
+              .from(".hero-subtitle", { duration: 0.85, y: 20, opacity: 0 }, "-=0.6")
+              .from(".hero-description", { duration: 0.85, y: 18, opacity: 0 }, "-=0.6")
+              .from(".hero-actions", { duration: 0.75, y: 16, opacity: 0 }, "-=0.55")
+              .from(".hero-portrait", { duration: 1.1, x: 24, opacity: 0 }, "-=0.95");
 
         gsap.utils.toArray(".section-header").forEach(header => {
             gsap.from(header, {

@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Habina | Finančný Sprostredkovateľ Košice</title>
+    <title>Dávid Habina | Finančný Sprostredkovateľ Košice</title>
     
     <meta name="description" content="Nezávislý finančný sprostredkovateľ v Košiciach. Hypotéky, úvery, investície, poistenie a finančné plánovanie na mieru bez stresu.">
-    <meta name="keywords" content="finančný sprostredkovateľ Košice, hypotéka, investovanie, poistenie, finančné plánovanie, David Habina, PROSIGHT">
-    <meta name="author" content="David Habina">
+    <meta name="keywords" content="finančný sprostredkovateľ Košice, hypotéka, investovanie, poistenie, finančné plánovanie, Dávid Habina, PROSIGHT">
+    <meta name="author" content="Dávid Habina">
     <meta name="robots" content="index, follow">
 
-    <meta property="og:title" content="David Habina | Finančný Sprostredkovateľ Košice">
+    <meta property="og:title" content="Dávid Habina | Finančný Sprostredkovateľ Košice">
     <meta property="og:description" content="Jasný pohľad na vaše financie. Hypotéky, investície a poistenie na mieru v Košiciach aj online.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="davidko.webp">
 
     <link rel="preload" href="davidko.webp" as="image" type="image/webp" fetchpriority="high">
     
-    <!-- Inline SVG favicon s iniciálmi DH -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%2308090c'/><rect x='28' y='28' width='456' height='456' rx='96' fill='none' stroke='%23c59b5f' stroke-width='14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='230' font-weight='700' letter-spacing='-8'>DH</text></svg>">
+    <!-- Inline SVG favicon v smaragdovom dizajne s iniciálmi DH -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%23050908'/><rect x='28' y='28' width='456' height='456' rx='96' fill='none' stroke='%2310b981' stroke-width='16'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='230' font-weight='700' letter-spacing='-8'>DH</text></svg>">
     
     <link rel="stylesheet" href="style.css">
     
-    <!-- Apple & PROSIGHT moderná typografia -->
+    <!-- Moderná Apple & PROSIGHT typografia -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,61 +35,80 @@
 </head>
 <body>
 
-    <!-- Plávajúca Apple-style sklenená navigácia -->
-    <header class="navbar-wrapper">
-        <nav class="navbar" id="navbar">
-            <div class="nav-container split-nav">
+    <!-- Full-Width Liquid Glass Horná Lišta (Sekcie naľavo, Dávid Habina napravo) -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Hamburger tlačidlo pre mobil (naľavo) -->
+            <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
+                <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+            </button>
+
+            <!-- Sekcie naľavo -->
+            <ul class="nav-links" id="nav-links-mobile">
+                <li><a href="#omne">O mne</a></li>
+                <li><a href="#sluzby">Služby</a></li>
+                <li><a href="#referencie">Referencie</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#kontakt" class="nav-cta-pill">Kontakt</a></li>
                 
-                <!-- Ľavá strana menu (Desktop) -->
-                <ul class="nav-links nav-left">
-                    <li><a href="#omne">O mne</a></li>
-                    <li><a href="#sluzby">Služby</a></li>
-                    <li><a href="#referencie">Referencie</a></li>
-                </ul>
+                <!-- Sociálne siete v mobilnom menu -->
+                <li class="mobile-socials">
+                    <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </li>
+            </ul>
 
-                <!-- Stredové logo -->
-                <a href="#domov" class="center-logo">
-                    <span class="logo-dot"></span>DAVID HABINA
-                </a>
-
-                <!-- Pravá strana menu (Desktop + Všetky položky pre mobil) -->
-                <ul class="nav-links nav-right" id="nav-links-mobile">
-                    <li class="mobile-only-link"><a href="#omne">O mne</a></li>
-                    <li class="mobile-only-link"><a href="#sluzby">Služby</a></li>
-                    <li class="mobile-only-link"><a href="#referencie">Referencie</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#kontakt" class="nav-cta-pill">Kontakt</a></li>
-                    
-                    <!-- Sociálne siete v mobilnom menu -->
-                    <li class="mobile-socials">
-                        <a href="https://www.facebook.com/david.n.angel.5" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/david_habina/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://wa.me/421917332362" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    </li>
-                </ul>
-
-                <!-- Hamburger tlačidlo pre mobil -->
-                <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Otvoriť menu">
-                    <i class="fa-solid fa-bars" id="hamburger-icon"></i>
-                </button>
-            </div>
-        </nav>
+            <!-- Meno napravo -->
+            <a href="#domov" class="brand-logo">
+                <span class="logo-dot"></span>
+                <span>Dávid Habina</span>
+            </a>
+        </div>
     </header>
 
     <main>
-        <!-- HERO SEKCIA (Apple Pro + PROSIGHT Editorial) -->
+        <!-- HERO SEKCIA (Text vľavo, fotka úplne vpravo + jemné finančné pozadie) -->
         <section id="domov" class="hero-section">
+            <!-- Jemné finančné pozadie (mriežka + rastová krivka + liquid svetlo) -->
+            <div class="finance-bg-layer" aria-hidden="true">
+                <svg class="finance-chart-svg" viewBox="0 0 1440 800" fill="none" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="emeraldChartFill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.22"/>
+                            <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+                        </linearGradient>
+                        <linearGradient id="emeraldChartStroke" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.1"/>
+                            <stop offset="45%" stop-color="#34d399" stop-opacity="0.45"/>
+                            <stop offset="100%" stop-color="#10b981" stop-opacity="0.05"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M-40 660 C 160 640, 260 550, 420 530 C 580 510, 670 390, 860 350 C 1050 310, 1210 190, 1480 120 L 1480 820 L -40 820 Z" fill="url(#emeraldChartFill)"/>
+                    <path d="M-40 660 C 160 640, 260 550, 420 530 C 580 510, 670 390, 860 350 C 1050 310, 1210 190, 1480 120" stroke="url(#emeraldChartStroke)" stroke-width="2"/>
+                    <path d="M-40 720 C 190 700, 310 620, 490 605 C 670 590, 780 485, 970 450 C 1160 415, 1300 310, 1480 260" stroke="rgba(16, 185, 129, 0.14)" stroke-width="1.5" stroke-dasharray="6 6"/>
+                    <circle cx="420" cy="530" r="4" fill="#34d399" fill-opacity="0.55"/>
+                    <circle cx="860" cy="350" r="5" fill="#10b981" fill-opacity="0.65"/>
+                </svg>
+                <div class="liquid-orb orb-hero-1"></div>
+                <div class="liquid-orb orb-hero-2"></div>
+            </div>
+
+            <!-- Portrét úplne napravo -->
+            <div class="hero-portrait" role="img" aria-label="Dávid Habina"></div>
             <div class="hero-overlay"></div>
+
+            <!-- Obsah naľavo -->
             <div class="container hero-container">
                 <div class="hero-content">
-                    <div class="hero-badge">
+                    <div class="hero-badge liquid-glass-dark">
                         <span class="badge-pulse"></span>
                         <span>PROSIGHT Slovensko &bull; Košice &amp; Online</span>
                     </div>
 
                     <h1 class="hero-title">
-                        David<span class="desktop-space"> </span><br class="mobile-break">Habina
+                        Dávid<span class="desktop-space"> </span><br class="mobile-break">Habina
                     </h1>
                     
                     <p class="hero-subtitle">
@@ -100,11 +119,11 @@
                     </p>
 
                     <div class="hero-actions">
-                        <a href="#kontakt" class="btn-apple-primary">
+                        <a href="#kontakt" class="btn-emerald-primary">
                             <span>Bezplatná konzultácia</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
-                        <a href="#sluzby" class="btn-apple-glass">
+                        <a href="#sluzby" class="btn-liquid-glass">
                             <span>Preskúmať služby</span>
                         </a>
                     </div>
@@ -116,29 +135,29 @@
             </a>
         </section>
 
-        <!-- ŠTATISTIKY (Apple Bento Metrics Bar) -->
+        <!-- ŠTATISTIKY (Liquid Glass Metrics) -->
         <section id="statistiky" class="stats-section">
             <div class="container">
                 <div class="stats-grid">
-                    <div class="stat-item">
+                    <div class="stat-item liquid-glass-dark">
                         <div class="stat-number-wrapper">
                             <span class="stat-number" data-target="15">0</span><span class="stat-suffix">M+ €</span>
                         </div>
                         <span class="stat-label">Vybavené financie</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item liquid-glass-dark">
                         <div class="stat-number-wrapper">
                             <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
                         </div>
                         <span class="stat-label">Spokojných klientov</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item liquid-glass-dark">
                         <div class="stat-number-wrapper">
                             <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
                         </div>
                         <span class="stat-label">Rokov praxe na trhu</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item liquid-glass-dark">
                         <div class="stat-number-wrapper">
                             <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
                         </div>
@@ -148,8 +167,9 @@
             </div>
         </section>
 
-        <!-- SEKCIA: O MNE (Apple Bento Grid) -->
-        <section id="omne" class="section apple-light-section">
+        <!-- SEKCIA: O MNE (Svetlý Liquid Glass Bento Grid) -->
+        <section id="omne" class="section liquid-light-section finance-grid-light">
+            <div class="liquid-ambient-light orb-light-1" aria-hidden="true"></div>
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">SPOĽAHLIVOSŤ &amp; FLEXIBILITA</span>
@@ -157,8 +177,8 @@
                 </div>
 
                 <div class="about-bento-grid">
-                    <!-- Hlavná veľká Bento karta -->
-                    <div class="bento-card bento-main about-text">
+                    <!-- Hlavná veľká Liquid Glass karta -->
+                    <div class="bento-card liquid-glass-light bento-main about-text">
                         <div class="bento-tag">Filozofia spolupráce</div>
                         <p class="highlight-p">
                             Svet financií býva komplikovaný. Mojou úlohou je priniesť vám doň absolútny prehľad, pokoj a maximálny úžitok.
@@ -170,8 +190,8 @@
 
                     <!-- 3 Bento karty výhod -->
                     <div class="about-features">
-                        <div class="bento-card feature-item">
-                            <div class="feature-icon-wrap blue">
+                        <div class="bento-card liquid-glass-light feature-item">
+                            <div class="feature-icon-wrap emerald">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div class="feature-copy">
@@ -180,8 +200,8 @@
                             </div>
                         </div>
 
-                        <div class="bento-card feature-item">
-                            <div class="feature-icon-wrap gold">
+                        <div class="bento-card liquid-glass-light feature-item">
+                            <div class="feature-icon-wrap teal">
                                 <i class="fa-solid fa-file-signature"></i>
                             </div>
                             <div class="feature-copy">
@@ -190,8 +210,8 @@
                             </div>
                         </div>
 
-                        <div class="bento-card feature-item">
-                            <div class="feature-icon-wrap emerald">
+                        <div class="bento-card liquid-glass-light feature-item">
+                            <div class="feature-icon-wrap mint">
                                 <i class="fa-solid fa-compass"></i>
                             </div>
                             <div class="feature-copy">
@@ -204,8 +224,9 @@
             </div>
         </section>
 
-        <!-- SEKCIA: SLUŽBY (PROSIGHT Modulárny Bento Systém) -->
-        <section id="sluzby" class="section apple-white-section">
+        <!-- SEKCIA: SLUŽBY (PROSIGHT Modulárny Liquid Bento Systém) -->
+        <section id="sluzby" class="section liquid-white-section">
+            <div class="liquid-ambient-light orb-light-2" aria-hidden="true"></div>
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">ČO PRE VÁS VYBAVÍM</span>
@@ -214,43 +235,51 @@
                 </div>
 
                 <div class="services-grid">
-                    <div class="service-box" data-category="mortgages">
-                        <div class="service-top">
-                            <div class="service-icon icon-blue"><i class="fa-solid fa-house"></i></div>
-                            <span class="service-pill pill-blue">Bývanie</span>
+                    <div class="service-box liquid-glass-light" data-category="mortgages">
+                        <div>
+                            <div class="service-top">
+                                <div class="service-icon icon-emerald"><i class="fa-solid fa-house"></i></div>
+                                <span class="service-pill pill-emerald">Bývanie</span>
+                            </div>
+                            <h3>Hypotéky a úvery</h3>
+                            <p>Vybavenie najvýhodnejšej hypotéky, refinancovanie starých úverov a úspora tisícov eur na úrokoch.</p>
                         </div>
-                        <h3>Hypotéky a úvery</h3>
-                        <p>Vybavenie najvýhodnejšej hypotéky, refinancovanie starých úverov a úspora tisícov eur na úrokoch.</p>
                         <a href="#kontakt" class="service-link">Porovnať možnosti <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
 
-                    <div class="service-box" data-category="investments">
-                        <div class="service-top">
-                            <div class="service-icon icon-emerald"><i class="fa-solid fa-chart-line"></i></div>
-                            <span class="service-pill pill-emerald">Majetok</span>
+                    <div class="service-box liquid-glass-light" data-category="investments">
+                        <div>
+                            <div class="service-top">
+                                <div class="service-icon icon-teal"><i class="fa-solid fa-chart-line"></i></div>
+                                <span class="service-pill pill-teal">Majetok</span>
+                            </div>
+                            <h3>Investície a sporenie</h3>
+                            <p>Budovanie majetku, ochrana pred infláciou a nastavenie pasívneho príjmu prostredníctvom overených ETF a fondov.</p>
                         </div>
-                        <h3>Investície a sporenie</h3>
-                        <p>Budovanie majetku, ochrana pred infláciou a nastavenie pasívneho príjmu prostredníctvom overených ETF a fondov.</p>
                         <a href="#kontakt" class="service-link">Vytvoriť plán <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
 
-                    <div class="service-box" data-category="insurance">
-                        <div class="service-top">
-                            <div class="service-icon icon-amber"><i class="fa-solid fa-shield-halved"></i></div>
-                            <span class="service-pill pill-amber">Ochrana</span>
+                    <div class="service-box liquid-glass-light" data-category="insurance">
+                        <div>
+                            <div class="service-top">
+                                <div class="service-icon icon-blue"><i class="fa-solid fa-shield-halved"></i></div>
+                                <span class="service-pill pill-blue">Ochrana</span>
+                            </div>
+                            <h3>Poistenie</h3>
+                            <p>Kvalitné životné poistenie, poistenie nehnuteľnosti a majetku s krytím, ktoré vás v núdzi skutočne podrží.</p>
                         </div>
-                        <h3>Poistenie</h3>
-                        <p>Kvalitné životné poistenie, poistenie nehnuteľnosti a majetku s krytím, ktoré vás v núdzi skutočne podrží.</p>
                         <a href="#kontakt" class="service-link">Skontrolovať zmluvy <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
 
-                    <div class="service-box" data-category="planning">
-                        <div class="service-top">
-                            <div class="service-icon icon-indigo"><i class="fa-solid fa-briefcase"></i></div>
-                            <span class="service-pill pill-indigo">Stratégia</span>
+                    <div class="service-box liquid-glass-light" data-category="planning">
+                        <div>
+                            <div class="service-top">
+                                <div class="service-icon icon-indigo"><i class="fa-solid fa-briefcase"></i></div>
+                                <span class="service-pill pill-indigo">Stratégia</span>
+                            </div>
+                            <h3>Finančné plánovanie</h3>
+                            <p>Komplexná analýza osobných alebo firemných financií a vytvorenie nepriestrelnej stratégie pre budúcnosť.</p>
                         </div>
-                        <h3>Finančné plánovanie</h3>
-                        <p>Komplexná analýza osobných alebo firemných financií a vytvorenie nepriestrelnej stratégie pre budúcnosť.</p>
                         <a href="#kontakt" class="service-link">Chcem analýzu <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
                 </div>
@@ -258,7 +287,7 @@
         </section>
 
         <!-- SEKCIA: REFERENCIE -->
-        <section id="referencie" class="section apple-light-section">
+        <section id="referencie" class="section liquid-light-section finance-grid-light">
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">HODNOTENIA KLIENTOV</span>
@@ -266,7 +295,7 @@
                     <p class="section-lead">Dôvera sa buduje výsledkami. Prečítajte si skúsenosti klientov, ktorým som pomohol.</p>
                 </div>
                 
-                <div class="reviews-card-container">
+                <div class="reviews-card-container liquid-glass-light">
                     <div class="reviews-widget-wrapper">
                         <!-- Elfsight Google Reviews -->
                         <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -283,8 +312,8 @@
             </div>
         </section>
 
-        <!-- SEKCIA: BLOG (Apple Newsroom / PROSIGHT Insights) -->
-        <section id="blog" class="section apple-white-section">
+        <!-- SEKCIA: BLOG -->
+        <section id="blog" class="section liquid-white-section">
             <div class="container">
                 <div class="section-header blog-header-row">
                     <div>
@@ -322,7 +351,7 @@
                 <div class="modal-body">
                     <p>Ochrana vašich osobných údajov je pre mňa dôležitá. Tento dokument vysvetľuje, ako zhromažďujem, používam a chránim vaše dáta pri používaní tohto webu.</p>
                     <h3>1. Prevádzkovateľ osobných údajov</h3>
-                    <p>Prevádzkovateľom vašich osobných údajov je David Habina, pôsobiaci ako nezávislý finančný sprostredkovateľ. V prípade otázok ma môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong>.</p>
+                    <p>Prevádzkovateľom vašich osobných údajov je Dávid Habina, pôsobiaci ako nezávislý finančný sprostredkovateľ. V prípade otázok ma môžete kontaktovať na e-maile: <strong>davidhabina@prosight.sk</strong>.</p>
                     <h3>2. Aké údaje zhromažďujem a prečo?</h3>
                     <p>Prostredníctvom kontaktného formulára na webe zhromažďujem iba údaje nevyhnutné na spätné kontaktovanie a poskytnutie mojich služieb.</p>
                     <h3>3. Komu údaje poskytujem?</h3>
@@ -335,15 +364,15 @@
             </div>
         </div>
 
-        <!-- SEKCIA: FAQ (Apple Clean Accordion) -->
-        <section id="faq" class="section apple-light-section">
+        <!-- SEKCIA: FAQ -->
+        <section id="faq" class="section liquid-light-section finance-grid-light">
             <div class="container">
                 <div class="section-header">
                     <span class="sub-heading">ČASTO KLADENÉ OTÁZKY</span>
                     <h2>Odpovede na to najdôležitejšie</h2>
                 </div>
                 <div class="faq-list">
-                    <div class="faq-item active">
+                    <div class="faq-item liquid-glass-light active">
                         <button type="button" class="faq-question" aria-expanded="true">
                             <span>Koľko ma stoja vaše služby?</span>
                             <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
@@ -352,7 +381,7 @@
                             <p>Konzultácie a kompletný finančný servis sú pre vás bezplatné. Moja odmena je hradená priamo finančnými inštitúciami.</p>
                         </div>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item liquid-glass-light">
                         <button type="button" class="faq-question" aria-expanded="false">
                             <span>Pôsobíte iba v Košiciach?</span>
                             <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
@@ -361,7 +390,7 @@
                             <p>Osobne pôsobím primárne v Košiciach a okolí, avšak vďaka moderným technológiám vieme všetko potrebné vyriešiť aj kompletne online kdekoľvek na Slovensku.</p>
                         </div>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item liquid-glass-light">
                         <button type="button" class="faq-question" aria-expanded="false">
                             <span>V čom je výhoda spolupracovať so mnou?</span>
                             <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
@@ -374,8 +403,9 @@
             </div>
         </section>
 
-        <!-- SEKCIA: KONTAKT (Apple Pro Obsidian Finale) -->
+        <!-- SEKCIA: KONTAKT (Tmavé Liquid Glass Finále so smaragdovými akcentmi) -->
         <section id="kontakt" class="section obsidian-section">
+            <div class="liquid-orb orb-contact-1" aria-hidden="true"></div>
             <div class="container">
                 <div class="section-header light-header">
                     <span class="sub-heading">ZAČNIME SPOLUPRÁCU</span>
@@ -384,26 +414,28 @@
                 </div>
 
                 <div class="contact-wrapper">
-                    <div class="contact-details-card">
-                        <div class="contact-card-badge">PROSIGHT Slovensko</div>
-                        <h3>David Habina</h3>
-                        <p class="contact-role">Finančný sprostredkovateľ</p>
-                        
-                        <div class="contact-info-list">
-                            <div class="contact-line">
-                                <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
-                                <div>
-                                    <span class="contact-main-text">Business Center Rozvojová</span>
-                                    <span class="contact-sub-text">Rozvojová 2A, 040 90 Košice</span>
+                    <div class="contact-details-card liquid-glass-dark">
+                        <div>
+                            <div class="contact-card-badge">PROSIGHT Slovensko</div>
+                            <h3>Dávid Habina</h3>
+                            <p class="contact-role">Finančný sprostredkovateľ</p>
+                            
+                            <div class="contact-info-list">
+                                <div class="contact-line">
+                                    <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div>
+                                        <span class="contact-main-text">Business Center Rozvojová</span>
+                                        <span class="contact-sub-text">Rozvojová 2A, 040 90 Košice</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="contact-line">
-                                <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
-                                <a href="mailto:davidhabina@prosight.sk">davidhabina@prosight.sk</a>
-                            </div>
-                            <div class="contact-line">
-                                <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
-                                <a href="tel:+421917332362">+421 917 332 362</a>
+                                <div class="contact-line">
+                                    <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+                                    <a href="mailto:davidhabina@prosight.sk">davidhabina@prosight.sk</a>
+                                </div>
+                                <div class="contact-line">
+                                    <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+                                    <a href="tel:+421917332362">+421 917 332 362</a>
+                                </div>
                             </div>
                         </div>
 
@@ -418,7 +450,7 @@
                         </div>
                     </div>
 
-                    <form class="contact-form" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <form class="contact-form liquid-glass-dark" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                         <input type="hidden" name="form-name" value="kontakt" />
                         <p style="display:none;">
                             <label>Spam protection: <input name="bot-field" /></label>
@@ -465,8 +497,8 @@
     <footer>
         <div class="container footer-content">
             <div class="footer-brand">
-                <span class="footer-logo">DAVID HABINA</span>
-                <p>Copyright &copy; 2026 David Habina. Všetky práva vyhradené.</p>
+                <span class="footer-logo">DÁVID HABINA</span>
+                <p>Copyright &copy; 2026 Dávid Habina. Všetky práva vyhradené.</p>
             </div>
             <div class="footer-links">
                 <a href="#" onclick="openGdprModal(event)">Ochrana osobných údajov (GDPR)</a>
@@ -474,7 +506,7 @@
         </div>
     </footer>
 
-    <!-- Cookie Banner (Dynamic Island Style) -->
+    <!-- Cookie Banner (Liquid Glass) -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>Pre najlepší zážitok z nášho webu používame súbory cookies. Viac v <a href="#" onclick="openGdprModal(event)">Zásadách ochrany osobných údajov</a>.</p>
