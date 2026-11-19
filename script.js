@@ -210,7 +210,67 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 6. PLYNULÉ NABIEHANIE ŠTATISTÍK (Funguje na všetkých zariadeniach) ---
+    // --- 6. ODOSLANIE KONTAKTNÉHO FORMULÁRA SO SLOVENSKOU NOTIFIKÁCIOU A FAJKOU ---
+    const contactForm = document.getElementById("contact-form");
+    const formStatus = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    if (contactForm && formStatus) {
+        contactForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : "";
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>Odosielam správu...</span><i class="fa-solid fa-spinner fa-spin"></i>`;
+            }
+
+            formStatus.innerHTML = "";
+
+            try {
+                const formData = new FormData(contactForm);
+                const encodedData = new URLSearchParams(formData).toString();
+
+                const response = await fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: encodedData
+                });
+
+                if (response.ok) {
+                    contactForm.reset();
+                    formStatus.innerHTML = `
+                        <div class="form-feedback success">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>Správa bola úspešne odoslaná.</strong>
+                                <span>Ďakujem za váš záujem, ozvem sa vám čo najskôr.</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    throw new Error("Chyba servera");
+                }
+            } catch (err) {
+                formStatus.innerHTML = `
+                    <div class="form-feedback error">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <div>
+                            <strong>Správu sa momentálne nepodarilo odoslať.</strong>
+                            <span>Skúste to prosím znova alebo mi napíšte priamo na davidhabina@prosight.sk.</span>
+                        </div>
+                    </div>
+                `;
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+            }
+        });
+    }
+
+    // --- 7. PLYNULÉ NABIEHANIE ŠTATISTÍK ---
     const statsSection = document.getElementById("statistiky");
     const stats = document.querySelectorAll(".stat-number");
     let statsAnimated = false;
@@ -232,7 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const updateNumber = (currentTime) => {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
-                    // Plynulé spomalenie na konci (easeOutQuart)
                     const easedProgress = 1 - Math.pow(1 - progress, 4);
                     const currentVal = Math.round(easedProgress * target);
 
@@ -267,7 +326,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- 7. GSAP ANIMÁCIE SEKCÍ (Pre Desktop > 900px) ---
+    // --- 8. GSAP ANIMÁCIE SEKCÍ (Pre Desktop > 900px) ---
     if (window.innerWidth > 900 && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
